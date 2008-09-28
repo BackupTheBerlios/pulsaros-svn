@@ -1,0 +1,37 @@
+#!/bin/sh
+
+#
+# changeconfig.sh - Change the config of a running embedded solaris
+#		    and make it persistent 
+#
+
+CONF_NAME=/coreroot/bin/changes
+BOOT_HOME=/coreroot
+ARCHIVE_NAME=os
+SYNTAX="${CONF_NAME}"
+
+#if [ $# != 1 ] ; then
+#	echo "argument expected" "${SYNTAX}"
+#	exit 1
+#fi
+
+#
+# unzip the solemb archive and change the config
+#
+cp ${BOOT_HOME}/boot/${ARCHIVE_NAME}.gz /tmp
+gzip -d /tmp/${ARCHIVE_NAME}.gz
+lofiadm -a /tmp/${ARCHIVE_NAME}
+mount /dev/lofi/1 /mnt
+#if [ ${CONF_NAME} = "changes" ]; then
+ for i in `cat ${CONF_NAME}`; do
+   cp ${i} /mnt/${i}
+ done
+#else
+# cp ${CONF_NAME} /mnt/${CONF_NAME}
+#fi
+umount /mnt
+lofiadm -d /dev/lofi/1
+gzip /tmp/${ARCHIVE_NAME}
+cp /tmp/${ARCHIVE_NAME}.gz ${BOOT_HOME}/boot
+
+exit 0

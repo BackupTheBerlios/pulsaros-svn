@@ -1,0 +1,354 @@
+Buildfile: build.xml
+
+init:
+
+set-solaris-media-present:
+
+check-install-media:
+
+makeimage:
+
+init:
+
+delete-miniroot:
+
+init:
+
+set-solaris-media-present:
+
+check-install-media:
+
+delete-miniroot:
+
+addpkgs:
+     [exec] 	SUNWcar.i added to /installer/core/miniroot
+     [exec] 	SUNWcakr.i added to /installer/core/miniroot
+     [exec] 	SUNWkvm.i added to /installer/core/miniroot
+     [exec] 	SUNWcsr added to /installer/core/miniroot
+     [exec] 	SUNWcsd added to /installer/core/miniroot
+     [exec] 	SUNWos86r added to /installer/core/miniroot
+     [exec] 	SUNWrmodr added to /installer/core/miniroot
+     [exec] 	SUNWpsdcr added to /installer/core/miniroot
+     [exec] 	SUNWpsdir added to /installer/core/miniroot
+     [exec] 	SUNWckr added to /installer/core/miniroot
+     [exec] 	SUNWcnetr added to /installer/core/miniroot
+     [exec] 	SUNWcsl added to /installer/core/miniroot
+     [exec] 	SUNWcsu added to /installer/core/miniroot
+     [exec] 	SUNWcslr added to /installer/core/miniroot
+     [exec] 	SUNWesu added to /installer/core/miniroot
+     [exec] 	SUNWkey added to /installer/core/miniroot
+     [exec] 	SUNWlibms added to /installer/core/miniroot
+     [exec] 	SUNWlibmsr added to /installer/core/miniroot
+     [exec] 	SUNWusb added to /installer/core/miniroot
+     [exec] 	SUNWpr added to /installer/core/miniroot
+     [exec] 	SUNWtls added to /installer/core/miniroot
+     [exec] 	SUNWlibsasl added to /installer/core/miniroot
+     [exec] 	SUNWlxml added to /installer/core/miniroot
+     [exec] 	SUNWlxmlr added to /installer/core/miniroot
+     [exec] 	SUNWopenssl-libraries added to /installer/core/miniroot
+     [exec] 	SUNWsmbskr added to /installer/core/miniroot
+     [exec] 	SUNWsmbsr added to /installer/core/miniroot
+     [exec] 	SUNWsmbsu added to /installer/core/miniroot
+     [exec] 	SUNWsmbau added to /installer/core/miniroot
+     [exec] 	SUNWsmbar added to /installer/core/miniroot
+     [exec] 	SUNWtecla added to /installer/core/miniroot
+     [exec] 	SUNWzlibr added to /installer/core/miniroot
+     [exec] 	SUNWzlib added to /installer/core/miniroot
+     [exec] 	SUNWgss added to /installer/core/miniroot
+     [exec] 	SUNWgssc added to /installer/core/miniroot
+     [exec] 	SUNWbip added to /installer/core/miniroot
+     [exec] 	SUNWbash added to /installer/core/miniroot
+     [exec] 	SUNWloc added to /installer/core/miniroot
+     [exec] 	SUNWsshcu added to /installer/core/miniroot
+     [exec] 	SUNWsshdr added to /installer/core/miniroot
+     [exec] 	SUNWsshdu added to /installer/core/miniroot
+     [exec] 	SUNWsshr added to /installer/core/miniroot
+     [exec] 	SUNWsshu added to /installer/core/miniroot
+     [exec] 	SUNWtoo added to /installer/core/miniroot
+     [exec] 	SUNWzfskr added to /installer/core/miniroot
+     [exec] 	SUNWzfsr added to /installer/core/miniroot
+     [exec] 	SUNWzfsu added to /installer/core/miniroot
+     [exec] 	SUNWrmodu added to /installer/core/miniroot
+     [exec] 	SUNWsmapi added to /installer/core/miniroot
+     [exec] 	SUNWkrbu added to /installer/core/miniroot
+     [exec] 	SUNWgzip added to /installer/core/miniroot
+     [exec] 	SUNWlibpopt added to /installer/core/miniroot
+     [exec] 	SUNWlexpt added to /installer/core/miniroot
+     [exec] 	SUNWzlib added to /installer/core/miniroot
+     [exec] 	SUNWintgige added to /installer/core/miniroot
+     [exec] 	SUNWxwplt added to /installer/core/miniroot
+     [exec] 	SUNWjpg added to /installer/core/miniroot
+     [exec] 	SUNWfreetype2 added to /installer/core/miniroot
+     [exec] 	SUNWpng added to /installer/core/miniroot
+     [exec] 	SUNWlibC added to /installer/core/miniroot
+     [exec] 	SUNWrmvolmgr added to /installer/core/miniroot
+     [exec] 	SUNWusbs added to /installer/core/miniroot
+     [exec] 	SUNWmysql5r added to /installer/core/miniroot
+     [exec] 	SUNWmysql5u added to /installer/core/miniroot
+     [exec] 	SUNWgd2 added to /installer/core/miniroot
+     [exec] 	SUNWfontconfig added to /installer/core/miniroot
+     [exec] 	SUNWnvsata added to /installer/core/miniroot
+     [exec] 	SUNWmv88sx added to /installer/core/miniroot
+     [exec] 	SUNWahci added to /installer/core/miniroot
+     [exec] 	SUNWsi3124 added to /installer/core/miniroot
+     [exec] 	SUNWpcre added to /installer/core/miniroot
+     [exec] 	SUNWadmr added to /installer/core/miniroot
+     [exec] 	SUNWwgetr added to /installer/core/miniroot
+     [exec] 	SUNWwgetu added to /installer/core/miniroot
+     [exec] 	SUNWiscsiu added to /installer/core/miniroot
+     [exec] 	SUNWiscsir added to /installer/core/miniroot
+     [exec] 	SUNWiscsitgtr added to /installer/core/miniroot
+     [exec] 	SUNWiscsitgtu added to /installer/core/miniroot
+     [exec] 	SUNWcupsu added to /installer/core/miniroot
+     [exec] 	SUNWafe added to /installer/core/miniroot
+     [exec] 	SUNWamd8111s added to /installer/core/miniroot
+     [exec] 	SUNWpcelx added to /installer/core/miniroot
+     [exec] 	SUNWrge added to /installer/core/miniroot
+     [exec] 	SUNWsfe added to /installer/core/miniroot
+     [exec] 	SUNWbge added to /installer/core/miniroot
+     [exec] 	SUNWigb added to /installer/core/miniroot
+     [exec] 	SUNWrtls added to /installer/core/miniroot
+     [exec] 	SUNWsqlite3 added to /installer/core/miniroot
+
+init:
+
+set-miniroot-populated:
+
+check-miniroot-populated:
+
+set-solaris-media-present:
+
+check-install-media:
+
+add-platform-specific:
+
+init:
+
+set-miniroot-populated:
+
+check-miniroot-populated:
+
+setupsmf:
+     [exec] 	customize SMF services
+     [exec] 	repository.db
+     [exec] 	modifying filesystem services
+     [exec] 	delete unecessary services
+     [exec] 	adding system/cryptosvc manifest needed for ssh
+     [exec] 	adding network/rpc/gss manifest needed for ssh
+     [exec] 	adding network/ssh manifest
+     [exec] 	create RSA/DSA keys for ssh
+     [exec] 	edit etc/ssh/sshd_config to allow ssh to root account
+     [exec] 	adding "root" password to root account
+
+init:
+
+set-miniroot-populated:
+
+check-miniroot-populated:
+
+trim:
+     [exec] 	removing amd64 binaries and man pages
+     [exec] 	removing packaging, xpg4, swat and else
+     [exec] 	removing compoenets (non shared objects) from usr/lib: vplot term t[0-9]* spell rcm iconv diff3prog diffh newsyslog nscd_nischeck calprog fp getoptcvt gmsgfmt help initrd localdef lwp makekey more .help patchmod platexec embedded_su mdb rsh kssladm abi class link_audit 
+     [exec] 	removing components (not bin) from usr: kvm mail preserve pub share/src share/doc share/man share/lib/{dict,keytables,mailx,pub,tabset,termcap,unittab,xml,zoneinfo} mailx spool news old src 
+     [exec] 	removing unnecessary executables
+
+init:
+
+set-miniroot-populated:
+
+check-miniroot-populated:
+
+fiximage:
+     [exec] 	fix /etc/vfstab
+     [exec] 	setting nodename
+     [exec] 	tar up /var directory for future re-constitution
+     [exec] 	move usr to installer
+     [exec] 	creating large file on / to be reclaimed as free space
+
+init:
+
+set-miniroot-populated:
+
+check-miniroot-populated:
+
+make-boot-archive:
+     [exec] 	creating miniroot_archive
+     [exec] rm: /installer/core/boot/os.gz: No such file or directory
+     [exec] 	creating grub/menu.lst
+
+BUILD SUCCESSFUL
+Total time: 4 minutes 49 seconds
+Buildfile: build.xml
+
+init:
+
+set-solaris-media-present:
+
+check-install-media:
+
+makeimage:
+
+init:
+
+delete-miniroot:
+
+init:
+
+set-solaris-media-present:
+
+check-install-media:
+
+delete-miniroot:
+
+addpkgs:
+     [exec] 	SUNWcar.i added to /installer/installer/miniroot
+     [exec] 	SUNWcakr.i added to /installer/installer/miniroot
+     [exec] 	SUNWkvm.i added to /installer/installer/miniroot
+     [exec] 	SUNWcsr added to /installer/installer/miniroot
+     [exec] 	SUNWcsd added to /installer/installer/miniroot
+     [exec] 	SUNWos86r added to /installer/installer/miniroot
+     [exec] 	SUNWrmodr added to /installer/installer/miniroot
+     [exec] 	SUNWrmodu added to /installer/installer/miniroot
+     [exec] 	SUNWpsdcr added to /installer/installer/miniroot
+     [exec] 	SUNWpsdir added to /installer/installer/miniroot
+     [exec] 	SUNWckr added to /installer/installer/miniroot
+     [exec] 	SUNWcnetr added to /installer/installer/miniroot
+     [exec] 	SUNWcsl added to /installer/installer/miniroot
+     [exec] 	SUNWcsu added to /installer/installer/miniroot
+     [exec] 	SUNWcslr added to /installer/installer/miniroot
+     [exec] 	SUNWesu added to /installer/installer/miniroot
+     [exec] 	SUNWkey added to /installer/installer/miniroot
+     [exec] 	SUNWlibms added to /installer/installer/miniroot
+     [exec] 	SUNWlibmsr added to /installer/installer/miniroot
+     [exec] 	SUNWpr added to /installer/installer/miniroot
+     [exec] 	SUNWlxml added to /installer/installer/miniroot
+     [exec] 	SUNWtecla added to /installer/installer/miniroot
+     [exec] 	SUNWbip added to /installer/installer/miniroot
+     [exec] 	SUNWbash added to /installer/installer/miniroot
+     [exec] 	SUNWloc added to /installer/installer/miniroot
+     [exec] 	SUNWtoo added to /installer/installer/miniroot
+     [exec] 	SUNWsmapi added to /installer/installer/miniroot
+     [exec] 	SUNWkrbu added to /installer/installer/miniroot
+     [exec] 	SUNWintgige added to /installer/installer/miniroot
+     [exec] 	SUNWusbs added to /installer/installer/miniroot
+     [exec] 	SUNWusb added to /installer/installer/miniroot
+     [exec] 	SUNWgzip added to /installer/installer/miniroot
+     [exec] 	SUNWafe added to /installer/installer/miniroot
+     [exec] 	SUNWamd8111s added to /installer/installer/miniroot
+     [exec] 	SUNWpcelx added to /installer/installer/miniroot
+     [exec] 	SUNWrge added to /installer/installer/miniroot
+     [exec] 	SUNWsfe added to /installer/installer/miniroot
+     [exec] 	SUNWbge added to /installer/installer/miniroot
+     [exec] 	SUNWigb added to /installer/installer/miniroot
+     [exec] 	SUNWrtls added to /installer/installer/miniroot
+
+init:
+
+set-miniroot-populated:
+
+check-miniroot-populated:
+
+set-solaris-media-present:
+
+check-install-media:
+
+add-platform-specific:
+
+init:
+
+set-miniroot-populated:
+
+check-miniroot-populated:
+
+setupsmf:
+     [exec] 	customize SMF services
+     [exec] 	modifying filesystem services
+     [exec] 	adding "root" password to root account
+
+init:
+
+set-miniroot-populated:
+
+check-miniroot-populated:
+
+setupnet:
+     [exec] 	setting hostname
+     [exec] 	creating hosts file
+     [exec] 	creating ipnodes file
+     [exec] 	setting nsswitch.conf to nsswitch.files
+
+init:
+
+set-miniroot-populated:
+
+check-miniroot-populated:
+
+fiximage:
+     [exec] 	fix /etc/vfstab
+     [exec] 	setting nodename
+     [exec] 	tar up /var directory for future re-constitution
+     [exec] 	creating large file on / to be reclaimed as free space
+
+init:
+
+set-miniroot-populated:
+
+check-miniroot-populated:
+
+trim:
+     [exec] 	removing amd64 binaries
+     [exec] 	removing packaging, xpg4, and freeware
+     [exec] 	removing compoenets (non shared objects) from usr/lib: vplot term t[0-9]* spell rcm iconv diff3prog diffh newsyslog nscd_nischeck calprog fp getoptcvt gmsgfmt help initrd localdef lwp makekey more.help patchmod platexec embedded_su mdb rsh kssladm abi class link_audit 
+     [exec] 	removing components (not bin) from usr: kvm mail preserve pub share/src share/lib/{dict,keytables,mailx,pub,tabset,termcap,unittab,xml,zoneinfo} mailx spool news old openwin src 
+     [exec] 	removing unnecessary executables
+
+init:
+
+set-miniroot-populated:
+
+check-miniroot-populated:
+
+make-boot-archive:
+     [exec] 	creating miniroot_archive
+     [exec] 	creating grub/menu.lst
+
+BUILD SUCCESSFUL
+Total time: 2 minutes 19 seconds
+Setting input-charset to 'ISO8859-1' from locale.
+Size of boot image is 4 sectors -> No emulation
+  3.44% done, estimate finish Mon Sep  8 13:51:18 2008
+  6.88% done, estimate finish Mon Sep  8 13:51:18 2008
+ 10.32% done, estimate finish Mon Sep  8 13:51:08 2008
+ 13.76% done, estimate finish Mon Sep  8 13:51:10 2008
+ 17.19% done, estimate finish Mon Sep  8 13:51:18 2008
+ 20.63% done, estimate finish Mon Sep  8 13:51:18 2008
+ 24.06% done, estimate finish Mon Sep  8 13:51:18 2008
+ 27.51% done, estimate finish Mon Sep  8 13:51:18 2008
+ 30.94% done, estimate finish Mon Sep  8 13:51:18 2008
+ 34.38% done, estimate finish Mon Sep  8 13:51:18 2008
+ 37.81% done, estimate finish Mon Sep  8 13:51:18 2008
+ 41.26% done, estimate finish Mon Sep  8 13:51:18 2008
+ 44.69% done, estimate finish Mon Sep  8 13:51:18 2008
+ 48.13% done, estimate finish Mon Sep  8 13:51:18 2008
+ 51.56% done, estimate finish Mon Sep  8 13:51:18 2008
+ 55.00% done, estimate finish Mon Sep  8 13:51:18 2008
+ 58.44% done, estimate finish Mon Sep  8 13:51:16 2008
+ 61.88% done, estimate finish Mon Sep  8 13:51:18 2008
+ 65.31% done, estimate finish Mon Sep  8 13:51:33 2008
+ 68.75% done, estimate finish Mon Sep  8 13:51:32 2008
+ 72.19% done, estimate finish Mon Sep  8 13:51:30 2008
+ 75.63% done, estimate finish Mon Sep  8 13:51:29 2008
+ 79.06% done, estimate finish Mon Sep  8 13:51:29 2008
+ 82.50% done, estimate finish Mon Sep  8 13:51:31 2008
+ 85.94% done, estimate finish Mon Sep  8 13:51:30 2008
+ 89.38% done, estimate finish Mon Sep  8 13:51:30 2008
+ 92.81% done, estimate finish Mon Sep  8 13:51:28 2008
+ 96.25% done, estimate finish Mon Sep  8 13:51:28 2008
+ 99.69% done, estimate finish Mon Sep  8 13:51:28 2008
+Total translation table size: 2048
+Total rockridge attributes bytes: 3598
+Total directory bytes: 16384
+Path table size(bytes): 118
+Max brk space used 10000
+145461 extents written (284 MB)

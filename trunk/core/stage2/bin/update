@@ -1,0 +1,46 @@
+#!/bin/sh
+
+#
+# changeconfig.sh - Change the config of a running embedded solaris
+#		    and make it persistent 
+#
+
+UPDATE_HOME=/coreroot
+BACKUP_DIR=$1
+
+#
+# unzip the solemb archive and change the config
+#
+# check if updates are available
+cd $UPDATE_HOME
+CURRENT_SYS=`uname -a|awk '{print $4}'`
+/usr/sfw/bin/wget -q http://www.digitalplayground.at/pulsar/updates/latest.update
+if [ `cat latest.update` != ${CURRENT_SYS} ]; then 
+  printf "Updates available! Downloading Updates ... \n"
+  /usr/sfw/bin/wget -q http://www.digitalplayground.at/pulsar/updates/latest_minibin.tar.gz
+  gzip -d $UPDATE_HOME/latest_minibin.tar.gz && tar -xf latest_minibin.tar
+  /usr/sfw/bin/wget -q http://www.digitalplayground.at/pulsar/updates/latest.tar.gz
+  PATH=$PATH:$UPDATE_HOME/usr/bin && export PATH
+  if [ -d $UPDATE_HOME/usr ]; then 
+    printf "Download complete! Making backup and installing updates \n"
+    cd /usr && tar -cf $BACKUP_DIR/backup_usr.tar .
+    cp $UPDATE_HOME/boot/os.gz $UPDATE_HOME/boot/os_backup.gz
+    cp $UPDATE_HOME/boot/platform/i86pc/kernel/unix $UPDATE_HOME/boot/platform/i86pc/kernel/unix_backup
+    rm -r /usr/*
+    cd /usr && gzip -d $UPDATE_HOME/latest.tar.gz && tar -xf /coreroot/latest.tar
+    mv os.gz $UPDATE_HOME/boot
+    mv unix $UPDATE_HOME/boot/platform/i86pc/kernel/
+    $UPDATE_HOME/bin/changeconfig
+    rm $UPDATE_HOME/latest.tar
+    rm $UPDATE_HOME/latest.update
+    rm $UPDATE_HOME/latest_minibin.tar
+    rm -r $UPDATE_HOME/usr
+    printf "Update installed! If there is any problem, please change the GRUB module entry on boot to os_backup.gz and run --> restore 'backupdir' ! \n\n"
+  else
+    printf "There is something wrong with the update archives! Please try it again!"
+    exit 1
+  fi
+else
+  printf "No Updates available!"
+fi
+exit 0

@@ -1,0 +1,220 @@
+=head2 Wed Jun 11 22:12:45 2008: C<Module> L<DBD::mysql|DBD::mysql>
+
+=over 4
+
+=item *
+
+C<installed into: /usr/perl5/site_perl/5.8.4>
+
+=item *
+
+C<LINKTYPE: dynamic>
+
+=item *
+
+C<VERSION: 4.007>
+
+=item *
+
+C<EXE_FILES: >
+
+=back
+
+=head2 Wed Jun 11 22:13:36 2008: C<Module> L<HTML::Tagset|HTML::Tagset>
+
+=over 4
+
+=item *
+
+C<installed into: /usr/perl5/site_perl/5.8.4>
+
+=item *
+
+C<LINKTYPE: dynamic>
+
+=item *
+
+C<VERSION: 3.20>
+
+=item *
+
+C<EXE_FILES: >
+
+=back
+
+=head2 Wed Jun 11 22:13:46 2008: C<Module> L<HTML::Parser|HTML::Parser>
+
+=over 4
+
+=item *
+
+C<installed into: /usr/perl5/site_perl/5.8.4>
+
+=item *
+
+C<LINKTYPE: dynamic>
+
+=item *
+
+C<VERSION: 3.56>
+
+=item *
+
+C<EXE_FILES: >
+
+=back
+
+=head2 Wed Jun 11 22:14:18 2008: C<Module> L<JSON::XS|JSON::XS>
+
+=over 4
+
+=item *
+
+C<installed into: /usr/perl5/site_perl/5.8.4>
+
+=item *
+
+C<LINKTYPE: dynamic>
+
+=item *
+
+C<VERSION: 2.21>
+
+=item *
+
+C<EXE_FILES: bin/json_xs>
+
+=back
+
+=head2 Wed Jun 11 22:15:01 2008: C<Module> L<IO::Compress::Base|IO::Compress::Base>
+
+=over 4
+
+=item *
+
+C<installed into: /usr/perl5/site_perl/5.8.4>
+
+=item *
+
+C<LINKTYPE: dynamic>
+
+=item *
+
+C<VERSION: 2.011>
+
+=item *
+
+C<EXE_FILES: >
+
+=back
+
+=head2 Wed Jun 11 22:15:18 2008: C<Module> L<Compress::Raw::Zlib|Compress::Raw::Zlib>
+
+=over 4
+
+=item *
+
+C<installed into: /usr/perl5/site_perl/5.8.4>
+
+=item *
+
+C<LINKTYPE: dynamic>
+
+=item *
+
+C<VERSION: 2.011>
+
+=item *
+
+C<EXE_FILES: >
+
+=back
+
+=head2 Wed Jun 11 22:16:55 2008: C<Module> L<IO::Compress::Zlib|IO::Compress::Zlib>
+
+=over 4
+
+=item *
+
+C<installed into: /usr/perl5/site_perl/5.8.4>
+
+=item *
+
+C<LINKTYPE: dynamic>
+
+=item *
+
+C<VERSION: 2.011>
+
+=item *
+
+C<EXE_FILES: >
+
+=back
+
+=head2 Wed Jun 11 22:17:01 2008: C<Module> L<Compress::Zlib|Compress::Zlib>
+
+=over 4
+
+=item *
+
+C<installed into: /usr/perl5/site_perl/5.8.4>
+
+=item *
+
+C<LINKTYPE: dynamic>
+
+=item *
+
+C<VERSION: 2.011>
+
+=item *
+
+C<EXE_FILES: >
+
+=back
+
+=head2 Wed Jun 11 22:17:39 2008: C<Module> L<Digest::SHA1|Digest::SHA1>
+
+=over 4
+
+=item *
+
+C<installed into: /usr/perl5/site_perl/5.8.4>
+
+=item *
+
+C<LINKTYPE: dynamic>
+
+=item *
+
+C<VERSION: 2.11>
+
+=item *
+
+C<EXE_FILES: >
+
+=back
+
+=head2 Thu Jun 12 07:50:58 2008: C<Module> L<GD|GD>
+
+=over 4
+
+=item *
+
+C<installed into: /usr/perl5/site_perl/5.8.4>
+
+=item *
+
+C<LINKTYPE: dynamic>
+
+=item *
+
+C<VERSION: 2.39>
+
+=item *
+
+C<EXE_FILES: bdf_scripts/bdf2gdfont.pl>
+
+=back
+
