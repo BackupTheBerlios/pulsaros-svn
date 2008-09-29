@@ -8,7 +8,7 @@
 #
 #               $1: miniroot_directory
 #
-
+HOME=/installer/trunk
 PROGNAME=$0
 SYNTAX="${PROGNAME} minroot_directory"
 
@@ -67,15 +67,8 @@ tar cf ./var.tar ./var
 #
 msg_to_stderr "move usr to installer"
 cd ${MINIROOTDIR}/usr
-tar cf /installer/installer/stage2/usr.tar *
+tar cf $HOME/installer/stage2/usr.tar *
 /bin/rm -rf ${MINIROOTDIR}/usr/*
-
-#
-# To have free space in the root filesystem, create a large file and delete
-# it at startup.
-# 
-msg_to_stderr "creating large file on / to be reclaimed as free space"
-#mkfile 5m ${MINIROOTDIR}/FREESPACE
 
 #
 # Create /coreroot directory
@@ -87,6 +80,5 @@ mkdir  ${MINIROOTDIR}/coreroot
 #
 echo "PATH=$PATH:/bin:/sbin:/usr/bin:/usr/sbin:/usr/sfw/bin:/usr/ccs/bin:/coreroot/bin" > ${MINIROOTDIR}/root/.profile
 echo "export PATH" >> ${MINIROOTDIR}/root/.profile
-
 
 exit 0

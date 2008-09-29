@@ -9,9 +9,11 @@ echo " #                Pulsar OS Installer Main Menu                    #"
 echo " #                                                                 #"
 echo " #                           Options:                              #"
 echo " #                                                                 #"
-echo " #                   2. Copy OS to harddisk                        #"
+echo " #                   1. Copy OS to harddisk                        #"
 echo " #                                                                 #"
-echo " #                   1. Reboot System                              #"
+echo " #                   2. Configure OS                               #"
+echo " #                                                                 #"
+echo " #                   3. Reboot System                              #"
 echo " #                                                                 #"
 echo " #                   0. Exit to command line                       #"
 echo " #                                                                 #"
@@ -24,9 +26,11 @@ Main_Menu()
         printf "Enter option: "
         read OPT1
         case $OPT1 in
-                        2)
-                                copy_os;;
                         1)
+                                copy_os;;
+			2)
+				config_os;;
+                        3)
                                 clear; init 6;;
 			0)
                                 clear; exit 0;;	
@@ -101,6 +105,7 @@ copy_os()
 	# install os to disk
 	printf "\n\n2. Install OS to disk (This takes some time - grab a coffee)\n\n"
 	mount ${disk}s0 /coreroot
+	touch /coreroot/.installed
 	cd /coreroot && tar -xf /mnt/pulsar_core.tar
 	check_dir "/pulsar_usr"
 	mount ${disk}s1 /pulsar_usr
@@ -120,6 +125,12 @@ config_os()
         # Variables for this function
         number=1
         # ===========================
+	if [ ! -f /coreroot/.installed ]; then
+ 	  printf "Pulsar os not installed, please install the os first! - Press Return to Continue... "
+	  read UNK
+	  clear
+	  Main_Menu	
+	fi
 	if [ -f /tmp/os ]; then
 	  lofiadm -d /tmp/os
 	  rm /tmp/os
@@ -146,6 +157,13 @@ config_os()
 	else
 	  printf "\n\nEnter option: "
 	  read OPT1
+          lettercheck=`expr match $OPT1 '[0-9]*$'`
+	  if [ $lettercheck == 0 Â]; then
+	    printf "Only numbers are allowed! - - Press Return to Continue... "
+ 	    read JUNK
+	    clear
+	    config_os
+	  fi
 	  interface=$OPT1
 	  printf "Use DHCP to configure the interface? (y/n)"
 	  read OPT2
@@ -168,7 +186,7 @@ config_os()
 	    echo $OPT6 > /mnt/etc/nodename
 	    echo $OPT7 > /mnt/etc/resolv.conf
 	    cp /root/scripts/nsswitch.conf /mnt/etc/nsswitch.conf
-	  else
+	  elif [ $OPT2 == "y" ]; then
 	    printf "Enter Hostname: "
 	    read OPT3
 	    rm /mnt/etc/dhcp.*
@@ -176,6 +194,11 @@ config_os()
 	    rm /mnt/etc/hostname.*
 	    echo "" > /mnt/etc/hostname.${nwcard[$OPT1]}
 	    echo $OPT3 > /mnt/etc/nodename
+	  else
+	    printf "Wrong syntax! Only (y/n) is allowed! - Press Return to Continue... "
+	    read JUNK
+	    clear
+	    config_os
 	  fi
 	fi
 	umount /mnt

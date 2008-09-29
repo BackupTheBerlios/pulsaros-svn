@@ -37,8 +37,4 @@ else
     fi
 fi
 
-# perl
-#rm -r ${MINIROOTDIR}/usr/perl5
-cp -r ./packages/perl5 ${MINIROOTDIR}/usr/
-
 exit 0

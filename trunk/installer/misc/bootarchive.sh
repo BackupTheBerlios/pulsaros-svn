@@ -40,10 +40,8 @@ IMAGE=$3
 
 
 msg_to_stderr "creating miniroot_archive"
-#/boot/solaris/bin/root_archive pack ${BASEDIR}/boot/${IMAGE} ${MINIROOTDIR}
-#mv ${BASEDIR}/boot/${IMAGE} ${BASEDIR}/boot/${IMAGE}.gz
-mkfile 85m ${BASEDIR}/boot/${IMAGE}
-lofiadm -a ${BASEDIR}/boot/${IMAGE} > /dev/null 2>&1
+mkfile 85m /tmp/${IMAGE} 
+lofiadm -a /tmp/${IMAGE} >/dev/null 2>&1
 yes | newfs -m 0 /dev/rlofi/1 >/dev/null 2>&1
 mount /dev/lofi/1 /pulsar_boot
 cd ${MINIROOTDIR}
@@ -55,6 +53,7 @@ cd /
 umount /pulsar_boot
 lofiadm -d /dev/lofi/1
 rm ${BASEDIR}/boot/${IMAGE}.gz 
+mv /tmp/${IMAGE} ${BASEDIR}/boot/${IMAGE}
 gzip -9 ${BASEDIR}/boot/${IMAGE}
 
 msg_to_stderr "creating grub/menu.lst"

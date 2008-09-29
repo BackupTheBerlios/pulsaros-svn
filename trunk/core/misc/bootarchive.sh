@@ -40,8 +40,6 @@ IMAGE=$3
 
 
 msg_to_stderr "creating miniroot_archive"
-#/boot/solaris/bin/root_archive pack ${BASEDIR}/boot/${IMAGE} ${MINIROOTDIR}
-#mv ${BASEDIR}/boot/${IMAGE} ${BASEDIR}/boot/${IMAGE}.gz
 mkfile 48m ${BASEDIR}/boot/${IMAGE}
 lofiadm -a ${BASEDIR}/boot/${IMAGE} > /dev/null 2>&1
 yes | newfs -m 0 /dev/rlofi/1 >/dev/null 2>&1

@@ -1,9 +1,9 @@
 
 Processing package instance <SUNWcar.i> from </iso/Solaris_11/Product>
 
-Core Architecture, (Root)(i386.i86pc) 11.11,REV=2008.08.21.16.30
+Core Architecture, (Root)(i386.i86pc) 11.11,REV=2008.09.04.21.33
 ## Software contents file initialized
-Using </installer/core/miniroot> as the package base directory.
+Using </installer/trunk/core/miniroot> as the package base directory.
 ## Processing package information.
 ## Processing system information.
 
@@ -39,8 +39,8 @@ Installation of <SUNWcar> was successful.
 
 Processing package instance <SUNWcakr.i> from </iso/Solaris_11/Product>
 
-Core Solaris Kernel Architecture (Root)(i386.i86pc) 11.11,REV=2008.08.21.16.30
-Using </installer/core/miniroot> as the package base directory.
+Core Solaris Kernel Architecture (Root)(i386.i86pc) 11.11,REV=2008.09.04.21.33
+Using </installer/trunk/core/miniroot> as the package base directory.
 ## Processing package information.
 ## Processing system information.
    2 package pathnames are already properly installed.
@@ -109,15 +109,15 @@ CDDL HEADER END
  * LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
  * OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
  * SUCH DAMAGE.
-11544 blocks
+11546 blocks
 ## Executing postinstall script.
 
 Installation of <SUNWcakr> was successful.
 
 Processing package instance <SUNWkvm.i> from </iso/Solaris_11/Product>
 
-Core Architecture, (Kvm)(i386.i86pc) 11.11,REV=2008.08.21.16.30
-Using </installer/core/miniroot> as the package base directory.
+Core Architecture, (Kvm)(i386.i86pc) 11.11,REV=2008.09.04.21.33
+Using </installer/trunk/core/miniroot> as the package base directory.
 ## Processing package information.
 ## Processing system information.
 
@@ -132,7 +132,7 @@ Installation of <SUNWkvm> was successful.
 
 Processing package instance <SUNWcsr> from </iso/Solaris_11/Product>
 
-Core Solaris, (Root)(i386) 11.11,REV=2008.08.21.16.30
+Core Solaris, (Root)(i386) 11.11,REV=2008.09.04.21.33
 ## Executing checkinstall script.
 Copyright 2008 Sun Microsystems, Inc.  All rights reserved.
 Use is subject to license terms.
@@ -225,7 +225,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  * LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
  * OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
  * SUCH DAMAGE.
-Using </installer/core/miniroot> as the package base directory.
+Using </installer/trunk/core/miniroot> as the package base directory.
 ## Processing package information.
 ## Processing system information.
    1 package pathname is already properly installed.
@@ -237,11 +237,11 @@ Installing Core Solaris, (Root) as <SUNWcsr>
 6784 blocks
 [ verifying class <ttydefs> ]
 [ verifying class <initd> ]
-/installer/core/miniroot/etc/rc2.d/S20sysetup <linked pathname>
-/installer/core/miniroot/etc/rc2.d/S73cachefs.daemon <linked pathname>
-/installer/core/miniroot/etc/rc2.d/S82mkdtab <linked pathname>
-/installer/core/miniroot/etc/rc2.d/S89PRESERVE <linked pathname>
-/installer/core/miniroot/etc/rc2.d/S98deallocate <linked pathname>
+/installer/trunk/core/miniroot/etc/rc2.d/S20sysetup <linked pathname>
+/installer/trunk/core/miniroot/etc/rc2.d/S73cachefs.daemon <linked pathname>
+/installer/trunk/core/miniroot/etc/rc2.d/S82mkdtab <linked pathname>
+/installer/trunk/core/miniroot/etc/rc2.d/S89PRESERVE <linked pathname>
+/installer/trunk/core/miniroot/etc/rc2.d/S98deallocate <linked pathname>
 [ verifying class <renamenew> ]
 [ verifying class <preserve> ]
 [ verifying class <cronroot> ]
@@ -288,8 +288,8 @@ Installation of <SUNWcsr> was successful.
 
 Processing package instance <SUNWcsd> from </iso/Solaris_11/Product>
 
-Core Solaris Devices(i386) 11.11,REV=2008.08.21.16.30
-Using </installer/core/miniroot> as the package base directory.
+Core Solaris Devices(i386) 11.11,REV=2008.09.04.21.33
+Using </installer/trunk/core/miniroot> as the package base directory.
 ## Processing package information.
 ## Processing system information.
    11 package pathnames are already properly installed.
@@ -335,6 +335,7 @@ CDDL HEADER END
 ## Executing postinstall script.
 add link /dev/arp=../devices/pseudo/arp@0:arp
 add link /dev/ibd=../devices/pseudo/clone@0:ibd
+add link /dev/dld=../devices/pseudo/dld@0:ctl
 add link /dev/icmp=../devices/pseudo/icmp@0:icmp
 add link /dev/rawip=../devices/pseudo/icmp@0:icmp
 add link /dev/icmp6=../devices/pseudo/icmp6@0:icmp6
@@ -379,7 +380,7 @@ Installation of <SUNWcsd> was successful.
 
 Processing package instance <SUNWos86r> from </iso/Solaris_11/Product>
 
-Platform Support, OS Functionality (Root)(i386) 11.11,REV=2008.08.21.16.30
+Platform Support, OS Functionality (Root)(i386) 11.11,REV=2008.09.04.21.33
 Copyright 2008 Sun Microsystems, Inc.  All rights reserved.
 Use is subject to license terms.
 
@@ -555,7 +556,7 @@ TO THE EXTENT NOT PROHIBITED BY LAW, IN NO EVENT WILL SUN OR ITS
 LICENSORS BE LIABLE FOR ANY LOST REVENUE, PROFIT OR DATA, OR FOR SPECIAL, 
 INDIRECT, CONSEQUENTIAL, INCIDENTAL OR PUNITIVE DAMAGES, HOWEVER CAUSED 
 REGARDLESS OF THE THEORY OF LIABILITY, ARISING OUT OF OR RELATED TO THE 
-USE OF OR INABILITY TO USE SOFTWARE, Using </installer/core/miniroot> as the package base directory.
+USE OF OR INABILITY TO USE SOFTWARE, Using </installer/trunk/core/miniroot> as the package base directory.
 ## Processing package information.
 ## Processing system information.
    1 package pathname is already properly installed.
@@ -631,15 +632,15 @@ Installation of <SUNWos86r> was successful.
 
 Processing package instance <SUNWrmodr> from </iso/Solaris_11/Product>
 
-Realmode Modules, (Root)(i386) 11.11,REV=2008.08.21.16.30
-Using </installer/core/miniroot> as the package base directory.
+Realmode Modules, (Root)(i386) 11.11,REV=2008.09.04.21.33
+Using </installer/trunk/core/miniroot> as the package base directory.
 ## Processing package information.
 ## Processing system information.
 
 Installing Realmode Modules, (Root) as <SUNWrmodr>
 
 ## Installing part 1 of 1.
-/installer/core/miniroot/boot/solaris.xpm
+/installer/trunk/core/miniroot/boot/solaris.xpm
 [ verifying class <none> ]
 Copyright 2008 Sun Microsystems, Inc.  All rights reserved.
 Use is subject to license terms.
@@ -672,7 +673,7 @@ Installation of <SUNWrmodr> was successful.
 
 Processing package instance <SUNWpsdcr> from </iso/Solaris_11/Product>
 
-Platform Support, Bus-independent Device Drivers (Root)(i386) 11.11,REV=2008.08.21.16.30
+Platform Support, Bus-independent Device Drivers (Root)(i386) 11.11,REV=2008.09.04.21.33
 Copyright 2008 Sun Microsystems, Inc.  All rights reserved.
 Use is subject to license terms.
 
@@ -848,7 +849,7 @@ TO THE EXTENT NOT PROHIBITED BY LAW, IN NO EVENT WILL SUN OR ITS
 LICENSORS BE LIABLE FOR ANY LOST REVENUE, PROFIT OR DATA, OR FOR SPECIAL, 
 INDIRECT, CONSEQUENTIAL, INCIDENTAL OR PUNITIVE DAMAGES, HOWEVER CAUSED 
 REGARDLESS OF THE THEORY OF LIABILITY, ARISING OUT OF OR RELATED TO THE 
-USE OF OR INABILITY TO USE SOFTWARE, Using </installer/core/miniroot> as the package base directory.
+USE OF OR INABILITY TO USE SOFTWARE, Using </installer/trunk/core/miniroot> as the package base directory.
 ## Processing package information.
 ## Processing system information.
    3 package pathnames are already properly installed.
@@ -915,8 +916,8 @@ Installation of <SUNWpsdcr> was successful.
 
 Processing package instance <SUNWpsdir> from </iso/Solaris_11/Product>
 
-Platform Support, ISA Bus Device Drivers, (Root)(i386) 11.11,REV=2008.08.21.16.30
-Using </installer/core/miniroot> as the package base directory.
+Platform Support, ISA Bus Device Drivers, (Root)(i386) 11.11,REV=2008.09.04.21.33
+Using </installer/trunk/core/miniroot> as the package base directory.
 ## Processing package information.
 ## Processing system information.
    8 package pathnames are already properly installed.
@@ -956,7 +957,7 @@ Installation of <SUNWpsdir> was successful.
 
 Processing package instance <SUNWckr> from </iso/Solaris_11/Product>
 
-Core Solaris Kernel (Root)(i386) 11.11,REV=2008.08.21.16.30
+Core Solaris Kernel (Root)(i386) 11.11,REV=2008.09.04.21.33
 Copyright 2008 Sun Microsystems, Inc.  All rights reserved.
 Use is subject to license terms.
 
@@ -1453,7 +1454,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  * Code or modification without rights to further distribute source must
  * include the following Disclaimer and Export Compliance provision in the
  * documentation and/or other materials provided with distribution.  In
- * addition, Licensee may not authorize further subliceUsing </installer/core/miniroot> as the package base directory.
+ * addition, Licensee may not authorize further subliceUsing </installer/trunk/core/miniroot> as the package base directory.
 ## Processing package information.
 ## Processing system information.
    18 package pathnames are already properly installed.
@@ -1516,481 +1517,481 @@ nse of source of any
  * other governmental approval, or letter of assurance, without first obtaining
  * such license, approval or letter.
 ## Installing part 1 of 1.
-/installer/core/miniroot/boot/solaris/bin/create_diskmap
-/installer/core/miniroot/boot/solaris/bin/create_ramdisk
-/installer/core/miniroot/boot/solaris/bin/extract_boot_filelist
-/installer/core/miniroot/boot/solaris/bin/mbr
-/installer/core/miniroot/boot/solaris/bin/root_archive <symbolic link>
-/installer/core/miniroot/boot/solaris/bin/symdef
-/installer/core/miniroot/boot/solaris/bin/update_grub
-/installer/core/miniroot/boot/solaris/filelist.ramdisk
-/installer/core/miniroot/boot/solaris/filelist.safe
-/installer/core/miniroot/kernel/amd64/genunix
-/installer/core/miniroot/kernel/crypto/aes
-/installer/core/miniroot/kernel/crypto/amd64/aes
-/installer/core/miniroot/kernel/crypto/amd64/arcfour
-/installer/core/miniroot/kernel/crypto/amd64/blowfish
-/installer/core/miniroot/kernel/crypto/amd64/des
-/installer/core/miniroot/kernel/crypto/amd64/ecc
-/installer/core/miniroot/kernel/crypto/amd64/md4
-/installer/core/miniroot/kernel/crypto/amd64/md5
-/installer/core/miniroot/kernel/crypto/amd64/rsa
-/installer/core/miniroot/kernel/crypto/amd64/sha1
-/installer/core/miniroot/kernel/crypto/amd64/sha2
-/installer/core/miniroot/kernel/crypto/amd64/swrand
-/installer/core/miniroot/kernel/crypto/arcfour
-/installer/core/miniroot/kernel/crypto/blowfish
-/installer/core/miniroot/kernel/crypto/des
-/installer/core/miniroot/kernel/crypto/ecc
-/installer/core/miniroot/kernel/crypto/md4
-/installer/core/miniroot/kernel/crypto/md5
-/installer/core/miniroot/kernel/crypto/rsa
-/installer/core/miniroot/kernel/crypto/sha1
-/installer/core/miniroot/kernel/crypto/sha2
-/installer/core/miniroot/kernel/crypto/swrand
-/installer/core/miniroot/kernel/dacf/amd64/net_dacf
-/installer/core/miniroot/kernel/dacf/net_dacf
-/installer/core/miniroot/kernel/devname/amd64/sdev_nsconfig_mod
-/installer/core/miniroot/kernel/devname/sdev_nsconfig_mod
-/installer/core/miniroot/kernel/drv/acpi_drv
-/installer/core/miniroot/kernel/drv/acpi_drv.conf
-/installer/core/miniroot/kernel/drv/aggr
-/installer/core/miniroot/kernel/drv/aggr.conf
-/installer/core/miniroot/kernel/drv/amd64/acpi_drv
-/installer/core/miniroot/kernel/drv/amd64/aggr
-/installer/core/miniroot/kernel/drv/amd64/arp
-/installer/core/miniroot/kernel/drv/amd64/bl
-/installer/core/miniroot/kernel/drv/amd64/bmc
-/installer/core/miniroot/kernel/drv/amd64/bscbus
-/installer/core/miniroot/kernel/drv/amd64/bscv
-/installer/core/miniroot/kernel/drv/amd64/clone
-/installer/core/miniroot/kernel/drv/amd64/cn
-/installer/core/miniroot/kernel/drv/amd64/conskbd
-/installer/core/miniroot/kernel/drv/amd64/consms
-/installer/core/miniroot/kernel/drv/amd64/cpuid
-/installer/core/miniroot/kernel/drv/amd64/cpunex
-/installer/core/miniroot/kernel/drv/amd64/crypto
-/installer/core/miniroot/kernel/drv/amd64/cryptoadm
-/installer/core/miniroot/kernel/drv/amd64/devinfo
-/installer/core/miniroot/kernel/drv/amd64/dld
-/installer/core/miniroot/kernel/drv/amd64/i8042
-/installer/core/miniroot/kernel/drv/amd64/icmp
-/installer/core/miniroot/kernel/drv/amd64/icmp6
-/installer/core/miniroot/kernel/drv/amd64/ip
-/installer/core/miniroot/kernel/drv/amd64/ip6
-/installer/core/miniroot/kernel/drv/amd64/ippctl
-/installer/core/miniroot/kernel/drv/amd64/ipsecah
-/installer/core/miniroot/kernel/drv/amd64/ipsecesp
-/installer/core/miniroot/kernel/drv/amd64/iwscn
-/installer/core/miniroot/kernel/drv/amd64/kb8042
-/installer/core/miniroot/kernel/drv/amd64/keysock
-/installer/core/miniroot/kernel/drv/amd64/kmdb
-/installer/core/miniroot/kernel/drv/amd64/kssl
-/installer/core/miniroot/kernel/drv/amd64/llc1
-/installer/core/miniroot/kernel/drv/amd64/lofi
-/installer/core/miniroot/kernel/drv/amd64/log
-/installer/core/miniroot/kernel/drv/amd64/mm
-/installer/core/miniroot/kernel/drv/amd64/mouse8042
-/installer/core/miniroot/kernel/drv/amd64/mpt
-/installer/core/miniroot/kernel/drv/amd64/openeepr
-/installer/core/miniroot/kernel/drv/amd64/options
-/installer/core/miniroot/kernel/drv/amd64/pci_pci
-/installer/core/miniroot/kernel/drv/amd64/pcie_pci
-/installer/core/miniroot/kernel/drv/amd64/physmem
-/installer/core/miniroot/kernel/drv/amd64/poll
-/installer/core/miniroot/kernel/drv/amd64/power
-/installer/core/miniroot/kernel/drv/amd64/pseudo
-/installer/core/miniroot/kernel/drv/amd64/ptc
-/installer/core/miniroot/kernel/drv/amd64/ptsl
-/installer/core/miniroot/kernel/drv/amd64/ramdisk
-/installer/core/miniroot/kernel/drv/amd64/random
-/installer/core/miniroot/kernel/drv/amd64/rts
-/installer/core/miniroot/kernel/drv/amd64/sad
-/installer/core/miniroot/kernel/drv/amd64/scsi_vhci
-/installer/core/miniroot/kernel/drv/amd64/sctp
-/installer/core/miniroot/kernel/drv/amd64/sctp6
-/installer/core/miniroot/kernel/drv/amd64/sd
-/installer/core/miniroot/kernel/drv/amd64/sgen
-/installer/core/miniroot/kernel/drv/amd64/smbios
-/installer/core/miniroot/kernel/drv/amd64/softmac
-/installer/core/miniroot/kernel/drv/amd64/spdsock
-/installer/core/miniroot/kernel/drv/amd64/st
-/installer/core/miniroot/kernel/drv/amd64/sy
-/installer/core/miniroot/kernel/drv/amd64/sysevent
-/installer/core/miniroot/kernel/drv/amd64/sysmsg
-/installer/core/miniroot/kernel/drv/amd64/tcp
-/installer/core/miniroot/kernel/drv/amd64/tcp6
-/installer/core/miniroot/kernel/drv/amd64/tl
-/installer/core/miniroot/kernel/drv/amd64/tzmon
-/installer/core/miniroot/kernel/drv/amd64/ucode
-/installer/core/miniroot/kernel/drv/amd64/udp
-/installer/core/miniroot/kernel/drv/amd64/udp6
-/installer/core/miniroot/kernel/drv/amd64/vgatext
-/installer/core/miniroot/kernel/drv/amd64/vni
-/installer/core/miniroot/kernel/drv/amd64/vnic
-/installer/core/miniroot/kernel/drv/amd64/wc
-/installer/core/miniroot/kernel/drv/arp
-/installer/core/miniroot/kernel/drv/arp.conf
-/installer/core/miniroot/kernel/drv/bl
-/installer/core/miniroot/kernel/drv/bl.conf
-/installer/core/miniroot/kernel/drv/bmc
-/installer/core/miniroot/kernel/drv/bmc.conf
-/installer/core/miniroot/kernel/drv/bscbus
-/installer/core/miniroot/kernel/drv/bscbus.conf
-/installer/core/miniroot/kernel/drv/bscv
-/installer/core/miniroot/kernel/drv/bscv.conf
-/installer/core/miniroot/kernel/drv/clone
-/installer/core/miniroot/kernel/drv/clone.conf
-/installer/core/miniroot/kernel/drv/cn
-/installer/core/miniroot/kernel/drv/cn.conf
-/installer/core/miniroot/kernel/drv/conskbd
-/installer/core/miniroot/kernel/drv/conskbd.conf
-/installer/core/miniroot/kernel/drv/consms
-/installer/core/miniroot/kernel/drv/consms.conf
-/installer/core/miniroot/kernel/drv/cpuid
-/installer/core/miniroot/kernel/drv/cpuid.conf
-/installer/core/miniroot/kernel/drv/cpunex
-/installer/core/miniroot/kernel/drv/crypto
-/installer/core/miniroot/kernel/drv/crypto.conf
-/installer/core/miniroot/kernel/drv/cryptoadm
-/installer/core/miniroot/kernel/drv/cryptoadm.conf
-/installer/core/miniroot/kernel/drv/devinfo
-/installer/core/miniroot/kernel/drv/devinfo.conf
-/installer/core/miniroot/kernel/drv/dld
-/installer/core/miniroot/kernel/drv/dld.conf
-/installer/core/miniroot/kernel/drv/i8042
-/installer/core/miniroot/kernel/drv/icmp
-/installer/core/miniroot/kernel/drv/icmp.conf
-/installer/core/miniroot/kernel/drv/icmp6
-/installer/core/miniroot/kernel/drv/icmp6.conf
-/installer/core/miniroot/kernel/drv/ip
-/installer/core/miniroot/kernel/drv/ip.conf
-/installer/core/miniroot/kernel/drv/ip6
-/installer/core/miniroot/kernel/drv/ip6.conf
-/installer/core/miniroot/kernel/drv/ippctl
-/installer/core/miniroot/kernel/drv/ippctl.conf
-/installer/core/miniroot/kernel/drv/ipsecah
-/installer/core/miniroot/kernel/drv/ipsecah.conf
-/installer/core/miniroot/kernel/drv/ipsecesp
-/installer/core/miniroot/kernel/drv/ipsecesp.conf
-/installer/core/miniroot/kernel/drv/iwscn
-/installer/core/miniroot/kernel/drv/iwscn.conf
-/installer/core/miniroot/kernel/drv/kb8042
-/installer/core/miniroot/kernel/drv/keysock
-/installer/core/miniroot/kernel/drv/keysock.conf
-/installer/core/miniroot/kernel/drv/kmdb
-/installer/core/miniroot/kernel/drv/kmdb.conf
-/installer/core/miniroot/kernel/drv/kssl
-/installer/core/miniroot/kernel/drv/kssl.conf
-/installer/core/miniroot/kernel/drv/llc1
-/installer/core/miniroot/kernel/drv/llc1.conf
-/installer/core/miniroot/kernel/drv/lofi
-/installer/core/miniroot/kernel/drv/lofi.conf
-/installer/core/miniroot/kernel/drv/log
-/installer/core/miniroot/kernel/drv/mm
-/installer/core/miniroot/kernel/drv/mm.conf
-/installer/core/miniroot/kernel/drv/mouse8042
-/installer/core/miniroot/kernel/drv/mpt
-/installer/core/miniroot/kernel/drv/openeepr
-/installer/core/miniroot/kernel/drv/openeepr.conf
-/installer/core/miniroot/kernel/drv/options
-/installer/core/miniroot/kernel/drv/options.conf
-/installer/core/miniroot/kernel/drv/pci_pci
-/installer/core/miniroot/kernel/drv/pcie_pci
-/installer/core/miniroot/kernel/drv/pcie_pci.conf
-/installer/core/miniroot/kernel/drv/physmem
-/installer/core/miniroot/kernel/drv/physmem.conf
-/installer/core/miniroot/kernel/drv/poll
-/installer/core/miniroot/kernel/drv/poll.conf
-/installer/core/miniroot/kernel/drv/power
-/installer/core/miniroot/kernel/drv/power.conf
-/installer/core/miniroot/kernel/drv/pseudo
-/installer/core/miniroot/kernel/drv/pseudo.conf
-/installer/core/miniroot/kernel/drv/ptc
-/installer/core/miniroot/kernel/drv/ptc.conf
-/installer/core/miniroot/kernel/drv/ptsl
-/installer/core/miniroot/kernel/drv/ptsl.conf
-/installer/core/miniroot/kernel/drv/ramdisk
-/installer/core/miniroot/kernel/drv/ramdisk.conf
-/installer/core/miniroot/kernel/drv/random
-/installer/core/miniroot/kernel/drv/random.conf
-/installer/core/miniroot/kernel/drv/rts
-/installer/core/miniroot/kernel/drv/rts.conf
-/installer/core/miniroot/kernel/drv/sad
-/installer/core/miniroot/kernel/drv/sad.conf
-/installer/core/miniroot/kernel/drv/scsi_vhci
-/installer/core/miniroot/kernel/drv/sctp
-/installer/core/miniroot/kernel/drv/sctp.conf
-/installer/core/miniroot/kernel/drv/sctp6
-/installer/core/miniroot/kernel/drv/sctp6.conf
-/installer/core/miniroot/kernel/drv/sgen
-/installer/core/miniroot/kernel/drv/smbios
-/installer/core/miniroot/kernel/drv/smbios.conf
-/installer/core/miniroot/kernel/drv/softmac
-/installer/core/miniroot/kernel/drv/softmac.conf
-/installer/core/miniroot/kernel/drv/spdsock
-/installer/core/miniroot/kernel/drv/spdsock.conf
-/installer/core/miniroot/kernel/drv/st
-/installer/core/miniroot/kernel/drv/sy
-/installer/core/miniroot/kernel/drv/sy.conf
-/installer/core/miniroot/kernel/drv/sysevent
-/installer/core/miniroot/kernel/drv/sysevent.conf
-/installer/core/miniroot/kernel/drv/sysmsg
-/installer/core/miniroot/kernel/drv/sysmsg.conf
-/installer/core/miniroot/kernel/drv/tcp
-/installer/core/miniroot/kernel/drv/tcp.conf
-/installer/core/miniroot/kernel/drv/tcp6
-/installer/core/miniroot/kernel/drv/tcp6.conf
-/installer/core/miniroot/kernel/drv/tl
-/installer/core/miniroot/kernel/drv/tl.conf
-/installer/core/miniroot/kernel/drv/tzmon
-/installer/core/miniroot/kernel/drv/tzmon.conf
-/installer/core/miniroot/kernel/drv/ucode
-/installer/core/miniroot/kernel/drv/ucode.conf
-/installer/core/miniroot/kernel/drv/udp
-/installer/core/miniroot/kernel/drv/udp.conf
-/installer/core/miniroot/kernel/drv/udp6
-/installer/core/miniroot/kernel/drv/udp6.conf
-/installer/core/miniroot/kernel/drv/vgatext
-/installer/core/miniroot/kernel/drv/vni
-/installer/core/miniroot/kernel/drv/vni.conf
-/installer/core/miniroot/kernel/drv/vnic
-/installer/core/miniroot/kernel/drv/vnic.conf
-/installer/core/miniroot/kernel/drv/wc
-/installer/core/miniroot/kernel/drv/wc.conf
-/installer/core/miniroot/kernel/exec/amd64/elfexec
-/installer/core/miniroot/kernel/exec/amd64/intpexec
-/installer/core/miniroot/kernel/exec/elfexec
-/installer/core/miniroot/kernel/exec/intpexec
-/installer/core/miniroot/kernel/fs/amd64/autofs
-/installer/core/miniroot/kernel/fs/amd64/cachefs
-/installer/core/miniroot/kernel/fs/amd64/ctfs
-/installer/core/miniroot/kernel/fs/amd64/dev
-/installer/core/miniroot/kernel/fs/amd64/devfs
-/installer/core/miniroot/kernel/fs/amd64/fifofs
-/installer/core/miniroot/kernel/fs/amd64/hsfs
-/installer/core/miniroot/kernel/fs/amd64/lofs
-/installer/core/miniroot/kernel/fs/amd64/mntfs
-/installer/core/miniroot/kernel/fs/amd64/namefs
-/installer/core/miniroot/kernel/fs/amd64/objfs
-/installer/core/miniroot/kernel/fs/amd64/procfs
-/installer/core/miniroot/kernel/fs/amd64/sharefs
-/installer/core/miniroot/kernel/fs/amd64/sockfs
-/installer/core/miniroot/kernel/fs/amd64/specfs
-/installer/core/miniroot/kernel/fs/amd64/tmpfs
-/installer/core/miniroot/kernel/fs/amd64/ufs
-/installer/core/miniroot/kernel/fs/autofs
-/installer/core/miniroot/kernel/fs/cachefs
-/installer/core/miniroot/kernel/fs/ctfs
-/installer/core/miniroot/kernel/fs/dev
-/installer/core/miniroot/kernel/fs/devfs
-/installer/core/miniroot/kernel/fs/fifofs
-/installer/core/miniroot/kernel/fs/hsfs
-/installer/core/miniroot/kernel/fs/lofs
-/installer/core/miniroot/kernel/fs/mntfs
-/installer/core/miniroot/kernel/fs/namefs
-/installer/core/miniroot/kernel/fs/objfs
-/installer/core/miniroot/kernel/fs/procfs
-/installer/core/miniroot/kernel/fs/sharefs
-/installer/core/miniroot/kernel/fs/sockfs
-/installer/core/miniroot/kernel/fs/specfs
-/installer/core/miniroot/kernel/fs/tmpfs
-/installer/core/miniroot/kernel/fs/ufs
-/installer/core/miniroot/kernel/genunix
-/installer/core/miniroot/kernel/ipp/amd64/ipgpc
-/installer/core/miniroot/kernel/ipp/ipgpc
-/installer/core/miniroot/kernel/kiconv/amd64/kiconv_emea
-/installer/core/miniroot/kernel/kiconv/amd64/kiconv_ja
-/installer/core/miniroot/kernel/kiconv/amd64/kiconv_ko
-/installer/core/miniroot/kernel/kiconv/amd64/kiconv_sc
-/installer/core/miniroot/kernel/kiconv/amd64/kiconv_tc
-/installer/core/miniroot/kernel/kiconv/kiconv_emea
-/installer/core/miniroot/kernel/kiconv/kiconv_ja
-/installer/core/miniroot/kernel/kiconv/kiconv_ko
-/installer/core/miniroot/kernel/kiconv/kiconv_sc
-/installer/core/miniroot/kernel/kiconv/kiconv_tc
-/installer/core/miniroot/kernel/mac/amd64/mac_ether
-/installer/core/miniroot/kernel/mac/amd64/mac_ib
-/installer/core/miniroot/kernel/mac/amd64/mac_wifi
-/installer/core/miniroot/kernel/mac/mac_ether
-/installer/core/miniroot/kernel/mac/mac_ib
-/installer/core/miniroot/kernel/mac/mac_wifi
-/installer/core/miniroot/kernel/misc/acpica
-/installer/core/miniroot/kernel/misc/agpmaster
-/installer/core/miniroot/kernel/misc/amd64/acpica
-/installer/core/miniroot/kernel/misc/amd64/agpmaster
-/installer/core/miniroot/kernel/misc/amd64/bignum
-/installer/core/miniroot/kernel/misc/amd64/blk2scsa
-/installer/core/miniroot/kernel/misc/amd64/bootdev
-/installer/core/miniroot/kernel/misc/amd64/busra
-/installer/core/miniroot/kernel/misc/amd64/cardbus
-/installer/core/miniroot/kernel/misc/amd64/cmlb
-/installer/core/miniroot/kernel/misc/amd64/consconfig
-/installer/core/miniroot/kernel/misc/amd64/ctf
-/installer/core/miniroot/kernel/misc/amd64/des <symbolic link>
-/installer/core/miniroot/kernel/misc/amd64/dls
-/installer/core/miniroot/kernel/misc/amd64/fssnap_if
-/installer/core/miniroot/kernel/misc/amd64/gld
-/installer/core/miniroot/kernel/misc/amd64/hook
-/installer/core/miniroot/kernel/misc/amd64/hpcsvc
-/installer/core/miniroot/kernel/misc/amd64/idmap
-/installer/core/miniroot/kernel/misc/amd64/ipc
-/installer/core/miniroot/kernel/misc/amd64/kbtrans
-/installer/core/miniroot/kernel/misc/amd64/kcf
-/installer/core/miniroot/kernel/misc/amd64/kmdbmod
-/installer/core/miniroot/kernel/misc/amd64/mac
-/installer/core/miniroot/kernel/misc/amd64/net80211
-/installer/core/miniroot/kernel/misc/amd64/neti
-/installer/core/miniroot/kernel/misc/amd64/pci_autoconfig
-/installer/core/miniroot/kernel/misc/amd64/pcicfg
-/installer/core/miniroot/kernel/misc/amd64/pciehpc
-/installer/core/miniroot/kernel/misc/amd64/pcihp
-/installer/core/miniroot/kernel/misc/amd64/pcmcia
-/installer/core/miniroot/kernel/misc/amd64/rpcsec
-/installer/core/miniroot/kernel/misc/amd64/sata
-/installer/core/miniroot/kernel/misc/amd64/scsi
-/installer/core/miniroot/kernel/misc/amd64/strplumb
-/installer/core/miniroot/kernel/misc/amd64/tem
-/installer/core/miniroot/kernel/misc/amd64/tlimod
-/installer/core/miniroot/kernel/misc/bignum
-/installer/core/miniroot/kernel/misc/blk2scsa
-/installer/core/miniroot/kernel/misc/bootdev
-/installer/core/miniroot/kernel/misc/busra
-/installer/core/miniroot/kernel/misc/cardbus
-/installer/core/miniroot/kernel/misc/cmlb
-/installer/core/miniroot/kernel/misc/consconfig
-/installer/core/miniroot/kernel/misc/ctf
-/installer/core/miniroot/kernel/misc/des <symbolic link>
-/installer/core/miniroot/kernel/misc/dls
-/installer/core/miniroot/kernel/misc/fssnap_if
-/installer/core/miniroot/kernel/misc/gld
-/installer/core/miniroot/kernel/misc/hook
-/installer/core/miniroot/kernel/misc/hpcsvc
-/installer/core/miniroot/kernel/misc/idmap
-/installer/core/miniroot/kernel/misc/ipc
-/installer/core/miniroot/kernel/misc/kbtrans
-/installer/core/miniroot/kernel/misc/kcf
-/installer/core/miniroot/kernel/misc/kmdbmod
-/installer/core/miniroot/kernel/misc/mac
-/installer/core/miniroot/kernel/misc/net80211
-/installer/core/miniroot/kernel/misc/neti
-/installer/core/miniroot/kernel/misc/pci_autoconfig
-/installer/core/miniroot/kernel/misc/pcicfg
-/installer/core/miniroot/kernel/misc/pciehpc
-/installer/core/miniroot/kernel/misc/pcihp
-/installer/core/miniroot/kernel/misc/pcmcia
-/installer/core/miniroot/kernel/misc/rpcsec
-/installer/core/miniroot/kernel/misc/sata
-/installer/core/miniroot/kernel/misc/scsi
-/installer/core/miniroot/kernel/misc/scsi_vhci/amd64/scsi_vhci_f_asym_emc
-/installer/core/miniroot/kernel/misc/scsi_vhci/amd64/scsi_vhci_f_asym_lsi
-/installer/core/miniroot/kernel/misc/scsi_vhci/amd64/scsi_vhci_f_asym_sun
-/installer/core/miniroot/kernel/misc/scsi_vhci/amd64/scsi_vhci_f_sym
-/installer/core/miniroot/kernel/misc/scsi_vhci/amd64/scsi_vhci_f_sym_emc
-/installer/core/miniroot/kernel/misc/scsi_vhci/amd64/scsi_vhci_f_sym_hds
-/installer/core/miniroot/kernel/misc/scsi_vhci/amd64/scsi_vhci_f_tape
-/installer/core/miniroot/kernel/misc/scsi_vhci/amd64/scsi_vhci_f_tpgs
-/installer/core/miniroot/kernel/misc/scsi_vhci/amd64/scsi_vhci_f_tpgs_tape
-/installer/core/miniroot/kernel/misc/scsi_vhci/scsi_vhci_f_asym_emc
-/installer/core/miniroot/kernel/misc/scsi_vhci/scsi_vhci_f_asym_lsi
-/installer/core/miniroot/kernel/misc/scsi_vhci/scsi_vhci_f_asym_sun
-/installer/core/miniroot/kernel/misc/scsi_vhci/scsi_vhci_f_sym
-/installer/core/miniroot/kernel/misc/scsi_vhci/scsi_vhci_f_sym_emc
-/installer/core/miniroot/kernel/misc/scsi_vhci/scsi_vhci_f_sym_hds
-/installer/core/miniroot/kernel/misc/scsi_vhci/scsi_vhci_f_tape
-/installer/core/miniroot/kernel/misc/scsi_vhci/scsi_vhci_f_tpgs
-/installer/core/miniroot/kernel/misc/scsi_vhci/scsi_vhci_f_tpgs_tape
-/installer/core/miniroot/kernel/misc/strplumb
-/installer/core/miniroot/kernel/misc/tem
-/installer/core/miniroot/kernel/misc/tlimod
-/installer/core/miniroot/kernel/sched/TS
-/installer/core/miniroot/kernel/sched/TS_DPTBL
-/installer/core/miniroot/kernel/sched/amd64/TS
-/installer/core/miniroot/kernel/sched/amd64/TS_DPTBL
-/installer/core/miniroot/kernel/strmod/6to4tun
-/installer/core/miniroot/kernel/strmod/amd64/6to4tun
-/installer/core/miniroot/kernel/strmod/amd64/atun
-/installer/core/miniroot/kernel/strmod/amd64/bufmod
-/installer/core/miniroot/kernel/strmod/amd64/connld
-/installer/core/miniroot/kernel/strmod/amd64/dedump
-/installer/core/miniroot/kernel/strmod/amd64/drcompat
-/installer/core/miniroot/kernel/strmod/amd64/ldterm
-/installer/core/miniroot/kernel/strmod/amd64/pckt
-/installer/core/miniroot/kernel/strmod/amd64/pfmod
-/installer/core/miniroot/kernel/strmod/amd64/pipemod
-/installer/core/miniroot/kernel/strmod/amd64/ptem
-/installer/core/miniroot/kernel/strmod/amd64/redirmod
-/installer/core/miniroot/kernel/strmod/amd64/rpcmod
-/installer/core/miniroot/kernel/strmod/amd64/timod
-/installer/core/miniroot/kernel/strmod/amd64/tirdwr
-/installer/core/miniroot/kernel/strmod/amd64/ttcompat
-/installer/core/miniroot/kernel/strmod/amd64/tun
-/installer/core/miniroot/kernel/strmod/atun
-/installer/core/miniroot/kernel/strmod/bufmod
-/installer/core/miniroot/kernel/strmod/connld
-/installer/core/miniroot/kernel/strmod/dedump
-/installer/core/miniroot/kernel/strmod/drcompat
-/installer/core/miniroot/kernel/strmod/ldterm
-/installer/core/miniroot/kernel/strmod/pckt
-/installer/core/miniroot/kernel/strmod/pfmod
-/installer/core/miniroot/kernel/strmod/pipemod
-/installer/core/miniroot/kernel/strmod/ptem
-/installer/core/miniroot/kernel/strmod/redirmod
-/installer/core/miniroot/kernel/strmod/rpcmod
-/installer/core/miniroot/kernel/strmod/timod
-/installer/core/miniroot/kernel/strmod/tirdwr
-/installer/core/miniroot/kernel/strmod/ttcompat
-/installer/core/miniroot/kernel/strmod/tun
-/installer/core/miniroot/kernel/sys/amd64/c2audit
-/installer/core/miniroot/kernel/sys/amd64/doorfs
-/installer/core/miniroot/kernel/sys/amd64/inst_sync
-/installer/core/miniroot/kernel/sys/amd64/kaio
-/installer/core/miniroot/kernel/sys/amd64/msgsys
-/installer/core/miniroot/kernel/sys/amd64/pipe
-/installer/core/miniroot/kernel/sys/amd64/portfs
-/installer/core/miniroot/kernel/sys/amd64/pset
-/installer/core/miniroot/kernel/sys/amd64/semsys
-/installer/core/miniroot/kernel/sys/amd64/shmsys
-/installer/core/miniroot/kernel/sys/c2audit
-/installer/core/miniroot/kernel/sys/doorfs
-/installer/core/miniroot/kernel/sys/inst_sync
-/installer/core/miniroot/kernel/sys/kaio
-/installer/core/miniroot/kernel/sys/msgsys
-/installer/core/miniroot/kernel/sys/pipe
-/installer/core/miniroot/kernel/sys/portfs
-/installer/core/miniroot/kernel/sys/pset
-/installer/core/miniroot/kernel/sys/semsys
-/installer/core/miniroot/kernel/sys/shmsys
-/installer/core/miniroot/lib/svc/method/svc-dumpadm
-/installer/core/miniroot/lib/svc/method/svc-intrd
-/installer/core/miniroot/lib/svc/method/svc-scheduler
+/installer/trunk/core/miniroot/boot/solaris/bin/create_diskmap
+/installer/trunk/core/miniroot/boot/solaris/bin/create_ramdisk
+/installer/trunk/core/miniroot/boot/solaris/bin/extract_boot_filelist
+/installer/trunk/core/miniroot/boot/solaris/bin/mbr
+/installer/trunk/core/miniroot/boot/solaris/bin/root_archive <symbolic link>
+/installer/trunk/core/miniroot/boot/solaris/bin/symdef
+/installer/trunk/core/miniroot/boot/solaris/bin/update_grub
+/installer/trunk/core/miniroot/boot/solaris/filelist.ramdisk
+/installer/trunk/core/miniroot/boot/solaris/filelist.safe
+/installer/trunk/core/miniroot/kernel/amd64/genunix
+/installer/trunk/core/miniroot/kernel/crypto/aes
+/installer/trunk/core/miniroot/kernel/crypto/amd64/aes
+/installer/trunk/core/miniroot/kernel/crypto/amd64/arcfour
+/installer/trunk/core/miniroot/kernel/crypto/amd64/blowfish
+/installer/trunk/core/miniroot/kernel/crypto/amd64/des
+/installer/trunk/core/miniroot/kernel/crypto/amd64/ecc
+/installer/trunk/core/miniroot/kernel/crypto/amd64/md4
+/installer/trunk/core/miniroot/kernel/crypto/amd64/md5
+/installer/trunk/core/miniroot/kernel/crypto/amd64/rsa
+/installer/trunk/core/miniroot/kernel/crypto/amd64/sha1
+/installer/trunk/core/miniroot/kernel/crypto/amd64/sha2
+/installer/trunk/core/miniroot/kernel/crypto/amd64/swrand
+/installer/trunk/core/miniroot/kernel/crypto/arcfour
+/installer/trunk/core/miniroot/kernel/crypto/blowfish
+/installer/trunk/core/miniroot/kernel/crypto/des
+/installer/trunk/core/miniroot/kernel/crypto/ecc
+/installer/trunk/core/miniroot/kernel/crypto/md4
+/installer/trunk/core/miniroot/kernel/crypto/md5
+/installer/trunk/core/miniroot/kernel/crypto/rsa
+/installer/trunk/core/miniroot/kernel/crypto/sha1
+/installer/trunk/core/miniroot/kernel/crypto/sha2
+/installer/trunk/core/miniroot/kernel/crypto/swrand
+/installer/trunk/core/miniroot/kernel/dacf/amd64/net_dacf
+/installer/trunk/core/miniroot/kernel/dacf/net_dacf
+/installer/trunk/core/miniroot/kernel/devname/amd64/sdev_nsconfig_mod
+/installer/trunk/core/miniroot/kernel/devname/sdev_nsconfig_mod
+/installer/trunk/core/miniroot/kernel/drv/acpi_drv
+/installer/trunk/core/miniroot/kernel/drv/acpi_drv.conf
+/installer/trunk/core/miniroot/kernel/drv/aggr
+/installer/trunk/core/miniroot/kernel/drv/aggr.conf
+/installer/trunk/core/miniroot/kernel/drv/amd64/acpi_drv
+/installer/trunk/core/miniroot/kernel/drv/amd64/aggr
+/installer/trunk/core/miniroot/kernel/drv/amd64/arp
+/installer/trunk/core/miniroot/kernel/drv/amd64/bl
+/installer/trunk/core/miniroot/kernel/drv/amd64/bmc
+/installer/trunk/core/miniroot/kernel/drv/amd64/bscbus
+/installer/trunk/core/miniroot/kernel/drv/amd64/bscv
+/installer/trunk/core/miniroot/kernel/drv/amd64/clone
+/installer/trunk/core/miniroot/kernel/drv/amd64/cn
+/installer/trunk/core/miniroot/kernel/drv/amd64/conskbd
+/installer/trunk/core/miniroot/kernel/drv/amd64/consms
+/installer/trunk/core/miniroot/kernel/drv/amd64/cpuid
+/installer/trunk/core/miniroot/kernel/drv/amd64/cpunex
+/installer/trunk/core/miniroot/kernel/drv/amd64/crypto
+/installer/trunk/core/miniroot/kernel/drv/amd64/cryptoadm
+/installer/trunk/core/miniroot/kernel/drv/amd64/devinfo
+/installer/trunk/core/miniroot/kernel/drv/amd64/dld
+/installer/trunk/core/miniroot/kernel/drv/amd64/i8042
+/installer/trunk/core/miniroot/kernel/drv/amd64/icmp
+/installer/trunk/core/miniroot/kernel/drv/amd64/icmp6
+/installer/trunk/core/miniroot/kernel/drv/amd64/ip
+/installer/trunk/core/miniroot/kernel/drv/amd64/ip6
+/installer/trunk/core/miniroot/kernel/drv/amd64/ippctl
+/installer/trunk/core/miniroot/kernel/drv/amd64/ipsecah
+/installer/trunk/core/miniroot/kernel/drv/amd64/ipsecesp
+/installer/trunk/core/miniroot/kernel/drv/amd64/iwscn
+/installer/trunk/core/miniroot/kernel/drv/amd64/kb8042
+/installer/trunk/core/miniroot/kernel/drv/amd64/keysock
+/installer/trunk/core/miniroot/kernel/drv/amd64/kmdb
+/installer/trunk/core/miniroot/kernel/drv/amd64/kssl
+/installer/trunk/core/miniroot/kernel/drv/amd64/llc1
+/installer/trunk/core/miniroot/kernel/drv/amd64/lofi
+/installer/trunk/core/miniroot/kernel/drv/amd64/log
+/installer/trunk/core/miniroot/kernel/drv/amd64/mm
+/installer/trunk/core/miniroot/kernel/drv/amd64/mouse8042
+/installer/trunk/core/miniroot/kernel/drv/amd64/mpt
+/installer/trunk/core/miniroot/kernel/drv/amd64/openeepr
+/installer/trunk/core/miniroot/kernel/drv/amd64/options
+/installer/trunk/core/miniroot/kernel/drv/amd64/pci_pci
+/installer/trunk/core/miniroot/kernel/drv/amd64/pcie_pci
+/installer/trunk/core/miniroot/kernel/drv/amd64/physmem
+/installer/trunk/core/miniroot/kernel/drv/amd64/poll
+/installer/trunk/core/miniroot/kernel/drv/amd64/power
+/installer/trunk/core/miniroot/kernel/drv/amd64/pseudo
+/installer/trunk/core/miniroot/kernel/drv/amd64/ptc
+/installer/trunk/core/miniroot/kernel/drv/amd64/ptsl
+/installer/trunk/core/miniroot/kernel/drv/amd64/ramdisk
+/installer/trunk/core/miniroot/kernel/drv/amd64/random
+/installer/trunk/core/miniroot/kernel/drv/amd64/rts
+/installer/trunk/core/miniroot/kernel/drv/amd64/sad
+/installer/trunk/core/miniroot/kernel/drv/amd64/scsi_vhci
+/installer/trunk/core/miniroot/kernel/drv/amd64/sctp
+/installer/trunk/core/miniroot/kernel/drv/amd64/sctp6
+/installer/trunk/core/miniroot/kernel/drv/amd64/sd
+/installer/trunk/core/miniroot/kernel/drv/amd64/sgen
+/installer/trunk/core/miniroot/kernel/drv/amd64/smbios
+/installer/trunk/core/miniroot/kernel/drv/amd64/softmac
+/installer/trunk/core/miniroot/kernel/drv/amd64/spdsock
+/installer/trunk/core/miniroot/kernel/drv/amd64/st
+/installer/trunk/core/miniroot/kernel/drv/amd64/sy
+/installer/trunk/core/miniroot/kernel/drv/amd64/sysevent
+/installer/trunk/core/miniroot/kernel/drv/amd64/sysmsg
+/installer/trunk/core/miniroot/kernel/drv/amd64/tcp
+/installer/trunk/core/miniroot/kernel/drv/amd64/tcp6
+/installer/trunk/core/miniroot/kernel/drv/amd64/tl
+/installer/trunk/core/miniroot/kernel/drv/amd64/tzmon
+/installer/trunk/core/miniroot/kernel/drv/amd64/ucode
+/installer/trunk/core/miniroot/kernel/drv/amd64/udp
+/installer/trunk/core/miniroot/kernel/drv/amd64/udp6
+/installer/trunk/core/miniroot/kernel/drv/amd64/vgatext
+/installer/trunk/core/miniroot/kernel/drv/amd64/vni
+/installer/trunk/core/miniroot/kernel/drv/amd64/vnic
+/installer/trunk/core/miniroot/kernel/drv/amd64/wc
+/installer/trunk/core/miniroot/kernel/drv/arp
+/installer/trunk/core/miniroot/kernel/drv/arp.conf
+/installer/trunk/core/miniroot/kernel/drv/bl
+/installer/trunk/core/miniroot/kernel/drv/bl.conf
+/installer/trunk/core/miniroot/kernel/drv/bmc
+/installer/trunk/core/miniroot/kernel/drv/bmc.conf
+/installer/trunk/core/miniroot/kernel/drv/bscbus
+/installer/trunk/core/miniroot/kernel/drv/bscbus.conf
+/installer/trunk/core/miniroot/kernel/drv/bscv
+/installer/trunk/core/miniroot/kernel/drv/bscv.conf
+/installer/trunk/core/miniroot/kernel/drv/clone
+/installer/trunk/core/miniroot/kernel/drv/clone.conf
+/installer/trunk/core/miniroot/kernel/drv/cn
+/installer/trunk/core/miniroot/kernel/drv/cn.conf
+/installer/trunk/core/miniroot/kernel/drv/conskbd
+/installer/trunk/core/miniroot/kernel/drv/conskbd.conf
+/installer/trunk/core/miniroot/kernel/drv/consms
+/installer/trunk/core/miniroot/kernel/drv/consms.conf
+/installer/trunk/core/miniroot/kernel/drv/cpuid
+/installer/trunk/core/miniroot/kernel/drv/cpuid.conf
+/installer/trunk/core/miniroot/kernel/drv/cpunex
+/installer/trunk/core/miniroot/kernel/drv/crypto
+/installer/trunk/core/miniroot/kernel/drv/crypto.conf
+/installer/trunk/core/miniroot/kernel/drv/cryptoadm
+/installer/trunk/core/miniroot/kernel/drv/cryptoadm.conf
+/installer/trunk/core/miniroot/kernel/drv/devinfo
+/installer/trunk/core/miniroot/kernel/drv/devinfo.conf
+/installer/trunk/core/miniroot/kernel/drv/dld
+/installer/trunk/core/miniroot/kernel/drv/dld.conf
+/installer/trunk/core/miniroot/kernel/drv/i8042
+/installer/trunk/core/miniroot/kernel/drv/icmp
+/installer/trunk/core/miniroot/kernel/drv/icmp.conf
+/installer/trunk/core/miniroot/kernel/drv/icmp6
+/installer/trunk/core/miniroot/kernel/drv/icmp6.conf
+/installer/trunk/core/miniroot/kernel/drv/ip
+/installer/trunk/core/miniroot/kernel/drv/ip.conf
+/installer/trunk/core/miniroot/kernel/drv/ip6
+/installer/trunk/core/miniroot/kernel/drv/ip6.conf
+/installer/trunk/core/miniroot/kernel/drv/ippctl
+/installer/trunk/core/miniroot/kernel/drv/ippctl.conf
+/installer/trunk/core/miniroot/kernel/drv/ipsecah
+/installer/trunk/core/miniroot/kernel/drv/ipsecah.conf
+/installer/trunk/core/miniroot/kernel/drv/ipsecesp
+/installer/trunk/core/miniroot/kernel/drv/ipsecesp.conf
+/installer/trunk/core/miniroot/kernel/drv/iwscn
+/installer/trunk/core/miniroot/kernel/drv/iwscn.conf
+/installer/trunk/core/miniroot/kernel/drv/kb8042
+/installer/trunk/core/miniroot/kernel/drv/keysock
+/installer/trunk/core/miniroot/kernel/drv/keysock.conf
+/installer/trunk/core/miniroot/kernel/drv/kmdb
+/installer/trunk/core/miniroot/kernel/drv/kmdb.conf
+/installer/trunk/core/miniroot/kernel/drv/kssl
+/installer/trunk/core/miniroot/kernel/drv/kssl.conf
+/installer/trunk/core/miniroot/kernel/drv/llc1
+/installer/trunk/core/miniroot/kernel/drv/llc1.conf
+/installer/trunk/core/miniroot/kernel/drv/lofi
+/installer/trunk/core/miniroot/kernel/drv/lofi.conf
+/installer/trunk/core/miniroot/kernel/drv/log
+/installer/trunk/core/miniroot/kernel/drv/mm
+/installer/trunk/core/miniroot/kernel/drv/mm.conf
+/installer/trunk/core/miniroot/kernel/drv/mouse8042
+/installer/trunk/core/miniroot/kernel/drv/mpt
+/installer/trunk/core/miniroot/kernel/drv/openeepr
+/installer/trunk/core/miniroot/kernel/drv/openeepr.conf
+/installer/trunk/core/miniroot/kernel/drv/options
+/installer/trunk/core/miniroot/kernel/drv/options.conf
+/installer/trunk/core/miniroot/kernel/drv/pci_pci
+/installer/trunk/core/miniroot/kernel/drv/pcie_pci
+/installer/trunk/core/miniroot/kernel/drv/pcie_pci.conf
+/installer/trunk/core/miniroot/kernel/drv/physmem
+/installer/trunk/core/miniroot/kernel/drv/physmem.conf
+/installer/trunk/core/miniroot/kernel/drv/poll
+/installer/trunk/core/miniroot/kernel/drv/poll.conf
+/installer/trunk/core/miniroot/kernel/drv/power
+/installer/trunk/core/miniroot/kernel/drv/power.conf
+/installer/trunk/core/miniroot/kernel/drv/pseudo
+/installer/trunk/core/miniroot/kernel/drv/pseudo.conf
+/installer/trunk/core/miniroot/kernel/drv/ptc
+/installer/trunk/core/miniroot/kernel/drv/ptc.conf
+/installer/trunk/core/miniroot/kernel/drv/ptsl
+/installer/trunk/core/miniroot/kernel/drv/ptsl.conf
+/installer/trunk/core/miniroot/kernel/drv/ramdisk
+/installer/trunk/core/miniroot/kernel/drv/ramdisk.conf
+/installer/trunk/core/miniroot/kernel/drv/random
+/installer/trunk/core/miniroot/kernel/drv/random.conf
+/installer/trunk/core/miniroot/kernel/drv/rts
+/installer/trunk/core/miniroot/kernel/drv/rts.conf
+/installer/trunk/core/miniroot/kernel/drv/sad
+/installer/trunk/core/miniroot/kernel/drv/sad.conf
+/installer/trunk/core/miniroot/kernel/drv/scsi_vhci
+/installer/trunk/core/miniroot/kernel/drv/sctp
+/installer/trunk/core/miniroot/kernel/drv/sctp.conf
+/installer/trunk/core/miniroot/kernel/drv/sctp6
+/installer/trunk/core/miniroot/kernel/drv/sctp6.conf
+/installer/trunk/core/miniroot/kernel/drv/sgen
+/installer/trunk/core/miniroot/kernel/drv/smbios
+/installer/trunk/core/miniroot/kernel/drv/smbios.conf
+/installer/trunk/core/miniroot/kernel/drv/softmac
+/installer/trunk/core/miniroot/kernel/drv/softmac.conf
+/installer/trunk/core/miniroot/kernel/drv/spdsock
+/installer/trunk/core/miniroot/kernel/drv/spdsock.conf
+/installer/trunk/core/miniroot/kernel/drv/st
+/installer/trunk/core/miniroot/kernel/drv/sy
+/installer/trunk/core/miniroot/kernel/drv/sy.conf
+/installer/trunk/core/miniroot/kernel/drv/sysevent
+/installer/trunk/core/miniroot/kernel/drv/sysevent.conf
+/installer/trunk/core/miniroot/kernel/drv/sysmsg
+/installer/trunk/core/miniroot/kernel/drv/sysmsg.conf
+/installer/trunk/core/miniroot/kernel/drv/tcp
+/installer/trunk/core/miniroot/kernel/drv/tcp.conf
+/installer/trunk/core/miniroot/kernel/drv/tcp6
+/installer/trunk/core/miniroot/kernel/drv/tcp6.conf
+/installer/trunk/core/miniroot/kernel/drv/tl
+/installer/trunk/core/miniroot/kernel/drv/tl.conf
+/installer/trunk/core/miniroot/kernel/drv/tzmon
+/installer/trunk/core/miniroot/kernel/drv/tzmon.conf
+/installer/trunk/core/miniroot/kernel/drv/ucode
+/installer/trunk/core/miniroot/kernel/drv/ucode.conf
+/installer/trunk/core/miniroot/kernel/drv/udp
+/installer/trunk/core/miniroot/kernel/drv/udp.conf
+/installer/trunk/core/miniroot/kernel/drv/udp6
+/installer/trunk/core/miniroot/kernel/drv/udp6.conf
+/installer/trunk/core/miniroot/kernel/drv/vgatext
+/installer/trunk/core/miniroot/kernel/drv/vni
+/installer/trunk/core/miniroot/kernel/drv/vni.conf
+/installer/trunk/core/miniroot/kernel/drv/vnic
+/installer/trunk/core/miniroot/kernel/drv/vnic.conf
+/installer/trunk/core/miniroot/kernel/drv/wc
+/installer/trunk/core/miniroot/kernel/drv/wc.conf
+/installer/trunk/core/miniroot/kernel/exec/amd64/elfexec
+/installer/trunk/core/miniroot/kernel/exec/amd64/intpexec
+/installer/trunk/core/miniroot/kernel/exec/elfexec
+/installer/trunk/core/miniroot/kernel/exec/intpexec
+/installer/trunk/core/miniroot/kernel/fs/amd64/autofs
+/installer/trunk/core/miniroot/kernel/fs/amd64/cachefs
+/installer/trunk/core/miniroot/kernel/fs/amd64/ctfs
+/installer/trunk/core/miniroot/kernel/fs/amd64/dev
+/installer/trunk/core/miniroot/kernel/fs/amd64/devfs
+/installer/trunk/core/miniroot/kernel/fs/amd64/fifofs
+/installer/trunk/core/miniroot/kernel/fs/amd64/hsfs
+/installer/trunk/core/miniroot/kernel/fs/amd64/lofs
+/installer/trunk/core/miniroot/kernel/fs/amd64/mntfs
+/installer/trunk/core/miniroot/kernel/fs/amd64/namefs
+/installer/trunk/core/miniroot/kernel/fs/amd64/objfs
+/installer/trunk/core/miniroot/kernel/fs/amd64/procfs
+/installer/trunk/core/miniroot/kernel/fs/amd64/sharefs
+/installer/trunk/core/miniroot/kernel/fs/amd64/sockfs
+/installer/trunk/core/miniroot/kernel/fs/amd64/specfs
+/installer/trunk/core/miniroot/kernel/fs/amd64/tmpfs
+/installer/trunk/core/miniroot/kernel/fs/amd64/ufs
+/installer/trunk/core/miniroot/kernel/fs/autofs
+/installer/trunk/core/miniroot/kernel/fs/cachefs
+/installer/trunk/core/miniroot/kernel/fs/ctfs
+/installer/trunk/core/miniroot/kernel/fs/dev
+/installer/trunk/core/miniroot/kernel/fs/devfs
+/installer/trunk/core/miniroot/kernel/fs/fifofs
+/installer/trunk/core/miniroot/kernel/fs/hsfs
+/installer/trunk/core/miniroot/kernel/fs/lofs
+/installer/trunk/core/miniroot/kernel/fs/mntfs
+/installer/trunk/core/miniroot/kernel/fs/namefs
+/installer/trunk/core/miniroot/kernel/fs/objfs
+/installer/trunk/core/miniroot/kernel/fs/procfs
+/installer/trunk/core/miniroot/kernel/fs/sharefs
+/installer/trunk/core/miniroot/kernel/fs/sockfs
+/installer/trunk/core/miniroot/kernel/fs/specfs
+/installer/trunk/core/miniroot/kernel/fs/tmpfs
+/installer/trunk/core/miniroot/kernel/fs/ufs
+/installer/trunk/core/miniroot/kernel/genunix
+/installer/trunk/core/miniroot/kernel/ipp/amd64/ipgpc
+/installer/trunk/core/miniroot/kernel/ipp/ipgpc
+/installer/trunk/core/miniroot/kernel/kiconv/amd64/kiconv_emea
+/installer/trunk/core/miniroot/kernel/kiconv/amd64/kiconv_ja
+/installer/trunk/core/miniroot/kernel/kiconv/amd64/kiconv_ko
+/installer/trunk/core/miniroot/kernel/kiconv/amd64/kiconv_sc
+/installer/trunk/core/miniroot/kernel/kiconv/amd64/kiconv_tc
+/installer/trunk/core/miniroot/kernel/kiconv/kiconv_emea
+/installer/trunk/core/miniroot/kernel/kiconv/kiconv_ja
+/installer/trunk/core/miniroot/kernel/kiconv/kiconv_ko
+/installer/trunk/core/miniroot/kernel/kiconv/kiconv_sc
+/installer/trunk/core/miniroot/kernel/kiconv/kiconv_tc
+/installer/trunk/core/miniroot/kernel/mac/amd64/mac_ether
+/installer/trunk/core/miniroot/kernel/mac/amd64/mac_ib
+/installer/trunk/core/miniroot/kernel/mac/amd64/mac_wifi
+/installer/trunk/core/miniroot/kernel/mac/mac_ether
+/installer/trunk/core/miniroot/kernel/mac/mac_ib
+/installer/trunk/core/miniroot/kernel/mac/mac_wifi
+/installer/trunk/core/miniroot/kernel/misc/acpica
+/installer/trunk/core/miniroot/kernel/misc/agpmaster
+/installer/trunk/core/miniroot/kernel/misc/amd64/acpica
+/installer/trunk/core/miniroot/kernel/misc/amd64/agpmaster
+/installer/trunk/core/miniroot/kernel/misc/amd64/bignum
+/installer/trunk/core/miniroot/kernel/misc/amd64/blk2scsa
+/installer/trunk/core/miniroot/kernel/misc/amd64/bootdev
+/installer/trunk/core/miniroot/kernel/misc/amd64/busra
+/installer/trunk/core/miniroot/kernel/misc/amd64/cardbus
+/installer/trunk/core/miniroot/kernel/misc/amd64/cmlb
+/installer/trunk/core/miniroot/kernel/misc/amd64/consconfig
+/installer/trunk/core/miniroot/kernel/misc/amd64/ctf
+/installer/trunk/core/miniroot/kernel/misc/amd64/des <symbolic link>
+/installer/trunk/core/miniroot/kernel/misc/amd64/dls
+/installer/trunk/core/miniroot/kernel/misc/amd64/fssnap_if
+/installer/trunk/core/miniroot/kernel/misc/amd64/gld
+/installer/trunk/core/miniroot/kernel/misc/amd64/hook
+/installer/trunk/core/miniroot/kernel/misc/amd64/hpcsvc
+/installer/trunk/core/miniroot/kernel/misc/amd64/idmap
+/installer/trunk/core/miniroot/kernel/misc/amd64/ipc
+/installer/trunk/core/miniroot/kernel/misc/amd64/kbtrans
+/installer/trunk/core/miniroot/kernel/misc/amd64/kcf
+/installer/trunk/core/miniroot/kernel/misc/amd64/kmdbmod
+/installer/trunk/core/miniroot/kernel/misc/amd64/mac
+/installer/trunk/core/miniroot/kernel/misc/amd64/net80211
+/installer/trunk/core/miniroot/kernel/misc/amd64/neti
+/installer/trunk/core/miniroot/kernel/misc/amd64/pci_autoconfig
+/installer/trunk/core/miniroot/kernel/misc/amd64/pcicfg
+/installer/trunk/core/miniroot/kernel/misc/amd64/pciehpc
+/installer/trunk/core/miniroot/kernel/misc/amd64/pcihp
+/installer/trunk/core/miniroot/kernel/misc/amd64/pcmcia
+/installer/trunk/core/miniroot/kernel/misc/amd64/rpcsec
+/installer/trunk/core/miniroot/kernel/misc/amd64/sata
+/installer/trunk/core/miniroot/kernel/misc/amd64/scsi
+/installer/trunk/core/miniroot/kernel/misc/amd64/strplumb
+/installer/trunk/core/miniroot/kernel/misc/amd64/tem
+/installer/trunk/core/miniroot/kernel/misc/amd64/tlimod
+/installer/trunk/core/miniroot/kernel/misc/bignum
+/installer/trunk/core/miniroot/kernel/misc/blk2scsa
+/installer/trunk/core/miniroot/kernel/misc/bootdev
+/installer/trunk/core/miniroot/kernel/misc/busra
+/installer/trunk/core/miniroot/kernel/misc/cardbus
+/installer/trunk/core/miniroot/kernel/misc/cmlb
+/installer/trunk/core/miniroot/kernel/misc/consconfig
+/installer/trunk/core/miniroot/kernel/misc/ctf
+/installer/trunk/core/miniroot/kernel/misc/des <symbolic link>
+/installer/trunk/core/miniroot/kernel/misc/dls
+/installer/trunk/core/miniroot/kernel/misc/fssnap_if
+/installer/trunk/core/miniroot/kernel/misc/gld
+/installer/trunk/core/miniroot/kernel/misc/hook
+/installer/trunk/core/miniroot/kernel/misc/hpcsvc
+/installer/trunk/core/miniroot/kernel/misc/idmap
+/installer/trunk/core/miniroot/kernel/misc/ipc
+/installer/trunk/core/miniroot/kernel/misc/kbtrans
+/installer/trunk/core/miniroot/kernel/misc/kcf
+/installer/trunk/core/miniroot/kernel/misc/kmdbmod
+/installer/trunk/core/miniroot/kernel/misc/mac
+/installer/trunk/core/miniroot/kernel/misc/net80211
+/installer/trunk/core/miniroot/kernel/misc/neti
+/installer/trunk/core/miniroot/kernel/misc/pci_autoconfig
+/installer/trunk/core/miniroot/kernel/misc/pcicfg
+/installer/trunk/core/miniroot/kernel/misc/pciehpc
+/installer/trunk/core/miniroot/kernel/misc/pcihp
+/installer/trunk/core/miniroot/kernel/misc/pcmcia
+/installer/trunk/core/miniroot/kernel/misc/rpcsec
+/installer/trunk/core/miniroot/kernel/misc/sata
+/installer/trunk/core/miniroot/kernel/misc/scsi
+/installer/trunk/core/miniroot/kernel/misc/scsi_vhci/amd64/scsi_vhci_f_asym_emc
+/installer/trunk/core/miniroot/kernel/misc/scsi_vhci/amd64/scsi_vhci_f_asym_lsi
+/installer/trunk/core/miniroot/kernel/misc/scsi_vhci/amd64/scsi_vhci_f_asym_sun
+/installer/trunk/core/miniroot/kernel/misc/scsi_vhci/amd64/scsi_vhci_f_sym
+/installer/trunk/core/miniroot/kernel/misc/scsi_vhci/amd64/scsi_vhci_f_sym_emc
+/installer/trunk/core/miniroot/kernel/misc/scsi_vhci/amd64/scsi_vhci_f_sym_hds
+/installer/trunk/core/miniroot/kernel/misc/scsi_vhci/amd64/scsi_vhci_f_tape
+/installer/trunk/core/miniroot/kernel/misc/scsi_vhci/amd64/scsi_vhci_f_tpgs
+/installer/trunk/core/miniroot/kernel/misc/scsi_vhci/amd64/scsi_vhci_f_tpgs_tape
+/installer/trunk/core/miniroot/kernel/misc/scsi_vhci/scsi_vhci_f_asym_emc
+/installer/trunk/core/miniroot/kernel/misc/scsi_vhci/scsi_vhci_f_asym_lsi
+/installer/trunk/core/miniroot/kernel/misc/scsi_vhci/scsi_vhci_f_asym_sun
+/installer/trunk/core/miniroot/kernel/misc/scsi_vhci/scsi_vhci_f_sym
+/installer/trunk/core/miniroot/kernel/misc/scsi_vhci/scsi_vhci_f_sym_emc
+/installer/trunk/core/miniroot/kernel/misc/scsi_vhci/scsi_vhci_f_sym_hds
+/installer/trunk/core/miniroot/kernel/misc/scsi_vhci/scsi_vhci_f_tape
+/installer/trunk/core/miniroot/kernel/misc/scsi_vhci/scsi_vhci_f_tpgs
+/installer/trunk/core/miniroot/kernel/misc/scsi_vhci/scsi_vhci_f_tpgs_tape
+/installer/trunk/core/miniroot/kernel/misc/strplumb
+/installer/trunk/core/miniroot/kernel/misc/tem
+/installer/trunk/core/miniroot/kernel/misc/tlimod
+/installer/trunk/core/miniroot/kernel/sched/TS
+/installer/trunk/core/miniroot/kernel/sched/TS_DPTBL
+/installer/trunk/core/miniroot/kernel/sched/amd64/TS
+/installer/trunk/core/miniroot/kernel/sched/amd64/TS_DPTBL
+/installer/trunk/core/miniroot/kernel/strmod/6to4tun
+/installer/trunk/core/miniroot/kernel/strmod/amd64/6to4tun
+/installer/trunk/core/miniroot/kernel/strmod/amd64/atun
+/installer/trunk/core/miniroot/kernel/strmod/amd64/bufmod
+/installer/trunk/core/miniroot/kernel/strmod/amd64/connld
+/installer/trunk/core/miniroot/kernel/strmod/amd64/dedump
+/installer/trunk/core/miniroot/kernel/strmod/amd64/drcompat
+/installer/trunk/core/miniroot/kernel/strmod/amd64/ldterm
+/installer/trunk/core/miniroot/kernel/strmod/amd64/pckt
+/installer/trunk/core/miniroot/kernel/strmod/amd64/pfmod
+/installer/trunk/core/miniroot/kernel/strmod/amd64/pipemod
+/installer/trunk/core/miniroot/kernel/strmod/amd64/ptem
+/installer/trunk/core/miniroot/kernel/strmod/amd64/redirmod
+/installer/trunk/core/miniroot/kernel/strmod/amd64/rpcmod
+/installer/trunk/core/miniroot/kernel/strmod/amd64/timod
+/installer/trunk/core/miniroot/kernel/strmod/amd64/tirdwr
+/installer/trunk/core/miniroot/kernel/strmod/amd64/ttcompat
+/installer/trunk/core/miniroot/kernel/strmod/amd64/tun
+/installer/trunk/core/miniroot/kernel/strmod/atun
+/installer/trunk/core/miniroot/kernel/strmod/bufmod
+/installer/trunk/core/miniroot/kernel/strmod/connld
+/installer/trunk/core/miniroot/kernel/strmod/dedump
+/installer/trunk/core/miniroot/kernel/strmod/drcompat
+/installer/trunk/core/miniroot/kernel/strmod/ldterm
+/installer/trunk/core/miniroot/kernel/strmod/pckt
+/installer/trunk/core/miniroot/kernel/strmod/pfmod
+/installer/trunk/core/miniroot/kernel/strmod/pipemod
+/installer/trunk/core/miniroot/kernel/strmod/ptem
+/installer/trunk/core/miniroot/kernel/strmod/redirmod
+/installer/trunk/core/miniroot/kernel/strmod/rpcmod
+/installer/trunk/core/miniroot/kernel/strmod/timod
+/installer/trunk/core/miniroot/kernel/strmod/tirdwr
+/installer/trunk/core/miniroot/kernel/strmod/ttcompat
+/installer/trunk/core/miniroot/kernel/strmod/tun
+/installer/trunk/core/miniroot/kernel/sys/amd64/c2audit
+/installer/trunk/core/miniroot/kernel/sys/amd64/doorfs
+/installer/trunk/core/miniroot/kernel/sys/amd64/inst_sync
+/installer/trunk/core/miniroot/kernel/sys/amd64/kaio
+/installer/trunk/core/miniroot/kernel/sys/amd64/msgsys
+/installer/trunk/core/miniroot/kernel/sys/amd64/pipe
+/installer/trunk/core/miniroot/kernel/sys/amd64/portfs
+/installer/trunk/core/miniroot/kernel/sys/amd64/pset
+/installer/trunk/core/miniroot/kernel/sys/amd64/semsys
+/installer/trunk/core/miniroot/kernel/sys/amd64/shmsys
+/installer/trunk/core/miniroot/kernel/sys/c2audit
+/installer/trunk/core/miniroot/kernel/sys/doorfs
+/installer/trunk/core/miniroot/kernel/sys/inst_sync
+/installer/trunk/core/miniroot/kernel/sys/kaio
+/installer/trunk/core/miniroot/kernel/sys/msgsys
+/installer/trunk/core/miniroot/kernel/sys/pipe
+/installer/trunk/core/miniroot/kernel/sys/portfs
+/installer/trunk/core/miniroot/kernel/sys/pset
+/installer/trunk/core/miniroot/kernel/sys/semsys
+/installer/trunk/core/miniroot/kernel/sys/shmsys
+/installer/trunk/core/miniroot/lib/svc/method/svc-dumpadm
+/installer/trunk/core/miniroot/lib/svc/method/svc-intrd
+/installer/trunk/core/miniroot/lib/svc/method/svc-scheduler
 [ verifying class <none> ]
-/installer/core/miniroot/kernel/misc/amd64/md5 <linked pathname>
-/installer/core/miniroot/kernel/misc/amd64/sha1 <linked pathname>
-/installer/core/miniroot/kernel/misc/amd64/sha2 <linked pathname>
-/installer/core/miniroot/kernel/misc/md5 <linked pathname>
-/installer/core/miniroot/kernel/misc/sha1 <linked pathname>
-/installer/core/miniroot/kernel/misc/sha2 <linked pathname>
-/installer/core/miniroot/kernel/strmod/amd64/arp <linked pathname>
-/installer/core/miniroot/kernel/strmod/amd64/icmp <linked pathname>
-/installer/core/miniroot/kernel/strmod/amd64/ip <linked pathname>
-/installer/core/miniroot/kernel/strmod/amd64/ipsecah <linked pathname>
-/installer/core/miniroot/kernel/strmod/amd64/ipsecesp <linked pathname>
-/installer/core/miniroot/kernel/strmod/amd64/keysock <linked pathname>
-/installer/core/miniroot/kernel/strmod/amd64/tcp <linked pathname>
-/installer/core/miniroot/kernel/strmod/amd64/udp <linked pathname>
-/installer/core/miniroot/kernel/strmod/arp <linked pathname>
-/installer/core/miniroot/kernel/strmod/icmp <linked pathname>
-/installer/core/miniroot/kernel/strmod/ip <linked pathname>
-/installer/core/miniroot/kernel/strmod/ipsecah <linked pathname>
-/installer/core/miniroot/kernel/strmod/ipsecesp <linked pathname>
-/installer/core/miniroot/kernel/strmod/keysock <linked pathname>
-/installer/core/miniroot/kernel/strmod/tcp <linked pathname>
-/installer/core/miniroot/kernel/strmod/udp <linked pathname>
-/installer/core/miniroot/kernel/sys/amd64/autofs <linked pathname>
-/installer/core/miniroot/kernel/sys/amd64/rpcmod <linked pathname>
-/installer/core/miniroot/kernel/sys/autofs <linked pathname>
-/installer/core/miniroot/kernel/sys/rpcmod <linked pathname>
+/installer/trunk/core/miniroot/kernel/misc/amd64/md5 <linked pathname>
+/installer/trunk/core/miniroot/kernel/misc/amd64/sha1 <linked pathname>
+/installer/trunk/core/miniroot/kernel/misc/amd64/sha2 <linked pathname>
+/installer/trunk/core/miniroot/kernel/misc/md5 <linked pathname>
+/installer/trunk/core/miniroot/kernel/misc/sha1 <linked pathname>
+/installer/trunk/core/miniroot/kernel/misc/sha2 <linked pathname>
+/installer/trunk/core/miniroot/kernel/strmod/amd64/arp <linked pathname>
+/installer/trunk/core/miniroot/kernel/strmod/amd64/icmp <linked pathname>
+/installer/trunk/core/miniroot/kernel/strmod/amd64/ip <linked pathname>
+/installer/trunk/core/miniroot/kernel/strmod/amd64/ipsecah <linked pathname>
+/installer/trunk/core/miniroot/kernel/strmod/amd64/ipsecesp <linked pathname>
+/installer/trunk/core/miniroot/kernel/strmod/amd64/keysock <linked pathname>
+/installer/trunk/core/miniroot/kernel/strmod/amd64/tcp <linked pathname>
+/installer/trunk/core/miniroot/kernel/strmod/amd64/udp <linked pathname>
+/installer/trunk/core/miniroot/kernel/strmod/arp <linked pathname>
+/installer/trunk/core/miniroot/kernel/strmod/icmp <linked pathname>
+/installer/trunk/core/miniroot/kernel/strmod/ip <linked pathname>
+/installer/trunk/core/miniroot/kernel/strmod/ipsecah <linked pathname>
+/installer/trunk/core/miniroot/kernel/strmod/ipsecesp <linked pathname>
+/installer/trunk/core/miniroot/kernel/strmod/keysock <linked pathname>
+/installer/trunk/core/miniroot/kernel/strmod/tcp <linked pathname>
+/installer/trunk/core/miniroot/kernel/strmod/udp <linked pathname>
+/installer/trunk/core/miniroot/kernel/sys/amd64/autofs <linked pathname>
+/installer/trunk/core/miniroot/kernel/sys/amd64/rpcmod <linked pathname>
+/installer/trunk/core/miniroot/kernel/sys/autofs <linked pathname>
+/installer/trunk/core/miniroot/kernel/sys/rpcmod <linked pathname>
 [ verifying class <etcsystem> ]
 [ verifying class <kcfconfbase> ]
 [ verifying class <manifest> ]
@@ -2004,8 +2005,8 @@ Installation of <SUNWckr> was successful.
 
 Processing package instance <SUNWcnetr> from </iso/Solaris_11/Product>
 
-Core Solaris Network Infrastructure (Root)(i386) 11.11,REV=2008.08.21.16.30
-Using </installer/core/miniroot> as the package base directory.
+Core Solaris Network Infrastructure (Root)(i386) 11.11,REV=2008.09.04.21.33
+Using </installer/trunk/core/miniroot> as the package base directory.
 ## Processing package information.
 ## Processing system information.
    4 package pathnames are already properly installed.
@@ -2047,7 +2048,7 @@ Installation of <SUNWcnetr> was successful.
 
 Processing package instance <SUNWcsl> from </iso/Solaris_11/Product>
 
-Core Solaris, (Shared Libs)(i386) 11.11,REV=2008.08.21.16.30
+Core Solaris, (Shared Libs)(i386) 11.11,REV=2008.09.04.21.33
 Copyright 2008 Sun Microsystems, Inc.  All rights reserved.
 Use is subject to license terms.
 
@@ -2540,7 +2541,7 @@ Copyright (c) 1996-2001 Intel Corporation. All rights reserved.
  * THIS SOFTWARE IS PROVIDED BY THE REGENTS AND CONTRIBUTORS ``AS IS'' AND
  * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
  * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
- * ARE DISCLAIMED.  IN NO EVENT SHALL THE REGENTS OR CONTUsing </installer/core/miniroot> as the package base directory.
+ * ARE DISCLAIMED.  IN NO EVENT SHALL THE REGENTS OR CONTUsing </installer/trunk/core/miniroot> as the package base directory.
 ## Processing package information.
 ## Processing system information.
    1 package pathname is already properly installed.
@@ -2556,13 +2557,13 @@ RIBUTORS BE LIABLE
  * LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
  * OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
  * SUCH DAMAGE.
-49424 blocks
+49479 blocks
 
 Installation of <SUNWcsl> was successful.
 
 Processing package instance <SUNWcsu> from </iso/Solaris_11/Product>
 
-Core Solaris, (Usr)(i386) 11.11,REV=2008.08.21.16.30
+Core Solaris, (Usr)(i386) 11.11,REV=2008.09.04.21.33
 Copyright 2008 Sun Microsystems, Inc.  All rights reserved.
 Use is subject to license terms.
 
@@ -2720,7 +2721,7 @@ met:
        from this software without specific prior written permission.
 
 THIS SOFTWARE IS PROVIDED BY THE REGENTS AND CONTRIBUTORS "AS IS" AND
-ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TUsing </installer/core/miniroot> as the package base directory.
+ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TUsing </installer/trunk/core/miniroot> as the package base directory.
 ## Processing package information.
 ## Processing system information.
    8 package pathnames are already properly installed.
@@ -2824,14 +2825,14 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  * LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
  * OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
  * SUCH DAMAGE.
-34635 blocks
+34638 blocks
 ## Executing postinstall script.
 
 Installation of <SUNWcsu> was successful.
 
 Processing package instance <SUNWcslr> from </iso/Solaris_11/Product>
 
-Core Solaris Libraries (Root)(i386) 11.11,REV=2008.08.21.16.30
+Core Solaris Libraries (Root)(i386) 11.11,REV=2008.09.04.21.33
 Copyright 2008 Sun Microsystems, Inc.  All rights reserved.
 Use is subject to license terms.
 
@@ -3619,7 +3620,7 @@ to permit persons to whom the Data Files or Software are furnished to do so,
 provided that (a) the above copyright notice(s) and this permission notice
 appear with all copies of the Data Files or Software, (b) both the above
 copyright notice(s) and this permission notice appear in associated
-documenUsing </installer/core/miniroot> as the package base directory.
+documenUsing </installer/trunk/core/miniroot> as the package base directory.
 ## Processing package information.
 ## Processing system information.
    2 package pathnames are already properly installed.
@@ -3720,14 +3721,14 @@ DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
 THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-33581 blocks
+33601 blocks
 
 Installation of <SUNWcslr> was successful.
 
 Processing package instance <SUNWesu> from </iso/Solaris_11/Product>
 
-Extended System Utilities(i386) 11.11,REV=2008.08.21.16.30
-Using </installer/core/miniroot> as the package base directory.
+Extended System Utilities(i386) 11.11,REV=2008.09.04.21.33
+Using </installer/trunk/core/miniroot> as the package base directory.
 ## Processing package information.
 ## Processing system information.
    11 package pathnames are already properly installed.
@@ -3834,8 +3835,8 @@ Installation of <SUNWesu> was successful.
 
 Processing package instance <SUNWkey> from </iso/Solaris_11/Product>
 
-Keyboard configuration tables(i386) 11.11,REV=2008.08.21.16.30
-Using </installer/core/miniroot> as the package base directory.
+Keyboard configuration tables(i386) 11.11,REV=2008.09.04.21.33
+Using </installer/trunk/core/miniroot> as the package base directory.
 ## Processing package information.
 ## Processing system information.
    4 package pathnames are already properly installed.
@@ -4045,7 +4046,7 @@ export, re-export, or import as may be required after delivery to you.
 
 10. U.S. Government Restricted Rights.
 
-If Software is being acquired by or on behalf of the U.SUsing </installer/core/miniroot> as the package base directory.
+If Software is being acquired by or on behalf of the U.SUsing </installer/trunk/core/miniroot> as the package base directory.
 ## Processing package information.
 ## Processing system information.
    3 package pathnames are already properly installed.
@@ -4053,24 +4054,24 @@ If Software is being acquired by or on behalf of the U.SUsing </installer/core/m
 Installing Math & Microtasking Libraries (Usr) as <SUNWlibms>
 
 ## Installing part 1 of 1.
-/installer/core/miniroot/usr/lib/amd64/libm.so <symbolic link>
-/installer/core/miniroot/usr/lib/amd64/libm.so.1 <symbolic link>
-/installer/core/miniroot/usr/lib/amd64/libm.so.2 <symbolic link>
-/installer/core/miniroot/usr/lib/amd64/libmtsk.so <symbolic link>
-/installer/core/miniroot/usr/lib/amd64/libmtsk.so.1 <symbolic link>
-/installer/core/miniroot/usr/lib/amd64/libmtsk_db.so <symbolic link>
-/installer/core/miniroot/usr/lib/amd64/libmtsk_db.so.1 <symbolic link>
-/installer/core/miniroot/usr/lib/amd64/libmvec.so <symbolic link>
-/installer/core/miniroot/usr/lib/amd64/libmvec.so.1 <symbolic link>
-/installer/core/miniroot/usr/lib/libm.so <symbolic link>
-/installer/core/miniroot/usr/lib/libm.so.1 <symbolic link>
-/installer/core/miniroot/usr/lib/libm.so.2 <symbolic link>
-/installer/core/miniroot/usr/lib/libmtsk.so <symbolic link>
-/installer/core/miniroot/usr/lib/libmtsk.so.1 <symbolic link>
-/installer/core/miniroot/usr/lib/libmtsk_db.so <symbolic link>
-/installer/core/miniroot/usr/lib/libmtsk_db.so.1 <symbolic link>
-/installer/core/miniroot/usr/lib/libmvec.so <symbolic link>
-/installer/core/miniroot/usr/lib/libmvec.so.1 <symbolic link>
+/installer/trunk/core/miniroot/usr/lib/amd64/libm.so <symbolic link>
+/installer/trunk/core/miniroot/usr/lib/amd64/libm.so.1 <symbolic link>
+/installer/trunk/core/miniroot/usr/lib/amd64/libm.so.2 <symbolic link>
+/installer/trunk/core/miniroot/usr/lib/amd64/libmtsk.so <symbolic link>
+/installer/trunk/core/miniroot/usr/lib/amd64/libmtsk.so.1 <symbolic link>
+/installer/trunk/core/miniroot/usr/lib/amd64/libmtsk_db.so <symbolic link>
+/installer/trunk/core/miniroot/usr/lib/amd64/libmtsk_db.so.1 <symbolic link>
+/installer/trunk/core/miniroot/usr/lib/amd64/libmvec.so <symbolic link>
+/installer/trunk/core/miniroot/usr/lib/amd64/libmvec.so.1 <symbolic link>
+/installer/trunk/core/miniroot/usr/lib/libm.so <symbolic link>
+/installer/trunk/core/miniroot/usr/lib/libm.so.1 <symbolic link>
+/installer/trunk/core/miniroot/usr/lib/libm.so.2 <symbolic link>
+/installer/trunk/core/miniroot/usr/lib/libmtsk.so <symbolic link>
+/installer/trunk/core/miniroot/usr/lib/libmtsk.so.1 <symbolic link>
+/installer/trunk/core/miniroot/usr/lib/libmtsk_db.so <symbolic link>
+/installer/trunk/core/miniroot/usr/lib/libmtsk_db.so.1 <symbolic link>
+/installer/trunk/core/miniroot/usr/lib/libmvec.so <symbolic link>
+/installer/trunk/core/miniroot/usr/lib/libmvec.so.1 <symbolic link>
 [ verifying class <none> ]
 . Government or
 by a U.S. Government prime contractor or subcontractor (at any tier),
@@ -4280,7 +4281,7 @@ export, re-export, or import as may be required after delivery to you.
 
 10. U.S. Government Restricted Rights.
 
-If Software is being acquired by or on behalf of the U.SUsing </installer/core/miniroot> as the package base directory.
+If Software is being acquired by or on behalf of the U.SUsing </installer/trunk/core/miniroot> as the package base directory.
 ## Processing package information.
 ## Processing system information.
    2 package pathnames are already properly installed.
@@ -4368,8 +4369,8 @@ Installation of <SUNWlibmsr> was successful.
 
 Processing package instance <SUNWusb> from </iso/Solaris_11/Product>
 
-USB Device Drivers(i386) 11.11,REV=2008.08.21.16.30
-Using </installer/core/miniroot> as the package base directory.
+USB Device Drivers(i386) 11.11,REV=2008.09.04.21.33
+Using </installer/trunk/core/miniroot> as the package base directory.
 ## Processing package information.
 ## Processing system information.
    10 package pathnames are already properly installed.
@@ -4421,7 +4422,7 @@ Installation of <SUNWusb> was successful.
 Processing package instance <SUNWpr> from </iso/Solaris_11/Product>
 
 Netscape Portable Runtime(i386) 4.7,REV=2008.01.31.21.36
-Using </installer/core/miniroot> as the package base directory.
+Using </installer/trunk/core/miniroot> as the package base directory.
 ## Processing package information.
 ## Processing system information.
    2 package pathnames are already properly installed.
@@ -4478,7 +4479,7 @@ Installation of <SUNWpr> was successful.
 Processing package instance <SUNWtls> from </iso/Solaris_11/Product>
 
 Network Security Services(i386) 3.11.9,REV=2008.01.31.21.36
-Using </installer/core/miniroot> as the package base directory.
+Using </installer/trunk/core/miniroot> as the package base directory.
 ## Processing package information.
 ## Processing system information.
    8 package pathnames are already properly installed.
@@ -4534,8 +4535,8 @@ Installation of <SUNWtls> was successful.
 
 Processing package instance <SUNWlibsasl> from </iso/Solaris_11/Product>
 
-SASL v2(i386) 11.11,REV=2008.08.21.16.30
-Using </installer/core/miniroot> as the package base directory.
+SASL v2(i386) 11.11,REV=2008.09.04.21.33
+Using </installer/trunk/core/miniroot> as the package base directory.
 ## Processing package information.
 ## Processing system information.
    3 package pathnames are already properly installed.
@@ -4632,8 +4633,8 @@ Installation of <SUNWlibsasl> was successful.
 
 Processing package instance <SUNWlxml> from </iso/Solaris_11/Product>
 
-The XML library(i386) 11.11.0,REV=2008.08.20.03.07
-Using </installer/core/miniroot> as the package base directory.
+The XML library(i386) 11.11.0,REV=2008.09.03.02.18
+Using </installer/trunk/core/miniroot> as the package base directory.
 ## Processing package information.
 ## Processing system information.
    4 package pathnames are already properly installed.
@@ -4674,8 +4675,8 @@ Installation of <SUNWlxml> was successful.
 
 Processing package instance <SUNWlxmlr> from </iso/Solaris_11/Product>
 
-The XML library (Root)(i386) 11.11.0,REV=2008.08.20.03.07
-Using </installer/core/miniroot> as the package base directory.
+The XML library (Root)(i386) 11.11.0,REV=2008.09.03.02.18
+Using </installer/trunk/core/miniroot> as the package base directory.
 ## Processing package information.
 ## Processing system information.
    2 package pathnames are already properly installed.
@@ -4716,8 +4717,8 @@ Installation of <SUNWlxmlr> was successful.
 
 Processing package instance <SUNWopenssl-libraries> from </iso/Solaris_11/Product>
 
-OpenSSL Libraries (Usr)(i386) 11.11,REV=2008.08.21.16.30
-Using </installer/core/miniroot> as the package base directory.
+OpenSSL Libraries (Usr)(i386) 11.11,REV=2008.09.04.21.33
+Using </installer/trunk/core/miniroot> as the package base directory.
 ## Processing package information.
 ## Processing system information.
    1 package pathname is already properly installed.
@@ -4863,8 +4864,8 @@ Installation of <SUNWopenssl-libraries> was successful.
 
 Processing package instance <SUNWsmbskr> from </iso/Solaris_11/Product>
 
-SMB Server (Kernel)(i386) 11.11,REV=2008.08.21.16.30
-Using </installer/core/miniroot> as the package base directory.
+SMB Server (Kernel)(i386) 11.11,REV=2008.09.04.21.33
+Using </installer/trunk/core/miniroot> as the package base directory.
 ## Processing package information.
 ## Processing system information.
    3 package pathnames are already properly installed.
@@ -4902,8 +4903,8 @@ Installation of <SUNWsmbskr> was successful.
 
 Processing package instance <SUNWsmbsr> from </iso/Solaris_11/Product>
 
-SMB Server (Root)(i386) 11.11,REV=2008.08.21.16.30
-Using </installer/core/miniroot> as the package base directory.
+SMB Server (Root)(i386) 11.11,REV=2008.09.04.21.33
+Using </installer/trunk/core/miniroot> as the package base directory.
 ## Processing package information.
 ## Processing system information.
    4 package pathnames are already properly installed.
@@ -4942,8 +4943,8 @@ Installation of <SUNWsmbsr> was successful.
 
 Processing package instance <SUNWsmbsu> from </iso/Solaris_11/Product>
 
-SMB Server (Usr)(i386) 11.11,REV=2008.08.21.16.30
-Using </installer/core/miniroot> as the package base directory.
+SMB Server (Usr)(i386) 11.11,REV=2008.09.04.21.33
+Using </installer/trunk/core/miniroot> as the package base directory.
 ## Processing package information.
 ## Processing system information.
    5 package pathnames are already properly installed.
@@ -4974,14 +4975,14 @@ fields enclosed by brackets "[]" replaced with your own identifying
 information: Portions Copyright [yyyy] [name of copyright owner]
 
 CDDL HEADER END
-5219 blocks
+5221 blocks
 
 Installation of <SUNWsmbsu> was successful.
 
 Processing package instance <SUNWsmbau> from </iso/Solaris_11/Product>
 
-samba - A Windows SMB/CIFS fileserver for UNIX (Usr)(i386) 11.11.0,REV=2008.08.20.03.07
-Using </installer/core/miniroot> as the package base directory.
+samba - A Windows SMB/CIFS fileserver for UNIX (Usr)(i386) 11.11.0,REV=2008.09.03.02.18
+Using </installer/trunk/core/miniroot> as the package base directory.
 ## Processing package information.
 ## Processing system information.
    5 package pathnames are already properly installed.
@@ -5004,14 +5005,14 @@ Installing samba - A Windows SMB/CIFS fileserver for UNIX (Usr) as <SUNWsmbau>
     You should have received a copy of the GNU General Public License
     along with this program; if not, write to the Free Software
     Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
-94553 blocks
+99068 blocks
 
 Installation of <SUNWsmbau> was successful.
 
 Processing package instance <SUNWsmbar> from </iso/Solaris_11/Product>
 
-samba - A Windows SMB/CIFS fileserver for UNIX (Root)(i386) 11.11.0,REV=2008.08.20.03.07
-Using </installer/core/miniroot> as the package base directory.
+samba - A Windows SMB/CIFS fileserver for UNIX (Root)(i386) 11.11.0,REV=2008.09.03.02.18
+Using </installer/trunk/core/miniroot> as the package base directory.
 ## Processing package information.
 ## Processing system information.
    6 package pathnames are already properly installed.
@@ -5043,8 +5044,8 @@ Installation of <SUNWsmbar> was successful.
 
 Processing package instance <SUNWtecla> from </iso/Solaris_11/Product>
 
-Tecla command-line editing library(i386) 11.11,REV=2008.08.21.16.30
-Using </installer/core/miniroot> as the package base directory.
+Tecla command-line editing library(i386) 11.11,REV=2008.09.04.21.33
+Using </installer/trunk/core/miniroot> as the package base directory.
 ## Processing package information.
 ## Processing system information.
    4 package pathnames are already properly installed.
@@ -5086,8 +5087,8 @@ Installation of <SUNWtecla> was successful.
 
 Processing package instance <SUNWzlibr> from </iso/Solaris_11/Product>
 
-The Zip compression library (Root)(i386) 11.11.0,REV=2008.08.20.03.07
-Using </installer/core/miniroot> as the package base directory.
+The Zip compression library (Root)(i386) 11.11.0,REV=2008.09.03.02.18
+Using </installer/trunk/core/miniroot> as the package base directory.
 ## Processing package information.
 ## Processing system information.
    2 package pathnames are already properly installed.
@@ -5123,8 +5124,8 @@ Installation of <SUNWzlibr> was successful.
 
 Processing package instance <SUNWzlib> from </iso/Solaris_11/Product>
 
-The Zip compression library(i386) 11.11.0,REV=2008.08.20.03.07
-Using </installer/core/miniroot> as the package base directory.
+The Zip compression library(i386) 11.11.0,REV=2008.09.03.02.18
+Using </installer/trunk/core/miniroot> as the package base directory.
 ## Processing package information.
 ## Processing system information.
    4 package pathnames are already properly installed.
@@ -5160,8 +5161,8 @@ Installation of <SUNWzlib> was successful.
 
 Processing package instance <SUNWgss> from </iso/Solaris_11/Product>
 
-GSSAPI V2(i386) 11.11,REV=2008.08.21.16.30
-Using </installer/core/miniroot> as the package base directory.
+GSSAPI V2(i386) 11.11,REV=2008.09.04.21.33
+Using </installer/trunk/core/miniroot> as the package base directory.
 ## Processing package information.
 ## Processing system information.
    6 package pathnames are already properly installed.
@@ -5258,8 +5259,8 @@ Installation of <SUNWgss> was successful.
 
 Processing package instance <SUNWgssc> from </iso/Solaris_11/Product>
 
-GSSAPI CONFIG V2(i386) 11.11,REV=2008.08.21.16.30
-Using </installer/core/miniroot> as the package base directory.
+GSSAPI CONFIG V2(i386) 11.11,REV=2008.09.04.21.33
+Using </installer/trunk/core/miniroot> as the package base directory.
 ## Processing package information.
 ## Processing system information.
    6 package pathnames are already properly installed.
@@ -5299,8 +5300,8 @@ Installation of <SUNWgssc> was successful.
 
 Processing package instance <SUNWbip> from </iso/Solaris_11/Product>
 
-Basic IP commands (Usr)(i386) 11.11,REV=2008.08.21.16.30
-Using </installer/core/miniroot> as the package base directory.
+Basic IP commands (Usr)(i386) 11.11,REV=2008.09.04.21.33
+Using </installer/trunk/core/miniroot> as the package base directory.
 ## Processing package information.
 ## Processing system information.
    3 package pathnames are already properly installed.
@@ -5375,8 +5376,8 @@ Installation of <SUNWbip> was successful.
 
 Processing package instance <SUNWbash> from </iso/Solaris_11/Product>
 
-GNU Bourne-Again shell (bash)(i386) 11.11.0,REV=2008.08.20.03.07
-Using </installer/core/miniroot> as the package base directory.
+GNU Bourne-Again shell (bash)(i386) 11.11.0,REV=2008.09.03.02.18
+Using </installer/trunk/core/miniroot> as the package base directory.
 ## Processing package information.
 ## Processing system information.
    2 package pathnames are already properly installed.
@@ -5414,8 +5415,8 @@ Installation of <SUNWbash> was successful.
 
 Processing package instance <SUNWloc> from </iso/Solaris_11/Product>
 
-System Localization(i386) 11.11,REV=2008.08.21.16.30
-Using </installer/core/miniroot> as the package base directory.
+System Localization(i386) 11.11,REV=2008.09.04.21.33
+Using </installer/trunk/core/miniroot> as the package base directory.
 ## Processing package information.
 ## Processing system information.
    8 package pathnames are already properly installed.
@@ -5452,7 +5453,7 @@ Installation of <SUNWloc> was successful.
 
 Processing package instance <SUNWsshcu> from </iso/Solaris_11/Product>
 
-SSH Common, (Usr)(i386) 11.11,REV=2008.08.21.16.30
+SSH Common, (Usr)(i386) 11.11,REV=2008.09.04.21.33
 1)
      * Copyright (c) 1995 Tatu Ylonen <ylo@cs.hut.fi>, Espoo, Finland
      *                    All rights reserved
@@ -5605,7 +5606,7 @@ SSH Common, (Usr)(i386) 11.11,REV=2008.08.21.16.30
      * FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
      * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
      * OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
-     * HOWEVER CAUSED AND ON ANY THEORY OF LIABIUsing </installer/core/miniroot> as the package base directory.
+     * HOWEVER CAUSED AND ON ANY THEORY OF LIABIUsing </installer/trunk/core/miniroot> as the package base directory.
 ## Processing package information.
 ## Processing system information.
    3 package pathnames are already properly installed.
@@ -5653,7 +5654,7 @@ Installation of <SUNWsshcu> was successful.
 
 Processing package instance <SUNWsshdr> from </iso/Solaris_11/Product>
 
-SSH Server, (Root)(i386) 11.11,REV=2008.08.21.16.30
+SSH Server, (Root)(i386) 11.11,REV=2008.09.04.21.33
 1)
      * Copyright (c) 1995 Tatu Ylonen <ylo@cs.hut.fi>, Espoo, Finland
      *                    All rights reserved
@@ -5806,7 +5807,7 @@ SSH Server, (Root)(i386) 11.11,REV=2008.08.21.16.30
      * FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
      * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
      * OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
-     * HOWEVER CAUSED AND ON ANY THEORY OF LIABIUsing </installer/core/miniroot> as the package base directory.
+     * HOWEVER CAUSED AND ON ANY THEORY OF LIABIUsing </installer/trunk/core/miniroot> as the package base directory.
 ## Processing package information.
 ## Processing system information.
    8 package pathnames are already properly installed.
@@ -5857,7 +5858,7 @@ Installation of <SUNWsshdr> was successful.
 
 Processing package instance <SUNWsshdu> from </iso/Solaris_11/Product>
 
-SSH Server, (Usr)(i386) 11.11,REV=2008.08.21.16.30
+SSH Server, (Usr)(i386) 11.11,REV=2008.09.04.21.33
 1)
      * Copyright (c) 1995 Tatu Ylonen <ylo@cs.hut.fi>, Espoo, Finland
      *                    All rights reserved
@@ -6010,7 +6011,7 @@ SSH Server, (Usr)(i386) 11.11,REV=2008.08.21.16.30
      * FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
      * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
      * OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
-     * HOWEVER CAUSED AND ON ANY THEORY OF LIABIUsing </installer/core/miniroot> as the package base directory.
+     * HOWEVER CAUSED AND ON ANY THEORY OF LIABIUsing </installer/trunk/core/miniroot> as the package base directory.
 ## Processing package information.
 ## Processing system information.
    3 package pathnames are already properly installed.
@@ -6058,7 +6059,7 @@ Installation of <SUNWsshdu> was successful.
 
 Processing package instance <SUNWsshr> from </iso/Solaris_11/Product>
 
-SSH Client and utilities, (Root)(i386) 11.11,REV=2008.08.21.16.30
+SSH Client and utilities, (Root)(i386) 11.11,REV=2008.09.04.21.33
 1)
      * Copyright (c) 1995 Tatu Ylonen <ylo@cs.hut.fi>, Espoo, Finland
      *                    All rights reserved
@@ -6211,7 +6212,7 @@ SSH Client and utilities, (Root)(i386) 11.11,REV=2008.08.21.16.30
      * FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
      * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
      * OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
-     * HOWEVER CAUSED AND ON ANY THEORY OF LIABIUsing </installer/core/miniroot> as the package base directory.
+     * HOWEVER CAUSED AND ON ANY THEORY OF LIABIUsing </installer/trunk/core/miniroot> as the package base directory.
 ## Processing package information.
 ## Processing system information.
    2 package pathnames are already properly installed.
@@ -6260,7 +6261,7 @@ Installation of <SUNWsshr> was successful.
 
 Processing package instance <SUNWsshu> from </iso/Solaris_11/Product>
 
-SSH Client and utilities, (Usr)(i386) 11.11,REV=2008.08.21.16.30
+SSH Client and utilities, (Usr)(i386) 11.11,REV=2008.09.04.21.33
 1)
      * Copyright (c) 1995 Tatu Ylonen <ylo@cs.hut.fi>, Espoo, Finland
      *                    All rights reserved
@@ -6413,7 +6414,7 @@ SSH Client and utilities, (Usr)(i386) 11.11,REV=2008.08.21.16.30
      * FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
      * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
      * OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
-     * HOWEVER CAUSED AND ON ANY THEORY OF LIABIUsing </installer/core/miniroot> as the package base directory.
+     * HOWEVER CAUSED AND ON ANY THEORY OF LIABIUsing </installer/trunk/core/miniroot> as the package base directory.
 ## Processing package information.
 ## Processing system information.
    4 package pathnames are already properly installed.
@@ -6461,7 +6462,7 @@ Installation of <SUNWsshu> was successful.
 
 Processing package instance <SUNWtoo> from </iso/Solaris_11/Product>
 
-Programming Tools(i386) 11.11,REV=2008.08.21.16.30
+Programming Tools(i386) 11.11,REV=2008.09.04.21.33
 Copyright 2008 Sun Microsystems, Inc.  All rights reserved.
 Use is subject to license terms.
 
@@ -6640,7 +6641,7 @@ BE LEGALLY INVALID.
 
 TO THE EXTENT NOT PROHIBITED BY LAW, IN NO EVENT WILL SUN OR ITS 
 LICENSORS BE LIABLE FOR ANY LOST REVENUE, PROFIT OR DATA, OR FOR SPECIAL, 
-INDIRECT, CONSEQUENTIAL, INCUsing </installer/core/miniroot> as the package base directory.
+INDIRECT, CONSEQUENTIAL, INCUsing </installer/trunk/core/miniroot> as the package base directory.
 ## Processing package information.
 ## Processing system information.
    9 package pathnames are already properly installed.
@@ -6700,15 +6701,15 @@ acknowledgment, or other communication between the parties relating to
 its subject matter during the term of this Agreement.  No modification 
 of this Agreement will be binding, unless in writing and signed by an 
 authorized representative of each party.
-2548 blocks
+2547 blocks
 ## Executing postinstall script.
 
 Installation of <SUNWtoo> was successful.
 
 Processing package instance <SUNWzfskr> from </iso/Solaris_11/Product>
 
-ZFS Kernel (Root)(i386) 11.11,REV=2008.08.21.16.30
-Using </installer/core/miniroot> as the package base directory.
+ZFS Kernel (Root)(i386) 11.11,REV=2008.09.04.21.33
+Using </installer/trunk/core/miniroot> as the package base directory.
 ## Processing package information.
 ## Processing system information.
    7 package pathnames are already properly installed.
@@ -6739,14 +6740,14 @@ fields enclosed by brackets "[]" replaced with your own identifying
 information: Portions Copyright [yyyy] [name of copyright owner]
 
 CDDL HEADER END
-4254 blocks
+4278 blocks
 
 Installation of <SUNWzfskr> was successful.
 
 Processing package instance <SUNWzfsr> from </iso/Solaris_11/Product>
 
-ZFS (Root)(i386) 11.11,REV=2008.08.21.16.30
-Using </installer/core/miniroot> as the package base directory.
+ZFS (Root)(i386) 11.11,REV=2008.09.04.21.33
+Using </installer/trunk/core/miniroot> as the package base directory.
 ## Processing package information.
 ## Processing system information.
    5 package pathnames are already properly installed.
@@ -6777,14 +6778,14 @@ fields enclosed by brackets "[]" replaced with your own identifying
 information: Portions Copyright [yyyy] [name of copyright owner]
 
 CDDL HEADER END
-2802 blocks
+2803 blocks
 
 Installation of <SUNWzfsr> was successful.
 
 Processing package instance <SUNWzfsu> from </iso/Solaris_11/Product>
 
-ZFS (Usr)(i386) 11.11,REV=2008.08.21.16.30
-Using </installer/core/miniroot> as the package base directory.
+ZFS (Usr)(i386) 11.11,REV=2008.09.04.21.33
+Using </installer/trunk/core/miniroot> as the package base directory.
 ## Processing package information.
 ## Processing system information.
    14 package pathnames are already properly installed.
@@ -6815,14 +6816,14 @@ fields enclosed by brackets "[]" replaced with your own identifying
 information: Portions Copyright [yyyy] [name of copyright owner]
 
 CDDL HEADER END
-5515 blocks
+5554 blocks
 
 Installation of <SUNWzfsu> was successful.
 
 Processing package instance <SUNWrmodu> from </iso/Solaris_11/Product>
 
-Realmode Modules, (Usr)(i386) 11.11,REV=2008.08.21.16.30
-Using </installer/core/miniroot> as the package base directory.
+Realmode Modules, (Usr)(i386) 11.11,REV=2008.09.04.21.33
+Using </installer/trunk/core/miniroot> as the package base directory.
 ## Processing package information.
 ## Processing system information.
    4 package pathnames are already properly installed.
@@ -6859,8 +6860,8 @@ Installation of <SUNWrmodu> was successful.
 
 Processing package instance <SUNWsmapi> from </iso/Solaris_11/Product>
 
-Storage Management APIs(i386) 11.11,REV=2008.08.21.16.30
-Using </installer/core/miniroot> as the package base directory.
+Storage Management APIs(i386) 11.11,REV=2008.09.04.21.33
+Using </installer/trunk/core/miniroot> as the package base directory.
 ## Processing package information.
 ## Processing system information.
    3 package pathnames are already properly installed.
@@ -6897,7 +6898,7 @@ Installation of <SUNWsmapi> was successful.
 
 Processing package instance <SUNWkrbu> from </iso/Solaris_11/Product>
 
-Kerberos version 5 support (Usr)(i386) 11.11,REV=2008.08.21.16.30
+Kerberos version 5 support (Usr)(i386) 11.11,REV=2008.09.04.21.33
  * Copyright (c) 1987, 1990, 1993, 1994
  *	The Regents of the University of California.  All rights reserved.
  *
@@ -7045,7 +7046,7 @@ appear in all copies and that both that copyright notice and
 this permission notice appear in supporting documentation,
 and that the names of M.I.T. and the M.I.T. S.I.P.B. not be
 used in advertising or publicity pertaining to distribution
-of the software without sUsing </installer/core/miniroot> as the package base directory.
+of the software without sUsing </installer/trunk/core/miniroot> as the package base directory.
 ## Processing package information.
 ## Processing system information.
    8 package pathnames are already properly installed.
@@ -7147,8 +7148,8 @@ Installation of <SUNWkrbu> was successful.
 
 Processing package instance <SUNWgzip> from </iso/Solaris_11/Product>
 
-The GNU Zip (gzip) compression utility(i386) 11.11.0,REV=2008.08.20.03.07
-Using </installer/core/miniroot> as the package base directory.
+The GNU Zip (gzip) compression utility(i386) 11.11.0,REV=2008.09.03.02.18
+Using </installer/trunk/core/miniroot> as the package base directory.
 ## Processing package information.
 ## Processing system information.
    2 package pathnames are already properly installed.
@@ -7178,8 +7179,8 @@ Installation of <SUNWgzip> was successful.
 
 Processing package instance <SUNWlibpopt> from </iso/Solaris_11/Product>
 
-Command line parsing library(i386) 1.7,REV=110.0.4.2008.08.11.03.28
-Using </installer/core/miniroot/usr> as the package base directory.
+Command line parsing library(i386) 1.7,REV=110.0.4.2008.08.25.03.16
+Using </installer/trunk/core/miniroot/usr> as the package base directory.
 ## Processing package information.
 ## Processing system information.
    3 package pathnames are already properly installed.
@@ -7241,8 +7242,8 @@ Installation of <SUNWlibpopt> was successful.
 
 Processing package instance <SUNWlexpt> from </iso/Solaris_11/Product>
 
-libexpat - XML parser library(i386) 11.11.0,REV=2008.08.20.03.07
-Using </installer/core/miniroot> as the package base directory.
+libexpat - XML parser library(i386) 11.11.0,REV=2008.09.03.02.18
+Using </installer/trunk/core/miniroot> as the package base directory.
 ## Processing package information.
 ## Processing system information.
    4 package pathnames are already properly installed.
@@ -7271,7 +7272,7 @@ Installation of <SUNWlexpt> was successful.
 
 Processing package instance <SUNWzlib> from </iso/Solaris_11/Product>
 
-The Zip compression library(i386) 11.11.0,REV=2008.08.20.03.07
+The Zip compression library(i386) 11.11.0,REV=2008.09.03.02.18
 
 This appears to be an attempt to install the same architecture and
 version of a package which is already installed.  This installation
@@ -7299,7 +7300,7 @@ freely, subject to the following restrictions:
 Jean-loup Gailly        Mark Adler
 jloup@gzip.org          madler@alumni.caltech.edu
 
-Using </installer/core/miniroot> as the package base directory.
+Using </installer/trunk/core/miniroot> as the package base directory.
 ## Processing package information.
 ## Processing system information.
    13 package pathnames are already properly installed.
@@ -7312,8 +7313,8 @@ Installation of <SUNWzlib> was successful.
 
 Processing package instance <SUNWintgige> from </iso/Solaris_11/Product>
 
-Intel(R) PRO/1000 Server Adapter Driver(i386) 11.11,REV=2008.08.21.16.30
-Using </installer/core/miniroot> as the package base directory.
+Intel(R) PRO/1000 Server Adapter Driver(i386) 11.11,REV=2008.09.04.21.33
+Using </installer/trunk/core/miniroot> as the package base directory.
 ## Processing package information.
 ## Processing system information.
    3 package pathnames are already properly installed.
@@ -7348,7 +7349,7 @@ CDDL HEADER END
 --------------------------------------------------------------------
 
  * Copyright(c) 1999 - 2008 Intel Corporation. All rights reserved.
-1280 blocks
+1282 blocks
 [ verifying class <renamenew> ]
 ## Executing postinstall script.
 Reboot client to install driver.
@@ -7357,7 +7358,7 @@ Installation of <SUNWintgige> was successful.
 
 Processing package instance <SUNWxwplt> from </iso/Solaris_11/Product>
 
-X Window System platform software(i386) 6.9.0.5.11.9700,REV=0.2008.08.19
+X Window System platform software(i386) 6.9.0.5.11.9800,REV=0.2008.08.28
 Copyright 2008 Sun Microsystems, Inc.  All rights reserved.
 Use is subject to license terms.
 
@@ -10575,61 +10576,8 @@ in this Software without prior written authorization from The Open Group.
 
 Files from the app/xwd package are covered by the following notice:
 
-
-Copyright 1993, 1998  The Open Group
-
-Permission to use, copy, modify, distribute, and sell this software and its
-documentation for any purpose is hereby granted without fee, provided that
-the above copyright notice appear in all copies and that both that
-copyright notice and this permission notice appear in supporting
-documentation.
-
-The above copyright notice and this permission notice shall be included
-in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
-OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
-IN NO EVENT SHALL THE OPEN GROUP BE LIABLE FOR ANY CLAIM, DAMAGES OR
-OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
-ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
-OTHER DEALINGS IN THE SOFTWARE.
-
-Except as contained in this notice, the name of The Open Group shall
-not be used in advertising or otherwise to promote the sale, use or
-other dealings in this Software without prior written authorization
-from The Open Group.
-
-
-
-
-Copyright 1993, 1998  The Open Group
-
-Permission to use, copy, modify, distribute, and sell this software and its
-documentation for any purpose is hereby granted without fee, provided that
-the above copyright notice appear in all copies and that both that
-copyright notice and this permission notice appear in supporting
-documentation.
-
-The above copyright notice and this permission notice shall be included
-in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
-OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
-IN NO EVENT SHALL THE OPEN GROUP BE LIABLE FOR ANY CLAIM, DAMAGES OR
-OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
-ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
-OTHER DEALINGS IN THE SOFTWARE.
-
-Except as contained in this notice, the name of The Open Group shall
-not be used in advertising or otherwise to promote the sale, use or
-other dealings in this Software without prior written authorization
-from The Open Group.
-
-
+Copyright 1987, 1993, 1996 1998  The Open Group
 Copyright 1994 Hewlett-Packard Co.
-Copyright 1996, 1998  The Open Group
 
 Permission to use, copy, modify, distribute, and sell this software and its
 documentation for any purpose is hereby granted without fee, provided that
@@ -10653,133 +10601,25 @@ not be used in advertising or otherwise to promote the sale, use or
 other dealings in this Software without prior written authorization
 from The Open Group.
 
-
-Copyright 1994 Hewlett-Packard Co.
-Copyright 1996, 1998  The Open Group
+Copyright 2007 Kim woelders
 
 Permission to use, copy, modify, distribute, and sell this software and its
 documentation for any purpose is hereby granted without fee, provided that
-the above copyright notice appear in all copies and that both that
-copyright notice and this permission notice appear in supporting
-documentation.
+the above copyright notice appear in all copies and that both that copyright
+notice and this permission notice appear in supporting documentation, and
+that the name of the copyright holders not be used in advertising or
+publicity pertaining to distribution of the software without specific,
+written prior permission.  The copyright holders make no representations
+about the suitability of this software for any purpose.  It is provided "as
+is" without express or implied warranty.
 
-The above copyright notice and this permission notice shall be included
-in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
-OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
-IN NO EVENT SHALL THE OPEN GROUP BE LIABLE FOR ANY CLAIM, DAMAGES OR
-OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
-ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
-OTHER DEALINGS IN THE SOFTWARE.
-
-Except as contained in this notice, the name of The Open Group shall
-not be used in advertising or otherwise to promote the sale, use or
-other dealings in this Software without prior written authorization
-from The Open Group.
-
-
-Copyright 1994 Hewlett-Packard Co.
-Copyright 1996, 1998  The Open Group
-
-Permission to use, copy, modify, distribute, and sell this software and its
-documentation for any purpose is hereby granted without fee, provided that
-the above copyright notice appear in all copies and that both that
-copyright notice and this permission notice appear in supporting
-documentation.
-
-The above copyright notice and this permission notice shall be included
-in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
-OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
-IN NO EVENT SHALL THE OPEN GROUP BE LIABLE FOR ANY CLAIM, DAMAGES OR
-OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
-ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
-OTHER DEALINGS IN THE SOFTWARE.
-
-Except as contained in this notice, the name of The Open Group shall
-not be used in advertising or otherwise to promote the sale, use or
-other dealings in this Software without prior written authorization
-from The Open Group.
-
-Copyright 1994 Hewlett-Packard Co.
-Copyright 1996, 1998  The Open Group
-
-Permission to use, copy, modify, distribute, and sell this software and its
-documentation for any purpose is hereby granted without fee, provided that
-the above copyright notice appear in all copies and that both that
-copyright notice and this permission notice appear in supporting
-documentation.
-
-The above copyright notice and this permission notice shall be included
-in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
-OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
-IN NO EVENT SHALL THE OPEN GROUP BE LIABLE FOR ANY CLAIM, DAMAGES OR
-OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
-ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
-OTHER DEALINGS IN THE SOFTWARE.
-
-Except as contained in this notice, the name of The Open Group shall
-not be used in advertising or otherwise to promote the sale, use or
-other dealings in this Software without prior written authorization
-from The Open Group.
-
- ------------------------------------------------------------------------ *
-Copyright 1994 Hewlett-Packard Co.
-Copyright 1996, 1998  The Open Group
-
-Permission to use, copy, modify, distribute, and sell this software and its
-documentation for any purpose is hereby granted without fee, provided that
-the above copyright notice appear in all copies and that both that
-copyright notice and this permission notice appear in supporting
-documentation.
-
-The above copyright notice and this permission notice shall be included
-in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
-OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
-IN NO EVENT SHALL THE OPEN GROUP BE LIABLE FOR ANY CLAIM, DAMAGES OR
-OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
-ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
-OTHER DEALINGS IN THE SOFTWARE.
-
-Except as contained in this notice, the name of The Open Group shall
-not be used in advertising or otherwise to promote the sale, use or
-other dealings in this Software without prior written authorization
-from The Open Group.
-
-    ------------------------------------------------------------------------ *
-
-
-Copyright 1987, 1998  The Open Group
-
-Permission to use, copy, modify, distribute, and sell this software and its
-documentation for any purpose is hereby granted without fee, provided that
-the above copyright notice appear in all copies and that both that
-copyright notice and this permission notice appear in supporting
-documentation.
-
-The above copyright notice and this permission notice shall be included in
-all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.  IN NO EVENT SHALL THE
-OPEN GROUP BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN
-AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
-CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-
-Except as contained in this notice, the name of The Open Group shall not be
-used in advertising or otherwise to promote the sale, use or other dealings
-in this Software without prior written authorization from The Open Group.
+THE COPYRIGHT HOLDERS DISCLAIM ALL WARRANTIES WITH REGARD TO THIS SOFTWARE,
+INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS, IN NO
+EVENT SHALL THE COPYRIGHT HOLDERS BE LIABLE FOR ANY SPECIAL, INDIRECT OR
+CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE,
+DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER
+TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE
+OF THIS SOFTWARE.
 
 
 
@@ -10787,62 +10627,7 @@ in this Software without prior written authorization from The Open Group.
 
 Files from the app/xwininfo package are covered by the following notice:
 
-
-Copyright 1993, 1998  The Open Group
-
-Permission to use, copy, modify, distribute, and sell this software and its
-documentation for any purpose is hereby granted without fee, provided that
-the above copyright notice appear in all copies and that both that
-copyright notice and this permission notice appear in supporting
-documentation.
-
-The above copyright notice and this permission notice shall be included
-in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
-OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
-IN NO EVENT SHALL THE OPEN GROUP BE LIABLE FOR ANY CLAIM, DAMAGES OR
-OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
-ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
-OTHER DEALINGS IN THE SOFTWARE.
-
-Except as contained in this notice, the name of The Open Group shall
-not be used in advertising or otherwise to promote the sale, use or
-other dealings in this Software without prior written authorization
-from The Open Group.
-
-
-
-
-Copyright 1993, 1998  The Open Group
-
-Permission to use, copy, modify, distribute, and sell this software and its
-documentation for any purpose is hereby granted without fee, provided that
-the above copyright notice appear in all copies and that both that
-copyright notice and this permission notice appear in supporting
-documentation.
-
-The above copyright notice and this permission notice shall be included
-in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
-OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
-IN NO EVENT SHALL THE OPEN GROUP BE LIABLE FOR ANY CLAIM, DAMAGES OR
-OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
-ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
-OTHER DEALINGS IN THE SOFTWARE.
-
-Except as contained in this notice, the name of The Open Group shall
-not be used in advertising or otherwise to promote the sale, use or
-other dealings in this Software without prior written authorization
-from The Open Group.
-
-
-
-
-Copyright 1987, 1998  The Open Group
+Copyright 1987, 1993, 1998  The Open Group
 Copyright 1999 Sun Microsystems, Inc.
 
 Permission to use, copy, modify, distribute, and sell this software and its
@@ -10869,7 +10654,25 @@ shall not be used in advertising or otherwise to promote the sale, use
 or other dealings in this Software without prior written authorization
 of the copyright holder.
 
+Copyright 2007 Kim woelders
 
+Permission to use, copy, modify, distribute, and sell this software and its
+documentation for any purpose is hereby granted without fee, provided that
+the above copyright notice appear in all copies and that both that copyright
+notice and this permission notice appear in supporting documentation, and
+that the name of the copyright holders not be used in advertising or
+publicity pertaining to distribution of the software without specific,
+written prior permission.  The copyright holders make no representations
+about the suitability of this software for any purpose.  It is provided "as
+is" without express or implied warranty.
+
+THE COPYRIGHT HOLDERS DISCLAIM ALL WARRANTIES WITH REGARD TO THIS SOFTWARE,
+INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS, IN NO
+EVENT SHALL THE COPYRIGHT HOLDERS BE LIABLE FOR ANY SPECIAL, INDIRECT OR
+CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE,
+DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER
+TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE
+OF THIS SOFTWARE.
 
 --------------------------------------------------------------------
 
@@ -11905,7 +11708,7 @@ vim:set ai et sw=4 sts=4 tw=72:
 
 Files from the lib/libXau package are covered by the following notice:
 
-Copyright 1988, 1998  The Open Group
+Copyright 1988, 1993, 1994, 1998  The Open Group
 
 Permission to use, copy, modify, distribute, and sell this software and its
 documentation for any purpose is hereby granted without fee, provided that
@@ -12847,7 +12650,9 @@ DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER
 TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
 PERFORMANCE OF THIS SOFTWARE.
 
------------------------Using </installer/core/miniroot/usr> as the package base directory.
+--------------------------------------------------------------------
+
+Files from the lib/lUsing </installer/trunk/core/miniroot/usr> as the package base directory.
 ## Processing package information.
 ## Processing system information.
    10 package pathnames are already properly installed.
@@ -12855,9 +12660,7 @@ PERFORMANCE OF THIS SOFTWARE.
 Installing X Window System platform software as <SUNWxwplt>
 
 ## Installing part 1 of 1.
----------------------------------------------
-
-Files from the lib/libxtrans package are covered by the following notice:
+ibxtrans package are covered by the following notice:
 
 Copyright 1993, 1994, 1998  The Open Group
 
@@ -13007,13 +12810,13 @@ DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
 OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE
 OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-33489 blocks
+33473 blocks
 
 Installation of <SUNWxwplt> was successful.
 
 Processing package instance <SUNWjpg> from </iso/Solaris_11/Product>
 
-jpeg - The Independent JPEG Groups JPEG software(i386) 20.2.22.1,REV=110.0.4.2008.08.11.03.39
+jpeg - The Independent JPEG Groups JPEG software(i386) 20.2.22.1,REV=110.0.4.2008.08.25.03.26
 For the avoidance of doubt, except that if any license choice other
 than GPL or LGPL is available it will apply instead, Sun elects to
 use only the General Public License version 2 (GPLv2) at this time
@@ -13173,7 +12976,7 @@ to distribute or change Ghostscript.
   1. You may copy and distribute verbatim copies of Ghostscript source
 code as you receive it, in any medium, provided that you conspicuously
 and appropriately publish on each copy a valid copyright and license
-notice "Copyright (C) 1989 AlUsing </installer/core/miniroot/usr> as the package base directory.
+notice "Copyright (C) 1989 AlUsing </installer/trunk/core/miniroot/usr> as the package base directory.
 ## Processing package information.
 ## Processing system information.
    5 package pathnames are already properly installed.
@@ -13289,8 +13092,8 @@ Installation of <SUNWjpg> was successful.
 
 Processing package instance <SUNWfreetype2> from </iso/Solaris_11/Product>
 
-FreeType2 Font library(i386) 6.9.0.5.11.9700,REV=0.2008.08.19
-Using </installer/core/miniroot/usr> as the package base directory.
+FreeType2 Font library(i386) 6.9.0.5.11.9800,REV=0.2008.08.28
+Using </installer/trunk/core/miniroot/usr> as the package base directory.
 ## Processing package information.
 ## Processing system information.
    12 package pathnames are already properly installed.
@@ -13478,8 +13281,8 @@ Installation of <SUNWfreetype2> was successful.
 
 Processing package instance <SUNWpng> from </iso/Solaris_11/Product>
 
-Portable Network Graphics library(i386) 20.2.22.1,REV=110.0.4.2008.08.11.03.31
-Using </installer/core/miniroot/usr> as the package base directory.
+Portable Network Graphics library(i386) 20.2.22.1,REV=110.0.4.2008.08.25.03.18
+Using </installer/trunk/core/miniroot/usr> as the package base directory.
 ## Processing package information.
 ## Processing system information.
    2 package pathnames are already properly installed.
@@ -13845,7 +13648,7 @@ export, re-export, or import as may be required after delivery to you.
 
 10. U.S. Government Restricted Rights.
 
-If Software is being acquired by or on behalf of the U.SUsing </installer/core/miniroot> as the package base directory.
+If Software is being acquired by or on behalf of the U.SUsing </installer/trunk/core/miniroot> as the package base directory.
 ## Processing package information.
 ## Processing system information.
    4 package pathnames are already properly installed.
@@ -13889,8 +13692,8 @@ Installation of <SUNWlibC> was successful.
 
 Processing package instance <SUNWrmvolmgr> from </iso/Solaris_11/Product>
 
-Removable volume manager(i386) 11.11,REV=2008.08.21.16.30
-Using </installer/core/miniroot> as the package base directory.
+Removable volume manager(i386) 11.11,REV=2008.09.04.21.33
+Using </installer/trunk/core/miniroot> as the package base directory.
 ## Processing package information.
 ## Processing system information.
    4 package pathnames are already properly installed.
@@ -13927,8 +13730,8 @@ Installation of <SUNWrmvolmgr> was successful.
 
 Processing package instance <SUNWusbs> from </iso/Solaris_11/Product>
 
-USB generic serial module(i386) 11.11,REV=2008.08.21.16.30
-Using </installer/core/miniroot> as the package base directory.
+USB generic serial module(i386) 11.11,REV=2008.09.04.21.33
+Using </installer/trunk/core/miniroot> as the package base directory.
 ## Processing package information.
 ## Processing system information.
    3 package pathnames are already properly installed.
@@ -13965,7 +13768,7 @@ Installation of <SUNWusbs> was successful.
 
 Processing package instance <SUNWmysql5r> from </iso/Solaris_11/Product>
 
-MySQL 5.0.45 - MySQL Database Management System (root component)(i386) 11.11.0,REV=2008.08.20.03.07
+MySQL 5.0.45 - MySQL Database Management System (root component)(i386) 11.11.0,REV=2008.09.03.02.18
 For the avoidance of doubt, except that if any license choice other
 than GPL or LGPL is available it will apply instead, Sun elects to
 use only the General Public License version 2 (GPLv2) at this time
@@ -14444,7 +14247,7 @@ which are covered by the FLOSS License Exception. Please note that
 this appendix is provided merely as an additional service to
 specific FLOSS projects wishing to simplify licensing information
 for their users. Compliance with one of the licenses noted under
-the "FLOSS license list" section remaiUsing </installer/core/miniroot> as the package base directory.
+the "FLOSS license list" section remaiUsing </installer/trunk/core/miniroot> as the package base directory.
 ## Processing package information.
 ## Processing system information.
    8 package pathnames are already properly installed.
@@ -14465,7 +14268,7 @@ Installation of <SUNWmysql5r> was successful.
 
 Processing package instance <SUNWmysql5u> from </iso/Solaris_11/Product>
 
-MySQL 5.0.45 - MySQL Database Management System (usr component)(i386) 11.11.0,REV=2008.08.20.03.07
+MySQL 5.0.45 - MySQL Database Management System (usr component)(i386) 11.11.0,REV=2008.09.03.02.18
 For the avoidance of doubt, except that if any license choice other
 than GPL or LGPL is available it will apply instead, Sun elects to
 use only the General Public License version 2 (GPLv2) at this time
@@ -14944,7 +14747,7 @@ which are covered by the FLOSS License Exception. Please note that
 this appendix is provided merely as an additional service to
 specific FLOSS projects wishing to simplify licensing information
 for their users. Compliance with one of the licenses noted under
-the "FLOSS license list" section remaiUsing </installer/core/miniroot> as the package base directory.
+the "FLOSS license list" section remaiUsing </installer/trunk/core/miniroot> as the package base directory.
 ## Processing package information.
 ## Processing system information.
    4 package pathnames are already properly installed.
@@ -14957,14 +14760,14 @@ ns a prerequisite.
 Package Name                  Qualifying License and Version
 Apache Portable Runtime (APR) Apache Software License 2.0
 
-509351 blocks
+485238 blocks
 
 Installation of <SUNWmysql5u> was successful.
 
 Processing package instance <SUNWgd2> from </iso/Solaris_11/Product>
 
-The Graphics Draw Library(i386) 11.11.0,REV=2008.08.20.03.07
-Using </installer/core/miniroot> as the package base directory.
+The Graphics Draw Library(i386) 11.11.0,REV=2008.09.03.02.18
+Using </installer/trunk/core/miniroot> as the package base directory.
 ## Processing package information.
 ## Processing system information.
    10 package pathnames are already properly installed.
@@ -15036,8 +14839,8 @@ Installation of <SUNWgd2> was successful.
 
 Processing package instance <SUNWfontconfig> from </iso/Solaris_11/Product>
 
-Fontconfig library(i386) 6.9.0.5.11.9700,REV=0.2008.08.19
-Using </installer/core/miniroot/usr> as the package base directory.
+Fontconfig library(i386) 6.9.0.5.11.9800,REV=0.2008.08.28
+Using </installer/trunk/core/miniroot/usr> as the package base directory.
 ## Processing package information.
 ## Processing system information.
    7 package pathnames are already properly installed.
@@ -15078,8 +14881,8 @@ Installation of <SUNWfontconfig> was successful.
 
 Processing package instance <SUNWnvsata> from </iso/Solaris_11/Product>
 
-Nvidia ck804 pro / mcp55 pro combo SATA driver(i386) 11.11,REV=2008.08.21.16.30
-Using </installer/core/miniroot> as the package base directory.
+Nvidia ck804 pro / mcp55 pro combo SATA driver(i386) 11.11,REV=2008.09.04.21.33
+Using </installer/trunk/core/miniroot> as the package base directory.
 ## Processing package information.
 ## Processing system information.
    3 package pathnames are already properly installed.
@@ -15118,7 +14921,7 @@ Installation of <SUNWnvsata> was successful.
 
 Processing package instance <SUNWmv88sx> from </iso/Solaris_11/Product>
 
-Marvell 88sx sata driver(i386) 11.11,REV=2008.08.21.16.30
+Marvell 88sx sata driver(i386) 11.11,REV=2008.09.04.21.33
 Copyright 2008 Sun Microsystems, Inc.  All rights reserved.
 Use is subject to license terms.
 
@@ -15288,7 +15091,7 @@ All Software, documents, technical data, and any other materials
 delivered under this Agreement are subject to U.S. export control laws 
 and may be subject to export or import regulations in other countries.  
 You agree to comply strictly with these laws and regulations and 
-acknowledge that you have the responsibility tUsing </installer/core/miniroot> as the package base directory.
+acknowledge that you have the responsibility tUsing </installer/trunk/core/miniroot> as the package base directory.
 ## Processing package information.
 ## Processing system information.
    3 package pathnames are already properly installed.
@@ -15339,8 +15142,8 @@ Installation of <SUNWmv88sx> was successful.
 
 Processing package instance <SUNWahci> from </iso/Solaris_11/Product>
 
-Advanced Host Controller Interface (AHCI) SATA HBA Driver(i386) 11.11,REV=2008.08.21.16.30
-Using </installer/core/miniroot> as the package base directory.
+Advanced Host Controller Interface (AHCI) SATA HBA Driver(i386) 11.11,REV=2008.09.04.21.33
+Using </installer/trunk/core/miniroot> as the package base directory.
 ## Processing package information.
 ## Processing system information.
    3 package pathnames are already properly installed.
@@ -15379,8 +15182,8 @@ Installation of <SUNWahci> was successful.
 
 Processing package instance <SUNWsi3124> from </iso/Solaris_11/Product>
 
-SiliconImage 3124 sata driver(i386) 11.11,REV=2008.08.21.16.30
-Using </installer/core/miniroot> as the package base directory.
+SiliconImage 3124 sata driver(i386) 11.11,REV=2008.09.04.21.33
+Using </installer/trunk/core/miniroot> as the package base directory.
 ## Processing package information.
 ## Processing system information.
    3 package pathnames are already properly installed.
@@ -15419,8 +15222,8 @@ Installation of <SUNWsi3124> was successful.
 
 Processing package instance <SUNWpcre> from </iso/Solaris_11/Product>
 
-Perl-Compatible Regular Expressions(i386) 11.11.0,REV=2008.08.20.03.07
-Using </installer/core/miniroot> as the package base directory.
+Perl-Compatible Regular Expressions(i386) 11.11.0,REV=2008.09.03.02.18
+Using </installer/trunk/core/miniroot> as the package base directory.
 ## Processing package information.
 ## Processing system information.
    13 package pathnames are already properly installed.
@@ -15499,13 +15302,13 @@ POSSIBILITY OF SUCH DAMAGE.
 
 End
 
-2799 blocks
+2800 blocks
 
 Installation of <SUNWpcre> was successful.
 
 Processing package instance <SUNWadmr> from </iso/Solaris_11/Product>
 
-System & Network Administration Root(i386) 11.11,REV=2008.08.20.02.57
+System & Network Administration Root(i386) 11.11,REV=2008.09.03.02.57
 Copyright 2008 Sun Microsystems, Inc.  All rights reserved.
 Use is subject to license terms.
 
@@ -15584,7 +15387,7 @@ SUN MICROSYSTEMS, INC. ("SUN") IS WILLING TO LICENSE THE SOFTWARE TO YOU ONLY UP
 
     All Software, documents, technical data, and any other materials delivered under this Agreement are subject to U.S. export control laws and may be subject to export or import regulations in other countries. You agree to comply strictly with these laws and regulations and acknowledge that you have the responsibility to obtain any licenses to export, re-export, or import as may be required after delivery to you.
 
-10. U.S. Government RestrictUsing </installer/core/miniroot> as the package base directory.
+10. U.S. Government RestrictUsing </installer/trunk/core/miniroot> as the package base directory.
 ## Processing package information.
 ## Processing system information.
    14 package pathnames are already properly installed.
@@ -15616,8 +15419,8 @@ Installation of <SUNWadmr> was successful.
 
 Processing package instance <SUNWwgetr> from </iso/Solaris_11/Product>
 
-GNU wget - utility to retrieve files from the World Wide Web (root)(i386) 11.11.0,REV=2008.08.20.03.07
-Using </installer/core/miniroot> as the package base directory.
+GNU wget - utility to retrieve files from the World Wide Web (root)(i386) 11.11.0,REV=2008.09.03.02.18
+Using </installer/trunk/core/miniroot> as the package base directory.
 ## Processing package information.
 ## Processing system information.
    1 package pathname is already properly installed.
@@ -15657,8 +15460,8 @@ Installation of <SUNWwgetr> was successful.
 
 Processing package instance <SUNWwgetu> from </iso/Solaris_11/Product>
 
-wget - GNU wget(i386) 11.11.0,REV=2008.08.20.03.07
-Using </installer/core/miniroot> as the package base directory.
+wget - GNU wget(i386) 11.11.0,REV=2008.09.03.02.18
+Using </installer/trunk/core/miniroot> as the package base directory.
 ## Processing package information.
 ## Processing system information.
    7 package pathnames are already properly installed.
@@ -15697,8 +15500,8 @@ Installation of <SUNWwgetu> was successful.
 
 Processing package instance <SUNWiscsiu> from </iso/Solaris_11/Product>
 
-Sun iSCSI Management Utilities (usr)(i386) 11.11,REV=2008.08.17.16.55
-Using </installer/core/miniroot> as the package base directory.
+Sun iSCSI Management Utilities (usr)(i386) 11.11,REV=2008.08.31.20.08
+Using </installer/trunk/core/miniroot> as the package base directory.
 ## Processing package information.
 ## Processing system information.
    2 package pathnames are already properly installed.
@@ -15730,8 +15533,8 @@ Installation of <SUNWiscsiu> was successful.
 
 Processing package instance <SUNWiscsir> from </iso/Solaris_11/Product>
 
-Sun iSCSI Device Driver (root)(i386) 11.11,REV=2008.08.17.16.55
-Using </installer/core/miniroot> as the package base directory.
+Sun iSCSI Device Driver (root)(i386) 11.11,REV=2008.08.31.20.08
+Using </installer/trunk/core/miniroot> as the package base directory.
 ## Processing package information.
 ## Processing system information.
    12 package pathnames are already properly installed.
@@ -15757,7 +15560,7 @@ file and include the License file at src/sun_nws/OPENSOLARIS.LICENSE.
 If applicable, add the following below this CDDL HEADER, with the
 fields enclosed by brackets "[]" replaced with your own identifying
 information: Portions Copyright [yyyy] [name of copyright owner]
-1838 blocks
+1829 blocks
 [ verifying class <manifest> ]
 [ verifying class <rbac> ]
 [ verifying class <iscsiconf> ]
@@ -15768,8 +15571,8 @@ Installation of <SUNWiscsir> was successful.
 
 Processing package instance <SUNWiscsitgtr> from </iso/Solaris_11/Product>
 
-Sun iSCSI Target (Root)(i386) 11.11,REV=2008.08.21.16.30
-Using </installer/core/miniroot> as the package base directory.
+Sun iSCSI Target (Root)(i386) 11.11,REV=2008.09.04.21.33
+Using </installer/trunk/core/miniroot> as the package base directory.
 ## Processing package information.
 ## Processing system information.
    10 package pathnames are already properly installed.
@@ -15807,8 +15610,8 @@ Installation of <SUNWiscsitgtr> was successful.
 
 Processing package instance <SUNWiscsitgtu> from </iso/Solaris_11/Product>
 
-Sun iSCSI Target (Usr)(i386) 11.11,REV=2008.08.21.16.30
-Using </installer/core/miniroot> as the package base directory.
+Sun iSCSI Target (Usr)(i386) 11.11,REV=2008.09.04.21.33
+Using </installer/trunk/core/miniroot> as the package base directory.
 ## Processing package information.
 ## Processing system information.
    6 package pathnames are already properly installed.
@@ -15839,13 +15642,13 @@ fields enclosed by brackets "[]" replaced with your own identifying
 information: Portions Copyright [yyyy] [name of copyright owner]
 
 CDDL HEADER END
-1836 blocks
+1837 blocks
 
 Installation of <SUNWiscsitgtu> was successful.
 
 Processing package instance <SUNWcupsu> from </iso/Solaris_11/Product>
 
-CUPS (usr)(i386) 11.11.0,REV=2008.08.20.03.07
+CUPS (usr)(i386) 11.11.0,REV=2008.09.03.02.18
 For the avoidance of doubt, except that if any license choice other
 than GPL or LGPL is available it will apply instead, Sun elects to
 use only the General Public License version 2 (GPLv2) at this time
@@ -16816,7 +16619,7 @@ You should also get your employer (if you work as a programmer) or your
 school, if any, to sign a "copyright disclaimer" for the library, if
 necessary.  Here is a sample; alter the names:
 
-  YUsing </installer/core/miniroot> as the package base directory.
+  YUsing </installer/trunk/core/miniroot> as the package base directory.
 ## Processing package information.
 ## Processing system information.
    32 package pathnames are already properly installed.
@@ -16880,8 +16683,8 @@ Installation of <SUNWcupsu> was successful.
 
 Processing package instance <SUNWafe> from </iso/Solaris_11/Product>
 
-ADMtek Ethernet Driver(i386) 11.11,REV=2008.08.21.16.30
-Using </installer/core/miniroot> as the package base directory.
+ADMtek Ethernet Driver(i386) 11.11,REV=2008.09.04.21.33
+Using </installer/trunk/core/miniroot> as the package base directory.
 ## Processing package information.
 ## Processing system information.
    3 package pathnames are already properly installed.
@@ -16928,8 +16731,8 @@ Installation of <SUNWafe> was successful.
 
 Processing package instance <SUNWamd8111s> from </iso/Solaris_11/Product>
 
-AMD8111 Fast Ethernet Driver(i386) 11.11,REV=2008.08.21.16.30
-Using </installer/core/miniroot> as the package base directory.
+AMD8111 Fast Ethernet Driver(i386) 11.11,REV=2008.09.04.21.33
+Using </installer/trunk/core/miniroot> as the package base directory.
 ## Processing package information.
 ## Processing system information.
    3 package pathnames are already properly installed.
@@ -16996,7 +16799,7 @@ Installation of <SUNWamd8111s> was successful.
 
 Processing package instance <SUNWpcelx> from </iso/Solaris_11/Product>
 
-3COM EtherLink III PCMCIA Ethernet Driver(i386) 11.11,REV=2008.08.21.16.30
+3COM EtherLink III PCMCIA Ethernet Driver(i386) 11.11,REV=2008.09.04.21.33
 Copyright 2008 Sun Microsystems, Inc.  All rights reserved.
 Use is subject to license terms.
 
@@ -17166,7 +16969,7 @@ All Software, documents, technical data, and any other materials
 delivered under this Agreement are subject to U.S. export control laws 
 and may be subject to export or import regulations in other countries.  
 You agree to comply strictly with these laws and regulations and 
-acknowledge that you have the responsibility tUsing </installer/core/miniroot> as the package base directory.
+acknowledge that you have the responsibility tUsing </installer/trunk/core/miniroot> as the package base directory.
 ## Processing package information.
 ## Processing system information.
    3 package pathnames are already properly installed.
@@ -17217,8 +17020,8 @@ Installation of <SUNWpcelx> was successful.
 
 Processing package instance <SUNWrge> from </iso/Solaris_11/Product>
 
-Realtek Gigabit Ethernet Driver(i386) 11.11,REV=2008.08.21.16.30
-Using </installer/core/miniroot> as the package base directory.
+Realtek Gigabit Ethernet Driver(i386) 11.11,REV=2008.09.04.21.33
+Using </installer/trunk/core/miniroot> as the package base directory.
 ## Processing package information.
 ## Processing system information.
    3 package pathnames are already properly installed.
@@ -17257,8 +17060,8 @@ Installation of <SUNWrge> was successful.
 
 Processing package instance <SUNWsfe> from </iso/Solaris_11/Product>
 
-SiS900 Ethernet Driver(i386) 11.11,REV=2008.08.21.16.30
-Using </installer/core/miniroot> as the package base directory.
+SiS900 Ethernet Driver(i386) 11.11,REV=2008.09.04.21.33
+Using </installer/trunk/core/miniroot> as the package base directory.
 ## Processing package information.
 ## Processing system information.
    3 package pathnames are already properly installed.
@@ -17304,8 +17107,8 @@ Installation of <SUNWsfe> was successful.
 
 Processing package instance <SUNWbge> from </iso/Solaris_11/Product>
 
-Broadcom 57xx GE NIC Driver(i386) 11.11,REV=2008.08.21.16.30
-Using </installer/core/miniroot> as the package base directory.
+Broadcom 57xx GE NIC Driver(i386) 11.11,REV=2008.09.04.21.33
+Using </installer/trunk/core/miniroot> as the package base directory.
 ## Processing package information.
 ## Processing system information.
    3 package pathnames are already properly installed.
@@ -17344,8 +17147,8 @@ Installation of <SUNWbge> was successful.
 
 Processing package instance <SUNWigb> from </iso/Solaris_11/Product>
 
-Intel 82575 1Gb PCI Express NIC Driver(i386) 11.11,REV=2008.08.21.16.30
-Using </installer/core/miniroot> as the package base directory.
+Intel 82575 1Gb PCI Express NIC Driver(i386) 11.11,REV=2008.09.04.21.33
+Using </installer/trunk/core/miniroot> as the package base directory.
 ## Processing package information.
 ## Processing system information.
    3 package pathnames are already properly installed.
@@ -17385,7 +17188,7 @@ Installation of <SUNWigb> was successful.
 
 Processing package instance <SUNWrtls> from </iso/Solaris_11/Product>
 
-REALTEK Fast NIC(i386) 11.11,REV=2008.08.21.16.30
+REALTEK Fast NIC(i386) 11.11,REV=2008.09.04.21.33
 Copyright 2008 Sun Microsystems, Inc.  All rights reserved.
 Use is subject to license terms.
 
@@ -17555,7 +17358,7 @@ All Software, documents, technical data, and any other materials
 delivered under this Agreement are subject to U.S. export control laws 
 and may be subject to export or import regulations in other countries.  
 You agree to comply strictly with these laws and regulations and 
-acknowledge that you have the responsibility tUsing </installer/core/miniroot> as the package base directory.
+acknowledge that you have the responsibility tUsing </installer/trunk/core/miniroot> as the package base directory.
 ## Processing package information.
 ## Processing system information.
    3 package pathnames are already properly installed.
@@ -17607,8 +17410,8 @@ Installation of <SUNWrtls> was successful.
 
 Processing package instance <SUNWsqlite3> from </iso/Solaris_11/Product>
 
-SQLite3(i386) 11.11.0,REV=2008.08.20.03.07
-Using </installer/core/miniroot> as the package base directory.
+SQLite3(i386) 11.11.0,REV=2008.09.03.02.18
+Using </installer/trunk/core/miniroot> as the package base directory.
 ## Processing package information.
 ## Processing system information.
    10 package pathnames are already properly installed.
@@ -17688,6 +17491,314 @@ A template copyright release is available in PDF or HTML. You can use
 this release to make future changes.  This page last modified 2007/11/14
 15:25:42 UTC
 
-2841 blocks
+2840 blocks
 
 Installation of <SUNWsqlite3> was successful.
+
+Processing package instance <SUNWperl584core> from </iso/Solaris_11/Product>
+
+Perl 5.8.4 (core)(i386) 11.11,REV=2008.09.04.21.33
+Using </installer/trunk/core/miniroot> as the package base directory.
+## Processing package information.
+## Processing system information.
+   2 package pathnames are already properly installed.
+
+Installing Perl 5.8.4 (core) as <SUNWperl584core>
+
+## Installing part 1 of 1.
+Copyright 2008 Sun Microsystems, Inc.  All rights reserved.
+Use is subject to license terms.
+
+--------------------------------------------------------------------
+
+The "Artistic License"
+  Preamble
+    The intent of this document is to state the conditions under which a
+    Package may be copied, such that the Copyright Holder maintains some
+    semblance of artistic control over the development of the package, while
+    giving the users of the package the right to use and distribute the
+    Package in a more-or-less customary fashion, plus the right to make
+    reasonable modifications.
+
+  Definitions
+    "Package"
+        refers to the collection of files distributed by the Copyright
+        Holder, and derivatives of that collection of files created through
+        textual modification.
+
+    "Standard Version"
+        refers to such a Package if it has not been modified, or has been
+        modified in accordance with the wishes of the Copyright Holder as
+        specified below.
+
+    "Copyright Holder"
+        is whoever is named in the copyright or copyrights for the package.
+
+    "You"
+        is you, if you're thinking about copying or distributing this
+        Package.
+
+    "Reasonable copying fee"
+        is whatever you can justify on the basis of media cost, duplication
+        charges, time of people involved, and so on. (You will not be
+        required to justify it to the Copyright Holder, but only to the
+        computing community at large as a market that must bear the fee.)
+
+    "Freely Available"
+        means that no fee is charged for the item itself, though there may
+        be fees involved in handling the item. It also means that recipients
+        of the item may redistribute it under the same conditions they
+        received it.
+
+  Conditions
+    1.  You may make and give away verbatim copies of the source form of the
+        Standard Version of this Package without restriction, provided that
+        you duplicate all of the original copyright notices and associated
+        disclaimers.
+
+    2.  You may apply bug fixes, portability fixes and other modifications
+        derived from the Public Domain or from the Copyright Holder. A
+        Package modified in such a way shall still be considered the
+        Standard Version.
+
+    3.  You may otherwise modify your copy of this Package in any way,
+        provided that you insert a prominent notice in each changed file
+        stating how and when you changed that file, and provided that you do
+        at least ONE of the following:
+
+        a)  place your modifications in the Public Domain or otherwise make
+            them Freely Available, such as by posting said modifications to
+            Usenet or an equivalent medium, or placing the modifications on
+            a major archive site such as uunet.uu.net, or by allowing the
+            Copyright Holder to include your modifications in the Standard
+            Version of the Package.
+
+        b)  use the modified Package only within your corporation or
+            organization.
+
+        c)  rename any non-standard executables so the names do not conflict
+            with standard executables, which must also be provided, and
+            provide a separate manual page for each non-standard executable
+            that clearly documents how it differs from the Standard Version.
+
+        d)  make other distribution arrangements with the Copyright Holder.
+
+    4.  You may distribute the programs of this Package in object code or
+        executable form, provided that you do at least ONE of the following:
+
+        a)  distribute a Standard Version of the executables and library
+            files, together with instructions (in the manual page or
+            equivalent) on where to get the Standard Version.
+
+        b)  accompany the distribution with the machine-readable source of
+            the Package with your modifications.
+
+        c)  give non-standard executables non-standard names, and clearly
+            document the differences in manual pages (or equivalent),
+            together with instructions on where to get the Standard Version.
+
+        d)  make other distribution arrangements with the Copyright Holder.
+
+    5.  You may charge a reasonable copying fee for any distribution of this
+        Package. You may charge any fee you choose for support of this
+        Package. You may not charge a fee for this Package itself. However,
+        you may distribute this Package in aggregate with other (possibly
+        commercial) programs as part of a larger (possibly commercial)
+        software distribution provided that you do not advertise this
+        Package as a product of your own. You may embed this Package's
+        interpreter within an executable of yours (by linking); this shall
+        be construed as a mere form of aggregation, provided that the
+        complete Standard Version of the interpreter is so embedded.
+
+    6.  The scripts and library files supplied as input to or produced as
+        output from the programs of this Package do not automatically fall
+        under the copyright of this Package, but belong to whoever generated
+        them, and may be sold commercially, and may be aggregated with this
+        Package. If such scripts or library files are aggregated with this
+        Package via the so-called "undump" or "unexec" methods of producing
+        a binary executable image, then distribution of such an image shall
+        neither be construed as a distribution of this Package nor shall it
+        fall under the restrictions of Paragraphs 3 and 4, provided that you
+        do not represent such an executable image as a Standard Version of
+        this Package.
+
+    7.  C subroutines (or comparably compiled subroutines in other
+        languages) supplied by you and linked into this Package in order to
+        emulate subroutines and variables of the language defined by this
+        Package shall not be considered part of this Package, but are the
+        equivalent of input as in Paragraph 6, provided these subroutines do
+        not change the language in any way that would cause it to fail the
+        regression tests for the language.
+
+    8.  Aggregation of this Package with a commercial distribution is always
+        permitted provided that the use of this Package is embedded; that
+        is, when no overt attempt is made to make this Package's interfaces
+        visible to the end user of the commercial distribution. Such use
+        shall not be construed as a distribution of this Package.
+
+    9.  The name of the Copyright Holder may not be used to endorse or
+        promote products derived from this software without specific prior
+        written permission.
+
+    10. THIS PACKAGE IS PROVIDED "AS IS" AND WITHOUT ANY EXPRESS OR IMPLIED
+        WARRANTIES, INCLUDING, WITHOUT LIMITATION, THE IMPLIED WARRANTIES OF
+        MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE.
+
+    The End
+9044 blocks
+
+Installation of <SUNWperl584core> was successful.
+
+Processing package instance <SUNWperl584usr> from </iso/Solaris_11/Product>
+
+Perl 5.8.4 (non-core)(i386) 11.11,REV=2008.09.04.21.33
+Using </installer/trunk/core/miniroot> as the package base directory.
+## Processing package information.
+## Processing system information.
+   14 package pathnames are already properly installed.
+
+Installing Perl 5.8.4 (non-core) as <SUNWperl584usr>
+
+## Installing part 1 of 1.
+Copyright 2008 Sun Microsystems, Inc.  All rights reserved.
+Use is subject to license terms.
+
+--------------------------------------------------------------------
+
+The "Artistic License"
+  Preamble
+    The intent of this document is to state the conditions under which a
+    Package may be copied, such that the Copyright Holder maintains some
+    semblance of artistic control over the development of the package, while
+    giving the users of the package the right to use and distribute the
+    Package in a more-or-less customary fashion, plus the right to make
+    reasonable modifications.
+
+  Definitions
+    "Package"
+        refers to the collection of files distributed by the Copyright
+        Holder, and derivatives of that collection of files created through
+        textual modification.
+
+    "Standard Version"
+        refers to such a Package if it has not been modified, or has been
+        modified in accordance with the wishes of the Copyright Holder as
+        specified below.
+
+    "Copyright Holder"
+        is whoever is named in the copyright or copyrights for the package.
+
+    "You"
+        is you, if you're thinking about copying or distributing this
+        Package.
+
+    "Reasonable copying fee"
+        is whatever you can justify on the basis of media cost, duplication
+        charges, time of people involved, and so on. (You will not be
+        required to justify it to the Copyright Holder, but only to the
+        computing community at large as a market that must bear the fee.)
+
+    "Freely Available"
+        means that no fee is charged for the item itself, though there may
+        be fees involved in handling the item. It also means that recipients
+        of the item may redistribute it under the same conditions they
+        received it.
+
+  Conditions
+    1.  You may make and give away verbatim copies of the source form of the
+        Standard Version of this Package without restriction, provided that
+        you duplicate all of the original copyright notices and associated
+        disclaimers.
+
+    2.  You may apply bug fixes, portability fixes and other modifications
+        derived from the Public Domain or from the Copyright Holder. A
+        Package modified in such a way shall still be considered the
+        Standard Version.
+
+    3.  You may otherwise modify your copy of this Package in any way,
+        provided that you insert a prominent notice in each changed file
+        stating how and when you changed that file, and provided that you do
+        at least ONE of the following:
+
+        a)  place your modifications in the Public Domain or otherwise make
+            them Freely Available, such as by posting said modifications to
+            Usenet or an equivalent medium, or placing the modifications on
+            a major archive site such as uunet.uu.net, or by allowing the
+            Copyright Holder to include your modifications in the Standard
+            Version of the Package.
+
+        b)  use the modified Package only within your corporation or
+            organization.
+
+        c)  rename any non-standard executables so the names do not conflict
+            with standard executables, which must also be provided, and
+            provide a separate manual page for each non-standard executable
+            that clearly documents how it differs from the Standard Version.
+
+        d)  make other distribution arrangements with the Copyright Holder.
+
+    4.  You may distribute the programs of this Package in object code or
+        executable form, provided that you do at least ONE of the following:
+
+        a)  distribute a Standard Version of the executables and library
+            files, together with instructions (in the manual page or
+            equivalent) on where to get the Standard Version.
+
+        b)  accompany the distribution with the machine-readable source of
+            the Package with your modifications.
+
+        c)  give non-standard executables non-standard names, and clearly
+            document the differences in manual pages (or equivalent),
+            together with instructions on where to get the Standard Version.
+
+        d)  make other distribution arrangements with the Copyright Holder.
+
+    5.  You may charge a reasonable copying fee for any distribution of this
+        Package. You may charge any fee you choose for support of this
+        Package. You may not charge a fee for this Package itself. However,
+        you may distribute this Package in aggregate with other (possibly
+        commercial) programs as part of a larger (possibly commercial)
+        software distribution provided that you do not advertise this
+        Package as a product of your own. You may embed this Package's
+        interpreter within an executable of yours (by linking); this shall
+        be construed as a mere form of aggregation, provided that the
+        complete Standard Version of the interpreter is so embedded.
+
+    6.  The scripts and library files supplied as input to or produced as
+        output from the programs of this Package do not automatically fall
+        under the copyright of this Package, but belong to whoever generated
+        them, and may be sold commercially, and may be aggregated with this
+        Package. If such scripts or library files are aggregated with this
+        Package via the so-called "undump" or "unexec" methods of producing
+        a binary executable image, then distribution of such an image shall
+        neither be construed as a distribution of this Package nor shall it
+        fall under the restrictions of Paragraphs 3 and 4, provided that you
+        do not represent such an executable image as a Standard Version of
+        this Package.
+
+    7.  C subroutines (or comparably compiled subroutines in other
+        languages) supplied by you and linked into this Package in order to
+        emulate subroutines and variables of the language defined by this
+        Package shall not be considered part of this Package, but are the
+        equivalent of input as in Paragraph 6, provided these subroutines do
+        not change the language in any way that would cause it to fail the
+        regression tests for the language.
+
+    8.  Aggregation of this Package with a commercial distribution is always
+        permitted provided that the use of this Package is embedded; that
+        is, when no overt attempt is made to make this Package's interfaces
+        visible to the end user of the commercial distribution. Such use
+        shall not be construed as a distribution of this Package.
+
+    9.  The name of the Copyright Holder may not be used to endorse or
+        promote products derived from this software without specific prior
+        written permission.
+
+    10. THIS PACKAGE IS PROVIDED "AS IS" AND WITHOUT ANY EXPRESS OR IMPLIED
+        WARRANTIES, INCLUDING, WITHOUT LIMITATION, THE IMPLIED WARRANTIES OF
+        MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE.
+
+    The End
+39125 blocks
+
+Installation of <SUNWperl584usr> was successful.
