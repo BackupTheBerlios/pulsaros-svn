@@ -27,7 +27,7 @@ mv $HOME/core/stage2/pulsar_core.tar $HOME/installer/stage2/
 
 # Build the updater package
 echo "1.1. Step - Build the updater package for pulsar \n\n"
-if [ -f $HOME/updates/latest.tar.gz ]; then
+if [ -f /installer/updates/latest.tar.gz ]; then
   rm $HOME/updates/latest.tar.gz
 fi
 cp $HOME/installer/stage2/usr.tar $HOME/updates/latest.tar
