@@ -30,13 +30,18 @@ echo "1.1. Step - Build the updater package for pulsar \n\n"
 if [ -f /installer/updates/latest.tar.gz ]; then
   rm $HOME/updates/latest.tar.gz
 fi
-cp $HOME/installer/stage2/usr.tar $HOME/updates/latest.tar
-cp $HOME/core/stage2/boot/os.gz $HOME/updates/ 
-cp $HOME/core/stage2/boot/platform/i86pc/kernel/unix $HOME/updates/
-cd $HOME/updates
+cp $HOME/installer/stage2/usr.tar /installer/updates/latest.tar
+cp $HOME/core/stage2/boot/os.gz /installer/updates/ 
+cp $HOME/core/stage2/boot/platform/i86pc/kernel/unix /installer/updates/
+cd /installer/updates
 tar -uf latest.tar os.gz unix
 gzip -9 latest.tar
 rm os.gz unix
+
+# cleanup
+rm $HOME/core/stage2/boot/os.gz
+rm $HOME/core/boot/os.gz
+
 
 # Build the pulsar installer image
 echo "2. Step - Building the pulsar installer image\n\n"
