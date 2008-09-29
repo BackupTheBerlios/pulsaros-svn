@@ -179,7 +179,7 @@ make-boot-archive:
      [exec] 	creating grub/menu.lst
 
 BUILD SUCCESSFUL
-Total time: 3 minutes 38 seconds
+Total time: 3 minutes 37 seconds
 Buildfile: build.xml
 
 init:
@@ -312,48 +312,38 @@ check-miniroot-populated:
 
 make-boot-archive:
      [exec] 	creating miniroot_archive
-     [exec] rm: /installer/trunk/installer/boot/opensolaris.gz: No such file or directory
      [exec] 	creating grub/menu.lst
 
 BUILD SUCCESSFUL
-Total time: 1 minute 28 seconds
+Total time: 1 minute 33 seconds
 Setting input-charset to 'ISO8859-1' from locale.
 Size of boot image is 4 sectors -> No emulation
-  3.10% done, estimate finish Mon Sep 29 19:24:45 2008
-  6.19% done, estimate finish Mon Sep 29 19:25:01 2008
-  9.29% done, estimate finish Mon Sep 29 19:24:45 2008
- 12.37% done, estimate finish Mon Sep 29 19:24:45 2008
- 15.47% done, estimate finish Mon Sep 29 19:24:39 2008
- 18.56% done, estimate finish Mon Sep 29 19:24:34 2008
- 21.65% done, estimate finish Mon Sep 29 19:24:27 2008
- 24.74% done, estimate finish Mon Sep 29 19:24:25 2008
- 27.84% done, estimate finish Mon Sep 29 19:24:42 2008
- 30.93% done, estimate finish Mon Sep 29 19:24:39 2008
- 34.02% done, estimate finish Mon Sep 29 19:24:36 2008
- 37.11% done, estimate finish Mon Sep 29 19:24:34 2008
- 40.21% done, estimate finish Mon Sep 29 19:24:33 2008
- 43.29% done, estimate finish Mon Sep 29 19:24:31 2008
- 46.39% done, estimate finish Mon Sep 29 19:24:32 2008
- 49.48% done, estimate finish Mon Sep 29 19:24:31 2008
- 52.58% done, estimate finish Mon Sep 29 19:24:30 2008
- 55.66% done, estimate finish Mon Sep 29 19:24:33 2008
- 58.76% done, estimate finish Mon Sep 29 19:24:32 2008
- 61.85% done, estimate finish Mon Sep 29 19:24:31 2008
- 64.94% done, estimate finish Mon Sep 29 19:24:30 2008
- 68.03% done, estimate finish Mon Sep 29 19:24:29 2008
- 71.13% done, estimate finish Mon Sep 29 19:24:30 2008
- 74.22% done, estimate finish Mon Sep 29 19:24:29 2008
- 77.31% done, estimate finish Mon Sep 29 19:24:28 2008
- 80.40% done, estimate finish Mon Sep 29 19:24:29 2008
- 83.50% done, estimate finish Mon Sep 29 19:24:28 2008
- 86.59% done, estimate finish Mon Sep 29 19:24:28 2008
- 89.68% done, estimate finish Mon Sep 29 19:24:28 2008
- 92.78% done, estimate finish Mon Sep 29 19:24:28 2008
- 95.86% done, estimate finish Mon Sep 29 19:24:27 2008
- 98.95% done, estimate finish Mon Sep 29 19:24:27 2008
+  4.26% done, estimate finish Mon Sep 29 20:43:15 2008
+  8.50% done, estimate finish Mon Sep 29 20:42:52 2008
+ 12.76% done, estimate finish Mon Sep 29 20:42:44 2008
+ 17.00% done, estimate finish Mon Sep 29 20:42:40 2008
+ 21.26% done, estimate finish Mon Sep 29 20:42:42 2008
+ 25.50% done, estimate finish Mon Sep 29 20:42:40 2008
+ 29.76% done, estimate finish Mon Sep 29 20:42:38 2008
+ 34.00% done, estimate finish Mon Sep 29 20:42:37 2008
+ 38.25% done, estimate finish Mon Sep 29 20:42:38 2008
+ 42.50% done, estimate finish Mon Sep 29 20:42:37 2008
+ 46.75% done, estimate finish Mon Sep 29 20:42:37 2008
+ 51.00% done, estimate finish Mon Sep 29 20:42:38 2008
+ 55.25% done, estimate finish Mon Sep 29 20:42:37 2008
+ 59.50% done, estimate finish Mon Sep 29 20:42:36 2008
+ 63.75% done, estimate finish Mon Sep 29 20:42:37 2008
+ 67.99% done, estimate finish Mon Sep 29 20:42:37 2008
+ 72.25% done, estimate finish Mon Sep 29 20:42:38 2008
+ 76.49% done, estimate finish Mon Sep 29 20:42:38 2008
+ 80.75% done, estimate finish Mon Sep 29 20:42:39 2008
+ 85.00% done, estimate finish Mon Sep 29 20:42:44 2008
+ 89.24% done, estimate finish Mon Sep 29 20:42:43 2008
+ 93.50% done, estimate finish Mon Sep 29 20:42:41 2008
+ 97.74% done, estimate finish Mon Sep 29 20:42:40 2008
 Total translation table size: 2048
 Total rockridge attributes bytes: 25172
 Total directory bytes: 163840
 Path table size(bytes): 1162
 Max brk space used 3c000
-161690 extents written (315 MB)
+117661 extents written (229 MB)

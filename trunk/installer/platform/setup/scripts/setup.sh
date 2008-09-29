@@ -127,7 +127,7 @@ config_os()
         # ===========================
 	if [ ! -f /coreroot/.installed ]; then
  	  printf "Pulsar os not installed, please install the os first! - Press Return to Continue... "
-	  read UNK
+	  read JUNK
 	  clear
 	  Main_Menu	
 	fi

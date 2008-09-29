@@ -28,7 +28,7 @@ mv $HOME/core/stage2/pulsar_core.tar $HOME/installer/stage2/
 # Build the updater package
 echo "1.1. Step - Build the updater package for pulsar \n\n"
 if [ -f /installer/updates/latest.tar.gz ]; then
-  rm $HOME/updates/latest.tar.gz
+  rm /installer/updates/latest.tar.gz
 fi
 cp $HOME/installer/stage2/usr.tar /installer/updates/latest.tar
 cp $HOME/core/stage2/boot/os.gz /installer/updates/ 
@@ -41,6 +41,7 @@ rm os.gz unix
 # cleanup
 rm $HOME/core/stage2/boot/os.gz
 rm $HOME/core/boot/os.gz
+rm -r $HOME/core/miniroot
 
 
 # Build the pulsar installer image
@@ -57,3 +58,10 @@ echo "3. Step - Creating the pulsar installer cd\n\n"
 cd /
 mkisofs -R -b boot/grub/stage2_eltorito -no-emul-boot -boot-load-size 4 -boot-info-table -o $HOME/pulsar_v1.iso $HOME/installer/stage2 >> $HOME/install.log 2>&1
 echo "Creation of the pulsar installer cd ready"
+
+# cleanup
+rm $HOME/installer/boot/opensolaris.gz
+rm $HOME/installer/stage2/pulsar_core.tar
+rm $HOME/installer/stage2/usr.tar
+rm $HOME/installer/stage2/boot/opensolaris.gz
+rm -r $HOME/installer/miniroot

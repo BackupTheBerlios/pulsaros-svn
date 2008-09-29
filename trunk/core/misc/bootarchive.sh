@@ -52,7 +52,9 @@ rm /installer/tmp.tar
 cd /
 umount /pulsar_boot
 lofiadm -d /dev/lofi/1
-rm ${BASEDIR}/boot/${IMAGE}.gz 
+if [ -f ${BASEDIR}/boot/${IMAGE}.gz ]; then
+  rm ${BASEDIR}/boot/${IMAGE}.gz 
+fi
 gzip -9 ${BASEDIR}/boot/${IMAGE}
 
 
