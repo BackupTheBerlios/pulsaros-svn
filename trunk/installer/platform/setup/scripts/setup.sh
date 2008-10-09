@@ -158,7 +158,7 @@ config_os()
 	  printf "\n\nEnter option: "
 	  read OPT1
           lettercheck=`expr match $OPT1 '[0-9]*$'`
-	  if [ $lettercheck == 0 Â]; then
+	  if [ $lettercheck == 0 ]; then
 	    printf "Only numbers are allowed! - - Press Return to Continue... "
  	    read JUNK
 	    clear
@@ -189,7 +189,9 @@ config_os()
 	  elif [ $OPT2 == "y" ]; then
 	    printf "Enter Hostname: "
 	    read OPT3
-	    rm /mnt/etc/dhcp.*
+	    if [ -f dhcp.* ]; then
+	      rm /mnt/etc/dhcp.*
+	    fi
 	    echo "" > /mnt/etc/dhcp.${nwcard[$OPT1]}
 	    rm /mnt/etc/hostname.*
 	    echo "" > /mnt/etc/hostname.${nwcard[$OPT1]}

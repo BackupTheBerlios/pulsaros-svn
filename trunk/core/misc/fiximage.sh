@@ -68,6 +68,13 @@ tar cf ./var.tar ./var
 msg_to_stderr "move usr to installer"
 cd ${MINIROOTDIR}/usr
 tar cf $HOME/installer/stage2/usr.tar *
+# needs to be done for the updater script for existing installations
+cp ${MINIROOTDIR}/usr/bin/mv /installer/updates/bin/
+cp ${MINIROOTDIR}/usr/bin/cp /installer/updates/bin/
+cp ${MINIROOTDIR}/usr/bin/rm /installer/updates/bin/
+cp ${MINIROOTDIR}/usr/bin/cd /installer/updates/bin/
+cp ${MINIROOTDIR}/usr/bin/gzip /installer/updates/bin/
+cp ${MINIROOTDIR}/usr/bin/tar /installer/updates/bin/
 /bin/rm -rf ${MINIROOTDIR}/usr/*
 
 #

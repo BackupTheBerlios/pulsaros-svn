@@ -37,6 +37,11 @@ cd /installer/updates
 tar -uf latest.tar os.gz unix
 gzip -9 latest.tar
 rm os.gz unix
+if [ -f /installer/updates/latest_minibin.tar.gz ]; then
+  rm /installer/updates/latest_minibin.tar.gz
+fi
+tar -cf latest_minibin.tar bin
+gzip -9 latest_minibin.tar
 
 # cleanup
 rm $HOME/core/stage2/boot/os.gz

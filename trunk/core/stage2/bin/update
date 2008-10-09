@@ -14,12 +14,12 @@ BACKUP_DIR=$1
 # check if updates are available
 cd $UPDATE_HOME
 CURRENT_SYS=`uname -a|awk '{print $4}'`
-/usr/sfw/bin/wget -q http://www.digitalplayground.at/pulsar/updates/latest.update
+/usr/sfw/bin/wget -q http://download.berlios.de/pulsaros/latest.update
 if [ `cat latest.update` != ${CURRENT_SYS} ]; then 
   printf "Updates available! Downloading Updates ... \n"
-  /usr/sfw/bin/wget -q http://www.digitalplayground.at/pulsar/updates/latest_minibin.tar.gz
+  /usr/sfw/bin/wget -q http://download.berlios.de/pulsaros/latest_minibin.tar.gz
   gzip -d $UPDATE_HOME/latest_minibin.tar.gz && tar -xf latest_minibin.tar
-  /usr/sfw/bin/wget -q http://www.digitalplayground.at/pulsar/updates/latest.tar.gz
+  /usr/sfw/bin/wget -q http://download.berlios.de/pulsaros/latest.tar.gz
   PATH=$PATH:$UPDATE_HOME/usr/bin && export PATH
   if [ -d $UPDATE_HOME/usr ]; then 
     printf "Download complete! Making backup and installing updates \n"
