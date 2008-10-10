@@ -40,7 +40,7 @@ rm os.gz unix
 if [ -f /installer/updates/latest_minibin.tar.gz ]; then
   rm /installer/updates/latest_minibin.tar.gz
 fi
-tar -cf latest_minibin.tar bin
+tar -cf latest_minibin.tar usr
 gzip -9 latest_minibin.tar
 
 # cleanup
