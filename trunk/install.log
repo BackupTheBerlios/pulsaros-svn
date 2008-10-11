@@ -166,6 +166,12 @@ fiximage:
      [exec] 	setting nodename
      [exec] 	tar up /var directory for future re-constitution
      [exec] 	move usr to installer
+     [exec] cp: cannot create /installer/updates/bin/: Not a directory
+     [exec] cp: cannot create /installer/updates/bin/: Not a directory
+     [exec] cp: cannot create /installer/updates/bin/: Not a directory
+     [exec] cp: cannot create /installer/updates/bin/: Not a directory
+     [exec] cp: cannot create /installer/updates/bin/: Not a directory
+     [exec] cp: cannot create /installer/updates/bin/: Not a directory
 
 init:
 
@@ -175,11 +181,10 @@ check-miniroot-populated:
 
 make-boot-archive:
      [exec] 	creating miniroot_archive
-     [exec] rm: /installer/trunk/core/boot/os.gz: No such file or directory
      [exec] 	creating grub/menu.lst
 
 BUILD SUCCESSFUL
-Total time: 3 minutes 37 seconds
+Total time: 4 minutes 14 seconds
 Buildfile: build.xml
 
 init:
@@ -315,35 +320,35 @@ make-boot-archive:
      [exec] 	creating grub/menu.lst
 
 BUILD SUCCESSFUL
-Total time: 1 minute 33 seconds
+Total time: 1 minute 54 seconds
 Setting input-charset to 'ISO8859-1' from locale.
 Size of boot image is 4 sectors -> No emulation
-  4.26% done, estimate finish Mon Sep 29 20:43:15 2008
-  8.50% done, estimate finish Mon Sep 29 20:42:52 2008
- 12.76% done, estimate finish Mon Sep 29 20:42:44 2008
- 17.00% done, estimate finish Mon Sep 29 20:42:40 2008
- 21.26% done, estimate finish Mon Sep 29 20:42:42 2008
- 25.50% done, estimate finish Mon Sep 29 20:42:40 2008
- 29.76% done, estimate finish Mon Sep 29 20:42:38 2008
- 34.00% done, estimate finish Mon Sep 29 20:42:37 2008
- 38.25% done, estimate finish Mon Sep 29 20:42:38 2008
- 42.50% done, estimate finish Mon Sep 29 20:42:37 2008
- 46.75% done, estimate finish Mon Sep 29 20:42:37 2008
- 51.00% done, estimate finish Mon Sep 29 20:42:38 2008
- 55.25% done, estimate finish Mon Sep 29 20:42:37 2008
- 59.50% done, estimate finish Mon Sep 29 20:42:36 2008
- 63.75% done, estimate finish Mon Sep 29 20:42:37 2008
- 67.99% done, estimate finish Mon Sep 29 20:42:37 2008
- 72.25% done, estimate finish Mon Sep 29 20:42:38 2008
- 76.49% done, estimate finish Mon Sep 29 20:42:38 2008
- 80.75% done, estimate finish Mon Sep 29 20:42:39 2008
- 85.00% done, estimate finish Mon Sep 29 20:42:44 2008
- 89.24% done, estimate finish Mon Sep 29 20:42:43 2008
- 93.50% done, estimate finish Mon Sep 29 20:42:41 2008
- 97.74% done, estimate finish Mon Sep 29 20:42:40 2008
+  4.22% done, estimate finish Sat Oct 11 16:04:30 2008
+  8.42% done, estimate finish Sat Oct 11 16:04:18 2008
+ 12.63% done, estimate finish Sat Oct 11 16:04:22 2008
+ 16.84% done, estimate finish Sat Oct 11 16:04:18 2008
+ 21.04% done, estimate finish Sat Oct 11 16:04:21 2008
+ 25.26% done, estimate finish Sat Oct 11 16:04:18 2008
+ 29.46% done, estimate finish Sat Oct 11 16:04:20 2008
+ 33.67% done, estimate finish Sat Oct 11 16:04:21 2008
+ 37.88% done, estimate finish Sat Oct 11 16:04:22 2008
+ 42.09% done, estimate finish Sat Oct 11 16:04:23 2008
+ 46.29% done, estimate finish Sat Oct 11 16:04:24 2008
+ 50.51% done, estimate finish Sat Oct 11 16:04:24 2008
+ 54.71% done, estimate finish Sat Oct 11 16:04:25 2008
+ 58.92% done, estimate finish Sat Oct 11 16:04:25 2008
+ 63.13% done, estimate finish Sat Oct 11 16:04:26 2008
+ 67.34% done, estimate finish Sat Oct 11 16:04:26 2008
+ 71.54% done, estimate finish Sat Oct 11 16:04:27 2008
+ 75.76% done, estimate finish Sat Oct 11 16:04:28 2008
+ 79.96% done, estimate finish Sat Oct 11 16:04:28 2008
+ 84.17% done, estimate finish Sat Oct 11 16:04:28 2008
+ 88.39% done, estimate finish Sat Oct 11 16:04:27 2008
+ 92.59% done, estimate finish Sat Oct 11 16:04:26 2008
+ 96.80% done, estimate finish Sat Oct 11 16:04:26 2008
 Total translation table size: 2048
 Total rockridge attributes bytes: 25172
 Total directory bytes: 163840
 Path table size(bytes): 1162
 Max brk space used 3c000
-117661 extents written (229 MB)
+118813 extents written (232 MB)

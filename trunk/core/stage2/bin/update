@@ -7,11 +7,21 @@
 
 UPDATE_HOME=/coreroot
 BACKUP_DIR=$1
-
 #
-# unzip the solemb archive and change the config
+# check if the dns settings are correct
+#
+if [ `grep -wc nameserver /etc/resolv.conf` != 0 ]; then
+  if [ `grep -wc dns /etc/nsswitch.conf` != 0 ]; then
+    printf "DNS settings seem to be ok - continue with update check ...\n"
+  else
+    printf "DNS settings in nsswitch.conf are wrong - please reconfigure it first.\n"
+  fi 
+else
+  printf "DNS settings in resolv.conf are wrong - please reconfigure it first.\n"
+fi
 #
 # check if updates are available
+#
 cd $UPDATE_HOME
 CURRENT_SYS=`uname -a|awk '{print $4}'`
 /usr/sfw/bin/wget -q http://download.berlios.de/pulsaros/latest.update
@@ -23,6 +33,10 @@ if [ `cat latest.update` != ${CURRENT_SYS} ]; then
   PATH=$PATH:$UPDATE_HOME/usr/bin && export PATH
   if [ -d $UPDATE_HOME/usr ]; then 
     printf "Download complete! Making backup and installing updates \n"
+    if [ ! -d $BACKUP_DIR ]; then
+      printf "Backup directory doesn't exist - creating it..."
+      mkdir $BACKUP_DIR
+    fi
     cd /usr && tar -cf $BACKUP_DIR/backup_usr.tar .
     cp $UPDATE_HOME/boot/os.gz $UPDATE_HOME/boot/os_backup.gz
     cp $UPDATE_HOME/boot/platform/i86pc/kernel/unix $UPDATE_HOME/boot/platform/i86pc/kernel/unix_backup
