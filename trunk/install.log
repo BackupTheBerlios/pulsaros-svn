@@ -184,7 +184,7 @@ make-boot-archive:
      [exec] 	creating grub/menu.lst
 
 BUILD SUCCESSFUL
-Total time: 4 minutes 14 seconds
+Total time: 3 minutes 55 seconds
 Buildfile: build.xml
 
 init:
@@ -320,35 +320,35 @@ make-boot-archive:
      [exec] 	creating grub/menu.lst
 
 BUILD SUCCESSFUL
-Total time: 1 minute 54 seconds
+Total time: 1 minute 44 seconds
 Setting input-charset to 'ISO8859-1' from locale.
 Size of boot image is 4 sectors -> No emulation
-  4.22% done, estimate finish Sat Oct 11 16:04:30 2008
-  8.42% done, estimate finish Sat Oct 11 16:04:18 2008
- 12.63% done, estimate finish Sat Oct 11 16:04:22 2008
- 16.84% done, estimate finish Sat Oct 11 16:04:18 2008
- 21.04% done, estimate finish Sat Oct 11 16:04:21 2008
- 25.26% done, estimate finish Sat Oct 11 16:04:18 2008
- 29.46% done, estimate finish Sat Oct 11 16:04:20 2008
- 33.67% done, estimate finish Sat Oct 11 16:04:21 2008
- 37.88% done, estimate finish Sat Oct 11 16:04:22 2008
- 42.09% done, estimate finish Sat Oct 11 16:04:23 2008
- 46.29% done, estimate finish Sat Oct 11 16:04:24 2008
- 50.51% done, estimate finish Sat Oct 11 16:04:24 2008
- 54.71% done, estimate finish Sat Oct 11 16:04:25 2008
- 58.92% done, estimate finish Sat Oct 11 16:04:25 2008
- 63.13% done, estimate finish Sat Oct 11 16:04:26 2008
- 67.34% done, estimate finish Sat Oct 11 16:04:26 2008
- 71.54% done, estimate finish Sat Oct 11 16:04:27 2008
- 75.76% done, estimate finish Sat Oct 11 16:04:28 2008
- 79.96% done, estimate finish Sat Oct 11 16:04:28 2008
- 84.17% done, estimate finish Sat Oct 11 16:04:28 2008
- 88.39% done, estimate finish Sat Oct 11 16:04:27 2008
- 92.59% done, estimate finish Sat Oct 11 16:04:26 2008
- 96.80% done, estimate finish Sat Oct 11 16:04:26 2008
+  4.26% done, estimate finish Sun Oct 12 09:56:10 2008
+  8.50% done, estimate finish Sun Oct 12 09:56:21 2008
+ 12.75% done, estimate finish Sun Oct 12 09:56:17 2008
+ 17.00% done, estimate finish Sun Oct 12 09:56:15 2008
+ 21.24% done, estimate finish Sun Oct 12 09:56:19 2008
+ 25.49% done, estimate finish Sun Oct 12 09:56:21 2008
+ 29.73% done, estimate finish Sun Oct 12 09:56:23 2008
+ 33.99% done, estimate finish Sun Oct 12 09:56:21 2008
+ 38.23% done, estimate finish Sun Oct 12 09:56:23 2008
+ 42.48% done, estimate finish Sun Oct 12 09:56:26 2008
+ 46.72% done, estimate finish Sun Oct 12 09:56:27 2008
+ 50.97% done, estimate finish Sun Oct 12 09:56:29 2008
+ 55.21% done, estimate finish Sun Oct 12 09:56:28 2008
+ 59.47% done, estimate finish Sun Oct 12 09:56:40 2008
+ 63.71% done, estimate finish Sun Oct 12 09:56:39 2008
+ 67.96% done, estimate finish Sun Oct 12 09:56:39 2008
+ 72.20% done, estimate finish Sun Oct 12 09:56:39 2008
+ 76.46% done, estimate finish Sun Oct 12 09:56:38 2008
+ 80.70% done, estimate finish Sun Oct 12 09:56:38 2008
+ 84.95% done, estimate finish Sun Oct 12 09:56:38 2008
+ 89.19% done, estimate finish Sun Oct 12 09:56:38 2008
+ 93.44% done, estimate finish Sun Oct 12 09:56:36 2008
+ 97.69% done, estimate finish Sun Oct 12 09:56:35 2008
 Total translation table size: 2048
 Total rockridge attributes bytes: 25172
 Total directory bytes: 163840
 Path table size(bytes): 1162
 Max brk space used 3c000
-118813 extents written (232 MB)
+117732 extents written (229 MB)
