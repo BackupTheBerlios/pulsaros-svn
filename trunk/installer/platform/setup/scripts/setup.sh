@@ -193,7 +193,9 @@ config_os()
 	      rm /mnt/etc/dhcp.*
 	    fi
 	    echo "" > /mnt/etc/dhcp.${nwcard[$OPT1]}
-	    rm /mnt/etc/hostname.*
+	    if [ -f /mnt/etc/hostname.* ]; then
+	      rm /mnt/etc/hostname.*
+	    fi
 	    echo "" > /mnt/etc/hostname.${nwcard[$OPT1]}
 	    echo $OPT3 > /mnt/etc/nodename
 	  else

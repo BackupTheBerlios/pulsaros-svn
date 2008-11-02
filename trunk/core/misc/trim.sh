@@ -52,6 +52,9 @@ ln -s /usr/X11/lib/libX11.so.4 usr/lib/libX11.so.4
 ln -s /usr/X11/lib/libX11.so.4 usr/lib/libX11.so.5
 ln -s /usr/lib/libX11.so.4 usr/lib/libX11.so
 #
+# copy sys-suspend to /usr/bin
+cp usr/openwin/bin/sys-suspend usr/bin/
+#
 rm -rf var/sadm/* usr/xpg4 usr/sfw/swat usr/openwin/bin usr/openwin/server usr/mysql/5.0/docs
 rm usr/mysql/5.0/bin/ndb*
 rm usr/mysql/5.0/bin/mysqlbug

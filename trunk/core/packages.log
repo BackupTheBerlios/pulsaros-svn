@@ -17802,3 +17802,156 @@ The "Artistic License"
 39125 blocks
 
 Installation of <SUNWperl584usr> was successful.
+
+Processing package instance <SUNWpmr> from </iso/Solaris_11/Product>
+
+Power Management config file and rc script(i386) 11.11,REV=2008.09.04.21.33
+Using </installer/trunk/core/miniroot> as the package base directory.
+## Processing package information.
+## Processing system information.
+   9 package pathnames are already properly installed.
+
+Installing Power Management config file and rc script as <SUNWpmr>
+
+## Installing part 1 of 1.
+Copyright 2008 Sun Microsystems, Inc.  All rights reserved.
+Use is subject to license terms.
+
+--------------------------------------------------------------------
+
+CDDL HEADER START
+
+The contents of this file are subject to the terms of the
+Common Development and Distribution License (the "License").
+You may not use this file except in compliance with the License.
+
+You can obtain a copy of the license at usr/src/OPENSOLARIS.LICENSE
+or http://www.opensolaris.org/os/licensing.
+See the License for the specific language governing permissions
+and limitations under the License.
+
+When distributing Covered Code, include this CDDL HEADER in each
+file and include the License file at usr/src/OPENSOLARIS.LICENSE.
+If applicable, add the following below this CDDL HEADER, with the
+fields enclosed by brackets "[]" replaced with your own identifying
+information: Portions Copyright [yyyy] [name of copyright owner]
+
+CDDL HEADER END
+11 blocks
+[ verifying class <powerconf> ]
+[ verifying class <manifest> ]
+## Executing postinstall script.
+
+Installation of <SUNWpmr> was successful.
+
+Processing package instance <SUNWpmu> from </iso/Solaris_11/Product>
+
+Power Management binaries(i386) 11.11,REV=2008.09.04.21.33
+Using </installer/trunk/core/miniroot> as the package base directory.
+## Processing package information.
+## Processing system information.
+   6 package pathnames are already properly installed.
+
+Installing Power Management binaries as <SUNWpmu>
+
+## Installing part 1 of 1.
+Copyright 2008 Sun Microsystems, Inc.  All rights reserved.
+Use is subject to license terms.
+
+--------------------------------------------------------------------
+
+CDDL HEADER START
+
+The contents of this file are subject to the terms of the
+Common Development and Distribution License (the "License").
+You may not use this file except in compliance with the License.
+
+You can obtain a copy of the license at usr/src/OPENSOLARIS.LICENSE
+or http://www.opensolaris.org/os/licensing.
+See the License for the specific language governing permissions
+and limitations under the License.
+
+When distributing Covered Code, include this CDDL HEADER in each
+file and include the License file at usr/src/OPENSOLARIS.LICENSE.
+If applicable, add the following below this CDDL HEADER, with the
+fields enclosed by brackets "[]" replaced with your own identifying
+information: Portions Copyright [yyyy] [name of copyright owner]
+
+CDDL HEADER END
+288 blocks
+
+Installation of <SUNWpmu> was successful.
+
+Processing package instance <SUNWpmowr> from </iso/Solaris_11/Product>
+
+Power Management OW Utilities, (Root)(i386) 3.6.20,REV=2008.08.26
+Using </installer/trunk/core/miniroot> as the package base directory.
+## Processing package information.
+## Processing system information.
+   2 package pathnames are already properly installed.
+
+Installing Power Management OW Utilities, (Root) as <SUNWpmowr>
+
+## Installing part 1 of 1.
+Copyright 2007 Sun Microsystems, Inc.  All rights reserved.
+Use is subject to license terms.
+2 blocks
+
+Installation of <SUNWpmowr> was successful.
+
+Processing package instance <SUNWpmowu> from </iso/Solaris_11/Product>
+
+Power Management OW Utilities, (Usr)(i386) 3.6.22,REV=2008.08.26
+Using </installer/trunk/core/miniroot/usr> as the package base directory.
+## Processing package information.
+## Processing system information.
+   4 package pathnames are already properly installed.
+
+Installing Power Management OW Utilities, (Usr) as <SUNWpmowu>
+
+## Installing part 1 of 1.
+Copyright 2007 Sun Microsystems, Inc.  All rights reserved.
+Use is subject to license terms.
+113 blocks
+[ verifying class <preserve> ]
+
+Installation of <SUNWpmowu> was successful.
+
+Processing package instance <SUNWcpr.i> from </iso/Solaris_11/Product>
+
+Suspend, Resume package(i386.i86pc) 11.11,REV=2008.09.04.21.33
+Using </installer/trunk/core/miniroot> as the package base directory.
+## Processing package information.
+## Processing system information.
+   8 package pathnames are already properly installed.
+
+Installing Suspend, Resume package as <SUNWcpr>
+
+## Installing part 1 of 1.
+Copyright 2008 Sun Microsystems, Inc.  All rights reserved.
+Use is subject to license terms.
+
+--------------------------------------------------------------------
+
+CDDL HEADER START
+
+The contents of this file are subject to the terms of the
+Common Development and Distribution License (the "License").
+You may not use this file except in compliance with the License.
+
+You can obtain a copy of the license at usr/src/OPENSOLARIS.LICENSE
+or http://www.opensolaris.org/os/licensing.
+See the License for the specific language governing permissions
+and limitations under the License.
+
+When distributing Covered Code, include this CDDL HEADER in each
+file and include the License file at usr/src/OPENSOLARIS.LICENSE.
+If applicable, add the following below this CDDL HEADER, with the
+fields enclosed by brackets "[]" replaced with your own identifying
+information: Portions Copyright [yyyy] [name of copyright owner]
+
+CDDL HEADER END
+291 blocks
+## Executing postinstall script.
+
+Installation of <SUNWcpr> was successful.
