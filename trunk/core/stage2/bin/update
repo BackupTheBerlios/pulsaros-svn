@@ -1,8 +1,7 @@
 #!/bin/sh
 
 #
-# changeconfig.sh - Change the config of a running embedded solaris
-#		    and make it persistent 
+# update.sh - Update PulsarOS to a newer version
 #
 
 UPDATE_HOME=/coreroot
