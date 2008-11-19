@@ -61,8 +61,12 @@ gzip -9 ${BASEDIR}/boot/${IMAGE}
 msg_to_stderr "creating grub/menu.lst"
 echo "default 0" > ${BASEDIR}/boot/grub/menu.lst
 echo "timeout 10" >> ${BASEDIR}/boot/grub/menu.lst
-echo "title Pulsar v1" >> ${BASEDIR}/boot/grub/menu.lst
+echo "title PulsarOS" >> ${BASEDIR}/boot/grub/menu.lst
 echo "kernel /boot/platform/i86pc/kernel/unix -v" >> ${BASEDIR}/boot/grub/menu.lst
 echo "module /boot/${IMAGE}.gz" >> ${BASEDIR}/boot/grub/menu.lst
+echo "" > ${BASEDIR}/boot/grub/menu.lst
+echo "title PulsarOS restore mode" >> ${BASEDIR}/boot/grub/menu.lst
+echo "kernel /boot/platform/i86pc/kernel/unix_backup -v" >> ${BASEDIR}/boot/grub/menu.lst
+echo "module /boot/${IMAGE}_backup.gz" >> ${BASEDIR}/boot/grub/menu.lst
 
 exit 0

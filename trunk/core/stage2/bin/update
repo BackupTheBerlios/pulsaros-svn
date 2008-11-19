@@ -32,7 +32,7 @@ if [ `cat latest.update` != ${CURRENT_SYS} ]; then
   PATH=$PATH:$UPDATE_HOME/usr/bin && export PATH
   if [ -d $UPDATE_HOME/usr ]; then 
     printf "Download complete! Making backup and installing updates \n"
-    if [ ! -d $BACKUP_DIR ]; then
+    if [ $# != 1 ] ; then
       printf "Backup directory doesn't exist - creating it..."
       mkdir $BACKUP_DIR
     fi
