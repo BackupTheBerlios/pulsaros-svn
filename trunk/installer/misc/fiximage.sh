@@ -53,8 +53,6 @@ tar cf ./var.tar ./var
 # To have free space in the root filesystem, create a large file and delete
 # it at startup.
 # 
-msg_to_stderr "creating large file on / to be reclaimed as free space"
-#mkfile 5m ${MINIROOTDIR}/FREESPACE
 
 # start with the setup screen at startup
 echo "#!/bin/sh" > ${MINIROOTDIR}/root/.profile

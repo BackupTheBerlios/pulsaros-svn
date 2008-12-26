@@ -6,6 +6,11 @@
 
 UPDATE_HOME=/coreroot
 BACKUP_DIR=$1
+# check syntax
+if [ $# != 1 ] ; then
+       echo "argument expected" "${SYNTAX}"
+       exit 1
+fi
 #
 # check if the dns settings are correct
 #

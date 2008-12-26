@@ -28,12 +28,6 @@ fi
 
 cd ${MINIROOTDIR}
 
-#
-# Copy usr/sfw/lib/libwrap.so.1 over to usr/lib
-#
-#msg_to_stderr "copying some /usr/sfw/lib/ share objects over to /usr/lib"
-mv ${MINIROOTDIR}/usr/sfw/lib/libcrypto.so.0.9.8 ${MINIROOTDIR}/usr/lib
-
 # Copy devfsadm over to /sbin
 cp ${MINIROOTDIR}/usr/sbin/devfsadm ${MINIROOTDIR}/sbin/
 mkdir ${MINIROOTDIR}/lib/devfsadm

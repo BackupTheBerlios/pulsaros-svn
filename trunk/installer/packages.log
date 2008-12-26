@@ -1,7 +1,7 @@
 
 Processing package instance <SUNWcar.i> from </iso/Solaris_11/Product>
 
-Core Architecture, (Root)(i386.i86pc) 11.11,REV=2008.10.14.00.49
+Core Architecture, (Root)(i386.i86pc) 11.11,REV=2008.11.26.22.34
 ## Software contents file initialized
 Using </installer/trunk/installer/miniroot> as the package base directory.
 ## Processing package information.
@@ -39,7 +39,7 @@ Installation of <SUNWcar> was successful.
 
 Processing package instance <SUNWcakr.i> from </iso/Solaris_11/Product>
 
-Core Solaris Kernel Architecture (Root)(i386.i86pc) 11.11,REV=2008.10.14.00.49
+Core Solaris Kernel Architecture (Root)(i386.i86pc) 11.11,REV=2008.11.26.22.34
 Using </installer/trunk/installer/miniroot> as the package base directory.
 ## Processing package information.
 ## Processing system information.
@@ -109,14 +109,14 @@ CDDL HEADER END
  * LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
  * OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
  * SUCH DAMAGE.
-11514 blocks
+11760 blocks
 ## Executing postinstall script.
 
 Installation of <SUNWcakr> was successful.
 
 Processing package instance <SUNWkvm.i> from </iso/Solaris_11/Product>
 
-Core Architecture, (Kvm)(i386.i86pc) 11.11,REV=2008.10.14.00.49
+Core Architecture, (Kvm)(i386.i86pc) 11.11,REV=2008.11.26.22.34
 Using </installer/trunk/installer/miniroot> as the package base directory.
 ## Processing package information.
 ## Processing system information.
@@ -132,7 +132,7 @@ Installation of <SUNWkvm> was successful.
 
 Processing package instance <SUNWcsr> from </iso/Solaris_11/Product>
 
-Core Solaris, (Root)(i386) 11.11,REV=2008.10.14.00.49
+Core Solaris, (Root)(i386) 11.11,REV=2008.11.26.22.34
 ## Executing checkinstall script.
 Copyright 2008 Sun Microsystems, Inc.  All rights reserved.
 Use is subject to license terms.
@@ -234,7 +234,7 @@ Installing Core Solaris, (Root) as <SUNWcsr>
 
 ## Executing preinstall script.
 ## Installing part 1 of 1.
-7366 blocks
+9414 blocks
 [ verifying class <ttydefs> ]
 [ verifying class <initd> ]
 /installer/trunk/installer/miniroot/etc/rc2.d/S20sysetup <linked pathname>
@@ -288,7 +288,7 @@ Installation of <SUNWcsr> was successful.
 
 Processing package instance <SUNWcsd> from </iso/Solaris_11/Product>
 
-Core Solaris Devices(i386) 11.11,REV=2008.10.14.00.49
+Core Solaris Devices(i386) 11.11,REV=2008.11.26.22.34
 Using </installer/trunk/installer/miniroot> as the package base directory.
 ## Processing package information.
 ## Processing system information.
@@ -380,7 +380,7 @@ Installation of <SUNWcsd> was successful.
 
 Processing package instance <SUNWos86r> from </iso/Solaris_11/Product>
 
-Platform Support, OS Functionality (Root)(i386) 11.11,REV=2008.10.14.00.49
+Platform Support, OS Functionality (Root)(i386) 11.11,REV=2008.11.26.22.34
 Copyright 2008 Sun Microsystems, Inc.  All rights reserved.
 Use is subject to license terms.
 
@@ -632,7 +632,7 @@ Installation of <SUNWos86r> was successful.
 
 Processing package instance <SUNWrmodr> from </iso/Solaris_11/Product>
 
-Realmode Modules, (Root)(i386) 11.11,REV=2008.10.14.00.49
+Realmode Modules, (Root)(i386) 11.11,REV=2008.11.26.22.34
 Using </installer/trunk/installer/miniroot> as the package base directory.
 ## Processing package information.
 ## Processing system information.
@@ -673,7 +673,7 @@ Installation of <SUNWrmodr> was successful.
 
 Processing package instance <SUNWrmodu> from </iso/Solaris_11/Product>
 
-Realmode Modules, (Usr)(i386) 11.11,REV=2008.10.14.00.49
+Realmode Modules, (Usr)(i386) 11.11,REV=2008.11.26.22.34
 Using </installer/trunk/installer/miniroot> as the package base directory.
 ## Processing package information.
 ## Processing system information.
@@ -711,7 +711,7 @@ Installation of <SUNWrmodu> was successful.
 
 Processing package instance <SUNWpsdcr> from </iso/Solaris_11/Product>
 
-Platform Support, Bus-independent Device Drivers (Root)(i386) 11.11,REV=2008.10.14.00.49
+Platform Support, Bus-independent Device Drivers (Root)(i386) 11.11,REV=2008.11.26.22.34
 Copyright 2008 Sun Microsystems, Inc.  All rights reserved.
 Use is subject to license terms.
 
@@ -953,7 +953,7 @@ Installation of <SUNWpsdcr> was successful.
 
 Processing package instance <SUNWpsdir> from </iso/Solaris_11/Product>
 
-Platform Support, ISA Bus Device Drivers, (Root)(i386) 11.11,REV=2008.10.14.00.49
+Platform Support, ISA Bus Device Drivers, (Root)(i386) 11.11,REV=2008.11.26.22.34
 Using </installer/trunk/installer/miniroot> as the package base directory.
 ## Processing package information.
 ## Processing system information.
@@ -985,7 +985,7 @@ fields enclosed by brackets "[]" replaced with your own identifying
 information: Portions Copyright [yyyy] [name of copyright owner]
 
 CDDL HEADER END
-552 blocks
+553 blocks
 [ verifying class <ataconf> ]
 ## Executing postinstall script.
 Reboot client to install driver.
@@ -994,7 +994,7 @@ Installation of <SUNWpsdir> was successful.
 
 Processing package instance <SUNWckr> from </iso/Solaris_11/Product>
 
-Core Solaris Kernel (Root)(i386) 11.11,REV=2008.10.14.00.49
+Core Solaris Kernel (Root)(i386) 11.11,REV=2008.11.26.22.34
 Copyright 2008 Sun Microsystems, Inc.  All rights reserved.
 Use is subject to license terms.
 
@@ -1618,6 +1618,7 @@ nse of source of any
 /installer/trunk/installer/miniroot/kernel/drv/amd64/intel_nb5000
 /installer/trunk/installer/miniroot/kernel/drv/amd64/ip
 /installer/trunk/installer/miniroot/kernel/drv/amd64/ip6
+/installer/trunk/installer/miniroot/kernel/drv/amd64/ipnet
 /installer/trunk/installer/miniroot/kernel/drv/amd64/ippctl
 /installer/trunk/installer/miniroot/kernel/drv/amd64/ipsecah
 /installer/trunk/installer/miniroot/kernel/drv/amd64/ipsecesp
@@ -1633,6 +1634,7 @@ nse of source of any
 /installer/trunk/installer/miniroot/kernel/drv/amd64/mm
 /installer/trunk/installer/miniroot/kernel/drv/amd64/mouse8042
 /installer/trunk/installer/miniroot/kernel/drv/amd64/mpt
+/installer/trunk/installer/miniroot/kernel/drv/amd64/nulldriver
 /installer/trunk/installer/miniroot/kernel/drv/amd64/openeepr
 /installer/trunk/installer/miniroot/kernel/drv/amd64/options
 /installer/trunk/installer/miniroot/kernel/drv/amd64/pci_pci
@@ -1711,6 +1713,8 @@ nse of source of any
 /installer/trunk/installer/miniroot/kernel/drv/ip.conf
 /installer/trunk/installer/miniroot/kernel/drv/ip6
 /installer/trunk/installer/miniroot/kernel/drv/ip6.conf
+/installer/trunk/installer/miniroot/kernel/drv/ipnet
+/installer/trunk/installer/miniroot/kernel/drv/ipnet.conf
 /installer/trunk/installer/miniroot/kernel/drv/ippctl
 /installer/trunk/installer/miniroot/kernel/drv/ippctl.conf
 /installer/trunk/installer/miniroot/kernel/drv/ipsecah
@@ -1737,6 +1741,7 @@ nse of source of any
 /installer/trunk/installer/miniroot/kernel/drv/mm.conf
 /installer/trunk/installer/miniroot/kernel/drv/mouse8042
 /installer/trunk/installer/miniroot/kernel/drv/mpt
+/installer/trunk/installer/miniroot/kernel/drv/nulldriver
 /installer/trunk/installer/miniroot/kernel/drv/openeepr
 /installer/trunk/installer/miniroot/kernel/drv/openeepr.conf
 /installer/trunk/installer/miniroot/kernel/drv/options
@@ -2054,7 +2059,7 @@ Installation of <SUNWckr> was successful.
 
 Processing package instance <SUNWcnetr> from </iso/Solaris_11/Product>
 
-Core Solaris Network Infrastructure (Root)(i386) 11.11,REV=2008.10.14.00.49
+Core Solaris Network Infrastructure (Root)(i386) 11.11,REV=2008.11.26.22.34
 Using </installer/trunk/installer/miniroot> as the package base directory.
 ## Processing package information.
 ## Processing system information.
@@ -2086,7 +2091,7 @@ fields enclosed by brackets "[]" replaced with your own identifying
 information: Portions Copyright [yyyy] [name of copyright owner]
 
 CDDL HEADER END
-188 blocks
+189 blocks
 [ verifying class <ipsecalgsbase> ]
 [ verifying class <dhcpagent> ]
 [ verifying class <preserve> ]
@@ -2097,7 +2102,7 @@ Installation of <SUNWcnetr> was successful.
 
 Processing package instance <SUNWcsl> from </iso/Solaris_11/Product>
 
-Core Solaris, (Shared Libs)(i386) 11.11,REV=2008.10.14.00.49
+Core Solaris, (Shared Libs)(i386) 11.11,REV=2008.11.26.22.34
 Copyright 2008 Sun Microsystems, Inc.  All rights reserved.
 Use is subject to license terms.
 
@@ -2606,13 +2611,13 @@ RIBUTORS BE LIABLE
  * LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
  * OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
  * SUCH DAMAGE.
-51899 blocks
+49839 blocks
 
 Installation of <SUNWcsl> was successful.
 
 Processing package instance <SUNWcsu> from </iso/Solaris_11/Product>
 
-Core Solaris, (Usr)(i386) 11.11,REV=2008.10.14.00.49
+Core Solaris, (Usr)(i386) 11.11,REV=2008.11.26.22.34
 Copyright 2008 Sun Microsystems, Inc.  All rights reserved.
 Use is subject to license terms.
 
@@ -2874,14 +2879,14 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  * LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
  * OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
  * SUCH DAMAGE.
-36444 blocks
+37732 blocks
 ## Executing postinstall script.
 
 Installation of <SUNWcsu> was successful.
 
 Processing package instance <SUNWcslr> from </iso/Solaris_11/Product>
 
-Core Solaris Libraries (Root)(i386) 11.11,REV=2008.10.14.00.49
+Core Solaris Libraries (Root)(i386) 11.11,REV=2008.11.26.22.34
 Copyright 2008 Sun Microsystems, Inc.  All rights reserved.
 Use is subject to license terms.
 
@@ -3672,7 +3677,7 @@ copyright notice(s) and this permission notice appear in associated
 documenUsing </installer/trunk/installer/miniroot> as the package base directory.
 ## Processing package information.
 ## Processing system information.
-   2 package pathnames are already properly installed.
+   3 package pathnames are already properly installed.
 
 Installing Core Solaris Libraries (Root) as <SUNWcslr>
 
@@ -3770,13 +3775,13 @@ DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
 THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-35582 blocks
+38885 blocks
 
 Installation of <SUNWcslr> was successful.
 
 Processing package instance <SUNWesu> from </iso/Solaris_11/Product>
 
-Extended System Utilities(i386) 11.11,REV=2008.10.14.00.49
+Extended System Utilities(i386) 11.11,REV=2008.11.26.22.34
 Using </installer/trunk/installer/miniroot> as the package base directory.
 ## Processing package information.
 ## Processing system information.
@@ -3878,13 +3883,13 @@ PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
 LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
 NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-5158 blocks
+5168 blocks
 
 Installation of <SUNWesu> was successful.
 
 Processing package instance <SUNWkey> from </iso/Solaris_11/Product>
 
-Keyboard configuration tables(i386) 11.11,REV=2008.10.14.00.49
+Keyboard configuration tables(i386) 11.11,REV=2008.11.26.22.34
 Using </installer/trunk/installer/miniroot> as the package base directory.
 ## Processing package information.
 ## Processing system information.
@@ -3916,13 +3921,13 @@ fields enclosed by brackets "[]" replaced with your own identifying
 information: Portions Copyright [yyyy] [name of copyright owner]
 
 CDDL HEADER END
-448 blocks
+461 blocks
 
 Installation of <SUNWkey> was successful.
 
 Processing package instance <SUNWlibms> from </iso/Solaris_11/Product>
 
-Math & Microtasking Libraries (Usr)(i386) 5.11,REV=2008.09.11
+Math & Microtasking Libraries (Usr)(i386) 5.11,REV=2008.11.22
 Copyright 2008 Sun Microsystems, Inc.  All rights reserved.
 Use is subject to license terms.
 
@@ -4157,7 +4162,7 @@ Installation of <SUNWlibms> was successful.
 
 Processing package instance <SUNWlibmsr> from </iso/Solaris_11/Product>
 
-Math & Microtasking Libraries (Root)(i386) 5.11,REV=2008.09.11
+Math & Microtasking Libraries (Root)(i386) 5.11,REV=2008.11.22
 Copyright 2008 Sun Microsystems, Inc.  All rights reserved.
 Use is subject to license terms.
 
@@ -4475,7 +4480,7 @@ Installation of <SUNWpr> was successful.
 
 Processing package instance <SUNWlxml> from </iso/Solaris_11/Product>
 
-The XML library(i386) 11.11.0,REV=2008.10.14.03.13
+The XML library(i386) 11.11.0,REV=2008.11.25.03.51
 Using </installer/trunk/installer/miniroot> as the package base directory.
 ## Processing package information.
 ## Processing system information.
@@ -4511,13 +4516,13 @@ Except as contained in this notice, the name of Daniel Veillard shall not
 be used in advertising or otherwise to promote the sale, use or other deal-
 ings in this Software without prior written authorization from him.
 
-125 blocks
+129 blocks
 
 Installation of <SUNWlxml> was successful.
 
 Processing package instance <SUNWtecla> from </iso/Solaris_11/Product>
 
-Tecla command-line editing library(i386) 11.11,REV=2008.10.14.00.49
+Tecla command-line editing library(i386) 11.11,REV=2008.11.26.22.34
 Using </installer/trunk/installer/miniroot> as the package base directory.
 ## Processing package information.
 ## Processing system information.
@@ -4560,7 +4565,7 @@ Installation of <SUNWtecla> was successful.
 
 Processing package instance <SUNWbip> from </iso/Solaris_11/Product>
 
-Basic IP commands (Usr)(i386) 11.11,REV=2008.10.14.00.49
+Basic IP commands (Usr)(i386) 11.11,REV=2008.11.26.22.34
 Using </installer/trunk/installer/miniroot> as the package base directory.
 ## Processing package information.
 ## Processing system information.
@@ -4636,7 +4641,7 @@ Installation of <SUNWbip> was successful.
 
 Processing package instance <SUNWbash> from </iso/Solaris_11/Product>
 
-GNU Bourne-Again shell (bash)(i386) 11.11.0,REV=2008.10.14.03.13
+GNU Bourne-Again shell (bash)(i386) 11.11.0,REV=2008.11.25.03.51
 Using </installer/trunk/installer/miniroot> as the package base directory.
 ## Processing package information.
 ## Processing system information.
@@ -4669,13 +4674,13 @@ for more details.
 You should have received a copy of the GNU General Public License along
 with Bash; see the file COPYING.  If not, write to the Free Software
 Foundation, 59 Temple Place, Suite 330, Boston, MA 02111 USA.
-1388 blocks
+1463 blocks
 
 Installation of <SUNWbash> was successful.
 
 Processing package instance <SUNWloc> from </iso/Solaris_11/Product>
 
-System Localization(i386) 11.11,REV=2008.10.14.00.49
+System Localization(i386) 11.11,REV=2008.11.26.22.34
 Using </installer/trunk/installer/miniroot> as the package base directory.
 ## Processing package information.
 ## Processing system information.
@@ -4713,7 +4718,7 @@ Installation of <SUNWloc> was successful.
 
 Processing package instance <SUNWtoo> from </iso/Solaris_11/Product>
 
-Programming Tools(i386) 11.11,REV=2008.10.14.00.49
+Programming Tools(i386) 11.11,REV=2008.11.26.22.34
 Copyright 2008 Sun Microsystems, Inc.  All rights reserved.
 Use is subject to license terms.
 
@@ -4959,7 +4964,7 @@ Installation of <SUNWtoo> was successful.
 
 Processing package instance <SUNWsmapi> from </iso/Solaris_11/Product>
 
-Storage Management APIs(i386) 11.11,REV=2008.10.14.00.49
+Storage Management APIs(i386) 11.11,REV=2008.11.26.22.34
 Using </installer/trunk/installer/miniroot> as the package base directory.
 ## Processing package information.
 ## Processing system information.
@@ -4991,13 +4996,13 @@ fields enclosed by brackets "[]" replaced with your own identifying
 information: Portions Copyright [yyyy] [name of copyright owner]
 
 CDDL HEADER END
-1476 blocks
+1479 blocks
 
 Installation of <SUNWsmapi> was successful.
 
 Processing package instance <SUNWkrbu> from </iso/Solaris_11/Product>
 
-Kerberos version 5 support (Usr)(i386) 11.11,REV=2008.10.14.00.49
+Kerberos version 5 support (Usr)(i386) 11.11,REV=2008.11.26.22.34
  * Copyright (c) 1987, 1990, 1993, 1994
  *	The Regents of the University of California.  All rights reserved.
  *
@@ -5241,13 +5246,13 @@ provided "as is" without express or implied warranty.
  *	Ann Arbor, Michigan
  *	+1-313-936-2652
  *	netatalk@terminator.cc.umich.edu
-6963 blocks
+7162 blocks
 
 Installation of <SUNWkrbu> was successful.
 
 Processing package instance <SUNWintgige> from </iso/Solaris_11/Product>
 
-Intel(R) PRO/1000 Server Adapter Driver(i386) 11.11,REV=2008.10.14.00.49
+Intel(R) PRO/1000 Server Adapter Driver(i386) 11.11,REV=2008.11.26.22.34
 Using </installer/trunk/installer/miniroot> as the package base directory.
 ## Processing package information.
 ## Processing system information.
@@ -5283,7 +5288,7 @@ CDDL HEADER END
 --------------------------------------------------------------------
 
  * Copyright(c) 1999 - 2008 Intel Corporation. All rights reserved.
-1417 blocks
+1428 blocks
 [ verifying class <renamenew> ]
 ## Executing postinstall script.
 Reboot client to install driver.
@@ -5292,7 +5297,7 @@ Installation of <SUNWintgige> was successful.
 
 Processing package instance <SUNWusbs> from </iso/Solaris_11/Product>
 
-USB generic serial module(i386) 11.11,REV=2008.10.14.00.49
+USB generic serial module(i386) 11.11,REV=2008.11.26.22.34
 Using </installer/trunk/installer/miniroot> as the package base directory.
 ## Processing package information.
 ## Processing system information.
@@ -5330,7 +5335,7 @@ Installation of <SUNWusbs> was successful.
 
 Processing package instance <SUNWusb> from </iso/Solaris_11/Product>
 
-USB Device Drivers(i386) 11.11,REV=2008.10.14.00.49
+USB Device Drivers(i386) 11.11,REV=2008.11.26.22.34
 Using </installer/trunk/installer/miniroot> as the package base directory.
 ## Processing package information.
 ## Processing system information.
@@ -5382,7 +5387,7 @@ Installation of <SUNWusb> was successful.
 
 Processing package instance <SUNWgzip> from </iso/Solaris_11/Product>
 
-The GNU Zip (gzip) compression utility(i386) 11.11.0,REV=2008.10.14.03.13
+The GNU Zip (gzip) compression utility(i386) 11.11.0,REV=2008.11.25.03.51
 Using </installer/trunk/installer/miniroot> as the package base directory.
 ## Processing package information.
 ## Processing system information.
@@ -5407,13 +5412,13 @@ You should have received a copy of the GNU General Public License
 along with this program; if not, write to the Free Software
 Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
-149 blocks
+174 blocks
 
 Installation of <SUNWgzip> was successful.
 
 Processing package instance <SUNWafe> from </iso/Solaris_11/Product>
 
-ADMtek Ethernet Driver(i386) 11.11,REV=2008.10.14.00.49
+ADMtek Ethernet Driver(i386) 11.11,REV=2008.11.26.22.34
 Using </installer/trunk/installer/miniroot> as the package base directory.
 ## Processing package information.
 ## Processing system information.
@@ -5453,7 +5458,7 @@ INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
 CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
 ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 POSSIBILITY OF SUCH DAMAGE.
-170 blocks
+171 blocks
 ## Executing postinstall script.
 Reboot client to install driver.
 
@@ -5461,7 +5466,7 @@ Installation of <SUNWafe> was successful.
 
 Processing package instance <SUNWamd8111s> from </iso/Solaris_11/Product>
 
-AMD8111 Fast Ethernet Driver(i386) 11.11,REV=2008.10.14.00.49
+AMD8111 Fast Ethernet Driver(i386) 11.11,REV=2008.11.26.22.34
 Using </installer/trunk/installer/miniroot> as the package base directory.
 ## Processing package information.
 ## Processing system information.
@@ -5529,7 +5534,7 @@ Installation of <SUNWamd8111s> was successful.
 
 Processing package instance <SUNWpcelx> from </iso/Solaris_11/Product>
 
-3COM EtherLink III PCMCIA Ethernet Driver(i386) 11.11,REV=2008.10.14.00.49
+3COM EtherLink III PCMCIA Ethernet Driver(i386) 11.11,REV=2008.11.26.22.34
 Copyright 2008 Sun Microsystems, Inc.  All rights reserved.
 Use is subject to license terms.
 
@@ -5750,7 +5755,7 @@ Installation of <SUNWpcelx> was successful.
 
 Processing package instance <SUNWrge> from </iso/Solaris_11/Product>
 
-Realtek Gigabit Ethernet Driver(i386) 11.11,REV=2008.10.14.00.49
+Realtek Gigabit Ethernet Driver(i386) 11.11,REV=2008.11.26.22.34
 Using </installer/trunk/installer/miniroot> as the package base directory.
 ## Processing package information.
 ## Processing system information.
@@ -5790,7 +5795,7 @@ Installation of <SUNWrge> was successful.
 
 Processing package instance <SUNWsfe> from </iso/Solaris_11/Product>
 
-SiS900 Ethernet Driver(i386) 11.11,REV=2008.10.14.00.49
+SiS900 Ethernet Driver(i386) 11.11,REV=2008.11.26.22.34
 Using </installer/trunk/installer/miniroot> as the package base directory.
 ## Processing package information.
 ## Processing system information.
@@ -5829,7 +5834,7 @@ Installing SiS900 Ethernet Driver as <SUNWsfe>
  * OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH
  * DAMAGE.
  */
-366 blocks
+367 blocks
 ## Executing postinstall script.
 Reboot client to install driver.
 
@@ -5837,7 +5842,7 @@ Installation of <SUNWsfe> was successful.
 
 Processing package instance <SUNWbge> from </iso/Solaris_11/Product>
 
-Broadcom 57xx GE NIC Driver(i386) 11.11,REV=2008.10.14.00.49
+Broadcom 57xx GE NIC Driver(i386) 11.11,REV=2008.11.26.22.34
 Using </installer/trunk/installer/miniroot> as the package base directory.
 ## Processing package information.
 ## Processing system information.
@@ -5901,7 +5906,7 @@ CDDL HEADER END
  * CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
  * THE POSSIBILITY OF SUCH DAMAGE.
-737 blocks
+739 blocks
 ## Executing postinstall script.
 Reboot client to install driver.
 
@@ -5909,7 +5914,7 @@ Installation of <SUNWbge> was successful.
 
 Processing package instance <SUNWigb> from </iso/Solaris_11/Product>
 
-Intel 82575 1Gb PCI Express NIC Driver(i386) 11.11,REV=2008.10.14.00.49
+Intel 82575 1Gb PCI Express NIC Driver(i386) 11.11,REV=2008.11.26.22.34
 Using </installer/trunk/installer/miniroot> as the package base directory.
 ## Processing package information.
 ## Processing system information.
@@ -5950,7 +5955,7 @@ Installation of <SUNWigb> was successful.
 
 Processing package instance <SUNWrtls> from </iso/Solaris_11/Product>
 
-REALTEK Fast NIC(i386) 11.11,REV=2008.10.14.00.49
+REALTEK Fast NIC(i386) 11.11,REV=2008.11.26.22.34
 Copyright 2008 Sun Microsystems, Inc.  All rights reserved.
 Use is subject to license terms.
 

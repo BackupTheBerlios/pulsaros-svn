@@ -77,7 +77,6 @@ rm usr/mysql/5.0/bin/mysql_waitpid
 rm usr/mysql/5.0/bin/mysqlaccess
 rm usr/mysql/5.0/bin/resolveip
 rm usr/mysql/5.0/lib/mysql/libndbclient*
-rm usr/mysql/5.0/lib/mysql/libdbug.a
 
 #
 # Remove various usr/lib (non shared object)

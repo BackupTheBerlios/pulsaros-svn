@@ -40,7 +40,7 @@ IMAGE=$3
 
 
 msg_to_stderr "creating miniroot_archive"
-mkfile 85m /tmp/${IMAGE} 
+mkfile 90m /tmp/${IMAGE} 
 lofiadm -a /tmp/${IMAGE} >/dev/null 2>&1
 yes | newfs -m 0 /dev/rlofi/1 >/dev/null 2>&1
 mount /dev/lofi/1 /pulsar_boot
