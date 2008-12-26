@@ -47,6 +47,8 @@ gzip -9 latest_minibin.tar
 rm $HOME/core/stage2/boot/os.gz
 rm $HOME/core/boot/os.gz
 rm -r $HOME/core/miniroot
+rm $HOME/core/packages.log
+rm $HOME/core/stage2/boot/platform/i86pc/kernel/unix
 
 
 # Build the pulsar installer image
@@ -72,3 +74,5 @@ rm $HOME/installer/stage2/pulsar_core.tar
 rm $HOME/installer/stage2/usr.tar
 rm $HOME/installer/stage2/boot/opensolaris.gz
 rm -r $HOME/installer/miniroot
+rm $HOME/installer/packages.log
+rm $HOME/installer/stage2/boot/platfrom/i86pc/kernel/unix
