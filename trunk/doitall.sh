@@ -21,7 +21,7 @@ cd $HOME/core/stage2
 if [ -f $HOME/core/stage2/pulsar_core.tar ]; then
   rm pulsar_core.tar
 fi 
-tar -cf pulsar_core.tar applications bin boot
+tar -cf pulsar_core.tar plugins bin boot
 # move it to the installer root
 mv $HOME/core/stage2/pulsar_core.tar $HOME/installer/stage2/
 
@@ -75,4 +75,4 @@ rm $HOME/installer/stage2/usr.tar
 rm $HOME/installer/stage2/boot/opensolaris.gz
 rm -r $HOME/installer/miniroot
 rm $HOME/installer/packages.log
-rm $HOME/installer/stage2/boot/platfrom/i86pc/kernel/unix
+rm $HOME/installer/stage2/boot/platform/i86pc/kernel/unix
