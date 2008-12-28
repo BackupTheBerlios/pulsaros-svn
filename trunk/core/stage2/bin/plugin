@@ -41,21 +41,21 @@ install_plugin()
 {
   cd $WORKDIR
   # check if plugin is already installed
-  if [ -d /coreroot/plugins/${2} ]; then
+  if [ -d /coreroot/plugins/${1} ]; then
     printf "Plugin is already installed. Check for updates with the 'update' parameter" 
     exit 1
   else
     # download the plugin from the internet and install it
-    printf "\nInstalling ${2} plugin..."
-    usr/sfw/bin/wget -nc -q "http://download.berlios.de/pulsaros/${2}.tar.bz2"
-    if [ ! -f ${2}.tar.bz2 ]; then
+    printf "\nInstalling ${1} plugin..."
+    /usr/sfw/bin/wget -nc -q "http://download.berlios.de/pulsaros/${1}.tar.bz2"
+    if [ ! -f ${1}.tar.bz2 ]; then
       printf "Error downloading the plugin - please try it again!"
       exit 1
     else
-      /usr/bin/bzip2 -d ${2}.tar.bz2 && /usr/bin/tar -xf ${2}.tar
-      /usr/bin/mv ${2} ${APPDIR}  
-      rm ${2}.tar
-      . ${APPDIR}/${2}/scripts/install.sh
+      /usr/bin/bzip2 -d ${1}.tar.bz2 && /usr/bin/tar -xf ${1}.tar
+      /usr/bin/mv ${1} ${APPDIR}  
+      rm ${1}.tar
+      . ${APPDIR}/${1}/scripts/install.sh
       pre_install
       main_install
       post_install
@@ -80,7 +80,7 @@ deactivate_plugin()
 
 # Main program
 # check syntax
-if [ $# != 1 ] ; then
+if [ $# !<= 1 ] ; then
        echo "argument expected" "${SYNTAX}"
        exit 1
 fi
@@ -93,7 +93,7 @@ case $1 in
        echo "argument expected" "${SYNTAX}"
        exit 1
     fi
-    install_plugin;;
+    install_plugin $2;;
   update)
     update_plugin;;
   activate)

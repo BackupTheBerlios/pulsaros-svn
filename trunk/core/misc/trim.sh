@@ -38,6 +38,10 @@ find . -name amd64 | xargs rm -r 2> /dev/null
 find . -name 64 | xargs rm -r 2> /dev/null
 find . -name man | xargs rm -r 2> /dev/null
 
+# copy libssl.so.0.9.8 to usr/lib
+cp /usr/sfw/lib/libssl.so.0.9.8 usr/lib/libssl.so.0.9.8
+cp /usr/sfw/lib/libcrypto.so.0.9.8 usr/lib/libcrypto.so.0.9.8
+
 #
 # Remove packaging, xpg4
 #
