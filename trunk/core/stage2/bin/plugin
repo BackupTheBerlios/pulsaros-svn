@@ -1,0 +1,103 @@
+#!/bin/sh
+
+#
+# plugin.sh - Install plugins for pulsaros
+#
+WORKDIR=/tmp
+APPDIR=/coreroot/plugins
+
+list_plugins()
+{
+ cd $WORKDIR
+ # get plugin.list file
+ /usr/sfw/bin/wget -nc -q "http://download.berlios.de/pulsaros/plugin.list"
+ if [ ! -f plugin.list ]; then
+  printf "\nError retrieving Plugin list - please try it again!\n\n"
+  if [ -f HTTP_NOT_FOUND.html.var ]; then
+    rm HTTP_NOT_FOUND.html.var
+  fi
+  exit 1
+ fi
+ printf "\n\n"
+ printf "Plugin Name\t\tActual version\t\tInstalled Version\tStatus\n"
+ printf "=================================================================================\n"
+ for i in `/bin/cat plugin.list`; do
+   plugin_name=`echo $i | awk -F- '{print $1}'`
+   plugin_version=`echo $i | awk -F- '{print $2}'` 
+   if [ ! -d $APPDIR/${plugin_name} ]; then
+     plugin_installed="-"
+     plugin_status="-"
+   else
+     plugin_installed=`cat $APPDIR/${plugin_name}/.plugin_version`
+     plugin_status=`cat $APPDIR/${plugin_name}/.plugin_status`
+   fi
+   printf "${plugin_name}\t\t${plugin_version}\t\t\t${plugin_installed}\t\t\t${plugin_status}"
+ done
+ printf "\n\n"
+ /usr/bin/rm plugin.list
+}
+
+install_plugin()
+{
+  cd $WORKDIR
+  # check if plugin is already installed
+  if [ -d /coreroot/plugins/${2} ]; then
+    printf "Plugin is already installed. Check for updates with the 'update' parameter" 
+    exit 1
+  else
+    # download the plugin from the internet and install it
+    printf "\nInstalling ${2} plugin..."
+    usr/sfw/bin/wget -nc -q "http://download.berlios.de/pulsaros/${2}.tar.bz2"
+    if [ ! -f ${2}.tar.bz2 ]; then
+      printf "Error downloading the plugin - please try it again!"
+      exit 1
+    else
+      /usr/bin/bzip2 -d ${2}.tar.bz2 && /usr/bin/tar -xf ${2}.tar
+      /usr/bin/mv ${2} ${APPDIR}  
+      rm ${2}.tar
+    fi
+  fi
+}
+
+update_plugin()
+{
+  printf "update_plugin"
+}
+
+activate_plugin()
+{
+  printf "activate_plugin"
+}
+
+deactivate_plugin()
+{
+  printf "deactivate_plugin"
+}
+
+# Main program
+# check syntax
+if [ $# != 1 ] ; then
+       echo "argument expected" "${SYNTAX}"
+       exit 1
+fi
+# available parameters
+case $1 in
+  list)
+    list_plugins;;
+  install)
+    if [ $# != 2 ] ; then
+       echo "argument expected" "${SYNTAX}"
+       exit 1
+    fi
+    install_plugin;;
+  update)
+    update_plugin;;
+  activate)
+    activate_plugin;;
+  deactivate)
+    deactivate_plugin;;
+  *)
+    syntax_error;;
+esac
+
+exit 0
