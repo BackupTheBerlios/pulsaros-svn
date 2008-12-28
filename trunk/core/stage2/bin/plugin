@@ -55,6 +55,10 @@ install_plugin()
       /usr/bin/bzip2 -d ${2}.tar.bz2 && /usr/bin/tar -xf ${2}.tar
       /usr/bin/mv ${2} ${APPDIR}  
       rm ${2}.tar
+      . ${APPDIR}/${2}/scripts/install.sh
+      pre_install
+      main_install
+      post_install
     fi
   fi
 }
