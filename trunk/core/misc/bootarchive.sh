@@ -64,7 +64,7 @@ echo "timeout 10" >> ${BASEDIR}/boot/grub/menu.lst
 echo "title PulsarOS" >> ${BASEDIR}/boot/grub/menu.lst
 echo "kernel /boot/platform/i86pc/kernel/unix -v" >> ${BASEDIR}/boot/grub/menu.lst
 echo "module /boot/${IMAGE}.gz" >> ${BASEDIR}/boot/grub/menu.lst
-echo "" > ${BASEDIR}/boot/grub/menu.lst
+echo "" >> ${BASEDIR}/boot/grub/menu.lst
 echo "title PulsarOS restore mode" >> ${BASEDIR}/boot/grub/menu.lst
 echo "kernel /boot/platform/i86pc/kernel/unix_backup -v" >> ${BASEDIR}/boot/grub/menu.lst
 echo "module /boot/${IMAGE}_backup.gz" >> ${BASEDIR}/boot/grub/menu.lst

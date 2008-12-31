@@ -55,32 +55,59 @@ install_plugin()
       /usr/bin/bzip2 -d ${1}.tar.bz2 && /usr/bin/tar -xf ${1}.tar
       /usr/bin/mv ${1} ${APPDIR}  
       rm ${1}.tar
-      . ${APPDIR}/${1}/scripts/install.sh
-      pre_install
-      main_install
-      post_install
+      ${APPDIR}/${1}/scripts/install.sh
+      # check the installation status and update .plugin_status file
+      if [ $? != 0 ]; then
+        printf "Warning plugin installation failed - please remove the plugin with 'plugin deinstall' and try it again!"
+        exit 1
+      else 
+        echo "installed" > ${APPDIR}/${1}/.plugin_status
+        printf "\nPlugin successfully installed!\n\n"
+      fi
     fi
   fi
 }
 
 update_plugin()
 {
-  printf "update_plugin"
+  printf "update plugin"
 }
 
 activate_plugin()
 {
-  printf "activate_plugin"
+  printf "Activating plugin ${1} ..."
+  /usr/sbin/svcadm enable ${1}
+  sleep 2
+  if [ `/usr/bin/svcs squeezecenter|/usr/bin/tail -1|/usr/bin/awk '{print $1}'` != "online" ]; then
+    printf "Warning: Plugin activation failed - please take a look in /var/svc/log/application-${1}:default.log, correct the error and try it again!"
+    exit 1
+  else
+    printf "activated" > ${APPDIR}/${1}/.plugin_status
+    printf "\nPlugin successfully activated!"
+  fi
 }
 
 deactivate_plugin()
 {
-  printf "deactivate_plugin"
+  printf "Deactivating plugin ${1} ..."
+  /usr/sbin/svcadm disable ${1}
+  if [ $? != 0 ]; then
+    printf "Warning: Plugin deactivation failed - please take a look in /var/svc/log/application-${1}:default.log, correct the error and try it again!"
+    exit 1
+  else
+    printf "deactivated" > ${APPDIR}/${1}/.plugin_status
+    printf "\nPlugin successfully deactivated!"
+  fi
+}
+
+deinstall_plugin()
+{
+  printf "deinstall plugin"
 }
 
 # Main program
 # check syntax
-if [ $# !<= 1 ] ; then
+if [ $# = 0 ] ; then
        echo "argument expected" "${SYNTAX}"
        exit 1
 fi
@@ -97,9 +124,11 @@ case $1 in
   update)
     update_plugin;;
   activate)
-    activate_plugin;;
+    activate_plugin $2;;
   deactivate)
-    deactivate_plugin;;
+    deactivate_plugin $2;;
+  deinstall)
+    deinstall_plugin;;
   *)
     syntax_error;;
 esac
