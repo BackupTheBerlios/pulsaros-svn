@@ -42,6 +42,13 @@ if [ -f /installer/updates/latest_minibin.tar.gz ]; then
 fi
 tar -cf latest_minibin.tar usr
 gzip -9 latest_minibin.tar
+if [ -f /installer/updates/corebin.tar.gz ]; then
+  rm /installer/updates/corebin.tar.gz
+fi
+cp -r $HOME/core/stage2/bin .
+tar -cf corebin.tar bin
+gzip -9 corebin.tar
+rm -r bin
 
 # cleanup
 rm $HOME/core/stage2/boot/os.gz
