@@ -21,16 +21,16 @@ SYNTAX="${CONF_NAME}"
 cp ${BOOT_HOME}/boot/${ARCHIVE_NAME}.gz /tmp
 gzip -d /tmp/${ARCHIVE_NAME}.gz
 lofiadm -a /tmp/${ARCHIVE_NAME}
-mount /dev/lofi/1 /mnt
-#if [ ${CONF_NAME} = "changes" ]; then
- for i in `cat ${CONF_NAME}`; do
-   cp ${i} /mnt/${i}
- done
-#else
-# cp ${CONF_NAME} /mnt/${CONF_NAME}
-#fi
-umount /mnt
+if [ ! -d /tmp/changes ]; then
+  mkdir /tmp/changes
+fi
+mount /dev/lofi/1 /tmp/changes
+for i in `cat ${CONF_NAME}`; do
+  cp ${i} /tmp/changes/${i}
+done
+umount /tmp/changes
 lofiadm -d /dev/lofi/1
+rm -r /tmp/changes
 gzip /tmp/${ARCHIVE_NAME}
 cp /tmp/${ARCHIVE_NAME}.gz ${BOOT_HOME}/boot
 
