@@ -1,5 +1,0 @@
-default 0
-timeout 10
-title Pulsar v1 installer
-kernel /boot/platform/i86pc/kernel/unix -v
-module /boot/opensolaris.gz
