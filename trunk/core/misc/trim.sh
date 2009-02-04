@@ -122,10 +122,13 @@ for mysql in $REMOVE_MYSQL
 do
         rm -rf ${MINIROOTDIR}/${mysql}
 done
+# save perl lib
+mv ${MINIROOTDIR}/usr/perl5/5.8.4/lib/i86pc-solaris-64int/CORE/libperl* ${MINIROOTDIR}
 for perl in $REMOVE_PERL
 do
         rm -rf ${MINIROOTDIR}/${perl}
 done
+mkdir -p ${MINIROOTDIR}/usr/perl5/5.8.4/lib/i86pc-solaris-64int/CORE && mv ${MINIROOTDIR}/libperl* ${MINIROOTDIR}/usr/perl5/5.8.4/lib/i86pc-solaris-64int/CORE/
 
 #
 # Strip libraries and binaries
