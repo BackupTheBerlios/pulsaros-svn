@@ -37,6 +37,8 @@ if [ "${MINIROOTDIR}" = "/" ] ; then
 fi
 
 IMAGE=$3
+msg_to_stderr "copy kernel to boot directory"
+cp ${MINIROOTDIR}/platform/i86pc/kernel/unix ${BASEDIR}/boot/boot/platform/i86pc/kernel/
 
 msg_to_stderr "creating full miniroot_archive"
 mkfile 200m ${BASEDIR}/boot/boot/${IMAGE}

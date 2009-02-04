@@ -14,9 +14,6 @@ echo "\n\n1. Step - Building the pulsar os image \n\n"
 cd core
 ant makeimage >> $HOME/install.log 2>&1
 cd ..
-# Tar the pulsar os image
-cp $HOME/core/miniroot/platform/i86pc/kernel/unix $HOME/core/boot/boot/platform/i86pc/kernel/unix
-#cp -r $HOME/core/boot $HOME/core/stage2/
 
 # Build the updater package
 echo "1.1. Step - Build the updater package for pulsar \n\n"
@@ -56,5 +53,5 @@ echo "Creation of the pulsar installer usb image ready"
 # cleanup
 rm $HOME/core/boot/boot/os.gz
 rm $HOME/core/boot/miniroot.tar
-rm -r $HOME/core/miniroot
+# rm -r $HOME/core/miniroot
 rm $HOME/core/packages.log
