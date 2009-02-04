@@ -1,0 +1,68 @@
+#!/bin/sh
+
+#
+# update.sh - Update PulsarOS to a newer version
+#
+
+UPDATE_HOME=/coreroot
+BACKUP_DIR=$1
+# check syntax
+if [ $# != 1 ] ; then
+       echo "argument expected" "${SYNTAX}"
+       exit 1
+fi
+#
+# check if the dns settings are correct
+#
+if [ `grep -wc nameserver /etc/resolv.conf` != 0 ]; then
+  if [ `grep -wc dns /etc/nsswitch.conf` != 0 ]; then
+    printf "DNS settings seem to be ok - continue with update check ...\n"
+  else
+    printf "DNS settings in nsswitch.conf are wrong - please reconfigure it first.\n"
+  fi 
+else
+  printf "DNS settings in resolv.conf are wrong - please reconfigure it first.\n"
+fi
+#
+# check if updates are available
+#
+cd $UPDATE_HOME
+CURRENT_SYS=`/usr/bin/uname -a|/usr/bin/awk '{print $4}'`
+/usr/sfw/bin/wget -q http://download.berlios.de/pulsaros/latest.update
+#if [ `cat latest.update` != $CURRENT_SYS ]; then
+  printf "Updates available! Downloading Updates ... \n"
+  /usr/sfw/bin/wget -q http://download.berlios.de/pulsaros/latest_minibin.tar.gz
+  gzip -d latest_minibin.tar.gz && tar -xf latest_minibin.tar
+  /usr/sfw/bin/wget -q http://download.berlios.de/pulsaros/latest.tar.gz
+  PATH=$PATH:$UPDATE_HOME/usr/bin && export PATH
+  if [ -d $UPDATE_HOME/usr ]; then 
+    printf "Download complete! Making backup and installing updates \n"
+    if [ ! -d $1  ] ; then
+      printf "Backup directory doesn't exist - creating it..."
+      mkdir $BACKUP_DIR
+    fi
+    cd /usr && tar -cf $BACKUP_DIR/backup_usr.tar .
+    cp $UPDATE_HOME/boot/os.gz $UPDATE_HOME/boot/os_backup.gz
+    cp $UPDATE_HOME/boot/platform/i86pc/kernel/unix $UPDATE_HOME/boot/platform/i86pc/kernel/unix_backup
+    rm -r /usr/*
+    cd /usr && gzip -d $UPDATE_HOME/latest.tar.gz && tar -xf $UPDATE_HOME/latest.tar
+    mv os.gz $UPDATE_HOME/boot/
+    mv unix $UPDATE_HOME/boot/platform/i86pc/kernel/
+    $UPDATE_HOME/bin/changeconfig
+    rm $UPDATE_HOME/latest.tar
+    rm $UPDATE_HOME/latest.update
+    rm $UPDATE_HOME/latest_minibin.tar
+    rm -r $UPDATE_HOME/usr
+  else
+    printf "There is something wrong with the update archives! Please try it again!"
+    exit 1
+  fi
+  cd $UPDATE_HOME
+  /usr/sfw/bin/wget -q http://download.berlios.de/pulsaros/corebin.tar.gz
+  gzip -d corebin.tar.gz && tar -xf corebin.tar
+  rm corebin.tar
+  printf "Update installed! If there is any problem, please change the GRUB module entry on boot to os_backup.gz and run --> restore 'backupdir' ! \n\n"
+#else 
+#  printf "No new updates available!"
+#fi
+exit 0

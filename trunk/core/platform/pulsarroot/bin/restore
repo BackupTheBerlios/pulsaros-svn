@@ -1,0 +1,30 @@
+#!/bin/sh
+
+#
+# restore.sh - Restores PulsarOS to a previous version
+#
+
+RESTORE_HOME=/coreroot
+BACKUP_DIR=$1
+#
+#
+if [ $BACKUP_DIR = "" ]; then
+  printf "Backup directory from previous upgrade needed!"
+  exit 1
+fi
+cd $RESTORE_HOME
+mkdir -p $RESTORE_HOME/usr/bin
+cp /usr/bin/cp /usr/bin/cd /usr/bin/gzip /usr/bin/mv /usr/bin/rm /usr/bin/tar $RESTORE_HOME/usr/bin/
+PATH=$PATH:$RESTORE_HOME/usr/bin && export PATH
+if [ -d $RESTORE_HOME/usr ]; then 
+    rm -r /usr/*
+    cd /usr && tar -xf $BACKUP_DIR/backup_usr.tar .
+    cp $RESTORE_HOME/boot/os_backup.gz $RESTORE_HOME/boot/os.gz
+    cp $RESTORE_HOME/boot/platform/i86pc/kernel/unix_backup $RESTORE_HOME/boot/platform/i86pc/kernel/unix
+    $RESTORE_HOME/bin/changeconfig
+    rm -r $RESTORE_HOME/usr
+    printf "Restore ready!\n\n"
+else
+  printf "There is a problem with the minibin directory, please create a problemreport on the project homepage!"
+fi
+exit 0
