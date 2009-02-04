@@ -25,12 +25,8 @@ if [ -f /installer/updates/latest.tar.gz ]; then
 fi
 mv $HOME/core/boot/usr.tar /installer/updates/latest.tar
 # needs to be done for the updater script for existing installations
-cp ${HOME}/core/miniroot/usr/bin/mv /installer/updates/usr/bin/
-cp ${HOME}/core/miniroot/usr/bin/cp /installer/updates/usr/bin/
-cp ${HOME}/core/miniroot/usr/bin/rm /installer/updates/usr/bin/
-cp ${HOME}/core/miniroot/usr/bin/cd /installer/updates/usr/bin/
-cp ${HOME}/core/miniroot/usr/bin/gzip /installer/updates/usr/bin/
-cp ${HOME}/core/miniroot/usr/bin/tar /installer/updates/usr/bin/
+cd /installer/updates/usr
+tar -xf /installer/updates/latest.tar ./bin/mv ./bin/cp ./bin/rm ./bin/cd ./bin/gzip ./bin/tar 
 mv $HOME/core/boot/os_update.gz /installer/updates/os.gz 
 cp $HOME/core/boot/boot/platform/i86pc/kernel/unix /installer/updates/
 cd /installer/updates

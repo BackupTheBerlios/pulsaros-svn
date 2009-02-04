@@ -85,6 +85,12 @@ cd ${MINIROOTDIR} && rm -r usr lib sbin kernel platform
 tar -cf ${BASEDIR}/boot/miniroot.tar .
 cd /
 
+# copy grub dir 
+if [ -f ${BASEDIR}/boot/boot/grub ]; then
+  rm -r ${BASEDIR}/boot/boot/grub
+fi
+cd ${MINIROOTDIR} && cp -r boot/grub ${BASEDIR}/boot/boot/
+
 msg_to_stderr "creating grub/menu.lst"
 echo "default 0" > ${BASEDIR}/boot/boot/grub/menu.lst
 echo "timeout 10" >> ${BASEDIR}/boot/boot/grub/menu.lst
