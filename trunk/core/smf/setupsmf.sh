@@ -79,6 +79,7 @@ ${SVCCFG} import ${MINIROOTDIR}/var/svc/manifest/system/sysidtool.xml
 ${SVCCFG} import ${MINIROOTDIR}/var/svc/manifest/milestone/network.xml
 ${SVCCFG} import ${MINIROOTDIR}/var/svc/manifest/system/system-log.xml
 ${SVCCFG} import ${MINIROOTDIR}/var/svc/manifest/system/iscsi_target.xml
+${SVCCFG} import ${MINIROOTDIR}/var/svc/manifest/system/hostid.xml
 ${SVCCFG} -s system/idmap:default setprop general/enabled=true
 ${SVCCFG} -s network/rpc/bind:default setprop general/enabled=true
 ${SVCCFG} -s system/sysidtool:net setprop general/enabled=true
@@ -86,6 +87,7 @@ ${SVCCFG} -s system/identity:domain setprop general/enabled=true
 ${SVCCFG} -s milestone/network:default setprop general/enabled=true
 ${SVCCFG} -s network/service:default setprop general/enabled=true
 ${SVCCFG} -s system/system-log:default setprop general/enabled=true
+${SVCCFG} -s system/hostid:default setprop general/enabled=true
 
 msg_to_stderr "delete unecessary services"
 #${SVCCFG} delete network/rpc/bind

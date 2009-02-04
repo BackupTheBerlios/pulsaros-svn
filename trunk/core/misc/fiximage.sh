@@ -39,8 +39,8 @@ cp -r ${MINIROOTDIR}/usr/lib/devfsadm/linkmod ${MINIROOTDIR}/lib/devfsadm/
 msg_to_stderr "fix /etc/vfstab"
 echo "/devices/ramdisk:a - / ufs - no nologging" >> ${MINIROOTDIR}/etc/vfstab
 echo "swap - /var tmpfs - yes -" >> ${MINIROOTDIR}/etc/vfstab
-echo "/dev/dsk/c0d0s1 /dev/rdsk/c0d0s1 /usr ufs - no nologging" >> ${MINIROOTDIR}/etc/vfstab
-echo "/dev/dsk/c0d0s0 /dev/rdsk/c0d0s0 /coreroot ufs - yes nologging" >> ${MINIROOTDIR}/etc/vfstab
+#echo "/dev/dsk/c0d0s1 /dev/rdsk/c0d0s1 /usr ufs - no nologging" >> ${MINIROOTDIR}/etc/vfstab
+#echo "/dev/dsk/c0d0s0 /dev/rdsk/c0d0s0 /coreroot ufs - yes nologging" >> ${MINIROOTDIR}/etc/vfstab
 
 #
 # Set nodename
@@ -55,21 +55,6 @@ echo "pulsar-os" > ${MINIROOTDIR}/etc/nodename
 msg_to_stderr "tar up /var directory for future re-constitution"
 tar cf ./var.tar ./var
 /bin/rm -rf ./var/*
-
-#
-# Copy some things to the CF card
-#
-msg_to_stderr "move usr to installer"
-cd ${MINIROOTDIR}/usr
-tar cf $HOME/installer/stage2/usr.tar *
-# needs to be done for the updater script for existing installations
-cp ${MINIROOTDIR}/usr/bin/mv /installer/updates/usr/bin/
-cp ${MINIROOTDIR}/usr/bin/cp /installer/updates/usr/bin/
-cp ${MINIROOTDIR}/usr/bin/rm /installer/updates/usr/bin/
-cp ${MINIROOTDIR}/usr/bin/cd /installer/updates/usr/bin/
-cp ${MINIROOTDIR}/usr/bin/gzip /installer/updates/usr/bin/
-cp ${MINIROOTDIR}/usr/bin/tar /installer/updates/usr/bin/
-/bin/rm -rf ${MINIROOTDIR}/usr/*
 
 #
 # Create /coreroot directory
