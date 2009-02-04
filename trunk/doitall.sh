@@ -23,7 +23,7 @@ fi
 mv $HOME/core/boot/usr.tar /installer/updates/latest.tar
 # needs to be done for the updater script for existing installations
 cd /installer/updates/usr
-tar -xf /installer/updates/latest.tar ./bin/mv ./bin/cp ./bin/rm ./bin/cd ./bin/gzip ./bin/tar 
+tar -xf /installer/updates/latest.tar ./bin/alias ./bin/mv ./bin/cp ./bin/rm ./bin/cd ./bin/gzip ./bin/tar 
 mv $HOME/core/boot/os_update.gz /installer/updates/os.gz 
 cp $HOME/core/boot/boot/platform/i86pc/kernel/unix /installer/updates/
 cd /installer/updates
@@ -46,7 +46,7 @@ rm -r bin
 # Create the install cd
 echo "3. Step - Creating the pulsar installer cd\n\n"
 cd /
-mkisofs -R -b boot/grub/stage2_eltorito -no-emul-boot -boot-load-size 4 -boot-info-table -o /installer/images/pulsar_v1.iso $HOME/core/boot >> $HOME/install.log 2>&1
+mkisofs -R -b $HOME/core/boot/grub/stage2_eltorito -no-emul-boot -boot-load-size 4 -boot-info-table -o /installer/images/pulsar_v1.iso $HOME/core/boot >> $HOME/install.log 2>&1
 /installer/distro_constructor/tools/usbgen /installer/images/pulsar_v1.iso /installer/images/pulsar_v1.usb /tmp 2>&1
 echo "Creation of the pulsar installer usb image ready"
 
