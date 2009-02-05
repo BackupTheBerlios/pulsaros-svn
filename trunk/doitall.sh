@@ -52,6 +52,7 @@ echo "Creation of the pulsar installer usb image ready"
 
 # cleanup
 rm $HOME/core/boot/boot/os.gz
+rm $HOME/core/boot/boot/platform/i86pc/kernel/unix
 rm $HOME/core/boot/miniroot.tar
 rm -r $HOME/core/miniroot
 rm $HOME/core/packages.log
