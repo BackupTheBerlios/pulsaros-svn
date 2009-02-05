@@ -50,8 +50,8 @@ tar -cf /installer/tmp.tar .
 cd /pulsar_boot
 tar -xf /installer/tmp.tar
 rm /installer/tmp.tar
-cp -r ${BASEDIR}/platform/pulsarroot/bin /pulsar_boot/coreroot/
-cp -r ${BASEDIR}/platform/pulsarroot/plugins /pulsar_boot/coreroot/
+cp -r ${BASEDIR}/platform/pulsarroot/bin /pulsar_boot/pulsarroot/
+cp -r ${BASEDIR}/platform/pulsarroot/plugins /pulsar_boot/pulsarroot/
 cd /
 umount /pulsar_boot
 lofiadm -d /dev/lofi/1

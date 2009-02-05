@@ -4,7 +4,7 @@
 # restore.sh - Restores PulsarOS to a previous version
 #
 
-RESTORE_HOME=/coreroot
+RESTORE_HOME=/pulsarroot
 BACKUP_DIR=$1
 #
 #

@@ -5,8 +5,8 @@
 #		    and make it persistent 
 #
 
-CONF_NAME=/coreroot/bin/changes
-BOOT_HOME=/coreroot
+CONF_NAME=/pulsarroot/bin/changes
+BOOT_HOME=/pulsarroot
 ARCHIVE_NAME=os
 SYNTAX="${CONF_NAME}"
 

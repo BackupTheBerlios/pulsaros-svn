@@ -4,7 +4,7 @@
 # plugin.sh - Install plugins for pulsaros
 #
 WORKDIR=/tmp
-APPDIR=/coreroot/plugins
+APPDIR=/pulsarroot/plugins
 
 list_plugins()
 {

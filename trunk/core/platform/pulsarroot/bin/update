@@ -4,7 +4,7 @@
 # update.sh - Update PulsarOS to a newer version
 #
 
-UPDATE_HOME=/coreroot
+UPDATE_HOME=/pulsarroot
 BACKUP_DIR=$1
 # check syntax
 if [ $# != 1 ] ; then

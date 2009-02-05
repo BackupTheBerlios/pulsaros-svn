@@ -39,8 +39,6 @@ cp -r ${MINIROOTDIR}/usr/lib/devfsadm/linkmod ${MINIROOTDIR}/lib/devfsadm/
 msg_to_stderr "fix /etc/vfstab"
 echo "/devices/ramdisk:a - / ufs - no nologging" >> ${MINIROOTDIR}/etc/vfstab
 echo "swap - /var tmpfs - yes -" >> ${MINIROOTDIR}/etc/vfstab
-#echo "/dev/dsk/c0d0s1 /dev/rdsk/c0d0s1 /usr ufs - no nologging" >> ${MINIROOTDIR}/etc/vfstab
-#echo "/dev/dsk/c0d0s0 /dev/rdsk/c0d0s0 /coreroot ufs - yes nologging" >> ${MINIROOTDIR}/etc/vfstab
 
 #
 # Set nodename
@@ -57,14 +55,14 @@ tar cf ./var.tar ./var
 /bin/rm -rf ./var/*
 
 #
-# Create /coreroot directory
+# Create /pulsarroot directory
 #
-mkdir  ${MINIROOTDIR}/coreroot
+mkdir  ${MINIROOTDIR}/pulsarroot
 
 #
 # Set PATH
 #
-echo "PATH=$PATH:/bin:/sbin:/usr/bin:/usr/sbin:/usr/sfw/bin:/usr/ccs/bin:/coreroot/bin" > ${MINIROOTDIR}/root/.profile
+echo "PATH=$PATH:/bin:/sbin:/usr/bin:/usr/sbin:/usr/sfw/bin:/usr/ccs/bin:/pulsarroot/bin" > ${MINIROOTDIR}/root/.profile
 echo "export PATH" >> ${MINIROOTDIR}/root/.profile
 
 exit 0
