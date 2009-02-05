@@ -1,6 +1,6 @@
 #!/bin/bash
 trap "" 2 3
-HOME=/coreroot/bin/setup
+HOME=/pulsarroot/bin/setup
 
 displayHeader()
 {
@@ -105,7 +105,7 @@ copy_os()
 	# install os to disk
 	printf "\n\n2. Install OS to disk (This takes some time - grab a coffee)\n\n"
 	mount ${disk}s0 /coreboot
-	cp -rp /coreroot/bin /coreroot/plugins /coreboot/
+	cp -rp /pulsarroot/bin /pulsarroot/plugins /coreboot/
 	mkdir /coreboot/boot
 	cp -rp /mnt/boot/grub /mnt/boot/platform /coreboot/boot/
 	# create os image
@@ -159,7 +159,7 @@ config_os()
 	# create customized filesystem entries
 	cp $HOME/vfstab $HOME/vfstab.work
  	echo "${disk}s1 ${disk}s1 /usr ufs - no nologging" >> $HOME/vfstab.work
-	echo "${disk}s0 ${disk}s0 /coreroot ufs - yes nologging" >> $HOME/vfstab.work
+	echo "${disk}s0 ${disk}s0 /pulsarroot ufs - yes nologging" >> $HOME/vfstab.work
 	cp $HOME/vfstab.work /mnt/etc/vfstab
 	rm $HOME/vfstab.work
 	# create hostid file
