@@ -2,7 +2,7 @@
 # variables
 rdisk=/dev/rdsk/${1}
 disk=/dev/dsk/${1}
-HOME=/installer/trunk
+HOME=`/usr/bin/pwd`
 
 #cleanup
 if [ -f $HOME/install.log ]; then
