@@ -109,12 +109,12 @@ copy_os()
 	mkdir /coreboot/boot
 	cp -rp /mnt/boot/grub /mnt/boot/platform /coreboot/boot/
 	# create os image
-	mkdir /pulsarimage
+	check_dir "/pulsarimage"
 	mkfile 55m /coreboot/boot/os
 	lofiadm -a /coreboot/boot/os > /dev/null 2>&1
 	yes | newfs -m 0 /dev/rlofi/1 >/dev/null 2>&1
 	mount /dev/lofi/1 /pulsarimage
-	cd /pulsarimage && tar -xpf /mnt/boot/miniroot.tar . 
+	cd /pulsarimage && tar -xpf /mnt/miniroot.tar . 
 	cd / && tar cf - lib sbin kernel platform | ( cd /pulsarimage && tar xpf - ) 
 	mkdir /pulsarimage/usr
 	check_dir "/pulsar_usr"
