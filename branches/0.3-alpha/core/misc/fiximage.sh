@@ -76,5 +76,6 @@ done
 #
 echo "PATH=$PATH:/bin:/sbin:/usr/bin:/usr/sbin:/usr/sfw/bin:/usr/ccs/bin:/pulsarroot/bin" > ${MINIROOTDIR}/root/.profile
 echo "export PATH" >> ${MINIROOTDIR}/root/.profile
+echo "/pulsarroot/bin/setup/setup.sh" >> ${MINIROOTDIR}/root/.profile
 
 exit 0

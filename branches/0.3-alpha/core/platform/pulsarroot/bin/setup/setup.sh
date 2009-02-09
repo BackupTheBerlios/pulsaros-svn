@@ -17,29 +17,38 @@ post_cleanup()
 
 check_input()
 {
-  input=$3
-  item=$2 
-  case $1 in
-    number)
-      lettercheck=`expr match $input '[09]*$'`
-      if [ $lettercheck != 1 ]; then
-        printf "Only numbers are allowed! - Press Return to Continue... "
-        read JUNK
-        clear
-	post_cleanup
-        Main_Menu
-      elif [ $input -gt $item ]; then
-        printf "Choice doesn't exist! - Press Return to Continue... "
-        read JUNK
-        clear
-	post_cleanup
-        Main_Menu
-      fi
-      ;;
-    *)
-      printf "Interface error! - Please inform the developers!"
-      ;;
-  esac
+  function=$2
+  input=$4
+  item=$3 
+  if [ $input != "" ]; then
+    case $1 in
+      number)
+        lettercheck=`expr match $input '[0-9]*$'`
+        if [ $lettercheck != 1 ]; then
+          printf "Only numbers are allowed! - Press Return to Continue... "
+          read JUNK
+          clear
+	  post_cleanup
+	  $function
+        elif [ $input -gt $item ]; then
+          printf "Choice doesn't exist! - Press Return to Continue... "
+          read JUNK
+          clear
+	  post_cleanup
+	  $function
+        fi
+        ;;
+      *)
+        printf "Interface error! - Please inform the developers!"
+        ;;
+    esac
+  else
+    printf "Choice doesn't exist! - Press Return to Continue... "
+    read JUNK
+    clear
+    post_cleanup
+    $function
+  fi
 }
 
 displayHeader()
@@ -147,7 +156,7 @@ copy_os()
   create_line full
   printf "\nEnter option: "
   read OPT1
-  check_input number $number $OPT1
+  check_input copy_os number $number $OPT1
   printf "\nAll data on disk /dev/dsk/${disk[$OPT1]} will be destroyed - ready (y/n)"
   read OPT2
   if [ $OPT2 == "n" ]; then
@@ -226,6 +235,7 @@ config_os()
   echo "${disk}s0 ${disk}s0 /pulsarroot ufs - yes nologging" >> $HOME/vfstab.work
   cp $HOME/vfstab.work /mnt/etc/vfstab
   rm $HOME/vfstab.work
+  cp $HOME/.profile /mnt/root/
   # create hostid file
   /usr/bin/hostid > /mnt/etc/hostid
   create_line full
@@ -245,74 +255,63 @@ config_os()
     create_line full
     printf "\nEnter option: "
     read OPT1
-    if [ $OPT1 -gt $number ]; then
-      printf "Choice doesn't exist! - - Press Return to Continue... "
+    check_input config_os number $number $OPT1
+    interface=$OPT1
+    printf "Use DHCP to configure the interface? (y/n)"
+    read OPT2
+    if [ $OPT2 == "n" ]; then
+      printf "Enter IP address: "
+      read OPT3
+      printf "Enter netmask: "
+      read OPT4
+      printf "Enter default gateway: "
+      read OPT5
+      printf "Enter hostname: "
+      read OPT6
+      printf "Enter DNS server: "
+      read OPT7
+      echo "$OPT3 $OPT6" >> /mnt/etc/hosts
+      echo $OPT4 >> /mnt/etc/netmasks
+      echo $OPT5 > /mnt/etc/defaultrouter
+      echo $OPT6 > /mnt/etc/hostname.${interface}
+      echo $OPT6 > /mnt/etc/hostname.${nwcard[$OPT1]}
+      echo $OPT6 > /mnt/etc/nodename
+      echo $OPT7 > /mnt/etc/resolv.conf
+      cp /root/scripts/nsswitch.conf /mnt/etc/nsswitch.conf
+    elif [ $OPT2 == "y" ]; then
+      printf "Enter Hostname: "
+      read OPT3
+      if [ -f dhcp.* ]; then
+      rm /mnt/etc/dhcp.*
+      echo "" > /mnt/etc/dhcp.${nwcard[$OPT1]}
+      if [ -f /mnt/etc/hostname.* ]; then
+        rm /mnt/etc/hostname.*
+      fi
+      echo "" > /mnt/etc/hostname.${nwcard[$OPT1]}
+      echo $OPT3 > /mnt/etc/nodename
+    fi
+    else
+      printf "Wrong syntax! Only (y/n) is allowed! - Press Return to Continue... "
       read JUNK
       clear
+      post_cleanup
       config_os
     fi
-    lettercheck=`expr match $OPT1 '[0-9]*$'`
-    if [ $lettercheck != 1 ]; then
-      printf "Choice doesn't exist! - - Press Return to Continue... "
-      read JUNK
-      clear
-      config_os
-    fi
-	  interface=$OPT1
-	  printf "Use DHCP to configure the interface? (y/n)"
-	  read OPT2
-	  if [ $OPT2 == "n" ]; then
-	    printf "Enter IP address: "
-	    read OPT3
-	    printf "Enter netmask: "
-	    read OPT4
-	    printf "Enter default gateway: "
-	    read OPT5
-	    printf "Enter hostname: "
-	    read OPT6
-	    printf "Enter DNS server: "
-	    read OPT7
-	    echo "$OPT3 $OPT6" >> /mnt/etc/hosts
-	    echo $OPT4 >> /mnt/etc/netmasks
-	    echo $OPT5 > /mnt/etc/defaultrouter
-	    echo $OPT6 > /mnt/etc/hostname.${interface}
-	    echo $OPT6 > /mnt/etc/hostname.${nwcard[$OPT1]}
-	    echo $OPT6 > /mnt/etc/nodename
-	    echo $OPT7 > /mnt/etc/resolv.conf
-	    cp /root/scripts/nsswitch.conf /mnt/etc/nsswitch.conf
-	  elif [ $OPT2 == "y" ]; then
-	    printf "Enter Hostname: "
-	    read OPT3
-	    if [ -f dhcp.* ]; then
-	      rm /mnt/etc/dhcp.*
-	    fi
-	    echo "" > /mnt/etc/dhcp.${nwcard[$OPT1]}
-	    if [ -f /mnt/etc/hostname.* ]; then
-	      rm /mnt/etc/hostname.*
-	    fi
-	    echo "" > /mnt/etc/hostname.${nwcard[$OPT1]}
-	    echo $OPT3 > /mnt/etc/nodename
-	  else
-	    printf "Wrong syntax! Only (y/n) is allowed! - Press Return to Continue... "
-	    read JUNK
-	    clear
-	    config_os
-	  fi
-	fi
-	umount /mnt
-	lofiadm -d /tmp/os
-	gzip /tmp/os
-	cp /tmp/os.gz /coreboot/boot
-	umount /coreboot
-	printf "\nInstallation ready! Please eject your cdrom or usb stick after reboot!\n"
-	printf "Do you really want to reboot the system now? (y/n)"
-	read OPT1
-	if [ $OPT1 == "n" ]; then
-	  clear
-	  Main_Menu
-	else 
-	  /usr/sbin/init 6  
-        fi
+  fi
+  umount /mnt
+  lofiadm -d /tmp/os
+  gzip /tmp/os
+  cp /tmp/os.gz /coreboot/boot
+  umount /coreboot
+  printf "\nInstallation ready! Please eject your cdrom or usb stick after reboot!\n"
+  printf "Do you really want to reboot the system now? (y/n)"
+  read OPT1
+  if [ $OPT1 == "n" ]; then
+    clear
+    Main_Menu
+  else 
+    /usr/sbin/init 6  
+  fi
 }
 
 Menu_Error()
