@@ -156,7 +156,7 @@ copy_os()
   create_line full
   printf "\nEnter option: "
   read OPT1
-  check_input copy_os number $number $OPT1
+  check_input number copy_os $number $OPT1
   printf "\nAll data on disk /dev/dsk/${disk[$OPT1]} will be destroyed - ready (y/n)"
   read OPT2
   if [ $OPT2 == "n" ]; then
@@ -255,7 +255,7 @@ config_os()
     create_line full
     printf "\nEnter option: "
     read OPT1
-    check_input config_os number $number $OPT1
+    check_input number config_os $number $OPT1
     interface=$OPT1
     printf "Use DHCP to configure the interface? (y/n)"
     read OPT2
