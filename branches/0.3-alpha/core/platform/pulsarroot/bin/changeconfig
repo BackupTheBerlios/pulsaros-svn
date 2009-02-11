@@ -8,16 +8,27 @@
 CONF_NAME=/pulsarroot/bin/changes
 BOOT_HOME=/pulsarroot
 ARCHIVE_NAME=os
-SYNTAX="${CONF_NAME}"
 
-#if [ $# != 1 ] ; then
-#	echo "argument expected" "${SYNTAX}"
-#	exit 1
-#fi
+post_cleanup()
+{
+  if [ `df -k|awk '/\/tmp\/changes$/ { print $6 }'|wc -l` == 1 ]; then
+    /usr/sbin/umount /tmp/changes
+  fi
+  if [ `lofiadm |wc -l` -gt 1 ]; then
+   lofiadm -d /dev/lofi/1
+  fi
+  if [ -f /tmp/${ARCHIVE_NAME} ]; then
+    rm /tmp/${ARCHIVE_NAME}
+  fi
+  if [ -f /tmp/${ARCHIVE_NAME}.gz ]; then
+    rm /tmp/${ARCHIVE_NAME}.gz
+  fi
+}
 
 #
 # unzip the solemb archive and change the config
 #
+post_cleanup
 cp ${BOOT_HOME}/boot/${ARCHIVE_NAME}.gz /tmp
 gzip -d /tmp/${ARCHIVE_NAME}.gz
 lofiadm -a /tmp/${ARCHIVE_NAME}
