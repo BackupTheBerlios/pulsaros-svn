@@ -39,6 +39,7 @@ if [ -f /installer/updates/corebin.tar.gz ]; then
   rm /installer/updates/corebin.tar.gz
 fi
 cp -r $HOME/core/platform/pulsarroot/bin .
+rm bin/changes
 tar -cf corebin.tar bin
 gzip -9 corebin.tar
 rm -r bin

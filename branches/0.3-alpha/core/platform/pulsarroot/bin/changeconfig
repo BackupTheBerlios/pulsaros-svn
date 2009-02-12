@@ -11,18 +11,10 @@ ARCHIVE_NAME=os
 
 post_cleanup()
 {
-  if [ `df -k|awk '/\/tmp\/changes$/ { print $6 }'|wc -l` == 1 ]; then
-    /usr/sbin/umount /tmp/changes
-  fi
-  if [ `lofiadm |wc -l` -gt 1 ]; then
-   lofiadm -d /dev/lofi/1
-  fi
-  if [ -f /tmp/${ARCHIVE_NAME} ]; then
-    rm /tmp/${ARCHIVE_NAME}
-  fi
-  if [ -f /tmp/${ARCHIVE_NAME}.gz ]; then
-    rm /tmp/${ARCHIVE_NAME}.gz
-  fi
+  [ `df -k|awk '/\/tmp\/changes$/ { print $6 }'|wc -l` = 1 ] && umount /tmp/changes
+  [ `lofiadm |wc -l` -gt 1 ] && lofiadm -d /dev/lofi/1
+  [ -f /tmp/${ARCHIVE_NAME} ] && rm /tmp/${ARCHIVE_NAME}
+  [ -f /tmp/${ARCHIVE_NAME}.gz ] && rm /tmp/${ARCHIVE_NAME}.gz
 }
 
 #
@@ -32,9 +24,7 @@ post_cleanup
 cp ${BOOT_HOME}/boot/${ARCHIVE_NAME}.gz /tmp
 gzip -d /tmp/${ARCHIVE_NAME}.gz
 lofiadm -a /tmp/${ARCHIVE_NAME}
-if [ ! -d /tmp/changes ]; then
-  mkdir /tmp/changes
-fi
+[ ! -d /tmp/changes ] && mkdir /tmp/changes
 mount /dev/lofi/1 /tmp/changes
 for i in `cat ${CONF_NAME}`; do
   cp ${i} /tmp/changes/${i}

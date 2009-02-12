@@ -31,7 +31,7 @@ fi
 # check if updates are available
 #
 cd $UPDATE_HOME
-CURRENT_SYS=`/usr/bin/uname -a|/usr/bin/awk '{print $4}'`
+CURRENT_SYS=`uname -a | awk '{print $4}'`
 wget -q ${MIRROR}/latest.update
 #if [ `cat latest.update` != $CURRENT_SYS ]; then
   printf "Updates available! Downloading Updates ... \n"
