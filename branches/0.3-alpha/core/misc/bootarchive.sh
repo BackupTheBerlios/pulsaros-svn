@@ -41,7 +41,7 @@ msg_to_stderr "copy kernel to boot directory"
 cp ${MINIROOTDIR}/platform/i86pc/kernel/unix ${BASEDIR}/boot/boot/platform/i86pc/kernel/
 
 msg_to_stderr "creating full miniroot_archive"
-mkfile 200m ${BASEDIR}/boot/boot/${IMAGE}
+mkfile 195m ${BASEDIR}/boot/boot/${IMAGE}
 lofiadm -a ${BASEDIR}/boot/boot/${IMAGE} > /dev/null 2>&1
 yes | newfs -m 0 /dev/rlofi/1 >/dev/null 2>&1
 mount /dev/lofi/1 /pulsar_boot
@@ -93,9 +93,5 @@ echo "timeout 10" >> ${BASEDIR}/boot/boot/grub/menu.lst
 echo "title PulsarOS" >> ${BASEDIR}/boot/boot/grub/menu.lst
 echo "kernel /boot/platform/i86pc/kernel/unix -v" >> ${BASEDIR}/boot/boot/grub/menu.lst
 echo "module /boot/${IMAGE}.gz" >> ${BASEDIR}/boot/boot/grub/menu.lst
-echo "" >> ${BASEDIR}/boot/boot/grub/menu.lst
-echo "title PulsarOS restore mode" >> ${BASEDIR}/boot/boot/grub/menu.lst
-echo "kernel /boot/platform/i86pc/kernel/unix_backup -v" >> ${BASEDIR}/boot/boot/grub/menu.lst
-echo "module /boot/${IMAGE}_backup.gz" >> ${BASEDIR}/boot/boot/grub/menu.lst
 
 exit 0

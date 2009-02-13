@@ -232,3 +232,8 @@
 ./usr/bin/whocalls
 ./usr/ccs/bin/ld
 ./usr/ccs/bin/regcmp
+./usr/bin/fc-*
+./usr/bin/cups*
+./usr/bin/gd*
+./usr/bin/png*
+./usr/sbin/cups*

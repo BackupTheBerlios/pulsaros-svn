@@ -1,27 +1,25 @@
 #!/bin/sh
 
 #
-# plugin.sh - Install plugins for pulsaros
+# plugin - Install plugins for pulsaros
 #
 WORKDIR=/tmp
 APPDIR=/pulsarroot/plugins
+MIRROR="http://download.berlios.de/pulsaros"
 
 list_plugins()
 {
  cd $WORKDIR
  # get plugin.list file
- /usr/sfw/bin/wget -nc -q "http://download.berlios.de/pulsaros/plugin.list"
+ wget -nc -q ${MIRROR}/plugin.list
  if [ ! -f plugin.list ]; then
   printf "\nError retrieving Plugin list - please try it again!\n\n"
-  if [ -f HTTP_NOT_FOUND.html.var ]; then
-    rm HTTP_NOT_FOUND.html.var
-  fi
-  exit 1
+  [ -f HTTP_NOT_FOUND.html.var ] && rm HTTP_NOT_FOUND.html.var && exit 1
  fi
  printf "\n\n"
  printf "Plugin Name\t\tActual version\t\tInstalled Version\tStatus\n"
  printf "=================================================================================\n"
- for i in `/bin/cat plugin.list`; do
+ for i in `cat plugin.list`; do
    plugin_name=`echo $i | awk -F- '{print $1}'`
    plugin_version=`echo $i | awk -F- '{print $2}'` 
    if [ ! -d $APPDIR/${plugin_name} ]; then
@@ -34,7 +32,7 @@ list_plugins()
    printf "${plugin_name}\t\t${plugin_version}\t\t\t${plugin_installed}\t\t\t${plugin_status}"
  done
  printf "\n\n"
- /usr/bin/rm plugin.list
+ rm plugin.list
 }
 
 install_plugin()
@@ -47,13 +45,13 @@ install_plugin()
   else
     # download the plugin from the internet and install it
     printf "\nInstalling ${1} plugin..."
-    /usr/sfw/bin/wget -nc -q "http://download.berlios.de/pulsaros/${1}.tar.bz2"
+    wget -nc -q ${MIRROR}/${1}.tar.bz2"
     if [ ! -f ${1}.tar.bz2 ]; then
       printf "Error downloading the plugin - please try it again!"
       exit 1
     else
-      /usr/bin/bzip2 -d ${1}.tar.bz2 && /usr/bin/tar -xf ${1}.tar
-      /usr/bin/mv ${1} ${APPDIR}  
+      bzip2 -d ${1}.tar.bz2 && tar -xf ${1}.tar
+      mv ${1} ${APPDIR}  
       rm ${1}.tar
       ${APPDIR}/${1}/scripts/install.sh
       # check the installation status and update .plugin_status file
@@ -76,9 +74,9 @@ update_plugin()
 activate_plugin()
 {
   printf "Activating plugin ${1} ..."
-  /usr/sbin/svcadm enable ${1}
+  svcadm enable ${1}
   sleep 2
-  if [ `/usr/bin/svcs squeezecenter|/usr/bin/tail -1|/usr/bin/awk '{print $1}'` != "online" ]; then
+  if [ `svcs squeezecenter|tail -1|awk '{print $1}'` != "online" ]; then
     printf "Warning: Plugin activation failed - please take a look in /var/svc/log/application-${1}:default.log, correct the error and try it again!"
     exit 1
   else
@@ -108,8 +106,8 @@ deinstall_plugin()
 # Main program
 # check syntax
 if [ $# = 0 ] ; then
-       echo "argument expected" "${SYNTAX}"
-       exit 1
+  echo "argument expected" "${SYNTAX}"
+  exit 1
 fi
 # available parameters
 case $1 in

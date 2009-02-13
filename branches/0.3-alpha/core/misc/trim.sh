@@ -65,7 +65,7 @@ rm kernel/misc/kmdbmod
 # Remove packaging, xpg4
 #
 msg_to_stderr "removing packaging, xpg4, swat and else"
-rm -rf var/sadm/* usr/xpg4 usr/sfw/swat usr/openwin/bin usr/openwin/server usr/mysql/5.0/docs usr/demo usr/games usr/include usr/lib/cups usr/lib/spell usr/share/lib/dict
+rm -rf var/sadm/* usr/xpg4 usr/sfw/swat usr/openwin/bin usr/openwin/server usr/mysql/5.0/docs usr/demo usr/games usr/include usr/lib/cups usr/lib/spell usr/share/lib/dict usr/share/cups usr/share/icons /usr/openwin/lib/app-defaults /usr/openwin/share/include /usr/openwin/share/src
 
 #
 # Remove various usr/lib (non shared object)

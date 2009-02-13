@@ -1,3 +1,5 @@
+/etc/vfstab
+/etc/dhcp.*
 /etc/hostname*
 /etc/hosts
 /etc/nsswitch.conf
@@ -10,3 +12,4 @@
 /etc/ssh/sshd_config
 /etc/ssh/ssh_config
 /etc/svc/repository.db
+/root/.profile

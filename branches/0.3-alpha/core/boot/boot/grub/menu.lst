@@ -3,7 +3,3 @@ timeout 10
 title PulsarOS
 kernel /boot/platform/i86pc/kernel/unix -v
 module /boot/os.gz
-
-title PulsarOS restore mode
-kernel /boot/platform/i86pc/kernel/unix_backup -v
-module /boot/os_backup.gz

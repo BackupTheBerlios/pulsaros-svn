@@ -27,7 +27,7 @@ lofiadm -a /tmp/${ARCHIVE_NAME}
 [ ! -d /tmp/changes ] && mkdir /tmp/changes
 mount /dev/lofi/1 /tmp/changes
 for i in `cat ${CONF_NAME}`; do
-  cp ${i} /tmp/changes/${i}
+  [ -f ${i} ] && cp ${i} /tmp/changes/${i}
 done
 umount /tmp/changes
 lofiadm -d /dev/lofi/1

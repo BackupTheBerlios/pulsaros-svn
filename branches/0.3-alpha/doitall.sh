@@ -22,27 +22,14 @@ if [ -f /installer/updates/latest.tar.gz ]; then
 fi
 mv $HOME/core/boot/usr.tar /installer/updates/latest.tar
 # needs to be done for the updater script for existing installations
-cd /installer/updates/usr
-tar -xf /installer/updates/latest.tar ./bin/alias ./bin/mv ./bin/cp ./bin/rm ./bin/cd ./bin/gzip ./bin/tar 
 mv $HOME/core/boot/os_update.gz /installer/updates/os.gz 
 cp $HOME/core/boot/boot/platform/i86pc/kernel/unix /installer/updates/
 cd /installer/updates
-tar -uf latest.tar os.gz unix
+mkdir corebin && cp $HOME/core/platform/pulsarroot/bin/* corebin/
+rm corebin/changes
+tar -uf latest.tar os.gz unix corebin
 gzip -9 latest.tar
-rm os.gz unix
-if [ -f /installer/updates/latest_minibin.tar.gz ]; then
-  rm /installer/updates/latest_minibin.tar.gz
-fi
-tar -cf latest_minibin.tar usr
-gzip -9 latest_minibin.tar
-if [ -f /installer/updates/corebin.tar.gz ]; then
-  rm /installer/updates/corebin.tar.gz
-fi
-cp -r $HOME/core/platform/pulsarroot/bin .
-rm bin/changes
-tar -cf corebin.tar bin
-gzip -9 corebin.tar
-rm -r bin
+rm -r os.gz unix corebin
 
 # Create the install cd
 echo "3. Step - Creating the pulsar installer cd\n\n"
