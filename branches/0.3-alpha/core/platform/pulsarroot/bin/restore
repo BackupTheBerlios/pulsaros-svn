@@ -1,18 +1,22 @@
 #!/bin/sh
+# Copyright 2009 Thomas Brandstetter. All rights reserved.
+# Description: 	restore - Restores pulsaros to a previous
+#				version.
+# Version:		0.3
+#=============================================================
 
-#
-# restore - Restores PulsarOS to a previous version
-#
-
+# Variables
 RESTORE_HOME=/pulsarroot
 BACKUP_DIR=$1
 
 # check syntax
 [ $# != 1 ] && echo "Syntax: restore [backup dir]" && exit 1
 
+# Restore previous version
 mkdir /tmp/usr && cd /tmp/usr
 tar -xf $BACKUP_DIR/backup_usr.tar ./bin/alias ./bin/mv ./bin/cp ./bin/rm ./bin/cd ./bin/gzip ./sbin/tar
 PATH=$PATH:/tmp/usr/bin:/tmp/usr/sbin && export PATH
+
 if [ -d /tmp/usr/bin ]; then 
   rm -r /usr/*
   cd /usr && tar -xf $BACKUP_DIR/backup_usr.tar .
@@ -24,4 +28,5 @@ if [ -d /tmp/usr/bin ]; then
 else
   printf "There is a problem with the backup package!"
 fi
+
 exit 0

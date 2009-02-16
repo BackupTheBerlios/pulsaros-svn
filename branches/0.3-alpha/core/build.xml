@@ -1,13 +1,13 @@
-<project name="igologic" default="test" basedir=".">
+<project name="pulsaros" default="test" basedir=".">
     <description>
-        Build file for embedded Solaris
+        Build file for pulsaros
     </description>
   <!-- set global properties for this build -->
   <property name="minirootdir" location="${basedir}/miniroot"/>
   <property name="miniroot-image" value="os"/>
   <property name="solaris-media-root" value="/iso"/>
   <property name="solaris-media-location" value="${solaris-media-root}/Solaris_11/Product"/>
-  <property name="projname" value="core"/>
+  <property name="projname" value="pulsaros"/>
   <property name="failonerror" value="true"/>
 
   <target name="init">
@@ -68,9 +68,9 @@
   <target name="add-platform-specific"
         depends="check-miniroot-populated,check-install-media"
         description="Add platform specific content" >
-    <exec dir="${basedir}/platform" executable="${basedir}/platform/addvel.sh"
+    <exec dir="${basedir}/platform" executable="${basedir}/platform/adddriver.sh"
           failonerror="true">
-      <arg line="${solaris-media-location} ${basedir}"/>
+      <arg line="${basedir}"/>
     </exec>
     <exec dir="${basedir}/platform" executable="${basedir}/platform/addconf.sh"
           failonerror="true">
@@ -120,5 +120,4 @@
     <antcall target="fiximage"> </antcall>
     <antcall target="make-boot-archive"> </antcall>
   </target>
-
 </project>

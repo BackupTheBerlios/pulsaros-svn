@@ -1,12 +1,15 @@
 #!/bin/sh
+# Copyright 2009 Thomas Brandstetter. All rights reserved.
+# Description: 	plugin - manage plugins for pulsaros
+# Version:		0.3
+#=============================================================
 
-#
-# plugin - Install plugins for pulsaros
-#
+# Variables
 WORKDIR=/tmp
 APPDIR=/pulsarroot/plugins
 MIRROR="http://download.berlios.de/pulsaros"
 
+# Functions
 list_plugins()
 {
  cd $WORKDIR
@@ -16,12 +19,13 @@ list_plugins()
   printf "\nError retrieving Plugin list - please try it again!\n\n"
   [ -f HTTP_NOT_FOUND.html.var ] && rm HTTP_NOT_FOUND.html.var && exit 1
  fi
+ # create plugin list
  printf "\n\n"
  printf "Plugin Name\t\tActual version\t\tInstalled Version\tStatus\n"
  printf "=================================================================================\n"
  for i in `cat plugin.list`; do
    plugin_name=`echo $i | awk -F- '{print $1}'`
-   plugin_version=`echo $i | awk -F- '{print $2}'` 
+   plugin_version=`echo $i | awk -F- '{print $2}'`
    if [ ! -d $APPDIR/${plugin_name} ]; then
      plugin_installed="-"
      plugin_status="-"
@@ -32,6 +36,7 @@ list_plugins()
    printf "${plugin_name}\t\t${plugin_version}\t\t\t${plugin_installed}\t\t\t${plugin_status}"
  done
  printf "\n\n"
+ # cleanup
  rm plugin.list
 }
 
@@ -76,7 +81,7 @@ activate_plugin()
   printf "Activating plugin ${1} ..."
   svcadm enable ${1}
   sleep 2
-  if [ `svcs squeezecenter|tail -1|awk '{print $1}'` != "online" ]; then
+  if [ `svcs ${1}|tail -1|awk '{print $1}'` != "online" ]; then
     printf "Warning: Plugin activation failed - please take a look in /var/svc/log/application-${1}:default.log, correct the error and try it again!"
     exit 1
   else
@@ -103,13 +108,15 @@ deinstall_plugin()
   printf "deinstall plugin"
 }
 
-# Main program
-# check syntax
+# Main program starts here
+
+# Check syntax
 if [ $# = 0 ] ; then
   echo "argument expected" "${SYNTAX}"
   exit 1
 fi
-# available parameters
+
+# Available parameters
 case $1 in
   list)
     list_plugins;;

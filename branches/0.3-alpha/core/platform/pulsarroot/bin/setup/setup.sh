@@ -1,13 +1,15 @@
 #!/bin/bash
+# Copyright 2009 Thomas Brandstetter. All rights reserved.
+# Description: 	setup.sh - Setup script to install pulsaros to 
+#				disk/usbstick/cfcard....
+# Version:		0.3
+#=============================================================
 
-#
-# setup.sh - Setup script to install pulsaros to disk
-#            usbstick/cfcard....
-#
-
+# Variables
 trap "" 2 3
 HOME=/pulsarroot/bin/setup
 
+# Functions
 post_cleanup()
 {
   [ `df -k|awk '/\/mnt$/ { print $6 }'|wc -l` == 1 ] && /usr/sbin/umount /mnt
@@ -231,8 +233,8 @@ config_os()
     printf "Pulsar os not installed, please install the os first! - Press Return to Continue... "
     clear_it main_menu
   fi
-  lofiadm -a /coreboot/boot/os > /dev/null 2>&1
   # mount the boot image for changes
+  lofiadm -a /coreboot/boot/os > /dev/null 2>&1
   mount /dev/lofi/1 /mnt
   # create customized filesystem entries
   cp $HOME/vfstab $HOME/vfstab.work
@@ -244,6 +246,7 @@ config_os()
   # create hostid file
   /usr/bin/hostid > /mnt/etc/hostid
   clear
+  # configure network
   create_line full
   printf " #\t\t\tPulsar OS network configuration ...\t\t#\n"
   create_line space
@@ -322,7 +325,8 @@ menu_error()
   clear_it main_menu
 }
 
-###########################
-#Actual script begins here
-###########################
+# Main program starts here
+
 main_menu
+
+exit 0

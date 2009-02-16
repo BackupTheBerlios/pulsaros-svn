@@ -1,24 +1,15 @@
 #!/bin/sh
+# Description: 	addpkgs.sh - Add selected packages to the miniroot
+# Version:		0.3
+#=================================================================
 
-#
-# addpkgs.sh - Add selected packages to the miniroot 
-#
-#              This script is typically invoked from ant and has the
-#              following arguments: 
-#
-#              $1: PACKAGES FILE - List of packages to add to miniroot
-#              $2: media_dir - Directory where Solaris install packages exist
-#              $3: build_dir - Base build directoy
-#
-
+# Variables
 PROGNAME=$0
 SYNTAX="${PROGNAME} PACKAGES_file solaris_media_dir build_dir"
 
+# Syntax check
 . ../include/utils.sh
-
-if [ $# != 3 ] ; then
-    arg_error "Wrong number of arguments" "${SYNTAX}"
-fi
+[ $# != 3 ] && arg_error "Wrong number of arguments" "${SYNTAX}"
 
 if [ ! -f $1 ] ; then
     arg_error "$1: file not found" "${SYNTAX}"
@@ -43,9 +34,7 @@ else
     fi
 fi
 
-#
 # Create an admin file for pkgadd(1M)
-#
 if [ ! -f /var/sadm/install/admin/default ] ; then
     errormsg_and_exit "can't make pkgadd(1M) admin file"
 else

@@ -1,14 +1,16 @@
 #!/bin/sh
+# Copyright 2009 Thomas Brandstetter. All rights reserved.
+# Description: 	changeconfig - Updates the pulsaros boot image
+#				to preserve configuration changes.
+# Version:		0.3
+#=============================================================
 
-#
-# changeconfig.sh - Change the config of a running embedded solaris
-#		    and make it persistent 
-#
-
+# Variables
 CONF_NAME=/pulsarroot/bin/changes
 BOOT_HOME=/pulsarroot
 ARCHIVE_NAME=os
 
+# Functions
 post_cleanup()
 {
   [ `df -k|awk '/\/tmp\/changes$/ { print $6 }'|wc -l` = 1 ] && umount /tmp/changes
@@ -17,18 +19,18 @@ post_cleanup()
   [ -f /tmp/${ARCHIVE_NAME}.gz ] && rm /tmp/${ARCHIVE_NAME}.gz
 }
 
-#
-# unzip the solemb archive and change the config
-#
+# Unzip the solemb archive and change the config
 post_cleanup
 cp ${BOOT_HOME}/boot/${ARCHIVE_NAME}.gz /tmp
 gzip -d /tmp/${ARCHIVE_NAME}.gz
 lofiadm -a /tmp/${ARCHIVE_NAME}
 [ ! -d /tmp/changes ] && mkdir /tmp/changes
 mount /dev/lofi/1 /tmp/changes
+
 for i in `cat ${CONF_NAME}`; do
   [ -f ${i} ] && cp ${i} /tmp/changes/${i}
 done
+
 umount /tmp/changes
 lofiadm -d /dev/lofi/1
 rm -r /tmp/changes

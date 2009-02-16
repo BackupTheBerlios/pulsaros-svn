@@ -1,47 +1,28 @@
 #!/bin/sh
+# Description: 	bootarchive.sh - Create pulsaros bootarchive
+# Version:		0.3
+#===========================================================
 
-#
-# bootarchive.sh - Remove unnecessary miniroot components
-#
-#                  This script is typically invoked from ant and has the
-#                  following arguments: 
-#
-#                  $1: base_directory
-#                  $2: miniroot_directory
-#                  $3: name of miniroot-image
-#
-
+# Variables
 PROGNAME=$0
-SYNTAX="${PROGNAME} base_directory minroot_directory miniroot_image"
-
-. ../include/utils.sh
-
-if [ $# != 3 ] ; then
-	arg_error "wrong number of arguments" "${SYNTAX}"
-fi
-
 BASEDIR=$1
-if [ ! -d "${BASEDIR}" ] ; then
-        arg_error "${BASEDIR} directory does not exist" "${SYNTAX}"
-fi
-if [ "${BASEDIR}" = "/" ] ; then
-        arg_error "'/' not permitted as a base directory" "${SYNTAX}"
-fi
-
 MINIROOTDIR=$2
-if [ ! -d "${MINIROOTDIR}" ] ; then
-        arg_error "${MINIROOTDIR} directory does not exist" "${SYNTAX}"
-fi
-if [ "${MINIROOTDIR}" = "/" ] ; then
-        arg_error "'/' is definitely not a valid miniroot directory" "${SYNTAX}"
-fi
-
 IMAGE=$3
+
+# Syntax check
+. ../include/utils.sh
+SYNTAX="${PROGNAME} base_directory minroot_directory miniroot_image"
+[ $# != 3 ] && arg_error "wrong number of arguments" "${SYNTAX}"
+[ ! -d "${BASEDIR}" ] && arg_error "${BASEDIR} directory does not exist" "${SYNTAX}"
+[ "${BASEDIR}" = "/" ] && arg_error "'/' not permitted as a base directory" "${SYNTAX}"
+[ ! -d "${MINIROOTDIR}" ] && arg_error "${MINIROOTDIR} directory does not exist" "${SYNTAX}"
+[ "${MINIROOTDIR}" = "/" ] && arg_error "'/' is definitely not a valid miniroot directory" "${SYNTAX}"
+
+# Create pulsaros full archive 
 msg_to_stderr "copy kernel to boot directory"
 cp ${MINIROOTDIR}/platform/i86pc/kernel/unix ${BASEDIR}/boot/boot/platform/i86pc/kernel/
-
 msg_to_stderr "creating full miniroot_archive"
-mkfile 195m ${BASEDIR}/boot/boot/${IMAGE}
+mkfile 201m ${BASEDIR}/boot/boot/${IMAGE}
 lofiadm -a ${BASEDIR}/boot/boot/${IMAGE} > /dev/null 2>&1
 yes | newfs -m 0 /dev/rlofi/1 >/dev/null 2>&1
 mount /dev/lofi/1 /pulsar_boot
@@ -55,17 +36,17 @@ cp -r ${BASEDIR}/platform/pulsarroot/plugins /pulsar_boot/pulsarroot/
 cd /
 umount /pulsar_boot
 lofiadm -d /dev/lofi/1
-if [ -f ${BASEDIR}/boot/boot/${IMAGE}.gz ]; then
-  rm ${BASEDIR}/boot/boot/${IMAGE}.gz 
-fi
+[ -f ${BASEDIR}/boot/boot/${IMAGE}.gz ] && rm ${BASEDIR}/boot/boot/${IMAGE}.gz 
 gzip -9 ${BASEDIR}/boot/boot/${IMAGE}
 
+# Archive usr directory for update usage
 msg_to_stderr "cp usr directory for updates"
 cd ${MINIROOTDIR}/usr
 tar -cf ${BASEDIR}/boot/usr.tar .
 
+# Create pulsaros update archive 
 msg_to_stderr "creating update miniroot_archive"
-mkfile 55m ${BASEDIR}/boot/${IMAGE}_update
+mkfile 58m ${BASEDIR}/boot/${IMAGE}_update
 lofiadm -a ${BASEDIR}/boot/${IMAGE}_update > /dev/null 2>&1
 yes | newfs -m 0 /dev/rlofi/1 >/dev/null 2>&1
 mount /dev/lofi/1 /pulsar_boot
@@ -77,9 +58,7 @@ rm /installer/tmp.tar
 cd /
 umount /pulsar_boot
 lofiadm -d /dev/lofi/1
-if [ -f ${BASEDIR}/boot/${IMAGE}_update.gz ]; then
-  rm ${BASEDIR}/boot/${IMAGE}_update.gz
-fi
+[ -f ${BASEDIR}/boot/${IMAGE}_update.gz ] && rm ${BASEDIR}/boot/${IMAGE}_update.gz
 gzip -9 ${BASEDIR}/boot/${IMAGE}_update
 
 # create pulsar mini container
@@ -87,6 +66,7 @@ cd ${MINIROOTDIR} && rm -r usr lib sbin kernel platform
 tar -cf ${BASEDIR}/boot/miniroot.tar .
 cd /
 
+# create menu entries for the grub boot loader
 msg_to_stderr "creating grub/menu.lst"
 echo "default 0" > ${BASEDIR}/boot/boot/grub/menu.lst
 echo "timeout 10" >> ${BASEDIR}/boot/boot/grub/menu.lst
