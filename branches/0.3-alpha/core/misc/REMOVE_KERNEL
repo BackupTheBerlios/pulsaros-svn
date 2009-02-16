@@ -1,0 +1,5 @@
+./kernel/kmdb/smbsrv
+./kernel/kmdb/zfs
+./kernel/drv/kmdb
+./kernel/drv/kmdb.conf
+./kernel/misc/kmdbmod

@@ -22,6 +22,10 @@ SUNWtls
 SUNWlibsasl
 SUNWlxml
 SUNWlxmlr
+SUNWopensslr
+SUNWsmbskr
+SUNWsmbsr
+SUNWsmbsu
 SUNWsmbau
 SUNWsmbar
 SUNWtecla
@@ -32,6 +36,9 @@ SUNWgssc
 SUNWbip
 SUNWbash
 SUNWloc
+SUNWsshcu
+SUNWsshdr
+SUNWsshdu
 SUNWsshr
 SUNWsshu
 SUNWtoo

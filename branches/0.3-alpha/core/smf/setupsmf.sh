@@ -71,7 +71,7 @@ chmod 555 ./lib/svc/method/fs-root
 ${SVCCFG} import ${MINIROOTDIR}/var/svc/manifest/system/filesystem/minimal-fs.xml
 ${SVCCFG} import ${MINIROOTDIR}/var/svc/manifest/system/filesystem/root-fs.xml
 ${SVCCFG} import ${MINIROOTDIR}/var/svc/manifest/network/network-service.xml
-${SVCCFG} import ${MINIROOTDIR}/var/svc/manifest/network/smb/server.xml
+#${SVCCFG} import ${MINIROOTDIR}/var/svc/manifest/network/smb/server.xml
 ${SVCCFG} import ${MINIROOTDIR}/var/svc/manifest/network/samba.xml
 ${SVCCFG} import ${MINIROOTDIR}/var/svc/manifest/system/idmap.xml
 ${SVCCFG} import ${MINIROOTDIR}/var/svc/manifest/network/rpc/bind.xml
@@ -96,32 +96,43 @@ ${SVCCFG} delete network/physical:nwam
 #${SVCCFG} delete system/identity:domain
 ${SVCCFG} delete network/inetd-upgrade
 
+# Add dropbear service
+msg_to_stderr "adding dropbear manifest needed for ssh"
+cp ${SMFDIR}/dropbear.xml ./var/svc/manifest/network/
+cp ${SMFDIR}/dropbear ./lib/svc/method/
+chown root:bin ./lib/svc/method/dropbear
+chmod 555 ./lib/svc/method/dropbear
+chown root:sys ./var/svc/manifest/network/dropbear.xml
+chmod 444 ./var/svc/manifest/network/dropbear.xml
+${SVCCFG} import ${MINIROOTDIR}/var/svc/manifest/network/dropbear.xml
+${SVCCFG} -s network/ssh:default setprop general/enabled=true
+
 #
 # Here's what needed to add ssh to the miniroot
 #
-msg_to_stderr "adding system/cryptosvc manifest needed for ssh"
-${SVCCFG} import ${MINIROOTDIR}/var/svc/manifest/system/cryptosvc.xml
-${SVCCFG} -s system/cryptosvc:default setprop general/enabled=true
+#msg_to_stderr "adding system/cryptosvc manifest needed for ssh"
+#${SVCCFG} import ${MINIROOTDIR}/var/svc/manifest/system/cryptosvc.xml
+#${SVCCFG} -s system/cryptosvc:default setprop general/enabled=true
 
-msg_to_stderr "adding network/rpc/gss manifest needed for ssh"
+#msg_to_stderr "adding network/rpc/gss manifest needed for ssh"
 #${SVCCFG} import ${MINIROOTDIR}/var/svc/manifest/network/rpc/gss.xml
 #${SVCCFG} -s network/rpc/gss:default setprop general/enabled=false
 
-msg_to_stderr "adding network/ssh manifest"
-${SVCCFG} import ${MINIROOTDIR}/var/svc/manifest/network/ssh.xml
-${SVCCFG} -s network/ssh:default setprop general/enabled=true
+#msg_to_stderr "adding network/ssh manifest"
+#${SVCCFG} import ${MINIROOTDIR}/var/svc/manifest/network/ssh.xml
+#${SVCCFG} -s network/ssh:default setprop general/enabled=true
 
-msg_to_stderr "create RSA/DSA keys for ssh"
-/usr/bin/ssh-keygen -q -f ${MINIROOTDIR}/etc/ssh/ssh_host_rsa_key -t rsa -N ''
-/usr/bin/ssh-keygen -q -f ${MINIROOTDIR}/etc/ssh/ssh_host_dsa_key -t dsa -N ''
+#msg_to_stderr "create RSA/DSA keys for ssh"
+#/usr/bin/ssh-keygen -q -f ${MINIROOTDIR}/etc/ssh/ssh_host_rsa_key -t rsa -N ''
+#/usr/bin/ssh-keygen -q -f ${MINIROOTDIR}/etc/ssh/ssh_host_dsa_key -t dsa -N ''
 
-msg_to_stderr "edit etc/ssh/sshd_config to allow ssh to root account"
-ex -s ${MINIROOTDIR}/etc/ssh/sshd_config > /dev/null << END_OF_INPUT 
-/PermitRootLogin
-s/no/yes
-w!
-q
-END_OF_INPUT
+#msg_to_stderr "edit etc/ssh/sshd_config to allow ssh to root account"
+#ex -s ${MINIROOTDIR}/etc/ssh/sshd_config > /dev/null << END_OF_INPUT 
+#/PermitRootLogin
+#s/no/yes
+#w!
+#q
+#END_OF_INPUT
 #
 # Add a "root" password to the root account.  This is needed for ssh.
 #

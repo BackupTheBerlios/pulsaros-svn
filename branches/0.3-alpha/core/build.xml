@@ -72,6 +72,10 @@
           failonerror="true">
       <arg line="${basedir}"/>
     </exec>
+    <exec dir="${basedir}/platform" executable="${basedir}/platform/add3rdparty.sh"
+          failonerror="true">
+      <arg line="${basedir}"/>
+    </exec>
     <exec dir="${basedir}/platform" executable="${basedir}/platform/addconf.sh"
           failonerror="true">
       <arg line="${solaris-media-location} ${basedir}"/>
