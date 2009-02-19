@@ -19,7 +19,6 @@
 ./usr/bin/i86/ptree
 ./usr/bin/i86/pwait
 ./usr/bin/i86/pwdx
-./usr/bin/passmgmt
 ./usr/bin/rmail
 ./usr/bin/strclean
 ./usr/bin/strerr

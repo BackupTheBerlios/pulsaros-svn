@@ -88,27 +88,35 @@ done
 # Remove unnecessary other files
 msg_to_stderr "removing unnecessary other files"
 REMOVE_MYSQL=`cat ../misc/REMOVE_MYSQL`
-REMOVE_PERL=`cat ../misc/REMOVE_PERL`
 for mysql in $REMOVE_MYSQL
 do
   rm -rf ${MINIROOTDIR}/${mysql}
 done
 
 # Remove uneccessary perl libraries
-msg_to_stderr "removing unnecessary perl libraries"
-mv ${MINIROOTDIR}/usr/perl5/5.8.4/lib/i86pc-solaris-64int/CORE/libperl* ${MINIROOTDIR}
-for perl in $REMOVE_PERL
-do
-  rm -rf ${MINIROOTDIR}/${perl}
-done
-mkdir -p ${MINIROOTDIR}/usr/perl5/5.8.4/lib/i86pc-solaris-64int/CORE && mv ${MINIROOTDIR}/libperl* ${MINIROOTDIR}/usr/perl5/5.8.4/lib/i86pc-solaris-64int/CORE/
+#msg_to_stderr "removing unnecessary perl libraries"
+#REMOVE_PERL=`cat ../misc/REMOVE_PERL`
+#mv ${MINIROOTDIR}/usr/perl5/5.8.4/lib/i86pc-solaris-64int/CORE/libperl* ${MINIROOTDIR}
+#mv ${MINIROOTDIR}/usr/perl5/5.8.4/lib/i86pc-solaris-64int/Config.pm ${MINIROOTDIR}
+#mv ${MINIROOTDIR}/usr/perl5/5.8.4/lib/i86pc-solaris-64int/POSIX.pm ${MINIROOTDIR}
+#mv ${MINIROOTDIR}/usr/perl5/5.8.4/lib/i86pc-solaris-64int/auto/POSIX ${MINIROOTDIR}
+#for perl in $REMOVE_PERL
+#do
+#  rm -rf ${MINIROOTDIR}/${perl}
+#done
+#mkdir -p ${MINIROOTDIR}/usr/perl5/5.8.4/lib/i86pc-solaris-64int/CORE && mv ${MINIROOTDIR}/libperl* ${MINIROOTDIR}/usr/perl5/5.8.4/lib/i86pc-solaris-64int/CORE/
+#mv ${MINIROOTDIR}/Config.pm ${MINIROOTDIR}/usr/perl5/5.8.4/lib/i86pc-solaris-64int/
+#mv ${MINIROOTDIR}/POSIX.pm ${MINIROOTDIR}/usr/perl5/5.8.4/lib/i86pc-solaris-64int/
+#mkdir -p ${MINIROOTDIR}/usr/perl5/5.8.4/lib/i86pc-solaris-64int/auto && mv ${MINIROOTDIR}/POSIX ${MINIROOTDIR}/usr/perl5/5.8.4/lib/i86pc-solaris-64int/auto/
 
 # Strip libraries and binaries
 msg_to_stderr "strip files"
-STRIP=`cat ../misc/STRIP`
-for strip in $STRIP
-do
-  strip ${MINIROOTDIR}/${strip}
-done
+#STRIP=`cat ../misc/STRIP`
+#for strip in $STRIP
+#do
+#  strip ${MINIROOTDIR}/${strip}
+#done
+cd ${MINIROOTDIR}
+find *| xargs strip
 
 exit 0

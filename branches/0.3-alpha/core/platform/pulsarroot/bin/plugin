@@ -50,7 +50,7 @@ install_plugin()
   else
     # download the plugin from the internet and install it
     printf "\nInstalling ${1} plugin..."
-    wget -nc -q ${MIRROR}/${1}.tar.bz2"
+    wget -nc -q ${MIRROR}/${1}.tar.bz2
     if [ ! -f ${1}.tar.bz2 ]; then
       printf "Error downloading the plugin - please try it again!"
       exit 1
@@ -111,7 +111,7 @@ deinstall_plugin()
 # Main program starts here
 
 # Check syntax
-if [ $# = 0 ] ; then
+if [ $# = 0 ]; then
   echo "argument expected" "${SYNTAX}"
   exit 1
 fi
@@ -119,23 +119,29 @@ fi
 # Available parameters
 case $1 in
   list)
-    list_plugins;;
+    list_plugins
+    ;;
   install)
-    if [ $# != 2 ] ; then
+    if [ $# != 2 ]; then
        echo "argument expected" "${SYNTAX}"
        exit 1
     fi
-    install_plugin $2;;
+    install_plugin $2
+    ;;
   update)
-    update_plugin;;
+    update_plugin
+    ;;
   activate)
-    activate_plugin $2;;
+    activate_plugin $2
+    ;;
   deactivate)
-    deactivate_plugin $2;;
+    deactivate_plugin $2
+    ;;
   deinstall)
     deinstall_plugin;;
   *)
-    syntax_error;;
+    syntax_error
+    ;;
 esac
 
 exit 0

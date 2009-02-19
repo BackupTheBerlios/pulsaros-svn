@@ -9,6 +9,10 @@
 rdisk=/dev/rdsk/${1}
 disk=/dev/dsk/${1}
 HOME=`/usr/bin/pwd`
+VERSION=$1
+
+# Syntax check
+[ $# != 1 ] && printf "Argument expected: doitall.sh 'version'\n" && exit 1
 
 # Pre cleanup
 if [ -f $HOME/install.log ]; then
@@ -24,6 +28,7 @@ cd ..
 
 # Build the updater package
 printf "2. Step - Build the updater package for pulsar\n"
+[ -f /installer/updates/latest.tar.gz ] && rm /installer/updates/latest.tar.gz
 mv $HOME/core/boot/usr.tar /installer/updates/latest.tar
 mv $HOME/core/boot/os_update.gz /installer/updates/os.gz 
 cp $HOME/core/boot/boot/platform/i86pc/kernel/unix /installer/updates/
@@ -37,8 +42,8 @@ rm -r os.gz unix corebin
 # Create the install cd
 echo "3. Step - Creating the pulsar installer cd\n"
 cd $HOME/core/boot
-mkisofs -R -b boot/grub/stage2_eltorito -no-emul-boot -boot-load-size 4 -boot-info-table -o /installer/images/pulsar_v1.iso $HOME/core/boot >> $HOME/install.log 2>&1
-/installer/distro_constructor/tools/usbgen /installer/images/pulsar_v1.iso /installer/images/pulsar_v1.usb /tmp 2>&1
+mkisofs -R -b boot/grub/stage2_eltorito -no-emul-boot -boot-load-size 4 -boot-info-table -o /installer/images/pulsar_${VERSION}.iso $HOME/core/boot >> $HOME/install.log 2>&1
+/installer/distro_constructor/tools/usbgen /installer/images/pulsar_v1.iso /installer/images/pulsar_${VERSION}.usb /tmp 2>&1
 echo "Creation of the pulsar installer usb image ready"
 
 # Post cleanup
