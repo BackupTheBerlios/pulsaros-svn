@@ -40,7 +40,7 @@ check_input()
 	if [ "$input" != "" ]; then
 		case $1 in
 			number)
-				if [ `echo $input | grep -c [0-9]` != "0" ]; then
+				if [ `echo $input | grep -c [0-9]` = 0 ]; then
 					printf "Only numbers are allowed! - Press Return to Continue... "
 					clear_it $function
 				elif [ $input -gt $item ]; then
@@ -62,7 +62,7 @@ check_input()
 				fi
 			;;
 			hostname)
-				if [ `echo $input | grep -c [a-zA-Z]` != "0" ]; then
+				if [ `echo $input | grep -c [a-zA-Z]` = 0 ]; then
 					printf "Only alphabetic characters are allowed! - Press Return to Continue... "
 					clear_it $function
 				fi
