@@ -1,8 +1,8 @@
-#!/bin/sh
+#!/bin/ksh93
 # Copyright 2009 Thomas Brandstetter. All rights reserved.
-# Description: 	plugin - manage plugins for pulsaros
-# Version:		0.3
-#=============================================================
+# Description:	plugin - manage plugins for pulsaros
+# Version:      0.3
+#=========================================================
 
 # Variables
 WORKDIR=/tmp
@@ -13,136 +13,151 @@ SYNTAX="plugin list | install | activate | deactivate | deinstall 'pluginname'"
 # Functions
 list_plugins()
 {
- cd $WORKDIR
- # get plugin.list file
- wget -nc -q ${MIRROR}/plugin.list
- if [ ! -f plugin.list ]; then
-  printf "\nError retrieving Plugin list - please try it again!\n\n"
-  [ -f HTTP_NOT_FOUND.html.var ] && rm HTTP_NOT_FOUND.html.var && exit 1
- fi
- # create plugin list
- printf "\n\n"
- printf "Plugin Name\t\tActual version\t\tInstalled Version\tStatus\n"
- printf "=================================================================================\n"
- for i in `cat plugin.list`; do
-   plugin_name=`echo $i | awk -F- '{print $1}'`
-   plugin_version=`echo $i | awk -F- '{print $2}'`
-   if [ ! -d $APPDIR/${plugin_name} ]; then
-     plugin_installed="-"
-     plugin_status="-"
-   else
-     plugin_installed=`cat $APPDIR/${plugin_name}/.plugin_version`
-     plugin_status=`cat $APPDIR/${plugin_name}/.plugin_status`
-   fi
-   printf "${plugin_name}\t\t${plugin_version}\t\t\t${plugin_installed}\t\t\t${plugin_status}"
- done
- printf "\n\n"
- # cleanup
- rm plugin.list
+	cd $WORKDIR
+	# get plugin.list file
+	wget -nc -q ${MIRROR}/plugin.list
+	if [ ! -f plugin.list ]; then
+		printf "\nError retrieving Plugin list - please try it again!\n\n"
+		[ -f HTTP_NOT_FOUND.html.var ] && rm HTTP_NOT_FOUND.html.var && exit 1
+	fi
+	# create plugin list
+	printf "\n\n"
+	printf "Plugin Name\t\tActual version\t\tInstalled Version\tStatus\n"
+	printf "=================================================================================\n"
+	for i in `cat plugin.list`; do
+		plugin_name=`echo $i | awk -F- '{print $1}'`
+		plugin_version=`echo $i | awk -F- '{print $2}'`
+		if [ ! -d $APPDIR/${plugin_name} ]; then
+			plugin_installed="-"
+			plugin_status="-"
+		else
+			plugin_installed=`cat $APPDIR/${plugin_name}/.plugin_version`
+			plugin_status=`cat $APPDIR/${plugin_name}/.plugin_status`
+		fi
+		printf "${plugin_name}\t\t${plugin_version}\t\t\t${plugin_installed}\t\t\t${plugin_status}"
+	done
+	printf "\n\n"
+	# cleanup
+	rm plugin.list
 }
 
 install_plugin()
 {
-  cd $WORKDIR
-  # check if plugin is already installed
-  if [ -d /coreroot/plugins/${1} ]; then
-    printf "Plugin is already installed. Check for updates with the 'update' parameter" 
-    exit 1
-  else
-    # download the plugin from the internet and install it
-    printf "\nInstalling ${1} plugin..."
-    wget -nc -q ${MIRROR}/${1}.tar.bz2
-    if [ ! -f ${1}.tar.bz2 ]; then
-      printf "Error downloading the plugin - please try it again!"
-      exit 1
-    else
-      bzip2 -d ${1}.tar.bz2 && tar -xf ${1}.tar
-      mv ${1} ${APPDIR}  
-      rm ${1}.tar
-      ${APPDIR}/${1}/scripts/install.sh
-      # check the installation status and update .plugin_status file
-      if [ $? != 0 ]; then
-        printf "Warning plugin installation failed - please remove the plugin with 'plugin deinstall' and try it again!"
-        exit 1
-      else 
-        echo "installed" > ${APPDIR}/${1}/.plugin_status
-        printf "\nPlugin successfully installed!\n\n"
-      fi
-    fi
-  fi
+	cd $WORKDIR
+	check_plugin $1
+	# check if plugin is already installed
+	if [ -d /coreroot/plugins/${1} ]; then
+		printf "Plugin is already installed. Check for updates with the 'update' parameter"
+		exit 1
+	else
+		# download the plugin from the internet and install it
+		printf "\nInstalling ${1} plugin..."
+		wget -nc -q ${MIRROR}/${1}.tar.bz2
+		if [ $? -eq 0 ]; then
+			bzip2 -d ${1}.tar.bz2 && tar -xf ${1}.tar
+			mv ${1} ${APPDIR}
+			rm ${1}.tar
+			${APPDIR}/${1}/scripts/install.sh
+			# check the installation status and update .plugin_status file
+			if [ $? != 0 ]; then
+				printf "Warning plugin installation failed - please remove the plugin with 'plugin deinstall' and try it again!"
+				exit 1
+			else 
+				echo "installed" > ${APPDIR}/${1}/.plugin_status
+				printf "\nPlugin successfully installed!\n\n"
+			fi
+		else
+			printf "Error downloading the plugin - please try it again!"
+			exit 1
+		fi
+	fi
+}
+
+check_plugin()
+{
+	wget -nc -q ${MIRROR}/plugin.list
+	if [ ! -f plugin.list ]; then
+		printf "\nError retrieving Plugin list - please try it again!\n\n"
+		[ -f HTTP_NOT_FOUND.html.var ] && rm HTTP_NOT_FOUND.html.var && exit 1
+	fi
+	[ `cat plugin.list|grep -c ${1}` -ne 1 ] && printf "\nPlugin name not found!" && exit 1
 }
 
 update_plugin()
 {
-  printf "update plugin"
+	printf "Not implemented yet!"
 }
 
 activate_plugin()
 {
-  printf "Activating plugin ${1} ..."
-  svcadm enable ${1}
-  sleep 2
-  if [ `svcs ${1}|tail -1|awk '{print $1}'` != "online" ]; then
-    printf "Warning: Plugin activation failed - please take a look in /var/svc/log/application-${1}:default.log, correct the error and try it again!"
-    exit 1
-  else
-    printf "activated" > ${APPDIR}/${1}/.plugin_status
-    printf "\nPlugin successfully activated!"
-  fi
+	check_plugin $1	
+	printf "Activating plugin ${1} ..."
+	svcadm enable ${1}
+	sleep 4
+	if [ `svcs ${1}|tail -1|awk '{print $1}'` != "online" ]; then
+		printf "Warning: Plugin activation failed - please take a look in /var/svc/log/application-${1}:default.log, correct the error and try it again!"
+		exit 1
+	else
+		printf "activated" > ${APPDIR}/${1}/.plugin_status
+		printf "\nPlugin successfully activated!"
+	fi
 }
 
 deactivate_plugin()
 {
-  printf "Deactivating plugin ${1} ..."
-  /usr/sbin/svcadm disable ${1}
-  if [ $? != 0 ]; then
-    printf "Warning: Plugin deactivation failed - please take a look in /var/svc/log/application-${1}:default.log, correct the error and try it again!"
-    exit 1
-  else
-    printf "deactivated" > ${APPDIR}/${1}/.plugin_status
-    printf "\nPlugin successfully deactivated!"
-  fi
+	check_plugin $1
+	printf "Deactivating plugin ${1} ..."
+	svcadm disable ${1}
+	if [ $? -eq 0 ]; then
+		printf "deactivated" > ${APPDIR}/${1}/.plugin_status
+		printf "\nPlugin successfully deactivated!"
+	else
+		printf "Warning: Plugin deactivation failed - please take a look in /var/svc/log/application-${1}:default.log, correct the error and try it again!"
+		exit 1
+	fi
 }
 
 deinstall_plugin()
 {
-  printf "deinstall plugin"
+	printf "Not implemented yet!"
 }
 
 # Main program starts here
 
 # Check syntax
 if [ $# = 0 ]; then
-  printf "argument expected: ${SYNTAX}"
-  exit 1
+	printf "argument expected: ${SYNTAX}"
+	exit 1
 fi
 
 # Available parameters
 case $1 in
-  list)
-    list_plugins
-    ;;
-  install)
-    if [ $# != 2 ]; then
-       printf "argument expected: ${SYNTAX}"
-       exit 1
-    fi
-    install_plugin $2
-    ;;
-  update)
-    update_plugin
-    ;;
-  activate)
-    activate_plugin $2
-    ;;
-  deactivate)
-    deactivate_plugin $2
-    ;;
-  deinstall)
-    deinstall_plugin;;
-  *)
-    printf "argument expected: ${SYNTAX}"
-    ;;
+	list)
+		list_plugins
+	;;
+	install)
+		if [ $# != 2 ]; then
+			printf "argument expected: ${SYNTAX}"
+			exit 1
+		fi
+		install_plugin $2
+	;;
+	update)
+		update_plugin $2
+	;;
+	activate)
+		activate_plugin $2
+	;;
+	deactivate)
+		deactivate_plugin $2
+	;;
+	deinstall)
+		deinstall_plugin $2
+	;;
+	*)
+		printf "argument expected: ${SYNTAX}"
+		exit 1
+	;;
 esac
 
 exit 0

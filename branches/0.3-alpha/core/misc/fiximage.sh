@@ -7,7 +7,7 @@
 # Variables
 PROGNAME=$0
 MINIROOTDIR=$1
-SYNTAX="${PROGNAME} minroot_directory"
+SYNTAX="${PROGNAME} miniroot_directory"
 
 # Syntax check
 . ../include/utils.sh

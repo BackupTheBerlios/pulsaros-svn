@@ -236,3 +236,5 @@
 ./usr/bin/gd*
 ./usr/bin/png*
 ./usr/sbin/cups*
+./usr/bin/bash
+./usr/bin/ksh
