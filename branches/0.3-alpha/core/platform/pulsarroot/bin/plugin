@@ -8,6 +8,7 @@
 WORKDIR=/tmp
 APPDIR=/pulsarroot/plugins
 MIRROR="http://download.berlios.de/pulsaros"
+SYNTAX="plugin list | install | activate | deactivate | deinstall 'pluginname'"
 
 # Functions
 list_plugins()
@@ -112,7 +113,7 @@ deinstall_plugin()
 
 # Check syntax
 if [ $# = 0 ]; then
-  echo "argument expected" "${SYNTAX}"
+  printf "argument expected: ${SYNTAX}"
   exit 1
 fi
 
@@ -123,7 +124,7 @@ case $1 in
     ;;
   install)
     if [ $# != 2 ]; then
-       echo "argument expected" "${SYNTAX}"
+       printf "argument expected: ${SYNTAX}"
        exit 1
     fi
     install_plugin $2
@@ -140,7 +141,7 @@ case $1 in
   deinstall)
     deinstall_plugin;;
   *)
-    syntax_error
+    printf "argument expected: ${SYNTAX}"
     ;;
 esac
 
