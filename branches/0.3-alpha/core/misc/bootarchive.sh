@@ -46,7 +46,7 @@ tar -cf ${BASEDIR}/boot/usr.tar .
 
 # Create pulsaros update archive 
 msg_to_stderr "creating update miniroot_archive"
-mkfile 47m ${BASEDIR}/boot/${IMAGE}_update
+mkfile 50m ${BASEDIR}/boot/${IMAGE}_update
 lofiadm -a ${BASEDIR}/boot/${IMAGE}_update > /dev/null 2>&1
 yes | newfs -m 0 /dev/rlofi/1 >/dev/null 2>&1
 mount /dev/lofi/1 /pulsar_boot

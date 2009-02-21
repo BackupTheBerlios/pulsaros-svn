@@ -9,19 +9,35 @@ UPDATE_HOME="/pulsarroot"
 BACKUP_DIR=$1
 CURRENT_SYS=`uname -a | awk '{print $4}'`
 MIRROR="http://download.berlios.de/pulsaros"
+alias WGET='wget --directory-prefix=$UPDATE_HOME -nc -q'
 
 
 # Functions
 post_cleanup()
 {
-	for i in `cd ${UPDATE_HOME} && ls -l latest* | awk '{print $9}'`; do
-		rm ${UPDATE_HOME}/${i}
-	done
+	cd ${UPDATE_HOME}
+	if [ `ls -ltra|grep -c latest` -ne 0 ]; then
+		for i in `ls -l latest* | awk '{print $9}'`; do
+			rm ${UPDATE_HOME}/${i}
+		done
+	fi
+	[ -f $UPDATE_HOME/usr ] && rm -r $UPDATE_HOME/usr
 }
 
 check_outcome()
 {
-	[ $? != 0 ] && printf "Execution error - Please try it again!" && exit 1
+	[ $? != 0 ] && printf "Execution error - Please try it again!\n" && exit 1
+	[[ $# = 1 && ! -f $1 ]] && printf "Download or create error - Please try it again!\n" && exit 1
+}
+
+create_backup()
+{
+	printf "Create backup \n"
+	[ ! -d $BACKUP_DIR ] && mkdir $BACKUP_DIR
+	cd /usr && tar -cf $BACKUP_DIR/backup_usr.tar .
+	check_outcome $BACKUP_DIR/backup_usr.tar
+	cp $UPDATE_HOME/boot/os.gz $UPDATE_HOME/boot/os_backup.gz
+	cp $UPDATE_HOME/boot/platform/i86pc/kernel/unix $UPDATE_HOME/boot/platform/i86pc/kernel/unix_backup
 }
 
 # Main program starts here
@@ -30,36 +46,28 @@ check_outcome()
 [ "$1" = "help" ] && echo "Syntax: update [backup dir]" && exit 1
 
 # Check dns settings
-[[ ! -f /etc/resolv.conf || ! -f /etc/nsswitch.conf ]] && printf "resolv.conf or nsswitch.conf missing!\n" && exit 1
-[[ `grep -wc nameserver /etc/resolv.conf` = 0 || `grep -wc dns /etc/nsswitch.conf` = 0 ]] &&  printf "DNS lookup failed!.\n" && exit 1
-
-# Create backup
-if [ $# = 1 ]; then
-	printf "Create backup \n"
-	[ ! -d $1 ] && mkdir $BACKUP_DIR
-	cd /usr && tar -cf $BACKUP_DIR/backup_usr.tar .
-	check_outcome
-	cp $UPDATE_HOME/boot/os.gz $UPDATE_HOME/boot/os_backup.gz
-	cp $UPDATE_HOME/boot/platform/i86pc/kernel/unix $UPDATE_HOME/boot/platform/i86pc/kernel/unix_backup
-fi
+[[ ! -f /etc/resolv.conf || ! -f /etc/nsswitch.conf ]] && printf "resolv.conf or nsswitch.conf missing!\n\n" && exit 1
+[[ `grep -wc nameserver /etc/resolv.conf` = 0 || `grep -wc dns /etc/nsswitch.conf` = 0 ]] &&  printf "DNS lookup failed!.\n\n" && exit 1
 
 # Update the system
 post_cleanup
-cd $UPDATE_HOME
-wget -q ${MIRROR}/latest.update
+WGET ${MIRROR}/latest.update
 
 if [ `cat latest.update` != $CURRENT_SYS ]; then
-	printf "\nUpdates available! Downloading Updates ... \n"
-	wget -q ${MIRROR}/latest.tar.gz
-	check_outcome
+	printf "\nUpdates available!\n"
+	# Create backup
+	[ $# = 1 ] && create_backup
+	printf "Downloading updates...\n"
+	WGET ${MIRROR}/latest.tar.gz
+	check_outcome $UPDATE_HOME/latest.tar.gz
 	gzip -d $UPDATE_HOME/latest.tar.gz
 	printf "Download complete - installing updates \n"
-	mkdir /tmp/usr && cd /tmp/usr
+	mkdir $UPDATE_HOME/usr && cd $UPDATE_HOME/usr
 	tar -xf $UPDATE_HOME/latest.tar ./bin/alias ./bin/mv ./bin/cp ./bin/rm ./bin/cd ./bin/gzip ./sbin/tar
 	check_outcome
-	PATH=$PATH:/tmp/usr/bin:/tmp/usr/sbin && export PATH
+	PATH=$PATH:$UPDATE_HOME/usr/bin:$UPDATE_HOME/usr/sbin && export PATH
 
-	if [ -d /tmp/usr/bin ]; then
+	if [ -d $UPDATE_HOME/usr/bin ]; then
 		rm -r /usr/*
 		cd /usr && tar -xf $UPDATE_HOME/latest.tar
 		check_outcome
@@ -67,24 +75,24 @@ if [ `cat latest.update` != $CURRENT_SYS ]; then
 		mv unix $UPDATE_HOME/boot/platform/i86pc/kernel/
 		mv corebin/* $UPDATE_HOME/bin/ && rm -r corebin
 		$UPDATE_HOME/bin/changeconfig
-		rm $UPDATE_HOME/latest.tar $UPDATE_HOME/latest.update && rm -r /tmp/usr
+		rm $UPDATE_HOME/latest.tar $UPDATE_HOME/latest.update && rm -r $UPDATE_HOME/usr
 
 		# Check if grub entry for restore exist
 		if [ `grep -c "PulsarOS restore mode" $UPDATE_HOME/boot/grub/menu.lst` = 0 ]; then
 			echo "" >> $UPDATE_HOME/boot/grub/menu.lst
 			echo "title PulsarOS restore mode" >> $UPDATE_HOME/boot/grub/menu.lst
-			echo "kernel /boot/platform/i86pc/kernel/unix_backup -v" >> $UPDATE_HOME/boot/grub/menu.lst
+			echo "kernel /boot/platform/i86pc/kernel/unix -v" >> $UPDATE_HOME/boot/grub/menu.lst
 			echo "module /boot/os_backup.gz" >> $UPDATE_HOME/boot/grub/menu.lst
 		fi
 
 		printf "Update installed! If there is any problem, reboot in restore mode and run --> restore 'backupdir' ! \n\n"
 	else
-		printf "There is something wrong with the update archives! Please try it again!"
+		printf "There is something wrong with the update archives! Please try it again!\n\n"
 		exit 1
 	fi
 
 else
-	printf "No new updates available!"
+	printf "\nNo new updates available!\n"
 fi
 
 exit 0

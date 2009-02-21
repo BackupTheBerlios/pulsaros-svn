@@ -9,32 +9,37 @@
 CONF_NAME=/pulsarroot/bin/changes
 BOOT_HOME=/pulsarroot
 ARCHIVE_NAME=os
+CHANGE_HOME=/pulsarroot
 
 # Functions
 post_cleanup()
 {
-	[ `df -k|awk '/\/tmp\/changes$/ { print $6 }'|wc -l` = 1 ] && umount /tmp/changes
+	[ `df -k|awk '/\"${CHANGE_HOME}"\/changes$/ { print $6 }'|wc -l` = 1 ] && umount $CHANGE_HOME/changes
 	[ `lofiadm |wc -l` -gt 1 ] && lofiadm -d /dev/lofi/1
-	[ -f /tmp/${ARCHIVE_NAME} ] && rm /tmp/${ARCHIVE_NAME}
-	[ -f /tmp/${ARCHIVE_NAME}.gz ] && rm /tmp/${ARCHIVE_NAME}.gz
+	[ -f $CHANGE_HOME/${ARCHIVE_NAME} ] && rm $CHANGE_HOME/${ARCHIVE_NAME}
+	[ -f $CHANGE_HOME/${ARCHIVE_NAME}.gz ] && rm $CHANGE_HOME/${ARCHIVE_NAME}.gz
 }
 
-# Unzip the solemb archive and change the config
+# Unzip the pulsaros archive and change the config
 post_cleanup
-cp ${BOOT_HOME}/boot/${ARCHIVE_NAME}.gz /tmp
-gzip -d /tmp/${ARCHIVE_NAME}.gz
-lofiadm -a /tmp/${ARCHIVE_NAME}
-[ ! -d /tmp/changes ] && mkdir /tmp/changes
-mount /dev/lofi/1 /tmp/changes
+cp ${BOOT_HOME}/boot/${ARCHIVE_NAME}.gz $CHANGE_HOME
+gzip -d $CHANGE_HOME/${ARCHIVE_NAME}.gz
+lofiadm -a $CHANGE_HOME/${ARCHIVE_NAME}
+[ ! -d $CHANGE_HOME/changes ] && mkdir $CHANGE_HOME/changes
+mount /dev/lofi/1 $CHANGE_HOME/changes
 
 for i in `cat ${CONF_NAME}`; do
-	[ -f ${i} ] && cp ${i} /tmp/changes/${i}
+	if [ `echo $i | grep -c "/var/"` -gt 0 ]; then
+		[ -f ${i} ] && tar -uf $CHANGE_HOME/changes/var.tar ${i}
+	else
+		[ -f ${i} ] && cp ${i} $CHANGE_HOME/changes${i}
+	fi
 done
 
-umount /tmp/changes
+umount $CHANGE_HOME/changes
 lofiadm -d /dev/lofi/1
-rm -r /tmp/changes
-gzip /tmp/${ARCHIVE_NAME}
-cp /tmp/${ARCHIVE_NAME}.gz ${BOOT_HOME}/boot
+rm -r $CHANGE_HOME/changes
+gzip $CHANGE_HOME/${ARCHIVE_NAME}
+cp $CHANGE_HOME/${ARCHIVE_NAME}.gz ${BOOT_HOME}/boot
 
 exit 0
