@@ -240,3 +240,4 @@
 ./usr/bin/ksh
 ./usr/sbin/inetadm
 ./usr/sbin/root_archive
+./usr/sfw/sbin/swat
