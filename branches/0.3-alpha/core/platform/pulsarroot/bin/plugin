@@ -25,7 +25,11 @@ get_plugin()
 		printf "\nError retrieving Plugin list - please try it again!\n\n"
 		[ -f HTTP_NOT_FOUND.html.var ] && rm HTTP_NOT_FOUND.html.var && exit 1
 	fi
-	[[ $# = 1 && `cat plugin.list|grep -wc ${1}` -ne 1 ]] && printf "\nPlugin name not found!\n\n" && exit 1
+	if [[ $# = 1 && `cat plugin.list|grep -wc ${1}` -ne 1 ]]; then
+		printf "\nPlugin name not found!\n\n"
+		rm plugin.list
+		exit 1
+	fi
 }
 
 list_plugins()
@@ -68,7 +72,7 @@ install_plugin()
 			bzip2 -d ${1}.tar.bz2 && tar -xf ${1}.tar
 			mv ${1} ${APPDIR}
 			rm ${1}.tar
-			${APPDIR}/${1}/scripts/install.sh
+			${APPDIR}/${1}/scripts/main.sh install
 			# check the installation status and update .plugin_status file
 			if [ $? != 0 ]; then
 				printf "Warning plugin installation failed - please remove the plugin with 'plugin deinstall' and try it again!\n\n"
@@ -120,7 +124,16 @@ deactivate_plugin()
 
 deinstall_plugin()
 {
-	printf "Not implemented yet!"
+	get_plugin $1
+	printf "Deinstalling plugin..."
+	${APPDIR}/${1}/scripts/main.sh deinstall
+	if [ $? != 0 ]; then
+		printf "Warning plugin deinstallation failed - please try it again!\n\n"
+		exit 1
+	else 
+		echo "" > ${APPDIR}/${1}/.plugin_status
+		printf "\nPlugin successfully deinstalled!\n\n"
+	fi
 }
 
 # Main program starts here
