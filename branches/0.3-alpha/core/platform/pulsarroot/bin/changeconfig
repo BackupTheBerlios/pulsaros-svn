@@ -41,5 +41,6 @@ lofiadm -d /dev/lofi/1
 rm -r $CHANGE_HOME/changes
 gzip $CHANGE_HOME/${ARCHIVE_NAME}
 cp $CHANGE_HOME/${ARCHIVE_NAME}.gz ${BOOT_HOME}/boot
+rm $CHANGE_HOME/${ARCHIVE_NAME}.gz
 
 exit 0

@@ -37,3 +37,7 @@ usr/lib/libldstab.so.1
 usr/lib/link_audit/ldprof.so.1
 usr/lib/link_audit/truss.so.1
 usr/lib/link_audit/who.so.1
+usr/lib/intrd
+lib/libnwam.so.1
+lib/libipmp.so.1
+lib/nss_nis*

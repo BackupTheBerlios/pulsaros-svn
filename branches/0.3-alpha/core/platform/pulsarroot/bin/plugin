@@ -131,7 +131,6 @@ deinstall_plugin()
 		printf "Warning plugin deinstallation failed - please try it again!\n\n"
 		exit 1
 	else 
-		echo "" > ${APPDIR}/${1}/.plugin_status
 		printf "\nPlugin successfully deinstalled!\n\n"
 	fi
 }

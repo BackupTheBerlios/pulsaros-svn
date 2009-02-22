@@ -27,7 +27,11 @@ post_cleanup()
 check_outcome()
 {
 	[ $? != 0 ] && printf "Execution error - Please try it again!\n" && exit 1
-	[[ $# = 1 && ! -f $1 ]] && printf "Download or create error - Please try it again!\n" && exit 1
+	if [[ $# = 1 && ! -f $1 ]]; then
+		[ -f HTTP_NOT_FOUND.html.var ] && rm HTTP_NOT_FOUND.html.var
+		printf "Download or create error - Please try it again!\n"
+		exit 1
+	fi
 }
 
 create_backup()

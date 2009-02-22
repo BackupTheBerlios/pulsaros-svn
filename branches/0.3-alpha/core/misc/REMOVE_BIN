@@ -238,3 +238,5 @@
 ./usr/sbin/cups*
 ./usr/bin/bash
 ./usr/bin/ksh
+./usr/sbin/inetadm
+./usr/sbin/root_archive
