@@ -8,6 +8,8 @@
 UPDATE_HOME="/pulsarroot"
 BACKUP_DIR=$1
 CURRENT_SYS=`uname -a | awk '{print $4}'`
+OSVERSION=`cat ${UPDATE_HOME}/.version | awk '{print $1}`
+PATCHLEVEL_OS=`cat ${UPDATE_HOME}/.version | awk '{print $2}`
 MIRROR="http://download.berlios.de/pulsaros"
 alias WGET='wget --directory-prefix=$UPDATE_HOME -nc -q'
 
@@ -44,6 +46,60 @@ create_backup()
 	cp $UPDATE_HOME/boot/platform/i86pc/kernel/unix $UPDATE_HOME/boot/platform/i86pc/kernel/unix_backup
 }
 
+check_update()
+{
+	WGET ${MIRROR}/${OSVERSION}.update
+	check_outcome ${OSVERSION}.update
+	update_level=`cat ${OSVERSION}.update | awk '{print $1}'`
+	update_category=`cat ${OSVERSION}.update | awk '{print $2}'`
+	update_file=`cat ${OSVERSION}.update | awk '{print $3}'`
+	
+	
+ 	# check if patchlevel is already up2date
+ 	[ $update_level = $PATCHLEVEL ] && printf "No updates available" && exit 0
+	case $update_category in
+		minor)
+				printf "\nMinor update is available! - Release notes: ${2}\n"
+				printf "Press a key to install! STRG+C to abort"
+				READ JUNK
+				# Create backup
+				[ $# = 1 ] && create_backup
+				printf "Downloading updates...\n"
+				WGET ${MIRROR}/$update_file
+				check_outcome $UPDATE_HOME/$update_file
+				printf "Download complete - installing updates \n"
+				gzip -d $UPDATE_HOME/$update_file
+				cd /usr && tar -xf $UPDATE_HOME/$update_file
+				check_outcome
+				
+
+		# Check if grub entry for restore exist
+		if [ `grep -c "PulsarOS restore mode" $UPDATE_HOME/boot/grub/menu.lst` = 0 ]; then
+			echo "" >> $UPDATE_HOME/boot/grub/menu.lst
+			echo "title PulsarOS restore mode" >> $UPDATE_HOME/boot/grub/menu.lst
+			echo "kernel /boot/platform/i86pc/kernel/unix -v" >> $UPDATE_HOME/boot/grub/menu.lst
+			echo "module /boot/os_backup.gz" >> $UPDATE_HOME/boot/grub/menu.lst
+		fi
+
+		printf "Update installed! If there is any problem, reboot in restore mode and run --> restore 'backupdir' ! \n\n"
+	else
+		printf "There is something wrong with the update archives! Please try it again!\n\n"
+		exit 1
+	fi
+
+else
+	printf "\nNo new updates available!\n"
+fi
+		;;
+		major)
+		;;
+		binonly)
+		;;
+		*)
+			printf "API error, only minor, major and binonly are allowed!"
+			exit 1
+		;;
+
 # Main program starts here
 
 # Check syntax
@@ -55,7 +111,7 @@ create_backup()
 
 # Update the system
 post_cleanup
-WGET ${MIRROR}/latest.update
+check_update $OSVERSION
 
 if [ `cat latest.update` != $CURRENT_SYS ]; then
 	printf "\nUpdates available!\n"
