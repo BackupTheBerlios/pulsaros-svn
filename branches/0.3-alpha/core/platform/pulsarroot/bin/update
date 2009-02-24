@@ -8,9 +8,9 @@
 UPDATE_HOME="/pulsarroot"
 BACKUP_DIR=$1
 CURRENT_SYS=`uname -a | awk '{print $4}'`
-OSVERSION=`cat ${UPDATE_HOME}/.version | awk '{print $1}`
-PATCHLEVEL_OS=`cat ${UPDATE_HOME}/.version | awk '{print $2}`
-MIRROR="http://download.berlios.de/pulsaros"
+OSVERSION=`cat ${UPDATE_HOME}/.version | awk '{print $1}'`
+PATCHLEVEL_OS=`cat ${UPDATE_HOME}/.version | awk '{print $2}'`
+MIRROR="http://10.0.0.147/~tbrandstetter/pulsaros"
 alias WGET='wget --directory-prefix=$UPDATE_HOME -nc -q'
 
 
@@ -24,6 +24,7 @@ post_cleanup()
 		done
 	fi
 	[ -f $UPDATE_HOME/usr ] && rm -r $UPDATE_HOME/usr
+	[ -f $UPDATE_HOME/${OSVERSION}.update ] && rm $UPDATE_HOME/${OSVERSION}.update
 }
 
 check_outcome()
@@ -46,64 +47,142 @@ create_backup()
 	cp $UPDATE_HOME/boot/platform/i86pc/kernel/unix $UPDATE_HOME/boot/platform/i86pc/kernel/unix_backup
 }
 
-check_update()
+list_update()
 {
 	WGET ${MIRROR}/${OSVERSION}.update
-	check_outcome ${OSVERSION}.update
-	update_level=`cat ${OSVERSION}.update | awk '{print $1}'`
-	update_category=`cat ${OSVERSION}.update | awk '{print $2}'`
-	update_file=`cat ${OSVERSION}.update | awk '{print $3}'`
-	
-	
- 	# check if patchlevel is already up2date
- 	[ $update_level = $PATCHLEVEL ] && printf "No updates available" && exit 0
-	case $update_category in
-		minor)
-				printf "\nMinor update is available! - Release notes: ${2}\n"
-				printf "Press a key to install! STRG+C to abort"
-				READ JUNK
-				# Create backup
-				[ $# = 1 ] && create_backup
-				printf "Downloading updates...\n"
-				WGET ${MIRROR}/$update_file
-				check_outcome $UPDATE_HOME/$update_file
-				printf "Download complete - installing updates \n"
-				gzip -d $UPDATE_HOME/$update_file
-				cd /usr && tar -xf $UPDATE_HOME/$update_file
-				check_outcome
-				
+	check_outcome $UPDATE_HOME/${OSVERSION}.update
 
-		# Check if grub entry for restore exist
-		if [ `grep -c "PulsarOS restore mode" $UPDATE_HOME/boot/grub/menu.lst` = 0 ]; then
-			echo "" >> $UPDATE_HOME/boot/grub/menu.lst
-			echo "title PulsarOS restore mode" >> $UPDATE_HOME/boot/grub/menu.lst
-			echo "kernel /boot/platform/i86pc/kernel/unix -v" >> $UPDATE_HOME/boot/grub/menu.lst
-			echo "module /boot/os_backup.gz" >> $UPDATE_HOME/boot/grub/menu.lst
+ 	# list available patches
+ 	printf "Available Updates: \n\n"
+ 	BAKIFS=$IFS
+ 	IFS=$'\n'
+ 	for i in `cat $UPDATE_HOME/${OSVERSION}.update`; do
+ 		update_level=`echo $i | awk -F'|' '{print $1}'`
+		update_category=`echo $i | awk -F'|' '{print $2}'`
+		update_file=`echo $i | awk -F'|' '{print $3}'`
+		update_desc=`echo $i | awk -F'|' '{print $4}'`
+		update_id=`echo $i | awk -F'|' '{print $5}'`
+		if [ $update_level -gt $PATCHLEVEL_OS ]; then
+			printf "Update: ${update_level}\tCategory: ${update_category}\t\tDescription: ${update_desc}\t\t\tIssue ID: ${update_id}\n\n"
 		fi
+	done
+	rm $UPDATE_HOME/${OSVERSION}.update
+	IFS=$BAKIFS
+	exit 0
+}	
 
-		printf "Update installed! If there is any problem, reboot in restore mode and run --> restore 'backupdir' ! \n\n"
-	else
-		printf "There is something wrong with the update archives! Please try it again!\n\n"
-		exit 1
-	fi
+get_update()
+{
+	WGET ${MIRROR}/${OSVERSION}.update
+	check_outcome $UPDATE_HOME/${OSVERSION}.update
+	
+	# get updates
+ 	BAKIFS=$IFS
+ 	IFS=$'\n'
+ 	for i in `cat $UPDATE_HOME/${OSVERSION}.update`; do
+ 		update_level=`echo $i | awk -F'|' '{print $1}'`
+		update_category=`echo $i | awk -F'|' '{print $2}'`
+		update_file=`echo $i | awk -F'|' '{print $3}'`
+		update_desc=`echo $i | awk -F'|' '{print $4}'`
+		update_id=`echo $i | awk -F'|' '{print $5}'`
+		update_info=`echo $i | awk -F'|' '{print $6}'`
+ 		if [ $update_level -gt $PATCHLEVEL_OS ]; then
+			case $update_category in
+				minor)
+					printf "\nInstall update: $update_level\tIssue number: $update_id\n"
+					printf "Press a key to install! STRG+C to abort"
+					read JUNK
+					# Create backup
+					[ $# = 1 ] && create_backup
+					printf "Downloading updates...\n"
+					WGET ${MIRROR}/${update_file}.tgz
+					check_outcome $UPDATE_HOME/${update_file}.tgz
+					printf "Download complete - installing updates \n"
+					gzip -d $UPDATE_HOME/${update_file}.tgz
+					if [ $update_info = "M" ]; then
+						cd $UPDATE_HOME/boot && tar -xf $UPDATE_HOME/${update_file}.tar
+						$UPDATE_HOME/bin/changeconfig
+					else
+						cd /usr && tar -xf $UPDATE_HOME/${update_file}.tar
+					fi
+					check_outcome
+					rm $UPDATE_HOME/${update_file}.tar
+					echo "${OSVERSION}\t${update_level}" > ${UPDATE_HOME}/.version
+					printf "Update installed!\n"
+				;;
+				major)
+					printf "This is a major version upgrade to $update_info! Press any key to install - STRG+C to abort."
+					read JUNK
+					printf "\nInstall update: $update_level\tIssue number: $update_id\n"
+					# Create backup
+					[ $# = 1 ] && create_backup
+					printf "Downloading updates...\n"
+					WGET ${MIRROR}/$update_file
+					check_outcome $UPDATE_HOME/$update_file
+					printf "Download complete - installing updates \n"
+					gzip -d $UPDATE_HOME/$update_file
+					mkdir $UPDATE_HOME/usr && cd $UPDATE_HOME/usr
+					tar -xf $UPDATE_HOME/$update_file ./bin/alias ./bin/mv ./bin/cp ./bin/rm ./bin/cd ./bin/gzip ./sbin/tar
+					check_outcome
+					PATH=$PATH:$UPDATE_HOME/usr/bin:$UPDATE_HOME/usr/sbin && export PATH
 
-else
-	printf "\nNo new updates available!\n"
-fi
-		;;
-		major)
-		;;
-		binonly)
-		;;
-		*)
-			printf "API error, only minor, major and binonly are allowed!"
-			exit 1
-		;;
+					if [ -d $UPDATE_HOME/usr/bin ]; then
+						rm -r /usr/*
+						cd /usr && tar -xf $UPDATE_HOME/latest.tar
+						check_outcome
+						mv os.gz $UPDATE_HOME/boot/
+						mv unix $UPDATE_HOME/boot/platform/i86pc/kernel/
+						mv corebin/* $UPDATE_HOME/bin/ && rm -r corebin
+						$UPDATE_HOME/bin/changeconfig
+						rm $UPDATE_HOME/$update_file && rm -r $UPDATE_HOME/usr
+					
+						# ToDo create a new .version entry in /pulsarroot (major means new version ;-))
+
+						# Check if grub entry for restore exist
+						if [ `grep -c "PulsarOS restore mode" $UPDATE_HOME/boot/grub/menu.lst` = 0 ]; then
+							echo "" >> $UPDATE_HOME/boot/grub/menu.lst
+							echo "title PulsarOS restore mode" >> $UPDATE_HOME/boot/grub/menu.lst
+							echo "kernel /boot/platform/i86pc/kernel/unix -v" >> $UPDATE_HOME/boot/grub/menu.lst
+							echo "module /boot/os_backup.gz" >> $UPDATE_HOME/boot/grub/menu.lst
+						fi
+						printf "Update installed! If there is any problem, reboot in restore mode and run --> restore 'backupdir' ! \n\n"
+					else
+						printf "There is something wrong with the update archives! Please try it again!\n\n"
+						exit 1
+					fi
+				;;
+				core)
+					printf "\nInstall update: $update_level\tIssue number: $update_id\n"
+					printf "Press a key to install! STRG+C to abort"
+					read JUNK
+					# Create backup
+					[ $# = 1 ] && create_backup
+					printf "Downloading updates...\n"
+					WGET ${MIRROR}/${update_file}.tgz
+					check_outcome $UPDATE_HOME/${update_file}.tgz
+					printf "Download complete - installing updates \n"
+					gzip -d $UPDATE_HOME/${update_file}.tgz
+					cd $UPDATE_HOME/bin && tar -xf $UPDATE_HOME/${update_file}.tar
+					check_outcome
+					rm $UPDATE_HOME/${update_file}.tar
+					echo "${OSVERSION}\t${update_level}" > ${UPDATE_HOME}/.version
+					printf "Update installed!\n"
+				;;
+				*)
+					printf "API error, only minor, major and binonly are allowed!"
+					exit 1
+				;;
+			esac
+		fi
+	done
+	rm $UPDATE_HOME/${OSVERSION}.update
+}
 
 # Main program starts here
 
 # Check syntax
-[ "$1" = "help" ] && echo "Syntax: update [backup dir]" && exit 1
+[ "$1" = "help" ] && echo "Syntax: update [list]" && exit 1
+[ "$1" = "list" ] && list_update
 
 # Check dns settings
 [[ ! -f /etc/resolv.conf || ! -f /etc/nsswitch.conf ]] && printf "resolv.conf or nsswitch.conf missing!\n\n" && exit 1
@@ -111,48 +190,6 @@ fi
 
 # Update the system
 post_cleanup
-check_update $OSVERSION
-
-if [ `cat latest.update` != $CURRENT_SYS ]; then
-	printf "\nUpdates available!\n"
-	# Create backup
-	[ $# = 1 ] && create_backup
-	printf "Downloading updates...\n"
-	WGET ${MIRROR}/latest.tar.gz
-	check_outcome $UPDATE_HOME/latest.tar.gz
-	gzip -d $UPDATE_HOME/latest.tar.gz
-	printf "Download complete - installing updates \n"
-	mkdir $UPDATE_HOME/usr && cd $UPDATE_HOME/usr
-	tar -xf $UPDATE_HOME/latest.tar ./bin/alias ./bin/mv ./bin/cp ./bin/rm ./bin/cd ./bin/gzip ./sbin/tar
-	check_outcome
-	PATH=$PATH:$UPDATE_HOME/usr/bin:$UPDATE_HOME/usr/sbin && export PATH
-
-	if [ -d $UPDATE_HOME/usr/bin ]; then
-		rm -r /usr/*
-		cd /usr && tar -xf $UPDATE_HOME/latest.tar
-		check_outcome
-		mv os.gz $UPDATE_HOME/boot/
-		mv unix $UPDATE_HOME/boot/platform/i86pc/kernel/
-		mv corebin/* $UPDATE_HOME/bin/ && rm -r corebin
-		$UPDATE_HOME/bin/changeconfig
-		rm $UPDATE_HOME/latest.tar $UPDATE_HOME/latest.update && rm -r $UPDATE_HOME/usr
-
-		# Check if grub entry for restore exist
-		if [ `grep -c "PulsarOS restore mode" $UPDATE_HOME/boot/grub/menu.lst` = 0 ]; then
-			echo "" >> $UPDATE_HOME/boot/grub/menu.lst
-			echo "title PulsarOS restore mode" >> $UPDATE_HOME/boot/grub/menu.lst
-			echo "kernel /boot/platform/i86pc/kernel/unix -v" >> $UPDATE_HOME/boot/grub/menu.lst
-			echo "module /boot/os_backup.gz" >> $UPDATE_HOME/boot/grub/menu.lst
-		fi
-
-		printf "Update installed! If there is any problem, reboot in restore mode and run --> restore 'backupdir' ! \n\n"
-	else
-		printf "There is something wrong with the update archives! Please try it again!\n\n"
-		exit 1
-	fi
-
-else
-	printf "\nNo new updates available!\n"
-fi
+get_update
 
 exit 0
