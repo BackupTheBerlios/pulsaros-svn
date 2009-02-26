@@ -8,8 +8,8 @@
 UPDATE_HOME="/pulsarroot"
 BACKUP_DIR=$1
 CURRENT_SYS=`uname -a | awk '{print $4}'`
-OSVERSION=`cat ${UPDATE_HOME}/.version | awk '{print $1}'`
-PATCHLEVEL_OS=`cat ${UPDATE_HOME}/.version | awk '{print $2}'`
+OSVERSION=`cat ${UPDATE_HOME}/bin/.version | awk '{print $1}'`
+PATCHLEVEL_OS=`cat ${UPDATE_HOME}/bin/.version | awk '{print $2}'`
 MIRROR="http://10.0.0.147/~tbrandstetter/pulsaros"
 alias WGET='wget --directory-prefix=$UPDATE_HOME -nc -q'
 
@@ -23,7 +23,7 @@ post_cleanup()
 			rm ${UPDATE_HOME}/${i}
 		done
 	fi
-	[ -f $UPDATE_HOME/usr ] && rm -r $UPDATE_HOME/usr
+	[ -d $UPDATE_HOME/usr ] && rm -r $UPDATE_HOME/usr
 	[ -f $UPDATE_HOME/${OSVERSION}.update ] && rm $UPDATE_HOME/${OSVERSION}.update
 }
 
@@ -107,7 +107,7 @@ get_update()
 					fi
 					check_outcome
 					rm $UPDATE_HOME/${update_file}.tar
-					echo "${OSVERSION}\t${update_level}" > ${UPDATE_HOME}/.version
+					echo "${OSVERSION}\t${update_level}" > ${UPDATE_HOME}/bin/.version
 					printf "Update installed!\n"
 				;;
 				major)
@@ -117,26 +117,27 @@ get_update()
 					# Create backup
 					[ $# = 1 ] && create_backup
 					printf "Downloading updates...\n"
-					WGET ${MIRROR}/$update_file
-					check_outcome $UPDATE_HOME/$update_file
+					WGET ${MIRROR}/${update_file}.tgz
+					check_outcome $UPDATE_HOME/${update_file}.tgz
 					printf "Download complete - installing updates \n"
-					gzip -d $UPDATE_HOME/$update_file
+					gzip -d $UPDATE_HOME/${update_file}.tgz
 					mkdir $UPDATE_HOME/usr && cd $UPDATE_HOME/usr
-					tar -xf $UPDATE_HOME/$update_file ./bin/alias ./bin/mv ./bin/cp ./bin/rm ./bin/cd ./bin/gzip ./sbin/tar
+					tar -xf $UPDATE_HOME/${update_file}.tar ./bin/alias ./bin/mv ./bin/cp ./bin/rm ./bin/cd ./bin/gzip ./sbin/tar
 					check_outcome
 					PATH=$PATH:$UPDATE_HOME/usr/bin:$UPDATE_HOME/usr/sbin && export PATH
 
 					if [ -d $UPDATE_HOME/usr/bin ]; then
 						rm -r /usr/*
-						cd /usr && tar -xf $UPDATE_HOME/latest.tar
+						cd /usr && tar -xf $UPDATE_HOME/${update_file}.tar
 						check_outcome
 						mv os.gz $UPDATE_HOME/boot/
 						mv unix $UPDATE_HOME/boot/platform/i86pc/kernel/
 						mv corebin/* $UPDATE_HOME/bin/ && rm -r corebin
 						$UPDATE_HOME/bin/changeconfig
-						rm $UPDATE_HOME/$update_file && rm -r $UPDATE_HOME/usr
-					
-						# ToDo create a new .version entry in /pulsarroot (major means new version ;-))
+						rm $UPDATE_HOME/${update_file}.tar && rm -r $UPDATE_HOME/usr
+						
+						# Create a new .version entry in /pulsarroot (major means new version ;-))
+						echo "${update_info}\t000" > $UPDATE_HOME/bin/.version
 
 						# Check if grub entry for restore exist
 						if [ `grep -c "PulsarOS restore mode" $UPDATE_HOME/boot/grub/menu.lst` = 0 ]; then
@@ -165,7 +166,7 @@ get_update()
 					cd $UPDATE_HOME/bin && tar -xf $UPDATE_HOME/${update_file}.tar
 					check_outcome
 					rm $UPDATE_HOME/${update_file}.tar
-					echo "${OSVERSION}\t${update_level}" > ${UPDATE_HOME}/.version
+					echo "${OSVERSION}\t${update_level}" > ${UPDATE_HOME}/bin/.version
 					printf "Update installed!\n"
 				;;
 				*)

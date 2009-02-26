@@ -33,6 +33,8 @@ tar -xf /installer/tmp.tar
 rm /installer/tmp.tar
 cp -r ${BASEDIR}/platform/pulsarroot/bin /pulsar_boot/pulsarroot/
 cp -r ${BASEDIR}/platform/pulsarroot/plugins /pulsar_boot/pulsarroot/
+# create initial .version
+echo "0.3alpha\t000" > /pulsar_boot/pulsarroot/bin/.version
 cd /
 umount /pulsar_boot
 lofiadm -d /dev/lofi/1

@@ -37,9 +37,8 @@ msg_to_stderr "tar up /var directory for future re-constitution"
 tar cf ./var.tar ./var
 /bin/rm -rf ./var/*
 
-# Create /pulsarroot directory and set initial version
+# Create /pulsarroot directory
 mkdir ${MINIROOTDIR}/pulsarroot
-echo "0.3alpha\t000" > ${MINIROOTDIR}/pulsarroot/.version
 
 # copy and modify grub dir
 [ -f ${BASEDIR}/boot/boot/grub ] && rm -r ${BASEDIR}/boot/boot/grub
