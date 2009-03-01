@@ -43,7 +43,7 @@ rm -r os.gz unix corebin
 echo "3. Step - Creating the pulsar installer cd\n"
 cd $HOME/core/boot
 mkisofs -R -b boot/grub/stage2_eltorito -no-emul-boot -boot-load-size 4 -boot-info-table -o /installer/images/pulsar_${VERSION}.iso $HOME/core/boot >> $HOME/install.log 2>&1
-/installer/distro_constructor/tools/usbgen /installer/images/pulsar_v1.iso /installer/images/pulsar_${VERSION}.usb /tmp 2>&1
+/installer/distro_constructor/tools/usbgen /installer/images/pulsar_${VERSION}.iso /installer/images/pulsar_${VERSION}.usb /tmp 2>&1
 echo "Creation of the pulsar installer usb image ready"
 
 # Post cleanup

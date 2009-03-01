@@ -75,7 +75,6 @@ msg_to_stderr "delete unecessary services"
 # since snv_107 don't know why....
 ${SVCCFG} delete system/metainit
 ${SVCCFG} delete network/inetd-upgrade
-${SVCCFG} delete network/rpc-100235_1/rpc_ticotsord
 ${SVCCFG} delete system/svc/global
 rm ${MINIROOTDIR}/etc/init.d/autoinstall
 rm ${MINIROOTDIR}/etc/init.d/cachefs_daemon
@@ -83,6 +82,7 @@ rm ${MINIROOTDIR}/etc/init.d/sysetup
 rm ${MINIROOTDIR}/etc/rc2.d/S20sysetup
 rm ${MINIROOTDIR}/etc/rc2.d/S72autoinstall
 rm ${MINIROOTDIR}/etc/rc2.d/S73cachefs_daemon
+rm ${MINIROOTDIR}/etc/rc2.d/S82mkdtab
 rm ${MINIROOTDIR}/etc/rc2.d/S89PRESERVE
 rm ${MINIROOTDIR}/var/svc/manifest/system/svc/global.xml
 rm ${MINIROOTDIR}/var/svc/manifest/application/database/mysql.xml
@@ -114,7 +114,6 @@ rm ${MINIROOTDIR}/var/svc/manifest/system/name-service-cache.xml
 rm ${MINIROOTDIR}/var/svc/manifest/system/boot-archive-update.xml
 rm ${MINIROOTDIR}/var/svc/manifest/system/cron.xml
 rm ${MINIROOTDIR}/var/svc/manifest/system/dumpadm.xml
-rm ${MINIROOTDIR}/var/svc/manifest/network/shares/group.xml
 rm ${MINIROOTDIR}/var/svc/manifest/network/network-routing-setup.xml
 rm ${MINIROOTDIR}/var/svc/manifest/system/sac.xml
 rm ${MINIROOTDIR}/var/svc/manifest/network/inetd.xml

@@ -43,10 +43,6 @@ mkdir ${MINIROOTDIR}/pulsarroot
 # copy and modify grub dir
 [ -f ${BASEDIR}/boot/boot/grub ] && rm -r ${BASEDIR}/boot/boot/grub
 cd ${MINIROOTDIR} && cp -r boot/grub ${BASEDIR}/boot/boot/
-REMOVE_GRUB="e2fs_stage1_5 fat_stage1_5 ffs_stage1_5 jfs_stage1_5 minix_stage1_5 pxegrub reiserfs_stage1_5 vstafs_stage1_5 xfs_stage1_5 zfs_stage1_5"
-for i in ${REMOVE_GRUB}; do
-  rm ${BASEDIR}/boot/boot/grub/$i
-done
 
 # Set PATH
 echo "PATH=$PATH:/bin:/sbin:/usr/bin:/usr/sbin:/usr/sfw/bin:/usr/ccs/bin:/pulsarroot/bin" > ${MINIROOTDIR}/root/.profile

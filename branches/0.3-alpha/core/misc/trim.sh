@@ -23,10 +23,6 @@ find . -name amd64 | xargs rm -r 2> /dev/null
 find . -name 64 | xargs rm -r 2> /dev/null
 find . -name man | xargs rm -r 2> /dev/null
 
-# copy libssl.so.0.9.8 to usr/lib
-# cp usr/sfw/lib/libssl.so.0.9.8 usr/lib/libssl.so.0.9.8
-# cp usr/sfw/lib/libcrypto.so.0.9.8 usr/lib/libcrypto.so.0.9.8
-
 # needed for GD
 mv usr/X11/lib/libX11.so.4 usr/X11/lib/libXext.so.0 usr/X11/lib/libXau.so.6 usr/X11/lib/libXevie.so.1 usr/X11/lib/libXss.so.1 usr/X11/lib/libXpm* .
 rm -rf usr/X11/* && mkdir usr/X11/lib && chown root:bin usr/X11/lib
@@ -47,7 +43,7 @@ done
 
 # Remove packaging, xpg4
 msg_to_stderr "removing packaging, xpg4, swat and else"
-rm -rf var/sadm/* usr/xpg4 usr/sfw/swat usr/openwin/bin usr/openwin/server usr/mysql/5.0/docs usr/demo usr/games usr/include usr/lib/cups usr/lib/spell usr/share/lib/dict usr/share/cups usr/share/icons /usr/openwin/lib/app-defaults /usr/openwin/share/include /usr/openwin/share/src /lib/mpxio /lib/crypto /lib/inet usr/lib/inet usr/lib/crypto
+rm -rf var/sadm/* usr/xpg4 usr/sfw/swat usr/openwin/bin usr/openwin/server usr/mysql/5.0/docs usr/demo usr/games usr/include usr/lib/cups usr/lib/spell usr/share/lib/dict usr/share/cups usr/share/icons usr/openwin/lib/app-defaults usr/openwin/share/include usr/openwin/share/src lib/mpxio lib/crypto lib/inet usr/lib/inet usr/lib/crypto lib/libmvec
 
 # Remove various usr/lib (non shared object)
 echo "\tremoving components (non shared objects) from usr/lib: \c" >&2
@@ -72,9 +68,9 @@ echo >&2
 # Remove unnecessary executables
 msg_to_stderr "removing unnecessary executables"
 REMOVE_BIN=`cat ../misc/REMOVE_BIN`
-for elf in $REMOVE_BIN
+for bin in $REMOVE_BIN
 do
-  rm -rf ${MINIROOTDIR}/${elf}
+  rm -rf ${MINIROOTDIR}/${bin}
 done
 
 # Remove unnecessary libs
@@ -88,34 +84,18 @@ done
 # Remove unnecessary other files
 msg_to_stderr "removing unnecessary other files"
 REMOVE_MYSQL=`cat ../misc/REMOVE_MYSQL`
+REMOVE_MISC=`cat ../misc/REMOVE_MISC`
 for mysql in $REMOVE_MYSQL
 do
   rm -rf ${MINIROOTDIR}/${mysql}
 done
-
-# Remove uneccessary perl libraries
-#msg_to_stderr "removing unnecessary perl libraries"
-#REMOVE_PERL=`cat ../misc/REMOVE_PERL`
-#mv ${MINIROOTDIR}/usr/perl5/5.8.4/lib/i86pc-solaris-64int/CORE/libperl* ${MINIROOTDIR}
-#mv ${MINIROOTDIR}/usr/perl5/5.8.4/lib/i86pc-solaris-64int/Config.pm ${MINIROOTDIR}
-#mv ${MINIROOTDIR}/usr/perl5/5.8.4/lib/i86pc-solaris-64int/POSIX.pm ${MINIROOTDIR}
-#mv ${MINIROOTDIR}/usr/perl5/5.8.4/lib/i86pc-solaris-64int/auto/POSIX ${MINIROOTDIR}
-#for perl in $REMOVE_PERL
-#do
-#  rm -rf ${MINIROOTDIR}/${perl}
-#done
-#mkdir -p ${MINIROOTDIR}/usr/perl5/5.8.4/lib/i86pc-solaris-64int/CORE && mv ${MINIROOTDIR}/libperl* ${MINIROOTDIR}/usr/perl5/5.8.4/lib/i86pc-solaris-64int/CORE/
-#mv ${MINIROOTDIR}/Config.pm ${MINIROOTDIR}/usr/perl5/5.8.4/lib/i86pc-solaris-64int/
-#mv ${MINIROOTDIR}/POSIX.pm ${MINIROOTDIR}/usr/perl5/5.8.4/lib/i86pc-solaris-64int/
-#mkdir -p ${MINIROOTDIR}/usr/perl5/5.8.4/lib/i86pc-solaris-64int/auto && mv ${MINIROOTDIR}/POSIX ${MINIROOTDIR}/usr/perl5/5.8.4/lib/i86pc-solaris-64int/auto/
+for misc in $REMOVE_MISC
+do
+  rm -rf ${MINIROOTDIR}/${misc}
+done
 
 # Strip libraries and binaries
 msg_to_stderr "strip files"
-#STRIP=`cat ../misc/STRIP`
-#for strip in $STRIP
-#do
-#  strip ${MINIROOTDIR}/${strip}
-#done
 cd ${MINIROOTDIR}
 find *| xargs strip
 

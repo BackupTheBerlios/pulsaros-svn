@@ -113,7 +113,7 @@ main_menu()
 get_installer()
 {
 	if [ $mount == 0 ]; then
-		if [ `iostat -Enx $i | grep CD | wc -l | awk '{print $1}'` == 1 ]; then
+		if [ `iostat -Enx $i | egrep -ci "DVD|CD` == 1 ]; then
 			mount -F hsfs /dev/dsk/${i}s0 /mnt
 			if [ -f /mnt/.pulsarinstall ]; then
 				mount=1
@@ -184,7 +184,7 @@ copy_os()
 	printf "\nAll data on disk /dev/dsk/${disk[$OPT1]} will be destroyed - ready (y/n)"
 	read OPT2
 	if [ "$OPT2" == "n" ]; then
-		clear_it Main_menu
+		clear_it main_menu
 	elif [ "$OPT2" == "y" ]; then
 		# prepare choosen disk
 		printf "\n\t1. Prepare disk for installation\n"
@@ -248,8 +248,7 @@ config_os()
 	cp $HOME/vfstab.work /mnt/etc/vfstab
 	rm $HOME/vfstab.work
 	cp $HOME/.profile /mnt/root/
-	# create hostid file
-	/usr/bin/hostid > /mnt/etc/hostid
+	cp $HOME/profile /mnt/etc/
 	clear
 	# configure network
 	create_line full
@@ -290,12 +289,10 @@ config_os()
 			read OPT7
 			check_input ip config_os "" $OPT7
 			echo "$OPT3 $OPT6" >> /mnt/etc/hosts
-			echo $OPT4 >> /mnt/etc/netmasks
 			echo $OPT5 > /mnt/etc/defaultrouter
-			echo $OPT6 > /mnt/etc/hostname.${interface}
 			echo $OPT6 > /mnt/etc/hostname.${nwcard[$OPT1]}
 			echo $OPT6 > /mnt/etc/nodename
-			echo $OPT7 > /mnt/etc/resolv.conf
+			echo "nameserver ${OPT7}" > /mnt/etc/resolv.conf
 			cp $HOME/nsswitch.conf /mnt/etc/nsswitch.conf
 		elif [ "$OPT2" == "y" ]; then
 			printf "\nEnter hostname: "
@@ -320,8 +317,11 @@ config_os()
 	read OPT1
 	if [ "$OPT1" == "n" ]; then
 		main_menu
-	else
+	elif [ "$OPT1" == "y" ]; then
 		/usr/sbin/init 6
+	else
+		printf "Wrong syntax! Only (y/n) is allowed! - Press return to continue..."
+		main_menu
 	fi
 }
 
