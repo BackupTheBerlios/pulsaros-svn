@@ -1,0 +1,13 @@
+partition
+modify
+1
+y
+0
+256mb
+0mb
+0mb
+0mb
+0mb
+0mb
+y
+core
