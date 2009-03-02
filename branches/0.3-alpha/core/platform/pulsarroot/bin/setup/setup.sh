@@ -113,7 +113,7 @@ main_menu()
 get_installer()
 {
 	if [ $mount == 0 ]; then
-		if [ `iostat -Enx $i | egrep -ci "DVD|CD` == 1 ]; then
+		if [ `iostat -Enx $i | egrep -ci "DVD|CD"` == 1 ]; then
 			mount -F hsfs /dev/dsk/${i}s0 /mnt
 			if [ -f /mnt/.pulsarinstall ]; then
 				mount=1
@@ -121,7 +121,7 @@ get_installer()
 				umount /mnt
 			fi
 		else
-			if [ `mkfs -m /dev/rdsk/${i}s0 | grep ufs | wc -l | awk '{print $1}'` == 1 ]; then
+			if [ `fstyp /dev/rdsk/${i}s0 | grep -c ufs` == 1 ]; then
 				mount /dev/dsk/${i}s0 /mnt
 				if [ -f /mnt/.pulsarinstall ]; then
 					mount=1
