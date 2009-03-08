@@ -99,4 +99,15 @@ msg_to_stderr "strip files"
 cd ${MINIROOTDIR}
 find *| xargs strip
 
+# repackage perl to a plugin
+[ -d /installer/plugins/perl/application/perl5.tar ] && rm /installer/plugins/perl/application/perl5.tar
+cd  ${MINIROOTDIR}/usr && tar -cf /installer/plugins/perl/application/perl5.tar perl5
+rm -r perl5
+
+
+# repackage mysql to a plugin
+[ -d /installer/plugins/mysql/application/mysql.tar ] && rm /installer/plugins/mysql/application/mysql.tar
+cd  ${MINIROOTDIR}/usr && tar -cf /installer/plugins/mysql/application/mysql.tar mysql
+rm -r mysql
+
 exit 0

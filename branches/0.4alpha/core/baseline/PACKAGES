@@ -22,8 +22,6 @@ SUNWtls
 SUNWlibsasl
 SUNWlxml
 SUNWlxmlr
-SUNWsmbau
-SUNWsmbar
 SUNWtecla
 SUNWzlibr
 SUNWzlib
@@ -67,7 +65,6 @@ SUNWiscsiu
 SUNWiscsir
 SUNWiscsitgtr
 SUNWiscsitgtu
-SUNWcupsu
 SUNWafe
 SUNWamd8111s
 SUNWpcelx
@@ -84,3 +81,8 @@ SUNWgrub
 SUNWpmr
 SUNWpmu
 SUNWcpr.i
+SUNWsmbskr
+SUNWsmbsr
+SUNWsmbsu
+SUNWsmbfsu
+SUNWnfsckr

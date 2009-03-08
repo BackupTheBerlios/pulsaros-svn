@@ -245,10 +245,12 @@ config_os()
 	cp $HOME/vfstab $HOME/vfstab.work
 	echo "${disk}s1 ${disk}s1 /usr ufs - no nologging" >> $HOME/vfstab.work
 	echo "${disk}s0 ${disk}s0 /pulsarroot ufs - yes nologging" >> $HOME/vfstab.work
+	# configure base system
 	cp $HOME/vfstab.work /mnt/etc/vfstab
 	rm $HOME/vfstab.work
 	cp $HOME/.profile /mnt/root/
 	cp $HOME/profile /mnt/etc/
+	cp $HOME/_pmtab /mnt/etc/saf/zsmon/
 	clear
 	# configure network
 	create_line full

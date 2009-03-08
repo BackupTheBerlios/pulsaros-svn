@@ -120,7 +120,7 @@
     <antcall target="addpkgs"> </antcall>
     <antcall target="add-platform-specific"> </antcall>
     <antcall target="setupsmf"> </antcall> 
-    <antcall target="trim"> </antcall>
+	<antcall target="trim"> </antcall>
     <antcall target="fiximage"> </antcall>
     <antcall target="make-boot-archive"> </antcall>
   </target>

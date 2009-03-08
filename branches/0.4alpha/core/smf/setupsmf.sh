@@ -54,7 +54,8 @@ chmod 555 ./lib/svc/method/fs-root
 ${SVCCFG} import ${MINIROOTDIR}/var/svc/manifest/system/filesystem/minimal-fs.xml
 ${SVCCFG} import ${MINIROOTDIR}/var/svc/manifest/system/filesystem/root-fs.xml
 ${SVCCFG} import ${MINIROOTDIR}/var/svc/manifest/network/network-service.xml
-${SVCCFG} import ${MINIROOTDIR}/var/svc/manifest/network/samba.xml
+#${SVCCFG} import ${MINIROOTDIR}/var/svc/manifest/network/samba.xml
+${SVCCFG} import ${MINIROOTDIR}/var/svc/manifest/network/smb/server.xml
 ${SVCCFG} import ${MINIROOTDIR}/var/svc/manifest/system/idmap.xml
 ${SVCCFG} import ${MINIROOTDIR}/var/svc/manifest/network/rpc/bind.xml
 ${SVCCFG} import ${MINIROOTDIR}/var/svc/manifest/system/sysidtool.xml
