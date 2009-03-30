@@ -235,7 +235,6 @@
 ./usr/bin/cups*
 ./usr/bin/gd*
 ./usr/bin/png*
-./usr/bin/bash
 ./usr/bin/ksh
 ./usr/bin/amt
 ./usr/bin/annotate

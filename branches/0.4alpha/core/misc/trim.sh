@@ -110,4 +110,9 @@ rm -r perl5
 cd  ${MINIROOTDIR}/usr && tar -cf /installer/plugins/mysql/application/mysql.tar mysql
 rm -r mysql
 
+# repackage bash to a plugin
+[ -d /installer/plugins/bash/application/bash ] && rm /installer/plugins/bash/application/bash
+cd  ${MINIROOTDIR}/usr/bin && cp -rp bash /installer/plugins/bash/application/
+rm bash
+
 exit 0

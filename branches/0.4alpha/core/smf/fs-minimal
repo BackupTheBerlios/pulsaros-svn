@@ -1,11 +1,5 @@
 #!/sbin/sh
 #
-#############
-# JTC: Modified fs-minimal service which:
-#    (1) Mounts /var as a tmpfs
-#    (2) After mounting root, removes a previously allocated /FREESPACE file
-#        to get some amount of free space in the root directory.
-#############
 #
 # Copyright 2004 Sun Microsystems, Inc.  All rights reserved.
 # Use is subject to license terms.
@@ -18,6 +12,9 @@
 # actual or intended publication of such source code.
 #
 # ident	"@(#)fs-minimal	1.31	04/12/22 SMI"
+
+# Changed by Thomas Brandstetter for PulsarOS
+# 0.1 - removed FREESPACE settings
 
 . /lib/svc/share/smf_include.sh
 . /lib/svc/share/fs_include.sh
@@ -39,21 +36,10 @@ for fs in /var /var/adm /tmp; do
 done
 
 #
-# Don't mount /var/run because we mount /var as tmpfs
-#
-#mounted /var/run - tmpfs < /etc/mnttab && exit $SMF_EXIT_OK
-#mountfs -O /var/run tmpfs - swap || exit $SMF_EXIT_ERR_FATAL
-
-#
 # Reconstitute /var filesystem
 #
 cd /
 tar xf /var.tar
 /bin/rm -rf /var.tar
-
-#
-# Remove /FREESPACE file to reclaim some free space on /
-#
-/bin/rm -rf /FREESPACE
 
 exit $SMF_EXIT_OK

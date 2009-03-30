@@ -23,7 +23,7 @@ msg_to_stderr "copy kernel to boot directory"
 cp ${MINIROOTDIR}/platform/i86pc/kernel/unix ${BASEDIR}/boot/boot/platform/i86pc/kernel/
 msg_to_stderr "creating full miniroot_archive"
 # mkfile 210m ${BASEDIR}/boot/boot/${IMAGE}
-mkfile 300m ${BASEDIR}/boot/boot/${IMAGE}
+mkfile 120m ${BASEDIR}/boot/boot/${IMAGE}
 lofiadm -a ${BASEDIR}/boot/boot/${IMAGE} > /dev/null 2>&1
 yes | newfs -m 0 /dev/rlofi/1 >/dev/null 2>&1
 mount /dev/lofi/1 /pulsar_boot
@@ -35,7 +35,7 @@ rm /installer/tmp.tar
 cp -r ${BASEDIR}/platform/pulsarroot/bin /pulsar_boot/pulsarroot/
 cp -r ${BASEDIR}/platform/pulsarroot/plugins /pulsar_boot/pulsarroot/
 # create initial .version
-echo "0.3alpha\t000" > /pulsar_boot/pulsarroot/bin/.version
+echo "0.4alpha\t000" > /pulsar_boot/pulsarroot/bin/.version
 cd /
 umount /pulsar_boot
 lofiadm -d /dev/lofi/1
@@ -49,7 +49,7 @@ tar -cf ${BASEDIR}/boot/usr.tar .
 
 # Create pulsaros update archive 
 msg_to_stderr "creating update miniroot_archive"
-mkfile 200m ${BASEDIR}/boot/${IMAGE}_update
+mkfile 45m ${BASEDIR}/boot/${IMAGE}_update
 lofiadm -a ${BASEDIR}/boot/${IMAGE}_update > /dev/null 2>&1
 yes | newfs -m 0 /dev/rlofi/1 >/dev/null 2>&1
 mount /dev/lofi/1 /pulsar_boot

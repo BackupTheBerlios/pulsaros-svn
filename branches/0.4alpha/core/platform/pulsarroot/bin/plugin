@@ -1,13 +1,14 @@
 #!/bin/ksh93
 # Copyright 2009 Thomas Brandstetter. All rights reserved.
 # Description:	plugin - manage plugins for pulsaros
-# Version:      0.3
+# Version:      0.4
 #=========================================================
 
 # Variables
 WORKDIR=/pulsarroot
 APPDIR=/pulsarroot/plugins
-MIRROR="http://10.0.0.144/~tbrandstetter/pulsaros"
+OSVERSION=`cat ${WORKDIR}/bin/.version | awk '{print $1}'`
+MIRROR="http://10.0.0.147/~tbrandstetter/pulsaros"
 SYNTAX="plugin list | install | deinstall 'pluginname'"
 alias WGET='wget --directory-prefix=$WORKDIR -nc -q'
 
@@ -20,14 +21,14 @@ print_syntax()
 
 get_plugin()
 {
-	WGET ${MIRROR}/plugin.list
-	if [ ! -f plugin.list ]; then
+	WGET ${MIRROR}/${OSVERSION}.list
+	if [ ! -f ${OSVERSION}.list ]; then
 		printf "\nError retrieving Plugin list - please try it again!\n\n"
 		[ -f HTTP_NOT_FOUND.html.var ] && rm HTTP_NOT_FOUND.html.var && exit 1
 	fi
-	if [[ $# = 1 && `cat plugin.list|grep -wc ${1}` -lt 1 ]]; then
+	if [[ $# = 1 && `cat ${OSVERSION}.list|grep -wc ${1}` -lt 1 ]]; then
 		printf "\nPlugin name not found!\n\n"
-		rm plugin.list
+		rm ${OSVERSION}.list
 		exit 1		
 	fi
 }
@@ -38,7 +39,7 @@ check_plugin()
 	case $2 in
 		install)
 			[ -d $APPDIR/${1} ] && printf "\nPlugin already installed!\n" && exit 1
-			debs=`grep "^${1}" plugin.list|awk -F'|' '{print $3}'`
+			debs=`grep "^${1}" ${OSVERSION}.list|awk -F'|' '{print $3}'`
 			for i in `echo $debs |awk -F',' '{ for (i = NF; i > 0; --i) print $i }'`; do
 				if [ ! -d $APPDIR/${i} ]; then
 					printf "\nDependency check failed - plugin ${i} must be installed first!\n"
@@ -49,7 +50,7 @@ check_plugin()
 		;;
 		deinstall)
 			[ ! -d $APPDIR/${1} ] && printf "\nPlugin not installed!\n" && exit 1
-			debs=`grep -v "^${1}" plugin.list|grep "${1}" | awk -F'|' '{print $1}'`
+			debs=`grep -v "^${1}" ${OSVERSION}.list|grep "${1}" | awk -F'|' '{print $1}'`
 			for i in `echo $debs`; do
 				if [ -d $APPDIR/${i} ]; then
 					printf "\nDependency check failed - ${i} must be deinstalled first!\n"
@@ -66,13 +67,13 @@ check_plugin()
 
 list_plugins()
 {
-	# get plugin.list file
-	WGET ${MIRROR}/plugin.list
+	# get ${OSVERSION}.list file
+	WGET ${MIRROR}/${OSVERSION}.list
 	# create plugin list
 	printf "\n\n"
 	printf "Plugin Name          Actual version\t\tInstalled Version\tStatus\n"
 	printf "=================================================================================\n"
-	for i in `cat plugin.list`; do
+	for i in `cat ${OSVERSION}.list`; do
 		plugin_name=`echo $i | awk  -F'|' '{print $1}'`
 		plugin_version=`echo $i | awk -F'|' '{print $2}'`
 		if [ ! -d $APPDIR/${plugin_name} ]; then
@@ -86,7 +87,7 @@ list_plugins()
 	done
 	printf "\n\n"
 	# cleanup
-	rm plugin.list
+	rm ${OSVERSION}.list
 }
 
 install_plugin()
@@ -111,7 +112,7 @@ install_plugin()
 				exit 1
 			else 
 				echo "installed" > ${APPDIR}/${1}/.plugin_status
-				[ "`grep "^${1}" plugin.list|awk -F'|' '{print $4}'`" == "A" ] &&  activate_plugin ${1}
+				[ "`grep "^${1}" ${OSVERSION}.list|awk -F'|' '{print $4}'`" == "A" ] &&  activate_plugin ${1}
 				printf "\nPlugin successfully installed and activated!\n\n"
 				
 			fi
@@ -156,7 +157,7 @@ deactivate_plugin()
 deinstall_plugin()
 {
 	check_plugin $1 "deinstall"
-	[ "`grep "^${1}" plugin.list|awk -F'|' '{print $4}'`" == "A" ] && deactivate_plugin ${1}
+	[ "`grep "^${1}" ${OSVERSION}.list|awk -F'|' '{print $4}'`" == "A" ] && deactivate_plugin ${1}
 	printf "Deinstalling plugin..."
 	${APPDIR}/${1}/scripts/main.sh deinstall
 	if [ $? != 0 ]; then

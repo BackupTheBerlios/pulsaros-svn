@@ -47,14 +47,17 @@ ${SVCCFG} -s system/manifest-import setprop start/exec=:true
 msg_to_stderr "modifying filesystem services"
 cp ${SMFDIR}/fs-minimal ./lib/svc/method/
 cp ${SMFDIR}/fs-root ./lib/svc/method/
+cp ${SMFDIR}/svc-hostid ./lib/svc/method/
+cp ${SMFDIR}/rot47 ./usr/bin/
 chown root:bin ./lib/svc/method/fs-minimal
 chmod 555 ./lib/svc/method/fs-minimal
 chown root:bin ./lib/svc/method/fs-root
 chmod 555 ./lib/svc/method/fs-root
+chown root:bin ./lib/svc/method/svc-hostid
+chmod 555 ./lib/svc/method/svc-hostid
 ${SVCCFG} import ${MINIROOTDIR}/var/svc/manifest/system/filesystem/minimal-fs.xml
 ${SVCCFG} import ${MINIROOTDIR}/var/svc/manifest/system/filesystem/root-fs.xml
 ${SVCCFG} import ${MINIROOTDIR}/var/svc/manifest/network/network-service.xml
-#${SVCCFG} import ${MINIROOTDIR}/var/svc/manifest/network/samba.xml
 ${SVCCFG} import ${MINIROOTDIR}/var/svc/manifest/network/smb/server.xml
 ${SVCCFG} import ${MINIROOTDIR}/var/svc/manifest/system/idmap.xml
 ${SVCCFG} import ${MINIROOTDIR}/var/svc/manifest/network/rpc/bind.xml
@@ -124,6 +127,12 @@ rm ${MINIROOTDIR}/var/svc/manifest/system/fmd.xml
 rm ${MINIROOTDIR}/var/svc/manifest/system/coreadm.xml
 rm ${MINIROOTDIR}/var/svc/manifest/network/rpc/gss.xml
 rm ${MINIROOTDIR}/var/svc/manifest/network/rpc/keyserv.xml
+rm ${MINIROOTDIR}/lib/svc/method/inetd-upgrade
+rm ${MINIROOTDIR}/lib/svc/method/ldap-client
+rm ${MINIROOTDIR}/lib/svc/method/mpxio-upgrade
+rm ${MINIROOTDIR}/lib/svc/method/svc-auditd
+rm ${MINIROOTDIR}/lib/svc/method/svc-consadm
+rm ${MINIROOTDIR}/lib/svc/method/yp
 
 # Add dropbear service
 msg_to_stderr "adding dropbear manifest needed for ssh"
