@@ -9,7 +9,6 @@
 ./lib/libld.so*
 ./lib/liblddbg.so*
 ./lib/libmvec.so*
-./lib/libnwam.so.1
 ./lib/libposix4.so*
 ./lib/librtld.so.1
 ./lib/libtermcap.so*

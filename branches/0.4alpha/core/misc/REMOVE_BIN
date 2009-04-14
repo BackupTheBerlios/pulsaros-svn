@@ -248,7 +248,6 @@
 ./usr/bin/bzip2recover
 ./usr/bin/bzless
 ./usr/bin/bzmore
-./usr/bin/cmp
 ./usr/bin/command
 ./usr/bin/cpio
 ./usr/bin/dbclient

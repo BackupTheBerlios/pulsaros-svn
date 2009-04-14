@@ -333,7 +333,83 @@ menu_error()
 	clear_it main_menu
 }
 
+# Functions for the webbased installer
+
+get_disks()
+{
+	# Variables for this function
+	number=0
+	mount=0
+	# ===========================
+	devfsadm
+	clear
+	for i in `iostat -xn | awk '{print $11}' | egrep \^c`; do
+		number=`expr $number + 1`
+		disk[$number]=$i
+		get_installer $i
+		if [ `iostat -En $i | grep -c Model` == 1 ]; then
+			size=`iostat -En $i | awk '/Size/ {print $9}'`
+		else
+			size=`iostat -En $i | awk '/Size/ {print $2}'`
+		fi
+		# do not print out the pulsar installer
+		if [ $mount == 0 ]; then
+			printf "Disk: $i\tSize: $size\n"
+		else 
+			number=`expr $number - 1`
+		fi
+	done
+}
+
+format_disk()
+{
+	printf "disk formatted"
+}
+
+install_os()
+{
+	printf "os installed"
+}
+
+os_bootable()
+{
+	printf "os bootable"
+}
+
+configure_os()
+{
+	printf "os configured"
+}
+
 # Main program starts here
+
+# Options for the webbased installer
+case $1 in
+	get_disks)
+		get_disks
+		exit 0
+		;;
+	format_disk)
+		format_disk $2
+		exit 0
+		;;
+	install_os)
+		install_os $2
+		exit 0
+		;;
+	os_bootable)
+		os_bootable $2
+		exit 0
+		;;
+	configure_os)
+		configure_os $2
+		exit 0
+		;;
+	*)
+		printf "Not an api function"
+		exit 0
+		;;
+esac
 
 main_menu
 

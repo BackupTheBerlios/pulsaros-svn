@@ -48,7 +48,6 @@ msg_to_stderr "modifying filesystem services"
 cp ${SMFDIR}/fs-minimal ./lib/svc/method/
 cp ${SMFDIR}/fs-root ./lib/svc/method/
 cp ${SMFDIR}/svc-hostid ./lib/svc/method/
-cp ${SMFDIR}/rot47 ./usr/bin/
 chown root:bin ./lib/svc/method/fs-minimal
 chmod 555 ./lib/svc/method/fs-minimal
 chown root:bin ./lib/svc/method/fs-root
@@ -75,6 +74,7 @@ ${SVCCFG} -s milestone/network:default setprop general/enabled=true
 ${SVCCFG} -s network/service:default setprop general/enabled=true
 ${SVCCFG} -s system/system-log:default setprop general/enabled=true
 ${SVCCFG} -s system/hostid:default setprop general/enabled=true
+${SVCCFG} -s network/physical:nwam setprop general/enabled=true
 
 msg_to_stderr "delete unecessary services"
 # since snv_107 don't know why....
@@ -145,34 +145,17 @@ chmod 444 ./var/svc/manifest/network/dropbear.xml
 ${SVCCFG} import ${MINIROOTDIR}/var/svc/manifest/network/dropbear.xml
 ${SVCCFG} -s network/ssh:default setprop general/enabled=true
 
-#
-# Here's what needed to add ssh to the miniroot
-#
-#msg_to_stderr "adding system/cryptosvc manifest needed for ssh"
-#${SVCCFG} import ${MINIROOTDIR}/var/svc/manifest/system/cryptosvc.xml
-#${SVCCFG} -s system/cryptosvc:default setprop general/enabled=true
+# Add frontend service
+msg_to_stderr "adding frontend manifest"
+cp ${SMFDIR}/frontend.xml ./var/svc/manifest/system/
+cp ${SMFDIR}/frontend ./lib/svc/method/
+chown root:bin ./lib/svc/method/system
+chmod 555 ./lib/svc/method/system
+chown root:sys ./var/svc/manifest/system/frontend.xml
+chmod 444 ./var/svc/manifest/system/frontend.xml
+${SVCCFG} import ${MINIROOTDIR}/var/svc/manifest/system/frontend.xml
+${SVCCFG} -s system/frontend:default setprop general/enabled=true
 
-#msg_to_stderr "adding network/rpc/gss manifest needed for ssh"
-#${SVCCFG} import ${MINIROOTDIR}/var/svc/manifest/network/rpc/gss.xml
-#${SVCCFG} -s network/rpc/gss:default setprop general/enabled=false
-
-#msg_to_stderr "adding network/ssh manifest"
-#${SVCCFG} import ${MINIROOTDIR}/var/svc/manifest/network/ssh.xml
-#${SVCCFG} -s network/ssh:default setprop general/enabled=true
-
-#msg_to_stderr "create RSA/DSA keys for ssh"
-#/usr/bin/ssh-keygen -q -f ${MINIROOTDIR}/etc/ssh/ssh_host_rsa_key -t rsa -N ''
-#/usr/bin/ssh-keygen -q -f ${MINIROOTDIR}/etc/ssh/ssh_host_dsa_key -t dsa -N ''
-
-#msg_to_stderr "edit etc/ssh/sshd_config to allow ssh to root account"
-#ex -s ${MINIROOTDIR}/etc/ssh/sshd_config > /dev/null << END_OF_INPUT 
-#/PermitRootLogin
-#s/no/yes
-#w!
-#q
-#END_OF_INPUT
-#
-# Add a "root" password to the root account.  This is needed for ssh.
 #
 msg_to_stderr "adding \"root\" password to root account"
 ex -s ${MINIROOTDIR}/etc/shadow << END_OF_INPUT 
@@ -183,6 +166,5 @@ root:v.ggSHu1CbWSo:13362::::::
 w!
 q
 END_OF_INPUT
-# End ssh stuff
 
 exit 0

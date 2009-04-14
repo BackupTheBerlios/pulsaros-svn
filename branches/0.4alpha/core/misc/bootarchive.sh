@@ -34,6 +34,7 @@ tar -xf /installer/tmp.tar
 rm /installer/tmp.tar
 cp -r ${BASEDIR}/platform/pulsarroot/bin /pulsar_boot/pulsarroot/
 cp -r ${BASEDIR}/platform/pulsarroot/plugins /pulsar_boot/pulsarroot/
+cp -r ${BASEDIR}/platform/pulsarroot/frontend /pulsar_boot/pulsarroot/
 # create initial .version
 echo "0.4alpha\t000" > /pulsar_boot/pulsarroot/bin/.version
 cd /
