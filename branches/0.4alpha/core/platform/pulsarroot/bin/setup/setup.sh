@@ -2,7 +2,7 @@
 # Copyright 2009 Thomas Brandstetter. All rights reserved.
 # Description:	setup.sh - Setup script to install pulsaros to
 #               disk/usbstick/cfcard....
-# Version:      0.3
+# Version:      0.4
 #=============================================================
 
 # Variables
@@ -121,7 +121,7 @@ get_installer()
 				umount /mnt
 			fi
 		else
-			if [ `fstyp /dev/rdsk/${i}s0 | grep -c ufs` == 1 ]; then
+			if [ `fstyp /dev/rdsk/${i}s0 2>/dev/null| grep -c ufs` == 1 ]; then
 				mount /dev/dsk/${i}s0 /mnt
 				if [ -f /mnt/.pulsarinstall ]; then
 					mount=1
@@ -153,7 +153,7 @@ copy_os()
 	number=0
 	mount=0
 	# ===========================
-	devfsadm
+	devfsadm >/dev/null 2>&1
 	clear
 	create_line full
 	printf " #\t\tChoose the disk to install the os\t\t\t#\n"
@@ -162,11 +162,8 @@ copy_os()
 		number=`expr $number + 1`
 		disk[$number]=$i
 		get_installer $i
-		if [ `iostat -En $i | grep -c Model` == 1 ]; then
-			size=`iostat -En $i | awk '/Size/ {print $9}'`
-		else
-			size=`iostat -En $i | awk '/Size/ {print $2}'`
-		fi
+		disksize=`iostat -En $i | grep Size`
+		size=`echo ${disksize#Model:*Size:} | awk '{print $1}'`
 		# do not print out the pulsar installer
 		if [ $mount == 0 ]; then
 			create_line space
@@ -184,6 +181,7 @@ copy_os()
 	printf "\nAll data on disk /dev/dsk/${disk[$OPT1]} will be destroyed - ready (y/n)"
 	read OPT2
 	if [ "$OPT2" == "n" ]; then
+		printf "\nInstallation chanceled - press return to go back to the main menu"
 		clear_it main_menu
 	elif [ "$OPT2" == "y" ]; then
 		# prepare choosen disk
@@ -198,7 +196,7 @@ copy_os()
 		# install os to disk
 		printf "\t2. Install OS to disk (This takes some time - grab a coffee)\n"
 		mount ${disk}s0 /coreboot
-		cp -rp /pulsarroot/bin /pulsarroot/plugins /coreboot/
+		cp -rp /pulsarroot/bin /pulsarroot/plugins /pulsarroot/frontend /coreboot/
 		mkdir /coreboot/boot
 		cp -rp /mnt/boot/grub /mnt/boot/platform /coreboot/boot/
 		# create os image
@@ -341,7 +339,7 @@ get_disks()
 	number=0
 	mount=0
 	# ===========================
-	devfsadm
+	devfsadm >/dev/null 2>&1
 	clear
 	for i in `iostat -xn | awk '{print $11}' | egrep \^c`; do
 		number=`expr $number + 1`
@@ -406,11 +404,8 @@ case $1 in
 		exit 0
 		;;
 	*)
-		printf "Not an api function"
-		exit 0
+		main_menu
 		;;
 esac
-
-main_menu
 
 exit 0

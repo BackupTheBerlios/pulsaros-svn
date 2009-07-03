@@ -53,4 +53,7 @@ echo "PATH=$PATH:/bin:/sbin:/usr/bin:/usr/sbin:/usr/sfw/bin:/usr/ccs/bin:/pulsar
 echo "export PATH" >> ${MINIROOTDIR}/root/.profile
 echo "/pulsarroot/bin/setup/setup.sh" >> ${MINIROOTDIR}/root/.profile
 
+# create new global profile
+cp /installer/0.4alpha/core/platform/pulsarroot/bin/setup/profile ${MINIROOTDIR}/etc/profile
+
 exit 0

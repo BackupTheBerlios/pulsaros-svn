@@ -82,11 +82,9 @@ ${SVCCFG} delete system/metainit
 ${SVCCFG} delete network/inetd-upgrade
 ${SVCCFG} delete system/svc/global
 rm ${MINIROOTDIR}/etc/init.d/autoinstall
-rm ${MINIROOTDIR}/etc/init.d/cachefs_daemon
 rm ${MINIROOTDIR}/etc/init.d/sysetup
 rm ${MINIROOTDIR}/etc/rc2.d/S20sysetup
 rm ${MINIROOTDIR}/etc/rc2.d/S72autoinstall
-rm ${MINIROOTDIR}/etc/rc2.d/S73cachefs_daemon
 rm ${MINIROOTDIR}/etc/rc2.d/S82mkdtab
 rm ${MINIROOTDIR}/etc/rc2.d/S89PRESERVE
 rm ${MINIROOTDIR}/var/svc/manifest/system/svc/global.xml
@@ -96,18 +94,13 @@ rm ${MINIROOTDIR}/var/svc/manifest/network/ipsec/ike.xml
 rm ${MINIROOTDIR}/var/svc/manifest/network/ipsec/manual-key.xml
 rm ${MINIROOTDIR}/var/svc/manifest/network/ldap/client.xml
 rm ${MINIROOTDIR}/var/svc/manifest/network/routing/legacy-routing.xml
-rm ${MINIROOTDIR}/var/svc/manifest/network/rpc/keyserv.xml
 rm ${MINIROOTDIR}/var/svc/manifest/network/forwarding.xml
-rm ${MINIROOTDIR}/var/svc/manifest/network/winbind.xml
-rm ${MINIROOTDIR}/var/svc/manifest/network/wins.xml
-rm ${MINIROOTDIR}/var/svc/manifest/network/iscsi_initiator.xml
 rm ${MINIROOTDIR}/var/svc/manifest/system/device/mpxio-upgrade.xml
 rm ${MINIROOTDIR}/var/svc/manifest/system/auditd.xml
 rm ${MINIROOTDIR}/var/svc/manifest/system/consadm.xml
 rm ${MINIROOTDIR}/var/svc/manifest/system/extended-accounting.xml
 rm ${MINIROOTDIR}/var/svc/manifest/system/vtdaemon.xml
 rm ${MINIROOTDIR}/var/svc/manifest/network/inetd-upgrade.xml
-rm ${MINIROOTDIR}/var/svc/manifest/network/swat.xml
 rm ${MINIROOTDIR}/var/svc/manifest/system/rmtmpfiles.xml
 rm ${MINIROOTDIR}/var/svc/manifest/system/sysevent.xml
 rm ${MINIROOTDIR}/var/svc/manifest/system/cryptosvc.xml
@@ -149,8 +142,8 @@ ${SVCCFG} -s network/ssh:default setprop general/enabled=true
 msg_to_stderr "adding frontend manifest"
 cp ${SMFDIR}/frontend.xml ./var/svc/manifest/system/
 cp ${SMFDIR}/frontend ./lib/svc/method/
-chown root:bin ./lib/svc/method/system
-chmod 555 ./lib/svc/method/system
+chown root:bin ./lib/svc/method/frontend
+chmod 555 ./lib/svc/method/frontend
 chown root:sys ./var/svc/manifest/system/frontend.xml
 chmod 444 ./var/svc/manifest/system/frontend.xml
 ${SVCCFG} import ${MINIROOTDIR}/var/svc/manifest/system/frontend.xml
