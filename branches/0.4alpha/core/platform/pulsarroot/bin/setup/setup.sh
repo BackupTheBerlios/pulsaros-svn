@@ -204,7 +204,7 @@ configure_os()
 	rm $HOME/vfstab.work
 	cp $HOME/.profile /mnt/root/
 	cp $HOME/profile /mnt/etc/
-	cp $HOME/_pmtab /mnt/etc/saf/zsmon/
+	cp $HOME/routes.php /coreboot/frontend/www/system/application/config/
 	# configure network
 	if [ "$dhcp" == "n" ]; then
 		echo "$ipaddr $hostname" >> /mnt/etc/hosts
@@ -213,6 +213,13 @@ configure_os()
 		echo $hostname > /mnt/etc/nodename
 		echo "nameserver ${nameserver}" > /mnt/etc/resolv.conf
 		cp $HOME/nsswitch.conf /mnt/etc/nsswitch.conf
+		# disable nwam service
+		SVCCFG_DTD=/usr/share/lib/xml/dtd/service_bundle.dtd.1
+		SVCCFG_REPOSITORY=/mnt/etc/svc/repository.db	
+		SVCCFG=/usr/sbin/svccfg
+		export SVCCFG_DTD SVCCFG_REPOSITORY SVCCFG
+		${SVCCFG} import /var/svc/manifest/milestone/sysconfig.xml
+		${SVCCFG} -s network/physical:nwam setprop general/enabled=false
 	elif [ "$dhcp" == "y" ]; then
 		[ -f dhcp.* ] && rm /mnt/etc/dhcp.*
 		echo "" > /mnt/etc/dhcp.${nwcard}
@@ -221,6 +228,7 @@ configure_os()
 		echo $hostname > /mnt/etc/nodename
 		cp $HOME/nsswitch.conf /mnt/etc/nsswitch.conf
 	fi
+	sleep 1
 	umount /mnt
 	lofiadm -d /coreboot/boot/os
 	gzip -9 /coreboot/boot/os
