@@ -1,10 +1,20 @@
   <body>	
 	<h1>Step 3</h1>
 	<p>PulsarOS configuration</p>
-	<ul>
-	<?php foreach($configsys as $step):?>
-	<li><?php echo $step;?></li>
+	<?php echo validation_errors(); ?>
+	<form method="post" action="index.php?setup/form">
+	<?php foreach($nwcard[0] as $nwname):?>
+	<input type="radio" name="nwcard" value=<?php echo $nwname;?>> <?php echo "Interface: $nwname";?><br />
 	<?php endforeach;?>
-	<p>PulsarOS configured - after shutdown, remove your usb-stick or cd/dvd. To shutdown the system now, click <a href="http://<?php echo "$ip:$port"; ?>/index.php?setup/main/step3">here</a></p> 
+	<p>Choose your network card for configuration</p><br />
+	<p>Configure interface using:</p>
+	<select name="nwconf">
+		<option value="step4a">DHCP</option>
+		<option value="step4b">STATIC</option>
+	</select>
+	<input type="submit" value="submit">
+	<input type="hidden" name="next_step" value="step4">
+	<input type="hidden" name="step" value="step3">
+	</form> 
   <body>
 </html>
