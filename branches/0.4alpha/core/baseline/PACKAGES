@@ -61,10 +61,6 @@ SUNWahci
 SUNWsi3124
 SUNWpcre
 SUNWadmr
-SUNWiscsiu
-SUNWiscsir
-SUNWiscsitgtr
-SUNWiscsitgtu
 SUNWafe
 SUNWamd8111s
 SUNWpcelx
@@ -86,4 +82,10 @@ SUNWsmbsr
 SUNWsmbsu
 SUNWsmbfsu
 SUNWnfsckr
+SUNWiscsir
+SUNWiscsiu
+SUNWiscsitr
+SUNWiscsitu
+SUNWiscsidmu
 SUNWiscsidmr
+SUNWstmf

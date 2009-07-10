@@ -17,10 +17,6 @@ SYNTAX="${PROGNAME} miniroot_directory"
 
 cd ${MINIROOTDIR}
 
-# set login to setup script
-echo "ttya:u:root:reserved:reserved:reserved:/dev/term/a:I::/pulsarroot/bin/setup/setup.sh::9600:ldterm,ttcompat:ttya login\: ::tvi925:y:#" > ${MINIROOTDIR}/etc/saf/zsmon/_pmtab  
-echo "ttyb:u:root:reserved:reserved:reserved:/dev/term/b:I::/pulsarroot/bin/setup/setup.sh::9600:ldterm,ttcompat:ttyb login\: ::tvi925:y:#" >> ${MINIROOTDIR}/etc/saf/zsmon/_pmtab
-
 # Copy devfsadm over to /sbin
 cp ${MINIROOTDIR}/usr/sbin/devfsadm ${MINIROOTDIR}/sbin/
 mkdir ${MINIROOTDIR}/lib/devfsadm

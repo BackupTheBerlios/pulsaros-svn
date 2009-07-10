@@ -1,7 +1,7 @@
 ./lib/libc_db.so*
 ./lib/libdevice.so*
 ./lib/libelfsign.so*
-./lib/libipmp.so.1
+./lib/libipmp.so*
 ./lib/libkmf.so*
 ./lib/libkmfberder.so*
 ./lib/libmtsk.so*
@@ -46,6 +46,8 @@
 ./usr/lib/smbsrv/llib-ltecla.ln
 ./usr/lib/llib-lzfs
 ./usr/lib/llib-lzfs.ln
+./usr/lib/llib-liscsit
+./usr/lib/llib-liscsit.ln
 ./usr/lib/mdb/kvm/zfs.so
 ./usr/lib/mdb/proc/libzpool.so
 ./usr/lib/abi/spec2map
@@ -132,3 +134,10 @@
 ./usr/lib/gss/mech_dh.so*
 ./usr/lib/gss/mech_spnego.so*
 ./usr/lib/krb5
+./usr/lib/security/pkcs11_tpm.so.1
+./usr/lib/security/pkcs11_tpm.so
+./usr/lib/wusbd
+./usr/lib/mps/libsqlite3.so
+./usr/lib/mps/libnssdbm3.so
+./usr/lib/mps/libnssutil3.so
+

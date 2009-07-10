@@ -308,8 +308,12 @@
 ./usr/bin/zcat
 ./usr/bin/ld
 ./usr/bin/rmformat
+./usr/bin/tpmadm
+./usr/bin/rev
 ./usr/sbin/inetadm
 ./usr/sbin/root_archive
+./usr/sbin/wusbadm
+./usr/sbin/ipmpstat
 ./usr/sfw/sbin/swat
 ./sbin/biosdev
 ./sbin/bootadm
@@ -317,7 +321,9 @@
 ./sbin/cryptoadm
 ./sbin/fiocompress
 ./sbin/in.mpathd
+./lib/inet/in.mpathd
 ./sbin/jsh
 ./sbin/pfsh
 ./sbin/su.static
-./sbin/uadmin
+./sbin/ipmpstat
+./sbin/wusbadm

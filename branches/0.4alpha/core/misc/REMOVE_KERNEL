@@ -26,11 +26,18 @@
 ./kernel/drv/usb_as
 ./kernel/drv/usb_ac
 ./kernel/drv/usb_ac.conf
+./kernel/drv/wusb_df
+./kernel/drv/wusb_ca
+./kernel/drv/hwahc
+./kernel/drv/acpi_toshiba
+./kernel/drv/hwarc
 ./kernel/fs/autofs
 ./kernel/fs/dcfs
 ./kernel/sys/autofs
 ./kernel/kmdb/smbsrv
 ./kernel/kmdb/zfs
+./kernel/kmdb/stmf
+./kernel/kmdb/idm
 ./kernel/strmod/ipsecesp
 ./kernel/strmod/ipsecah
 ./kernel/strmod/vuid3ps2
@@ -41,4 +48,7 @@
 ./kernel/strmod/usb_ah
 ./kernel/strmod/usbms
 ./kernel/misc/kmdbmod
+./kernel/misc/hwa1480_fw
 ./kernel/dacf/usb_ac_dacf
+./usr/kernel/kmdb/smbfs
+./usr/kernel/kmdb/nsmb

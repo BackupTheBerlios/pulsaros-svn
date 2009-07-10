@@ -1,4 +1,5 @@
 ./boot/solaris.xpm
+./boot/solaris.xpm.gz
 ./boot/acpi
 ./boot/grub/e2fs_stage1_5
 ./boot/grub/fat_stage1_5
@@ -17,7 +18,6 @@
 ./etc/sasl
 ./etc/security/spool
 ./etc/rpcsec
-./etc/uadmin
 ./usr/mysql/docs
 ./usr/mysql/include
 ./usr/openwin/share

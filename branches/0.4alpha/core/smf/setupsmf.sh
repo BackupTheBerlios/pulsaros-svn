@@ -54,6 +54,8 @@ chown root:bin ./lib/svc/method/fs-root
 chmod 555 ./lib/svc/method/fs-root
 chown root:bin ./lib/svc/method/svc-hostid
 chmod 555 ./lib/svc/method/svc-hostid
+${SVCCFG} import ${MINIROOTDIR}/var/svc/manifest/system/boot-config.xml
+${SVCCFG} import ${MINIROOTDIR}/var/svc/manifest/system/filesystem/minimal-fs.xml
 ${SVCCFG} import ${MINIROOTDIR}/var/svc/manifest/system/filesystem/minimal-fs.xml
 ${SVCCFG} import ${MINIROOTDIR}/var/svc/manifest/system/filesystem/root-fs.xml
 ${SVCCFG} import ${MINIROOTDIR}/var/svc/manifest/network/network-service.xml
@@ -63,9 +65,10 @@ ${SVCCFG} import ${MINIROOTDIR}/var/svc/manifest/network/rpc/bind.xml
 ${SVCCFG} import ${MINIROOTDIR}/var/svc/manifest/system/sysidtool.xml
 ${SVCCFG} import ${MINIROOTDIR}/var/svc/manifest/milestone/network.xml
 ${SVCCFG} import ${MINIROOTDIR}/var/svc/manifest/system/system-log.xml
-${SVCCFG} import ${MINIROOTDIR}/var/svc/manifest/system/iscsi_target.xml
+#${SVCCFG} import ${MINIROOTDIR}/var/svc/manifest/system/iscsi_target.xml
 ${SVCCFG} import ${MINIROOTDIR}/var/svc/manifest/system/hostid.xml
 ${SVCCFG} import ${MINIROOTDIR}/var/svc/manifest/network/shares/group.xml
+${SVCCFG} -s system/boot-config:default setprop general/enabled=true
 ${SVCCFG} -s system/idmap:default setprop general/enabled=true
 ${SVCCFG} -s network/rpc/bind:default setprop general/enabled=true
 ${SVCCFG} -s system/sysidtool:net setprop general/enabled=true
@@ -120,12 +123,16 @@ rm ${MINIROOTDIR}/var/svc/manifest/system/fmd.xml
 rm ${MINIROOTDIR}/var/svc/manifest/system/coreadm.xml
 rm ${MINIROOTDIR}/var/svc/manifest/network/rpc/gss.xml
 rm ${MINIROOTDIR}/var/svc/manifest/network/rpc/keyserv.xml
+rm ${MINIROOTDIR}/var/svc/manifest/system/wusb.xml
 rm ${MINIROOTDIR}/lib/svc/method/inetd-upgrade
 rm ${MINIROOTDIR}/lib/svc/method/ldap-client
 rm ${MINIROOTDIR}/lib/svc/method/mpxio-upgrade
 rm ${MINIROOTDIR}/lib/svc/method/svc-auditd
 rm ${MINIROOTDIR}/lib/svc/method/svc-consadm
 rm ${MINIROOTDIR}/lib/svc/method/yp
+rm ${MINIROOTDIR}/lib/svc/method/svc-wusb
+rm ${MINIROOTDIR}/lib/svc/bin/svc.ipfd
+rm ${MINIROOTDIR}/lib/svc/share/ipf_include.sh
 
 # Add dropbear service
 msg_to_stderr "adding dropbear manifest needed for ssh"
