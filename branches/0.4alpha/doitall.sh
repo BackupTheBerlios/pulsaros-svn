@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/sh -x
 # Copyright 2009 Thomas Brandstetter. All rights reserved.
 # Description: 	doitall.sh - creates the pulsaros image and
 # 		cleans up the framework directory
@@ -45,13 +45,17 @@ rm -r os.gz unix corebin
 # Create the install cd
 echo "3. Step - Creating the pulsar installer $ARCH cd\n"
 cd $HOME/core/boot
-mkisofs -R -b boot/grub/stage2_eltorito -no-emul-boot -boot-load-size 4 -boot-info-table -o /installer/images/pulsar_${VERSION}_$ARCH.iso $HOME/core/boot >> $HOME/install.log 2>&1
+mkisofs -R -b boot/grub/stage2_eltorito -no-emul-boot -boot-load-size 4 -boot-info-table -o /installer/images/pulsar_${VERSION}_$ARCH.iso $HOME/core/boot >> $HOME/install_$ARCH.log 2>&1
 /usr/bin/usbgen /installer/images/pulsar_${VERSION}_$ARCH.iso /installer/images/pulsar_${VERSION}_$ARCH.usb /tmp 2>&1
 echo "Creation of the pulsar x86 installer usb image ready"
 
 # Post cleanup x86
 rm $HOME/core/boot/boot/os.gz
-rm $HOME/core/boot/boot/platform/i86pc/kernel/unix
+if [ $ARCH = "x86" ]; then
+	rm $HOME/core/boot/boot/platform/i86pc/kernel/unix
+else
+	rm $HOME/core/boot/boot/platform/i86pc/kernel/amd64/unix
+fi
 rm $HOME/core/boot/miniroot.tar
 rm -r $HOME/core/miniroot
 rm $HOME/core/packages.log
