@@ -1,7 +1,6 @@
 ./lib/libc_db.so*
 ./lib/libdevice.so*
 ./lib/libelfsign.so*
-./lib/libipmp.so*
 ./lib/libkmf.so*
 ./lib/libkmfberder.so*
 ./lib/libmtsk.so*
@@ -63,27 +62,21 @@
 ./usr/lib/link_audit/truss.so.1
 ./usr/lib/link_audit/who.so.1
 ./usr/lib/intrd
-./usr/lib/isaexec
 ./usr/lib/lib300*
 ./usr/lib/lib400*
 ./usr/lib/lib450*
 ./usr/lib/libbsdmalloc.so*
 ./usr/lib/libc_db.so*
-./usr/lib/libcfgadm.so*
 ./usr/lib/libcommputil.so*
 ./usr/lib/libcrle.so.1
 ./usr/lib/libcupsimage*
 ./usr/lib/libdemangle.so*
 ./usr/lib/libdevice.so*
 ./usr/lib/libdisasm.so*
-./usr/lib/libdll.so.1
-./usr/lib/libexacct.so*
 ./usr/lib/libform.so*
 ./usr/lib/libiostream.so*
 ./usr/lib/libipmi.so*
-./usr/lib/libipmp.so*
 ./usr/lib/libipp.so*
-./usr/lib/libipsecutil.so.1
 ./usr/lib/libkvm.so*
 ./usr/lib/liblddbg.so.4
 ./usr/lib/liblgrp.so*
@@ -98,7 +91,6 @@
 ./usr/lib/libpanel.so*
 ./usr/lib/libplot.so*
 ./usr/lib/libposix4.so*
-./usr/lib/libraidcfg.so.1
 ./usr/lib/librtld.so.1
 ./usr/lib/libsched.so*
 ./usr/lib/libsctp.so*
@@ -112,7 +104,6 @@
 ./usr/lib/libvt0.so*
 ./usr/lib/libw.so*
 ./usr/lib/liby.so*
-./usr/lib/libzoneinfo.so*
 ./usr/lib/llib-ldiskmgt*
 ./usr/lib/mps/libfreebl3.*
 ./usr/lib/mps/libmime3.so
@@ -139,5 +130,3 @@
 ./usr/lib/wusbd
 ./usr/lib/mps/libsqlite3.so
 ./usr/lib/mps/libnssdbm3.so
-./usr/lib/mps/libnssutil3.so
-

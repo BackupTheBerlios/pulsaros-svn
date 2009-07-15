@@ -45,7 +45,7 @@ mkdir ${MINIROOTDIR}/pulsarroot
 cd ${MINIROOTDIR} && cp -r boot/grub ${BASEDIR}/boot/boot/
 
 # Set PATH
-echo "PATH=$PATH:/bin:/sbin:/usr/bin:/usr/sbin:/usr/sfw/bin:/usr/ccs/bin:/pulsarroot/bin" > ${MINIROOTDIR}/root/.profile
+echo "PATH=$PATH:/bin:/sbin:/usr/bin:/usr/bin/amd64:/usr/sbin:/usr/sbin/amd64:/usr/sfw/bin:/usr/ccs/bin:/pulsarroot/bin" > ${MINIROOTDIR}/root/.profile
 echo "export PATH" >> ${MINIROOTDIR}/root/.profile
 echo "/pulsarroot/bin/setup/setup.sh" >> ${MINIROOTDIR}/root/.profile
 

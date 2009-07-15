@@ -8,30 +8,31 @@
 PROGNAME=$0
 MINIROOTDIR=$1
 SYNTAX="${PROGNAME} minroot_directory"
+ARCH=$2
 
 # Syntax check
 . ../include/utils.sh
-[ $# != 1 ] && arg_error "miniroot_directory argument expected" "${SYNTAX}"
+[ $# != 2 ] && arg_error "miniroot_directory argument expected" "${SYNTAX}"
 [ ! -d "${MINIROOTDIR}" ] && arg_error "${MINIROOTDIR} directory does not exist" "${SYNTAX}"
 [ "${MINIROOTDIR}" = "/" ]&& arg_error "'/' is definitely not a valid miniroot directory" "${SYNTAX}"
 
 cd ${MINIROOTDIR}
 
-# Remove amd64 binaries and man pages 
-msg_to_stderr "removing amd64 binaries and man pages"
-find . -name amd64 | xargs rm -r 2> /dev/null
-find . -name 64 | xargs rm -r 2> /dev/null
+# Remove amd64 or i386 binaries and man pages, depending of the pulsarOS version
+if [ $ARCH = "x86" ]; then
+	msg_to_stderr "removing amd64 binaries and man pages"
+	find . -name amd64 | xargs rm -r 2> /dev/null
+	find . -name 64 | xargs rm -r 2> /dev/null
+else
+	msg_to_stderr "removing x86 binaries and man pages"
+	REMOVE_X86=`cat ../misc/REMOVE_X86`
+	for x86 in $REMOVE_X86
+	do
+  		rm -rf ${MINIROOTDIR}/${x86}
+	done
+	echo >&2
+fi
 find . -name man | xargs rm -r 2> /dev/null
-
-# needed for GD
-mv usr/X11/lib/libX11.so.4 usr/X11/lib/libXext.so.0 usr/X11/lib/libXau.so.6 usr/X11/lib/libXevie.so.1 usr/X11/lib/libXss.so.1 usr/X11/lib/libXpm* .
-rm -rf usr/X11/* && mkdir usr/X11/lib && chown root:bin usr/X11/lib
-mv libX11.so.4 libXext.so.0 libXau.so.6 libXevie.so.1 libXss.so.1 libXpm* usr/X11/lib/
-ln -s /usr/X11/lib/libXpm.so.4 usr/lib/libXpm.so.4
-ln -s /usr/lib/libXpm.so.4 usr/lib/libXpm.so
-ln -s /usr/X11/lib/libX11.so.4 usr/lib/libX11.so.4
-ln -s /usr/X11/lib/libX11.so.4 usr/lib/libX11.so.5
-ln -s /usr/lib/libX11.so.4 usr/lib/libX11.so
 
 # Remove unesessary kernel modules
 msg_to_stderr "removing unnecessary kernel modules"
@@ -43,7 +44,7 @@ done
 
 # Remove packaging, xpg4
 msg_to_stderr "removing packaging, xpg4, swat and else"
-rm -rf var/sadm/* usr/xpg4 usr/sfw/swat usr/openwin/bin usr/openwin/server usr/mysql/5.0/docs usr/demo usr/games usr/include usr/lib/cups usr/lib/spell usr/share/lib/dict usr/share/cups usr/share/icons usr/openwin/lib/app-defaults usr/openwin/share/include usr/openwin/share/src lib/mpxio lib/crypto usr/lib/inet usr/lib/crypto lib/libmvec
+rm -rf var/sadm/* usr/xpg4 usr/sfw/swat usr/openwin/bin usr/openwin/server usr/mysql/5.0/docs usr/demo usr/games usr/include usr/lib/cups usr/lib/spell usr/share/lib/dict usr/share/cups usr/share/icons usr/openwin/lib/app-defaults usr/openwin/share/include usr/openwin/share/src lib/mpxio lib/crypto usr/lib/inet usr/lib/crypto lib/libmvec usr/X11
 
 # Remove various usr/lib (non shared object)
 echo "\tremoving components (non shared objects) from usr/lib: \c" >&2
@@ -98,21 +99,5 @@ done
 msg_to_stderr "strip files"
 cd ${MINIROOTDIR}
 find *| xargs strip
-
-# repackage perl to a plugin
-[ -d /installer/plugins/perl/application/perl5.tar ] && rm /installer/plugins/perl/application/perl5.tar
-cd  ${MINIROOTDIR}/usr && tar -cf /installer/plugins/perl/application/perl5.tar perl5
-rm -r perl5
-
-
-# repackage mysql to a plugin
-[ -d /installer/plugins/mysql/application/mysql.tar ] && rm /installer/plugins/mysql/application/mysql.tar
-cd  ${MINIROOTDIR}/usr && tar -cf /installer/plugins/mysql/application/mysql.tar mysql
-rm -r mysql
-
-# repackage bash to a plugin
-[ -d /installer/plugins/bash/application/bash ] && rm /installer/plugins/bash/application/bash
-cd  ${MINIROOTDIR}/usr/bin && cp -rp bash /installer/plugins/bash/application/
-rm bash
 
 exit 0

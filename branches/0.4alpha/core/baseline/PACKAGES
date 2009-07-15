@@ -28,7 +28,6 @@ SUNWzlib
 SUNWgss
 SUNWgssc
 SUNWbip
-SUNWbash
 SUNWloc
 SUNWsshr
 SUNWsshu
@@ -45,16 +44,8 @@ SUNWlexpt
 SUNWzlib
 SUNWintgige
 SUNWxwplt
-SUNWjpg
-SUNWfreetype2
-SUNWpng
 SUNWlibC
-SUNWrmvolmgr
 SUNWusbs
-SUNWmysql5r
-SUNWmysql5u
-SUNWgd2
-SUNWfontconfig
 SUNWnvsata
 SUNWmv88sx
 SUNWahci
@@ -70,8 +61,6 @@ SUNWbge
 SUNWigb
 SUNWrtls
 SUNWsqlite3
-SUNWperl584core
-SUNWperl584usr
 SUNWbzip
 SUNWgrub
 SUNWpmr

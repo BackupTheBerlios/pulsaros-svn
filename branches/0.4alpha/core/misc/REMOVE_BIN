@@ -71,7 +71,6 @@
 ./usr/bin/i286
 ./usr/bin/iconv
 ./usr/bin/infocmp
-./usr/bin/isainfo
 ./usr/bin/join
 ./usr/bin/keylogin
 ./usr/bin/keylogout
@@ -262,7 +261,6 @@
 ./usr/bin/getopts
 ./usr/bin/giftogd2
 ./usr/bin/hash
-./usr/bin/isalist
 ./usr/bin/itu
 ./usr/bin/jpegtran
 ./usr/bin/jsh
@@ -283,7 +281,6 @@
 ./usr/bin/mkbootmedia
 ./usr/bin/oawk
 ./usr/bin/od
-./usr/bin/optisa
 ./usr/bin/pcre-config
 ./usr/bin/pkg2du
 ./usr/bin/pwdx
@@ -310,10 +307,16 @@
 ./usr/bin/rmformat
 ./usr/bin/tpmadm
 ./usr/bin/rev
+./usr/bin/isalist
+./usr/bin/optisa
+./usr/bin/isainfo
 ./usr/sbin/inetadm
 ./usr/sbin/root_archive
 ./usr/sbin/wusbadm
 ./usr/sbin/ipmpstat
+./usr/sbin/ipsecalgs
+./usr/sbin/ipsecconf
+./usr/sbin/ipseckey
 ./usr/sfw/sbin/swat
 ./sbin/biosdev
 ./sbin/bootadm

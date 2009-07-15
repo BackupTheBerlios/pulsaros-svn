@@ -124,6 +124,7 @@ rm ${MINIROOTDIR}/var/svc/manifest/system/coreadm.xml
 rm ${MINIROOTDIR}/var/svc/manifest/network/rpc/gss.xml
 rm ${MINIROOTDIR}/var/svc/manifest/network/rpc/keyserv.xml
 rm ${MINIROOTDIR}/var/svc/manifest/system/wusb.xml
+rm ${MINIROOTDIR}/var/svc/manifest/system/boot-archive.xml
 rm ${MINIROOTDIR}/lib/svc/method/inetd-upgrade
 rm ${MINIROOTDIR}/lib/svc/method/ldap-client
 rm ${MINIROOTDIR}/lib/svc/method/mpxio-upgrade
@@ -131,6 +132,7 @@ rm ${MINIROOTDIR}/lib/svc/method/svc-auditd
 rm ${MINIROOTDIR}/lib/svc/method/svc-consadm
 rm ${MINIROOTDIR}/lib/svc/method/yp
 rm ${MINIROOTDIR}/lib/svc/method/svc-wusb
+rm ${MINIROOTDIR}/lib/svc/method/boot-archive
 rm ${MINIROOTDIR}/lib/svc/bin/svc.ipfd
 rm ${MINIROOTDIR}/lib/svc/share/ipf_include.sh
 
