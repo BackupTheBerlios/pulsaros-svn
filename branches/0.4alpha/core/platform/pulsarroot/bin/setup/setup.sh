@@ -1,4 +1,4 @@
-#!/usr/bin/ksh93
+#!/usr/bin/sh
 # Copyright 2009 Thomas Brandstetter. All rights reserved.
 # Description:	setup.sh - Setup script to install pulsaros to
 #               disk/usbstick/cfcard....
@@ -18,64 +18,17 @@ HOME=/pulsarroot/bin/setup
 
 post_cleanup()
 {
-	[ `df -k|awk '/\/mnt$/ { print $6 }'|wc -l` == 1 ] && /usr/sbin/umount /mnt
+	[ `df -k|awk '/\/mnt$/ { print $6 }'|wc -l` = 1 ] && /usr/sbin/umount /mnt
+	[ `df -k|awk '/\/coreboot$/ { print $6 }'|wc -l` = 1 ] && /usr/sbin/umount /coreboot
 	[ `lofiadm |wc -l` -gt 1 ] && lofiadm -d /dev/lofi/1
 	[ -f /tmp/os ] && rm /tmp/os
 	[ -f /tmp/os.gz ] && rm /tmp/os.gz
 }
 
-check_input()
-{
-	# Variables for this function
-	function=$2
-	input=$4
-	item=$3 
-	blacklist="0.0.0.0 127.0.0.1"
-	# ===========================
-	if [ "$input" != "" ]; then
-		case $1 in
-			number)
-				if [ `echo $input | grep -c [0-9]` = 0 ]; then
-					printf "Only numbers are allowed! - Press Return to Continue... "
-					clear_it $function
-				elif [ $input -gt $item ]; then
-					printf "Choice doesn't exist! - Press Return to Continue... "
-					clear_it $function
-				fi
-			;;
-			ip | netmask)
-				result=`echo $input| awk -F"\." ' $1 < 256 && $2 < 256 && $3 < 256  && $4 < 256 '`
-				for ban in $blacklist; do
-					if [ "$ban" == "$input" ]; then
-						printf "Wrong syntax! - Press return to continue..."
-						clear_it $function
-					fi
-				done
-				if [ -z $result ]; then
-					printf "Wrong syntax! - Press return to continue..."
-					clear_it $function
-				fi
-			;;
-			hostname)
-				if [ `echo $input | grep -c [a-zA-Z]` = 0 ]; then
-					printf "Only alphabetic characters are allowed! - Press Return to Continue... "
-					clear_it $function
-				fi
-			;;
-			*)
-				printf "Interface error! - Please inform the developers!"
-			;;
-		esac
-	else
-		printf "Choice doesn't exist! - Press return to continue..."
-		clear_it $function
-	fi
-}
-
 get_installer()
 {
-	if [ $mount == 0 ]; then
-		if [ `iostat -Enx $i | egrep -ci "DVD|CD"` == 1 ]; then
+	if [ $mount = 0 ]; then
+		if [ `iostat -Enx $i | egrep -ci "DVD|CD"` = 1 ]; then
 			mount -F hsfs /dev/dsk/${i}s0 /mnt
 			if [ -f /mnt/.pulsarinstall ]; then
 				mount=1
@@ -83,7 +36,7 @@ get_installer()
 				umount /mnt
 			fi
 		else
-			if [ `fstyp /dev/rdsk/${i}s0 2>/dev/null| grep -c ufs` == 1 ]; then
+			if [ `fstyp /dev/rdsk/${i}s0 2>/dev/null| grep -c ufs` = 1 ]; then
 				mount /dev/dsk/${i}s0 /mnt
 				if [ -f /mnt/.pulsarinstall ]; then
 					mount=1
@@ -116,13 +69,13 @@ get_disks()
 	clear
 	for i in `iostat -xn | awk '{print $11}' | egrep \^c`; do
 		get_installer $i
-		if [ `iostat -En $i | grep -c Model` == 1 ]; then
+		if [ `iostat -En $i | grep -c Model` = 1 ]; then
 			size=`iostat -En $i | awk '/Size/ {print $9}'`
 		else
 			size=`iostat -En $i | awk '/Size/ {print $2}'`
 		fi
 		# do not print out the pulsar installer
-		if [ $mount == 0 ]; then
+		if [ $mount = 0 ]; then
 			printf "$i $size\n"
 		fi
 	done
@@ -148,7 +101,11 @@ install_os()
     cp -rp /mnt/boot/grub /mnt/boot/platform /coreboot/boot/
     # create os image
     check_dir "/pulsarimage"
-    mkfile 55m /coreboot/boot/os
+    if [ `isainfo -b` = 64 ]; then
+    	mkfile 80m /coreboot/boot/os
+    else
+    	mkfile 55m /coreboot/boot/os
+    fi
     lofiadm -a /coreboot/boot/os > /dev/null 2>&1
     echo "y" | newfs -m 0 /dev/rlofi/1 >/dev/null 2>&1
     mount /dev/lofi/1 /pulsarimage
@@ -206,7 +163,7 @@ configure_os()
 	cp $HOME/profile /mnt/etc/
 	cp $HOME/routes.php /coreboot/frontend/www/system/application/config/
 	# configure network
-	if [ "$dhcp" == "n" ]; then
+	if [ "$dhcp" = "n" ]; then
 		echo "$ipaddr $hostname" >> /mnt/etc/hosts
 		echo $gateway > /mnt/etc/defaultrouter
 		echo $hostname > /mnt/etc/hostname.${nwcard}
@@ -220,7 +177,7 @@ configure_os()
 		export SVCCFG_DTD SVCCFG_REPOSITORY SVCCFG
 		${SVCCFG} import /var/svc/manifest/milestone/sysconfig.xml
 		${SVCCFG} -s network/physical:nwam setprop general/enabled=false
-	elif [ "$dhcp" == "y" ]; then
+	elif [ "$dhcp" = "y" ]; then
 		[ -f dhcp.* ] && rm /mnt/etc/dhcp.*
 		echo "" > /mnt/etc/dhcp.${nwcard}
 		[ -f /mnt/etc/hostname.* ] && rm /mnt/etc/hostname.*

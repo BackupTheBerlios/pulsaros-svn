@@ -20,14 +20,15 @@ SYNTAX="${PROGNAME} base_directory minroot_directory miniroot_image"
 [ "${MINIROOTDIR}" = "/" ] && arg_error "'/' is definitely not a valid miniroot directory" "${SYNTAX}"
 
 # Create pulsaros full archive 
-msg_to_stderr "copy kernel to boot directory"
+msg_to_stderr "copy kernel to boot directory and fix ksh93"
 if [ $ARCH = "x86" ]; then
 	cp ${MINIROOTDIR}/platform/i86pc/kernel/unix ${BASEDIR}/boot/boot/platform/i86pc/kernel/
 else
 	cp ${MINIROOTDIR}/platform/i86pc/kernel/amd64/unix ${BASEDIR}/boot/boot/platform/i86pc/kernel/amd64/
+	ln -s ${MINIROOTDIR}/usr/bin/amd64/ksh93 ${MINIROOTDIR}/usr/bin/ksh93
 fi
 msg_to_stderr "creating full miniroot_archive"
-mkfile 200m ${BASEDIR}/boot/boot/${IMAGE}
+mkfile 160m ${BASEDIR}/boot/boot/${IMAGE}
 lofiadm -a ${BASEDIR}/boot/boot/${IMAGE} > /dev/null 2>&1
 yes | newfs -m 0 /dev/rlofi/1 >/dev/null 2>&1
 mount /dev/lofi/1 /pulsar_boot
@@ -54,7 +55,7 @@ tar -cf ${BASEDIR}/boot/usr.tar .
 
 # Create pulsaros update archive 
 msg_to_stderr "creating update miniroot_archive"
-mkfile 130m ${BASEDIR}/boot/${IMAGE}_update
+mkfile 80m ${BASEDIR}/boot/${IMAGE}_update
 lofiadm -a ${BASEDIR}/boot/${IMAGE}_update > /dev/null 2>&1
 yes | newfs -m 0 /dev/rlofi/1 >/dev/null 2>&1
 mount /dev/lofi/1 /pulsar_boot

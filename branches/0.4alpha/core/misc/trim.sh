@@ -1,7 +1,7 @@
 #!/bin/sh
 # Copyright 2009 Thomas Brandstetter. All rights reserved.
 # Description: 	trim.sh - Remove unnecessary miniroot components
-# Version:		0.3
+# Version:		0.4
 #===============================================================
 
 # Variables
@@ -30,7 +30,6 @@ else
 	do
   		rm -rf ${MINIROOTDIR}/${x86}
 	done
-	echo >&2
 fi
 find . -name man | xargs rm -r 2> /dev/null
 
@@ -79,6 +78,7 @@ msg_to_stderr "removing unnecessary libaries"
 REMOVE_LIB=`cat ../misc/REMOVE_LIB`
 for lib in $REMOVE_LIB
 do
+  printf "${MINIROOTDIR}/${lib}\n"
   rm -rf ${MINIROOTDIR}/${lib}
 done
 
@@ -98,6 +98,6 @@ done
 # Strip libraries and binaries
 msg_to_stderr "strip files"
 cd ${MINIROOTDIR}
-find *| xargs strip
+find ! -type d| xargs strip
 
 exit 0

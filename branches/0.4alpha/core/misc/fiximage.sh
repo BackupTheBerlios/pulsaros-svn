@@ -1,7 +1,7 @@
 #!/bin/sh
 # Copyright 2009 Thomas Brandstetter. All rights reserved.
 # Description: 	fiximage.sh - Make configuration changes to the miniroot
-# Version:		0.3
+# Version:		0.4
 #===========================================================
 
 # Variables
@@ -47,9 +47,8 @@ cd ${MINIROOTDIR} && cp -r boot/grub ${BASEDIR}/boot/boot/
 # Set PATH
 echo "PATH=$PATH:/bin:/sbin:/usr/bin:/usr/bin/amd64:/usr/sbin:/usr/sbin/amd64:/usr/sfw/bin:/usr/ccs/bin:/pulsarroot/bin" > ${MINIROOTDIR}/root/.profile
 echo "export PATH" >> ${MINIROOTDIR}/root/.profile
-echo "/pulsarroot/bin/setup/setup.sh" >> ${MINIROOTDIR}/root/.profile
 
 # create new global profile
-cp /installer/0.4alpha/core/platform/pulsarroot/bin/setup/profile ${MINIROOTDIR}/etc/profile
+cp ${BASEDIR}/platform/pulsarroot/bin/setup/profile ${MINIROOTDIR}/etc/profile
 
 exit 0

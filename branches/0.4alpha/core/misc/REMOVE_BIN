@@ -309,7 +309,6 @@
 ./usr/bin/rev
 ./usr/bin/isalist
 ./usr/bin/optisa
-./usr/bin/isainfo
 ./usr/sbin/inetadm
 ./usr/sbin/root_archive
 ./usr/sbin/wusbadm
@@ -317,6 +316,7 @@
 ./usr/sbin/ipsecalgs
 ./usr/sbin/ipsecconf
 ./usr/sbin/ipseckey
+./usr/sbin/locator
 ./usr/sfw/sbin/swat
 ./sbin/biosdev
 ./sbin/bootadm

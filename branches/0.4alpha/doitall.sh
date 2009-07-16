@@ -1,8 +1,8 @@
-#!/bin/sh -x
+#!/bin/sh
 # Copyright 2009 Thomas Brandstetter. All rights reserved.
 # Description: 	doitall.sh - creates the pulsaros image and
 # 		cleans up the framework directory
-# Version:	0.3
+# Version:	0.4
 #==========================================================
 
 # Variables
