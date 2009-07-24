@@ -12,7 +12,9 @@
 ./boot/grub/vstafs_stage1_5
 ./boot/grub/xfs_stage1_5
 ./etc/openwin
-./etc/crypto
+./etc/crypto/certs
+./etc/crypto/crls
+./etc/crypto/kmf.conf
 ./etc/flash
 ./etc/certs
 ./etc/sasl

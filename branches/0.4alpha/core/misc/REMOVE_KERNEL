@@ -1,5 +1,3 @@
-./kernel/drv/cryptoadm
-./kernel/drv/cryptoadm.conf
 ./kernel/drv/kmdb
 ./kernel/drv/kmdb.conf
 ./kernel/drv/ipsecah

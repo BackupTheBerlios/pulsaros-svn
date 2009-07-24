@@ -91,7 +91,6 @@ rm ${MINIROOTDIR}/etc/rc2.d/S72autoinstall
 rm ${MINIROOTDIR}/etc/rc2.d/S82mkdtab
 rm ${MINIROOTDIR}/etc/rc2.d/S89PRESERVE
 rm ${MINIROOTDIR}/var/svc/manifest/system/svc/global.xml
-rm ${MINIROOTDIR}/var/svc/manifest/application/database/mysql.xml
 rm ${MINIROOTDIR}/var/svc/manifest/network/dns/client.xml
 rm ${MINIROOTDIR}/var/svc/manifest/network/ipsec/ike.xml
 rm ${MINIROOTDIR}/var/svc/manifest/network/ipsec/manual-key.xml
@@ -106,7 +105,6 @@ rm ${MINIROOTDIR}/var/svc/manifest/system/vtdaemon.xml
 rm ${MINIROOTDIR}/var/svc/manifest/network/inetd-upgrade.xml
 rm ${MINIROOTDIR}/var/svc/manifest/system/rmtmpfiles.xml
 rm ${MINIROOTDIR}/var/svc/manifest/system/sysevent.xml
-rm ${MINIROOTDIR}/var/svc/manifest/system/cryptosvc.xml
 rm ${MINIROOTDIR}/var/svc/manifest/network/ipsec/ipsecalgs.xml
 rm ${MINIROOTDIR}/var/svc/manifest/network/ipsec/policy.xml
 rm ${MINIROOTDIR}/var/svc/manifest/system/keymap.xml

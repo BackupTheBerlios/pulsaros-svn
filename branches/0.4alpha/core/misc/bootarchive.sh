@@ -28,7 +28,11 @@ else
 	ln -s ${MINIROOTDIR}/usr/bin/amd64/ksh93 ${MINIROOTDIR}/usr/bin/ksh93
 fi
 msg_to_stderr "creating full miniroot_archive"
-mkfile 160m ${BASEDIR}/boot/boot/${IMAGE}
+if [ $ARCH = "x86" ]; then
+	mkfile 130m ${BASEDIR}/boot/boot/${IMAGE}
+else
+	mkfile 160m ${BASEDIR}/boot/boot/${IMAGE}
+fi
 lofiadm -a ${BASEDIR}/boot/boot/${IMAGE} > /dev/null 2>&1
 yes | newfs -m 0 /dev/rlofi/1 >/dev/null 2>&1
 mount /dev/lofi/1 /pulsar_boot
@@ -41,7 +45,11 @@ cp -r ${BASEDIR}/platform/pulsarroot/bin /pulsar_boot/pulsarroot/
 cp -r ${BASEDIR}/platform/pulsarroot/plugins /pulsar_boot/pulsarroot/
 cp -r ${BASEDIR}/platform/pulsarroot/frontend /pulsar_boot/pulsarroot/
 # create initial .version
-echo "0.4alpha\t000" > /pulsar_boot/pulsarroot/bin/.version
+if [ $ARCH = "x86" ]; then
+	echo "0.4alpha_x86\t000" > /pulsar_boot/pulsarroot/bin/.version
+else
+	echo "0.4alpha_x64\t000" > /pulsar_boot/pulsarroot/bin/.version
+fi
 cd /
 umount /pulsar_boot
 lofiadm -d /dev/lofi/1
@@ -55,7 +63,11 @@ tar -cf ${BASEDIR}/boot/usr.tar .
 
 # Create pulsaros update archive 
 msg_to_stderr "creating update miniroot_archive"
-mkfile 80m ${BASEDIR}/boot/${IMAGE}_update
+if [ $ARCH = "x86" ]; then
+	mkfile 50m ${BASEDIR}/boot/${IMAGE}_update
+else
+	mkfile 80m ${BASEDIR}/boot/${IMAGE}_update
+fi
 lofiadm -a ${BASEDIR}/boot/${IMAGE}_update > /dev/null 2>&1
 yes | newfs -m 0 /dev/rlofi/1 >/dev/null 2>&1
 mount /dev/lofi/1 /pulsar_boot

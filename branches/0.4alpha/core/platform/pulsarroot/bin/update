@@ -1,8 +1,18 @@
 #!/usr/bin/ksh93
 # Copyright 2009 Thomas Brandstetter. All rights reserved.
 # Description: update - Update PulsarOS to a newer version
-# Version:     0.3
+# Version:     0.4
 #=========================================================
+
+# update file looks like
+# 001|major|001|"Upgrade to 0.4alpha release"|000|0.4alpha
+# field 1: 		001 --> update step counter
+# field 2:	 	major (new release), minor (bugs), core (pulsaros scripts, etc...)
+# field 3: 		001 --> filename of update - same as first field
+# field 4:		Description
+# field 5:		000 (for major release) or BugID
+# field 6:		0.4alpha (pulsaros version)
+# 
 
 # Variables
 UPDATE_HOME="/pulsarroot"
@@ -10,7 +20,7 @@ BACKUP_DIR=$1
 CURRENT_SYS=`uname -a | awk '{print $4}'`
 OSVERSION=`cat ${UPDATE_HOME}/bin/.version | awk '{print $1}'`
 PATCHLEVEL_OS=`cat ${UPDATE_HOME}/bin/.version | awk '{print $2}'`
-MIRROR="http://download.berlios.de/pulsaros"
+MIRROR="http://pulsaros.digitalplayground.at/releases/${OSVERSION}/"
 alias WGET='wget --directory-prefix=$UPDATE_HOME -nc -q'
 
 # Functions
@@ -97,7 +107,7 @@ get_update()
 		printf "Download complete - installing updates \n"
 		gzip -d $UPDATE_HOME/${update_file}.tgz
 		mkdir $UPDATE_HOME/usr && cd $UPDATE_HOME/usr
-		tar -xf $UPDATE_HOME/${update_file}.tar ./bin/alias ./bin/mv ./bin/cp ./bin/rm ./bin/cd ./bin/gzip ./sbin/tar
+		tar -xf $UPDATE_HOME/${update_file}.tar ./bin/cp ./bin/unalias ./bin/alias ./bin/mv ./bin/rm ./bin/cd ./bin/gzip ./sbin/tar
 		check_outcome
 		PATH=$PATH:$UPDATE_HOME/usr/bin:$UPDATE_HOME/usr/sbin && export PATH
 
@@ -178,7 +188,7 @@ get_update()
 					printf "Update installed!\n"
 				;;
 				*)
-					printf "API error, only minor, major and binonly are allowed!"
+					printf "API error, only minor, major and core are allowed!"
 					exit 1
 				;;
 			esac

@@ -251,7 +251,6 @@
 ./usr/bin/cpio
 ./usr/bin/dbclient
 ./usr/bin/dircmp
-./usr/bin/dirname
 ./usr/bin/edit
 ./usr/bin/elfwrap
 ./usr/bin/fc
@@ -321,7 +320,6 @@
 ./sbin/biosdev
 ./sbin/bootadm
 ./sbin/bpgetfile
-./sbin/cryptoadm
 ./sbin/fiocompress
 ./sbin/in.mpathd
 ./lib/inet/in.mpathd

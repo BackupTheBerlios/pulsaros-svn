@@ -27,6 +27,7 @@
 # The profile that all logins get before using their own .profile.
 
 trap ""  2 3
+PATH=$PATH:/bin/amd64:/usr/bin/amd64:/sbin/amd64:/usr/sbin/amd64
 export LOGNAME PATH
 
 if [ "$TERM" = "" ]

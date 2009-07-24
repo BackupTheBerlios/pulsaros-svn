@@ -10,7 +10,6 @@ lib/nss_user.so.1
 lib/nss_nisplus.so.1
 lib/libadm.so
 lib/libaio.so
-lib/libcryptoutil.so
 lib/libdevice.so
 lib/libdoor.so
 lib/libposix4.so
@@ -59,8 +58,6 @@ usr/lib/mdb/kvm/zfs.o
 usr/lib/mdb/proc/libzpool.so
 usr/lib/libiostream.so.1
 usr/lib/libdemangle.so.1
-usr/lib/libCstd.so.1
-usr/lib/libCrun.so.1
 usr/lib/llib-lpcre.ln
 usr/lib/llib-lgd.ln
 usr/lib/llib-lbz2.ln
@@ -98,7 +95,6 @@ usr/lib/libpanel.so.1
 usr/lib/libnls.so.1
 usr/lib/libmtmalloc.so.1
 usr/lib/libvolmgt.so.1
-usr/lib/libsoftcrypto.so.1
 usr/lib/libsip.so.1
 usr/lib/libsctp.so.1
 usr/lib/watchmalloc.so.1
@@ -225,7 +221,6 @@ usr/lib/libsendfile.so.1
 usr/lib/libsip.so
 usr/lib/libsocket.so
 usr/lib/libsocket.so.1
-usr/lib/libsoftcrypto.so
 usr/lib/libsysevent.so
 usr/lib/libsysevent.so.1
 usr/lib/libtermcap.so
@@ -540,7 +535,6 @@ kernel/drv/i8042
 kernel/drv/dlpistub
 kernel/drv/dld
 kernel/drv/devinfo
-kernel/drv/cryptoadm
 kernel/drv/crypto
 kernel/drv/ipsecah
 kernel/drv/ippctl

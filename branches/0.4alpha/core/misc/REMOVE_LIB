@@ -91,7 +91,6 @@ usr/lib/librtld.so.1
 usr/lib/libsched.so*
 usr/lib/libsctp.so*
 usr/lib/libsip.so*
-usr/lib/libsoftcrypto*
 usr/lib/libsys.so*
 usr/lib/libtermcap.so*
 usr/lib/libtermlib.so*
