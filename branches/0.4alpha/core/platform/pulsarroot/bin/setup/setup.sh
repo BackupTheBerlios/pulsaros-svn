@@ -161,6 +161,7 @@ configure_os()
 	rm $HOME/vfstab.work
 	cp $HOME/.profile /mnt/root/
 	cp $HOME/profile /mnt/etc/
+	cp $HOME/pam.conf /mnt/etc/
 	cp $HOME/routes.php /coreboot/frontend/www/system/application/config/
 	# configure network
 	if [ "$dhcp" = "n" ]; then

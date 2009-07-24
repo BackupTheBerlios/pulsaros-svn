@@ -68,6 +68,7 @@ ${SVCCFG} import ${MINIROOTDIR}/var/svc/manifest/system/system-log.xml
 #${SVCCFG} import ${MINIROOTDIR}/var/svc/manifest/system/iscsi_target.xml
 ${SVCCFG} import ${MINIROOTDIR}/var/svc/manifest/system/hostid.xml
 ${SVCCFG} import ${MINIROOTDIR}/var/svc/manifest/network/shares/group.xml
+${SVCCFG} import ${MINIROOTDIR}/var/svc/manifest/system/cryptosvc.xml
 ${SVCCFG} -s system/boot-config:default setprop general/enabled=true
 ${SVCCFG} -s system/idmap:default setprop general/enabled=true
 ${SVCCFG} -s network/rpc/bind:default setprop general/enabled=true
@@ -78,6 +79,7 @@ ${SVCCFG} -s network/service:default setprop general/enabled=true
 ${SVCCFG} -s system/system-log:default setprop general/enabled=true
 ${SVCCFG} -s system/hostid:default setprop general/enabled=true
 ${SVCCFG} -s network/physical:nwam setprop general/enabled=true
+${SVCCFG} -s system/cryptosvc:default setprop general/enabled=true
 
 msg_to_stderr "delete unecessary services"
 # since snv_107 don't know why....

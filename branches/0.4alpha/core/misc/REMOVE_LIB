@@ -1,3 +1,7 @@
+lib/mpxio
+lib/crypto/kmf_openssl.so.1
+lib/crypto/kmf_pkcs11.so.1
+lib/crypto/kmf_nss.so.1
 lib/libdevice.so*
 lib/libelfsign.so*
 lib/libmtsk.so*
@@ -202,5 +206,9 @@ usr/lib/llib-lstmf*
 /usr/ccs/lib/libtermcap.so
 /usr/ccs/lib/libmenu.so
 /usr/ccs/lib/libcurses.so
+/usr/lib/inet
+/usr/lib/crypto
+/lib/libmvec
+/usr/X11
 /lib/libaio.so
 /lib/libsendfile.so

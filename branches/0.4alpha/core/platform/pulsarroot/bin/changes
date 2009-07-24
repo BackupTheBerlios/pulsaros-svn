@@ -14,3 +14,7 @@
 /root/.profile
 /etc/profile
 /etc/hostid
+/etc/pam.conf
+/var/smb/osmbpasswd
+/var/smb/smbgroup.db
+/var/smb/smbpasswd
