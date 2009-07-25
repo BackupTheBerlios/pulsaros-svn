@@ -41,26 +41,6 @@ do
   rm -rf ${MINIROOTDIR}/${kernel}
 done 
 
-# Remove various usr/lib (non shared object)
-echo "\tremoving components (non shared objects) from usr/lib: \c" >&2
-USR_LIB_REMOVAL="vplot term t[0-9]* spell rcm iconv diff3prog diffh newsyslog nscd_nischeck calprog fp getoptcvt gmsgfmt help initrd localdef lwp makekey more .help patchmod platexec embedded_su mdb rsh kssladm abi class link_audit"
-for component in ${USR_LIB_REMOVAL}
-do
-    rm -rf ${MINIROOTDIR}/usr/lib/${component}
-    echo "${component} \c" >&2
-done
-echo >&2
-
-# Remove various components in usr (not bin)
-echo "\tremoving components (not bin) from usr: \c" >&2
-USR_REMOVAL="kvm mail preserve pub share/src share/doc share/man share/lib/{dict,keytables,mailx,pub,tabset,termcap,unittab,xml,zoneinfo} mailx spool news old src"
-for component in ${USR_REMOVAL}
-do
-  rm -rf ${MINIROOTDIR}/usr/${component}
-  echo "${component} \c" >&2
-done
-echo >&2
-
 # Remove unnecessary executables
 msg_to_stderr "removing unnecessary executables"
 REMOVE_BIN=`cat ../misc/REMOVE_BIN`
@@ -74,7 +54,6 @@ msg_to_stderr "removing unnecessary libaries"
 REMOVE_LIB=`cat ../misc/REMOVE_LIB`
 for lib in $REMOVE_LIB
 do
-  printf "${MINIROOTDIR}/${lib}\n"
   rm -rf ${MINIROOTDIR}/${lib}
 done
 
@@ -94,6 +73,10 @@ done
 # Strip libraries and binaries
 msg_to_stderr "strip files"
 cd ${MINIROOTDIR}
-find ! -type d| xargs strip
+for i in `find -type f`; do
+	if [ `file $i|grep -c "script"` = 0 ] || [ `file $i|grep -c "ascii"` = 0 ] || [ `file $i|grep -c "empty"` = 0 ]; then
+		strip $i
+	fi
+done
 
 exit 0

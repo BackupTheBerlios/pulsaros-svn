@@ -7,7 +7,7 @@
 	<?php endforeach;?>
 	<p>PulsarOS installed!</p>
 	<form method="post" action="index.php?setup/main/step3">
-		<input type="submit" value="submit">
+		<input type="submit" value="next">
 		<input type="hidden" name="next_step" value="step3">
 		<input type="hidden" name="step" value="step2">
 	</form>

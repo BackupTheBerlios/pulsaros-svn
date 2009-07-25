@@ -12,7 +12,7 @@
 		<option value="step4a">DHCP</option>
 		<option value="step4b">STATIC</option>
 	</select>
-	<input type="submit" value="submit">
+	<input type="submit" value="next">
 	<input type="hidden" name="next_step" value="step4">
 	<input type="hidden" name="step" value="step3">
 	</form> 

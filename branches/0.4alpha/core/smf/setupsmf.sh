@@ -1,15 +1,8 @@
 #!/bin/sh
-
-#
-# setupsmf.sh - Customize SMF for this miniroot configuration
-#
-#               This script is typically invoked from ant and has the
-#               following arguments: 
-#
-#               $1: miniroot_directory
-#               $2: smf_directory: where customized SMF manifests and
-#                                  methods exist
-#
+# Copyright 2009 Thomas Brandstetter. All rights reserved.
+# Description: 	trim.sh - Remove unnecessary miniroot components
+# Version:		0.4
+#===============================================================
 
 # Variables
 PROGNAME=$0
@@ -113,6 +106,7 @@ rm ${MINIROOTDIR}/var/svc/manifest/system/keymap.xml
 rm ${MINIROOTDIR}/var/svc/manifest/system/scheduler.xml
 rm ${MINIROOTDIR}/var/svc/manifest/system/name-service-cache.xml
 rm ${MINIROOTDIR}/var/svc/manifest/system/boot-archive-update.xml
+rm ${MINIROOTDIR}/var/svc/manifest/system/boot-archive.xml
 rm ${MINIROOTDIR}/var/svc/manifest/system/cron.xml
 rm ${MINIROOTDIR}/var/svc/manifest/system/dumpadm.xml
 rm ${MINIROOTDIR}/var/svc/manifest/network/network-routing-setup.xml

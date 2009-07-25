@@ -7,11 +7,12 @@
 # Variables
 PROGNAME=$0
 MINIROOTDIR=$1
+BASEDIR=$2
 SYNTAX="${PROGNAME} miniroot_directory"
 
 # Syntax check
 . ../include/utils.sh
-[ $# != 1 ] && arg_error "miniroot_directory argument expected" "${SYNTAX}"
+[ $# != 2 ] && arg_error "miniroot_directory argument expected" "${SYNTAX}"
 [ ! -d "${MINIROOTDIR}" ] && arg_error "${MINIROOTDIR} directory does not exist" "${SYNTAX}"
 [ "${MINIROOTDIR}" = "/" ] && arg_error "'/' is definitely not a valid miniroot directory" "${SYNTAX}"
 

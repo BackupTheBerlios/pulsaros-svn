@@ -8,7 +8,7 @@
 	Netmask:<input type="text" name="netmask" value=""><br />
 	Gateway:<input type="text" name="gateway" value=""><br />
 	Nameserver:<input type="text" name="nameserver" value=""><br />
-	<input type="submit" value="submit">
+	<input type="submit" value="next">
 	<input type="hidden" name="next_step" value="step5">
 	<input type="hidden" name="step" value="step4b">
 	<input type="hidden" name="nwcard" value=<?php echo $nwcard ?>>

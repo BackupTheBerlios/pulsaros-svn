@@ -110,7 +110,7 @@
         description="Fix miniroot image" >
     <exec dir="${basedir}/misc" executable="${basedir}/misc/fiximage.sh"
           failonerror="true">
-      <arg line="${basedir}/miniroot"/>
+      <arg line="${basedir}/miniroot ${basedir}"/>
     </exec>
   </target>
 
