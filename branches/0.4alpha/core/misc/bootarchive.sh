@@ -46,7 +46,7 @@ cp -r ${BASEDIR}/platform/pulsarroot/plugins /pulsar_boot/pulsarroot/
 cp -r ${BASEDIR}/platform/pulsarroot/frontend /pulsar_boot/pulsarroot/
 # delete svn directories
 cd /pulsar_boot/pulsarroot
-find . -name *.svn -exec rm -rf {} \;
+find . -name .svn -exec rm -rf {} \;
 # create initial .version
 if [ $ARCH = "x86" ]; then
 	echo "0.4alpha_x86\t000" > /pulsar_boot/pulsarroot/bin/.version
