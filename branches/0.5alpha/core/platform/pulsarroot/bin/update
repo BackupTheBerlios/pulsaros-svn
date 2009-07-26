@@ -1,0 +1,214 @@
+#!/usr/bin/ksh93
+# Copyright 2009 Thomas Brandstetter. All rights reserved.
+# Description: update - Update PulsarOS to a newer version
+# Version:     0.4
+#=========================================================
+
+# update file looks like
+# 001|major|001|"Upgrade to 0.4alpha release"|000|0.4alpha
+# field 1: 		001 --> update step counter
+# field 2:	 	major (new release), minor (bugs), core (pulsaros scripts, etc...)
+# field 3: 		001 --> filename of update - same as first field
+# field 4:		Description
+# field 5:		000 (for major release) or BugID
+# field 6:		0.4alpha (pulsaros version)
+# 
+
+# Variables
+UPDATE_HOME="/pulsarroot"
+BACKUP_DIR=$1
+CURRENT_SYS=`uname -a | awk '{print $4}'`
+OSVERSION=`cat ${UPDATE_HOME}/bin/.version | awk '{print $1}'`
+PATCHLEVEL_OS=`cat ${UPDATE_HOME}/bin/.version | awk '{print $2}'`
+MIRROR="http://pulsaros.digitalplayground.at/releases/${OSVERSION}/"
+alias WGET='wget --directory-prefix=$UPDATE_HOME -nc -q'
+
+# Functions
+post_cleanup()
+{
+	cd ${UPDATE_HOME}
+	if [ `ls -ltra|grep -c latest` -ne 0 ]; then
+		for i in `ls -l latest* | awk '{print $9}'`; do
+			rm ${UPDATE_HOME}/${i}
+		done
+	fi
+	[ -d $UPDATE_HOME/usr ] && rm -r $UPDATE_HOME/usr
+	[ -f $UPDATE_HOME/${OSVERSION}.update ] && rm $UPDATE_HOME/${OSVERSION}.update
+}
+
+check_outcome()
+{
+	[ $? != 0 ] && printf "Execution error - Please try it again!\n" && exit 1
+	if [[ $# = 1 && ! -f $1 ]]; then
+		[ -f HTTP_NOT_FOUND.html.var ] && rm HTTP_NOT_FOUND.html.var
+		printf "Download or create error - Please try it again!\n"
+		exit 1
+	fi
+}
+
+create_backup()
+{
+	printf "Create backup \n"
+	[ ! -d $BACKUP_DIR ] && mkdir $BACKUP_DIR
+	cd /usr && tar -cf $BACKUP_DIR/backup_usr.tar .
+	check_outcome $BACKUP_DIR/backup_usr.tar
+	cp $UPDATE_HOME/boot/os.gz $UPDATE_HOME/boot/os_backup.gz
+	cp $UPDATE_HOME/boot/platform/i86pc/kernel/unix $UPDATE_HOME/boot/platform/i86pc/kernel/unix_backup
+}
+
+list_update()
+{
+	WGET ${MIRROR}/${OSVERSION}.update
+	check_outcome $UPDATE_HOME/${OSVERSION}.update
+
+ 	# list available patches
+ 	printf "Available Updates: \n\n"
+ 	BAKIFS=$IFS
+ 	IFS=$'\n'
+ 	for i in `cat $UPDATE_HOME/${OSVERSION}.update`; do
+ 		update_level=`echo $i | awk -F'|' '{print $1}'`
+		update_category=`echo $i | awk -F'|' '{print $2}'`
+		update_file=`echo $i | awk -F'|' '{print $3}'`
+		update_desc=`echo $i | awk -F'|' '{print $4}'`
+		update_id=`echo $i | awk -F'|' '{print $5}'`
+		if [ $update_level -gt $PATCHLEVEL_OS ]; then
+			printf "Update: ${update_level}\tCategory: ${update_category}\t\tDescription: ${update_desc}\t\t\tIssue ID: ${update_id}\n\n"
+		fi
+	done
+	rm $UPDATE_HOME/${OSVERSION}.update
+	IFS=$BAKIFS
+	exit 0
+}	
+
+get_update()
+{
+	WGET ${MIRROR}/${OSVERSION}.update
+	check_outcome $UPDATE_HOME/${OSVERSION}.update
+	
+	# get updates
+ 	BAKIFS=$IFS
+ 	IFS=$'\n'
+ 	# check first for a major upgrade
+	if [ `grep -c major $UPDATE_HOME/${OSVERSION}.update` -ne 0 ]; then
+		update_level=`tail -1 $UPDATE_HOME/${OSVERSION}.update | awk -F'|' '{print $1}'`
+		update_category=`tail -1 $UPDATE_HOME/${OSVERSION}.update | awk -F'|' '{print $2}'`
+		update_file=`tail -1 $UPDATE_HOME/${OSVERSION}.update | awk -F'|' '{print $3}'`
+		update_desc=`tail -1 $UPDATE_HOME/${OSVERSION}.update | awk -F'|' '{print $4}'`
+		update_id=`tail -1 $UPDATE_HOME/${OSVERSION}.update | awk -F'|' '{print $5}'`
+		update_info=`tail -1 $UPDATE_HOME/${OSVERSION}.update | awk -F'|' '{print $6}'`
+		printf "This is a major version upgrade to $update_info! Press any key to install - STRG+C to abort."
+		read JUNK
+		printf "\nInstall update: $update_level\tIssue number: $update_id\n"
+		# Create backup
+		[ $# = 1 ] && create_backup
+		printf "Downloading updates...\n"
+		WGET ${MIRROR}/${update_file}.tgz
+		check_outcome $UPDATE_HOME/${update_file}.tgz
+		printf "Download complete - installing updates \n"
+		gzip -d $UPDATE_HOME/${update_file}.tgz
+		mkdir $UPDATE_HOME/usr && cd $UPDATE_HOME/usr
+		tar -xf $UPDATE_HOME/${update_file}.tar ./bin/cp ./bin/unalias ./bin/alias ./bin/mv ./bin/rm ./bin/cd ./bin/gzip ./sbin/tar
+		check_outcome
+		PATH=$PATH:$UPDATE_HOME/usr/bin:$UPDATE_HOME/usr/sbin && export PATH
+
+		if [ -d $UPDATE_HOME/usr/bin ]; then
+			rm -r /usr/*
+			cd /usr && tar -xf $UPDATE_HOME/${update_file}.tar
+			check_outcome
+			mv os.gz $UPDATE_HOME/boot/
+			mv unix $UPDATE_HOME/boot/platform/i86pc/kernel/
+			mv corebin/* $UPDATE_HOME/bin/ && rm -r corebin
+			$UPDATE_HOME/bin/changeconfig
+			rm $UPDATE_HOME/${update_file}.tar && rm -r $UPDATE_HOME/usr
+						
+			# Create a new .version entry in /pulsarroot (major means new version ;-))
+			echo "${update_info}\t000" > $UPDATE_HOME/bin/.version
+
+			# Check if grub entry for restore exist
+			if [ `grep -c "PulsarOS restore mode" $UPDATE_HOME/boot/grub/menu.lst` = 0 ]; then
+				echo "" >> $UPDATE_HOME/boot/grub/menu.lst
+				echo "title PulsarOS restore mode" >> $UPDATE_HOME/boot/grub/menu.lst
+				echo "kernel /boot/platform/i86pc/kernel/unix -v" >> $UPDATE_HOME/boot/grub/menu.lst
+				echo "module /boot/os_backup.gz" >> $UPDATE_HOME/boot/grub/menu.lst
+			fi
+				printf "Update installed! If there is any problem, reboot in restore mode and run --> restore 'backupdir' ! \n\n"
+		else
+			printf "There is something wrong with the update archives! Please try it again!\n\n"
+			exit 1
+		fi
+		exit 0
+	fi
+ 	
+ 	for i in `cat $UPDATE_HOME/${OSVERSION}.update`; do
+ 		update_level=`echo $i | awk -F'|' '{print $1}'`
+		update_category=`echo $i | awk -F'|' '{print $2}'`
+		update_file=`echo $i | awk -F'|' '{print $3}'`
+		update_desc=`echo $i | awk -F'|' '{print $4}'`
+		update_id=`echo $i | awk -F'|' '{print $5}'`
+		update_info=`echo $i | awk -F'|' '{print $6}'`
+ 		if [ $update_level -gt $PATCHLEVEL_OS ]; then
+			case $update_category in
+				minor)
+					printf "\nInstall update: $update_level\tIssue number: $update_id\n"
+					printf "Press a key to install! STRG+C to abort"
+					read JUNK
+					# Create backup
+					[ $# = 1 ] && create_backup
+					printf "Downloading updates...\n"
+					WGET ${MIRROR}/${update_file}.tgz
+					check_outcome $UPDATE_HOME/${update_file}.tgz
+					printf "Download complete - installing updates \n"
+					gzip -d $UPDATE_HOME/${update_file}.tgz
+					if [ $update_info = "M" ]; then
+						cd $UPDATE_HOME/boot && tar -xf $UPDATE_HOME/${update_file}.tar
+						$UPDATE_HOME/bin/changeconfig
+					else
+						cd /usr && tar -xf $UPDATE_HOME/${update_file}.tar
+					fi
+					check_outcome
+					rm $UPDATE_HOME/${update_file}.tar
+					echo "${OSVERSION}\t${update_level}" > ${UPDATE_HOME}/bin/.version
+					printf "Update installed!\n"
+				;;
+				core)
+					printf "\nInstall update: $update_level\tIssue number: $update_id\n"
+					printf "Press a key to install! STRG+C to abort"
+					read JUNK
+					# Create backup
+					[ $# = 1 ] && create_backup
+					printf "Downloading updates...\n"
+					WGET ${MIRROR}/${update_file}.tgz
+					check_outcome $UPDATE_HOME/${update_file}.tgz
+					printf "Download complete - installing updates \n"
+					gzip -d $UPDATE_HOME/${update_file}.tgz
+					cd $UPDATE_HOME/bin && tar -xf $UPDATE_HOME/${update_file}.tar
+					check_outcome
+					rm $UPDATE_HOME/${update_file}.tar
+					echo "${OSVERSION}\t${update_level}" > ${UPDATE_HOME}/bin/.version
+					printf "Update installed!\n"
+				;;
+				*)
+					printf "API error, only minor, major and core are allowed!"
+					exit 1
+				;;
+			esac
+		fi
+	done
+	rm $UPDATE_HOME/${OSVERSION}.update
+}
+
+# Main program starts here
+
+# Check syntax
+[ "$1" = "help" ] && echo "Syntax: update [list]" && exit 1
+[ "$1" = "list" ] && list_update
+
+# Check dns settings
+[[ ! -f /etc/resolv.conf || ! -f /etc/nsswitch.conf ]] && printf "resolv.conf or nsswitch.conf missing!\n\n" && exit 1
+[[ `grep -wc nameserver /etc/resolv.conf` = 0 || `grep -wc dns /etc/nsswitch.conf` = 0 ]] &&  printf "DNS lookup failed!.\n\n" && exit 1
+
+# Update the system
+post_cleanup
+get_update
+
+exit 0

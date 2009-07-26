@@ -1,0 +1,17 @@
+#!/sbin/sh
+case $1 in 
+  'start')
+	/pulsarroot/frontend/bin/mongoose -ports 80 -root /pulsarroot/frontend/www  -cgi_interp "/pulsarroot/frontend/bin/php-cgi" -access_log /var/log/mongoose_access.log -error_log /var/log/mongoose_error.log -index_files index.php &
+	;;
+
+  'restart')
+	/usr/bin/pkill -HUP mongoose
+	;;
+
+  *)
+	echo "Usage: $0 { start | restart }"
+	exit 1
+	;;
+esac	
+
+exit $?

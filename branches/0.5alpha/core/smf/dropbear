@@ -1,0 +1,20 @@
+#!/sbin/sh
+PIDFILE=/var/run/dropbear.pid
+case $1 in 
+  'start')
+	/usr/sbin/dropbear
+	;;
+
+  'restart')
+	if [ -f "$PIDFILE" ]; then
+		/usr/bin/kill -HUP `/usr/bin/cat $PIDFILE`
+	fi
+	;;
+
+  *)
+	echo "Usage: $0 { start | restart }"
+	exit 1
+	;;
+esac	
+
+exit $?
