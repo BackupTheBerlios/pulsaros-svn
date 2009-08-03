@@ -27,11 +27,11 @@ post_cleanup()
 
 get_installer()
 {
-	if [ $mount = 0 ]; then
+	if [ $mount = "none" ]; then
 		if [ `iostat -Enx $i | egrep -ci "DVD|CD|DVD-ROM" ` = 1 ]; then
 			mount -F hsfs /dev/dsk/${i}s0 /mnt
 			if [ -f /mnt/.pulsarinstall ]; then
-				mount=1
+				mount=$i
 			else
 				umount /mnt
 			fi
@@ -39,7 +39,7 @@ get_installer()
 			if [ `fstyp /dev/rdsk/${i}s0 2>/dev/null| grep -c ufs` = 1 ]; then
 				mount /dev/dsk/${i}s0 /mnt
 				if [ -f /mnt/.pulsarinstall ]; then
-					mount=1
+					mount=$i
 				else
 					umount /mnt
 				fi
@@ -61,7 +61,7 @@ get_disks()
 {
 	# Variables for this function
 	number=0
-	mount=0
+	mount="none"
 	# ===========================
 	# cleanup everything before
 	post_cleanup
@@ -75,7 +75,7 @@ get_disks()
 			size=`iostat -En $i | awk '/Size/ {print $2}'`
 		fi
 		# do not print out the pulsar installer
-		if [ $mount = 0 ]; then
+		if [ $mount != $i ]; then
 			printf "$i $size\n"
 		fi
 	done
