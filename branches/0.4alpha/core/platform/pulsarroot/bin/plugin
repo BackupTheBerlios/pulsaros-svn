@@ -1,4 +1,4 @@
-#!/bin/ksh93
+#!/usr/bin/sh -x
 # Copyright 2009 Thomas Brandstetter. All rights reserved.
 # Description:	plugin - manage plugins for pulsaros
 # Version:      0.4
@@ -9,7 +9,11 @@ WORKDIR=/pulsarroot
 APPDIR=/pulsarroot/plugins
 MIRROR="http://download.berlios.de/pulsaros"
 SYNTAX="plugin list | install | deinstall 'pluginname'"
-alias WGET='wget --directory-prefix=$WORKDIR -nc -q'
+
+WGET()
+{
+	WGET=`wget --directory-prefix=$WORKDIR -nc -q $1`
+}
 
 # Functions
 print_syntax()
@@ -25,7 +29,7 @@ get_plugin()
 		printf "\nError retrieving Plugin list - please try it again!\n\n"
 		[ -f HTTP_NOT_FOUND.html.var ] && rm HTTP_NOT_FOUND.html.var && exit 1
 	fi
-	if [[ $# = 1 && `cat plugin.list|grep -wc ${1}` -lt 1 ]]; then
+	if [ `cat plugin.list|grep -wc ${1}` -lt 1 ]; then
 		printf "\nPlugin name not found!\n\n"
 		rm plugin.list
 		exit 1		
@@ -82,7 +86,7 @@ list_plugins()
 			plugin_installed=`cat $APPDIR/${plugin_name}/.plugin_version`
 			plugin_status=`cat $APPDIR/${plugin_name}/.plugin_status`
 		fi
-		printf "${plugin_name}          ${plugin_version}\t\t\t${plugin_installed}\t\t\t${plugin_status}\n"
+		printf "${plugin_name}\t\t\t${plugin_version}\t\t\t${plugin_installed}\t\t\t${plugin_status}\n"
 	done
 	printf "\n\n"
 	# cleanup
@@ -99,7 +103,7 @@ install_plugin()
 	else
 		# download the plugin from the internet and install it
 		printf "\nInstalling ${1} plugin..."
-		WGET ${MIRROR}/${1}.tar.bz2
+		WGET "${MIRROR}/${1}.tar.bz2"
 		if [ $? -eq 0 ]; then
 			bzip2 -d ${1}.tar.bz2 && tar -xf ${1}.tar
 			mv ${1} ${APPDIR}
