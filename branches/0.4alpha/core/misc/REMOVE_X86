@@ -1029,7 +1029,6 @@ usr/lib/fs/smbfs/amd64/libshare_smb.so.1
 /lib/64/libsendfile.so.1
 /lib/64/libtsnet.so.1
 /lib/64/nss_compat.so.1
-/lib/64/ld.so.1
 /lib/64/libpam.so.1
 /lib/64/librtld.so.1
 /lib/64/nss_user.so.1
