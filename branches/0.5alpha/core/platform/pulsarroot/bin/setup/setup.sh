@@ -28,7 +28,7 @@ post_cleanup()
 get_installer()
 {
 	if [ $mount = 0 ]; then
-		if [ `iostat -Enx $i | egrep -ci "DVD|CD"` = 1 ]; then
+		if [ `iostat -Enx $i | egrep -ci "DVD|CD|DVD-ROM" ` = 1 ]; then
 			mount -F hsfs /dev/dsk/${i}s0 /mnt
 			if [ -f /mnt/.pulsarinstall ]; then
 				mount=1
