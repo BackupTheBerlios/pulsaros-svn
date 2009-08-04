@@ -1,8 +1,8 @@
-#!/usr/bin/ksh93
+#!/usr/bin/sh
 # Copyright 2009 Thomas Brandstetter. All rights reserved.
 # Description: 	changeconfig - Updates the pulsaros boot image
 #               to preserve configuration changes.
-# Version:      0.3
+# Version:      0.4
 #=============================================================
 
 # Variables
