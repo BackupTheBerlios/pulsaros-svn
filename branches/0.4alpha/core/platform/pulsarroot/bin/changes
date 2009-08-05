@@ -1,6 +1,7 @@
 /etc/vfstab
 /etc/dhcp.*
 /etc/hostname*
+/etc/netmasks
 /etc/hosts
 /etc/nsswitch.conf
 /etc/resolv.conf
