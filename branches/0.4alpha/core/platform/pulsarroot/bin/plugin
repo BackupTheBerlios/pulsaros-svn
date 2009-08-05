@@ -1,4 +1,4 @@
-#!/usr/bin/sh
+#!/usr/bin/ksh93
 # Copyright 2009 Thomas Brandstetter. All rights reserved.
 # Description:	plugin - manage plugins for pulsaros
 # Version:      0.4
