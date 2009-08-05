@@ -21,7 +21,7 @@ CURRENT_SYS=`uname -a | awk '{print $4}'`
 OSVERSION=`cat ${UPDATE_HOME}/bin/.version | awk '{print $1}'`
 PATCHLEVEL_OS=`cat ${UPDATE_HOME}/bin/.version | awk '{print $2}'`
 MIRROR="http://pulsaros.digitalplayground.at/releases/${OSVERSION}/"
-WGET_OPTIONS="--directory-prefix=$UPDATE_HOME -nc -q"
+alias WGET='wget --directory-prefix=$UPDATE_HOME -nc -q'
 
 # Functions
 post_cleanup()
@@ -39,7 +39,7 @@ post_cleanup()
 check_outcome()
 {
 	[ $? != 0 ] && printf "Execution error - Please try it again!\n" && exit 1
-	if [ $# = 1 ] && [ ! -f $1 ]; then
+	if [[ $# = 1 && ! -f $1 ]]; then
 		[ -f HTTP_NOT_FOUND.html.var ] && rm HTTP_NOT_FOUND.html.var
 		printf "Download or create error - Please try it again!\n"
 		exit 1
@@ -58,7 +58,7 @@ create_backup()
 
 list_update()
 {
-	wget $WGET_OPTIONS ${MIRROR}/${OSVERSION}.update
+	WGET ${MIRROR}/${OSVERSION}.update
 	check_outcome $UPDATE_HOME/${OSVERSION}.update
 
  	# list available patches
@@ -82,7 +82,7 @@ list_update()
 
 get_update()
 {
-	wget $WGET_OPTIONS ${MIRROR}/${OSVERSION}.update
+	WGET ${MIRROR}/${OSVERSION}.update
 	check_outcome $UPDATE_HOME/${OSVERSION}.update
 	
 	# get updates
@@ -102,7 +102,7 @@ get_update()
 		# Create backup
 		[ $# = 1 ] && create_backup
 		printf "Downloading updates...\n"
-		wget $WGET_OPTIONS ${MIRROR}/${update_file}.tgz
+		WGET ${MIRROR}/${update_file}.tgz
 		check_outcome $UPDATE_HOME/${update_file}.tgz
 		printf "Download complete - installing updates \n"
 		gzip -d $UPDATE_HOME/${update_file}.tgz
@@ -155,7 +155,7 @@ get_update()
 					# Create backup
 					[ $# = 1 ] && create_backup
 					printf "Downloading updates...\n"
-					wget $WGET_OPTIONS ${MIRROR}/${update_file}.tgz
+					WGET ${MIRROR}/${update_file}.tgz
 					check_outcome $UPDATE_HOME/${update_file}.tgz
 					printf "Download complete - installing updates \n"
 					gzip -d $UPDATE_HOME/${update_file}.tgz
@@ -177,7 +177,7 @@ get_update()
 					# Create backup
 					[ $# = 1 ] && create_backup
 					printf "Downloading updates...\n"
-					wget $WGET_OPTIONS ${MIRROR}/${update_file}.tgz
+					WGET ${MIRROR}/${update_file}.tgz
 					check_outcome $UPDATE_HOME/${update_file}.tgz
 					printf "Download complete - installing updates \n"
 					gzip -d $UPDATE_HOME/${update_file}.tgz
@@ -204,8 +204,8 @@ get_update()
 [ "$1" = "list" ] && list_update
 
 # Check dns settings
-[ ! -f /etc/resolv.conf ] || [ ! -f /etc/nsswitch.conf ] && printf "resolv.conf or nsswitch.conf missing!\n\n" && exit 1
-[ `grep -wc nameserver /etc/resolv.conf` = 0 ] || [ `grep -wc dns /etc/nsswitch.conf` = 0 ] &&  printf "DNS lookup failed!.\n\n" && exit 1
+[[ ! -f /etc/resolv.conf || ! -f /etc/nsswitch.conf ]] && printf "resolv.conf or nsswitch.conf missing!\n\n" && exit 1
+[[ `grep -wc nameserver /etc/resolv.conf` = 0 || `grep -wc dns /etc/nsswitch.conf` = 0 ]] &&  printf "DNS lookup failed!.\n\n" && exit 1
 
 # Update the system
 post_cleanup
