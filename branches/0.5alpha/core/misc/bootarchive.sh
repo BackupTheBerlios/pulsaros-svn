@@ -52,6 +52,12 @@ if [ $ARCH = "x86" ]; then
 	echo "0.4alpha_x86\t000" > /pulsar_boot/pulsarroot/bin/.version
 else
 	echo "0.4alpha_x64\t000" > /pulsar_boot/pulsarroot/bin/.version
+	# change the ksh93 shell to 64-bit
+	cat /pulsar_boot/pulsarroot/bin/changeconfig | sed "s,\/usr/\bin\/ksh93=,\/bin\/amd64\/ksh93,g" > /pulsar_boot/pulsarroot/bin/changeconfig
+	cat /pulsar_boot/pulsarroot/bin/plugin | sed "s,\/usr/\bin\/ksh93=,\/bin\/amd64\/ksh93,g" > /pulsar_boot/pulsarroot/bin/plugin
+	cat /pulsar_boot/pulsarroot/bin/restore | sed "s,\/usr/\bin\/ksh93=,\/bin\/amd64\/ksh93,g" > /pulsar_boot/pulsarroot/bin/restore
+	cat /pulsar_boot/pulsarroot/bin/update | sed "s,\/usr/\bin\/ksh93=,\/bin\/amd64\/ksh93,g" > /pulsar_boot/pulsarroot/bin/update
+	cat /pulsar_boot/pulsarroot/bin/setup/setup.sh | sed "s,\/usr/\bin\/ksh93=,\/bin\/amd64\/ksh93,g" > /pulsar_boot/pulsarroot/bin/setup/setup.sh	
 fi
 cd /
 umount /pulsar_boot

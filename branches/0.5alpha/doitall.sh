@@ -59,3 +59,5 @@ fi
 rm $HOME/core/boot/miniroot.tar
 rm -r $HOME/core/miniroot
 rm $HOME/core/packages.log
+rm $HOME/core/boot/boot/grub/*
+rm -r $HOME/core/boot/boot/grub/bin
