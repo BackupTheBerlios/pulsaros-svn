@@ -30,17 +30,20 @@ export SVCCFG_DTD SVCCFG_REPOSITORY SVCCFG
 ${SVCCFG} import ${MINIROOTDIR}/var/svc/manifest/milestone/sysconfig.xml
 
 #
-# turnon boot-archive, manifest-import
+# turnoff boot-archive, manifest-import
 #
-${SVCCFG} -s system/boot-archive setprop start/exec=:true
+#${SVCCFG} -s system/boot-archive setprop start/exec=:false
 ${SVCCFG} -s system/manifest-import setprop start/exec=:true
 
 #
-# Use Modified fs-minimal and fs-root services
+# Use Modified fs-minimal,fs-root and usr-fs services
 msg_to_stderr "modifying filesystem services"
 cp ${SMFDIR}/fs-minimal ./lib/svc/method/
 cp ${SMFDIR}/fs-root ./lib/svc/method/
 cp ${SMFDIR}/svc-hostid ./lib/svc/method/
+cp ${SMFDIR}/usr-fs.xml ./var/svc/manifest/system/filesystem/
+chown root:sys ./var/svc/manifest/system/filesystem/usr-fs.xml
+chmod 444 ./var/svc/manifest/system/filesystem/usr-fs.xml
 chown root:bin ./lib/svc/method/fs-minimal
 chmod 555 ./lib/svc/method/fs-minimal
 chown root:bin ./lib/svc/method/fs-root
@@ -51,6 +54,7 @@ ${SVCCFG} import ${MINIROOTDIR}/var/svc/manifest/system/boot-config.xml
 ${SVCCFG} import ${MINIROOTDIR}/var/svc/manifest/system/filesystem/minimal-fs.xml
 ${SVCCFG} import ${MINIROOTDIR}/var/svc/manifest/system/filesystem/minimal-fs.xml
 ${SVCCFG} import ${MINIROOTDIR}/var/svc/manifest/system/filesystem/root-fs.xml
+${SVCCFG} import ${MINIROOTDIR}/var/svc/manifest/system/filesystem/usr-fs.xml
 ${SVCCFG} import ${MINIROOTDIR}/var/svc/manifest/network/network-service.xml
 ${SVCCFG} import ${MINIROOTDIR}/var/svc/manifest/network/smb/server.xml
 ${SVCCFG} import ${MINIROOTDIR}/var/svc/manifest/system/idmap.xml
@@ -79,6 +83,7 @@ msg_to_stderr "delete unecessary services"
 ${SVCCFG} delete system/metainit
 ${SVCCFG} delete network/inetd-upgrade
 ${SVCCFG} delete system/svc/global
+${SVCCFG} delete system/boot-archive
 rm ${MINIROOTDIR}/etc/init.d/autoinstall
 rm ${MINIROOTDIR}/etc/init.d/sysetup
 rm ${MINIROOTDIR}/etc/rc2.d/S20sysetup
@@ -118,7 +123,6 @@ rm ${MINIROOTDIR}/var/svc/manifest/system/coreadm.xml
 rm ${MINIROOTDIR}/var/svc/manifest/network/rpc/gss.xml
 rm ${MINIROOTDIR}/var/svc/manifest/network/rpc/keyserv.xml
 rm ${MINIROOTDIR}/var/svc/manifest/system/wusb.xml
-rm ${MINIROOTDIR}/var/svc/manifest/system/boot-archive.xml
 rm ${MINIROOTDIR}/lib/svc/method/inetd-upgrade
 rm ${MINIROOTDIR}/lib/svc/method/ldap-client
 rm ${MINIROOTDIR}/lib/svc/method/mpxio-upgrade

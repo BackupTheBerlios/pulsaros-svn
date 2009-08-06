@@ -29,7 +29,7 @@ else
 fi
 msg_to_stderr "creating full miniroot_archive"
 if [ $ARCH = "x86" ]; then
-	mkfile 130m ${BASEDIR}/boot/boot/${IMAGE}
+	mkfile 100m ${BASEDIR}/boot/boot/${IMAGE}
 else
 	mkfile 135m ${BASEDIR}/boot/boot/${IMAGE}
 fi
@@ -49,9 +49,9 @@ cd /pulsar_boot/pulsarroot
 find . -name .svn -exec rm -rf {} \;
 # create initial .version
 if [ $ARCH = "x86" ]; then
-	echo "0.4alpha_x86\t000" > /pulsar_boot/pulsarroot/bin/.version
+	echo "0.5alpha_x86\t000" > /pulsar_boot/pulsarroot/bin/.version
 else
-	echo "0.4alpha_x64\t000" > /pulsar_boot/pulsarroot/bin/.version
+	echo "0.5alpha_x64\t000" > /pulsar_boot/pulsarroot/bin/.version
 	# change the ksh93 shell to 64-bit
 	cat /pulsar_boot/pulsarroot/bin/changeconfig | sed "s,\/usr/\bin\/ksh93=,\/bin\/amd64\/ksh93,g" > /pulsar_boot/pulsarroot/bin/changeconfig
 	cat /pulsar_boot/pulsarroot/bin/plugin | sed "s,\/usr/\bin\/ksh93=,\/bin\/amd64\/ksh93,g" > /pulsar_boot/pulsarroot/bin/plugin
