@@ -167,6 +167,7 @@ configure_os()
 	if [ "$dhcp" = "n" ]; then
 		echo "$ipaddr $hostname" >> /mnt/etc/hosts
 		echo $gateway > /mnt/etc/defaultrouter
+		echo $netmask > /mnt/etc/netmasks
 		echo $hostname > /mnt/etc/hostname.${nwcard}
 		echo $hostname > /mnt/etc/nodename
 		echo "nameserver ${nameserver}" > /mnt/etc/resolv.conf
