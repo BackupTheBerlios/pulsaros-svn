@@ -11,7 +11,7 @@
 # field 3: 		001 --> filename of update - same as first field
 # field 4:		Description
 # field 5:		000 (for major release) or BugID
-# field 6:		0.4alpha (pulsaros version)
+# field 6:		0.4alpha (pulsaros version) or M for new boot.gz (only with minor update)
 # 
 
 # Variables
