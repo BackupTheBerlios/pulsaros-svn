@@ -1042,8 +1042,6 @@ usr/lib/fs/smbfs/amd64/libshare_smb.so.1
 /lib/64/libmd5.so.1
 /lib/64/libdoor.so.1
 /lib/64/c_synonyms.so.1
-/lib/64/nss_dns.so.1
-/lib/64/nss_files.so.1
 /lib/64/libintl.so.1
 /lib/64/libw.so.1
 /lib/64/libld.so.4
