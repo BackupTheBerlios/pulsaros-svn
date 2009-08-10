@@ -53,16 +53,17 @@ if [ $ARCH = "x86" ]; then
 else
 	echo "0.4alpha_x64\t002" > /pulsar_boot/pulsarroot/bin/.version
 	# change the ksh93 shell to 64-bit
-	cat /pulsar_boot/pulsarroot/bin/changeconfig | sed "s,\/usr/\bin\/ksh93=,\/bin\/amd64\/ksh93,g" > /pulsar_boot/pulsarroot/bin/changeconfig_tmp
+	cat /pulsar_boot/pulsarroot/bin/changeconfig | sed "s,/usr/bin/ksh93,/bin/amd64/ksh93,g" > /pulsar_boot/pulsarroot/bin/changeconfig_tmp
 	mv /pulsar_boot/pulsarroot/bin/changeconfig_tmp /pulsar_boot/pulsarroot/bin/changeconfig
-	cat /pulsar_boot/pulsarroot/bin/plugin | sed "s,\/usr/\bin\/ksh93=,\/bin\/amd64\/ksh93,g" > /pulsar_boot/pulsarroot/bin/plugin_tmp
+	cat /pulsar_boot/pulsarroot/bin/plugin | sed "s,/usr/bin/ksh93,/bin/amd64/ksh93,g" > /pulsar_boot/pulsarroot/bin/plugin_tmp
 	mv /pulsar_boot/pulsarroot/bin/plugin_tmp /pulsar_boot/pulsarroot/bin/plugin
-	cat /pulsar_boot/pulsarroot/bin/restore | sed "s,\/usr/\bin\/ksh93=,\/bin\/amd64\/ksh93,g" > /pulsar_boot/pulsarroot/bin/restore_tmp
+	cat /pulsar_boot/pulsarroot/bin/restore | sed "s,/usr/bin/ksh93,/bin/amd64/ksh93,g" > /pulsar_boot/pulsarroot/bin/restore_tmp
 	mv /pulsar_boot/pulsarroot/bin/restore_tmp /pulsar_boot/pulsarroot/bin/restore
-	cat /pulsar_boot/pulsarroot/bin/update | sed "s,\/usr/\bin\/ksh93=,\/bin\/amd64\/ksh93,g" > /pulsar_boot/pulsarroot/bin/update_tmp
+	cat /pulsar_boot/pulsarroot/bin/update | sed "s,/usr/bin/ksh93,/bin/amd64/ksh93,g" > /pulsar_boot/pulsarroot/bin/update_tmp
 	mv /pulsar_boot/pulsarroot/bin/update_tmp /pulsar_boot/pulsarroot/bin/update
-	cat /pulsar_boot/pulsarroot/bin/setup/setup.sh | sed "s,\/usr/\bin\/ksh93=,\/bin\/amd64\/ksh93,g" > /pulsar_boot/pulsarroot/bin/setup/setup.sh_tmp
-	mv /pulsar_boot/pulsarroot/bin/setup/setup.sh_tmp /pulsar_boot/pulsarroot/bin/setup/setup.sh	
+	cat /pulsar_boot/pulsarroot/bin/setup/setup.sh | sed "s,/usr/bin/ksh93,/bin/amd64/ksh93,g" > /pulsar_boot/pulsarroot/bin/setup/setup.sh_tmp
+	mv /pulsar_boot/pulsarroot/bin/setup/setup.sh_tmp /pulsar_boot/pulsarroot/bin/setup/setup.sh
+	chmod -R 755 /pulsar_boot/pulsarroot/bin/*
 fi
 cd /
 umount /pulsar_boot
