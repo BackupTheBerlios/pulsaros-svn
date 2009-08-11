@@ -60,7 +60,7 @@ do
 done
 # End Workaround to save UTF-8%646.so (cifs
 mkdir  ${MINIROOTDIR}/usr/lib/iconv
-cp ${MINIROOTDIR}/UTF-8%646.so  ${MINIROOTDIR}/usr/lib/iconv/
+mv ${MINIROOTDIR}/UTF-8%646.so  ${MINIROOTDIR}/usr/lib/iconv/
 
 # Remove unnecessary other files
 msg_to_stderr "removing unnecessary other files"
