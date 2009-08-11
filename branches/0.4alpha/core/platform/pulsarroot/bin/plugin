@@ -19,6 +19,11 @@ print_syntax()
 	exit 1
 }
 
+cleanup()
+{
+	[ -f $WORKDIR/plugin.list ] && rm $WORKDIR/plugin.list
+}
+
 get_plugin()
 {
 	wget $WGET_OPTIONS ${MIRROR}/plugin.list
@@ -28,7 +33,7 @@ get_plugin()
 	fi
 	if [ `cat plugin.list|grep -wc ${1}` -lt 1 ]; then
 		printf "\nPlugin name not found!\n\n"
-		rm plugin.list
+		cleanup
 		exit 1		
 	fi
 }
@@ -47,7 +52,7 @@ check_plugin()
 					dependency=1
 				fi
 			done 
-			[ $dependency -eq 1 ] && exit 1
+			[ $dependency -eq 1 ] && cleanup && exit 1
 		;;
 		deinstall)
 			[ ! -d $APPDIR/${1} ] && printf "\nPlugin not installed!\n" && exit 1
@@ -59,10 +64,11 @@ check_plugin()
 					dependency=1
 				fi
 			done 
-			[ $dependency -eq 1 ] && exit 1
+			[ $dependency -eq 1 ] && cleanup && exit 1
 		;;
 		*)
 			printf "API error - contact developer!"
+			cleanup
 		;;
 	esac
 }
@@ -88,8 +94,6 @@ list_plugins()
 		printf "${plugin_name}\t\t\t${plugin_version}\t\t\t${plugin_installed}\t\t\t${plugin_status}\n"
 	done
 	printf "\n\n"
-	# cleanup
-	rm plugin.list
 }
 
 install_plugin()
@@ -111,16 +115,17 @@ install_plugin()
 			# check the installation status and update .plugin_status file
 			if [ $? != 0 ]; then
 				printf "Warning plugin installation failed - please remove the plugin with 'plugin deinstall' and try it again!\n\n"
+				cleanup
 				exit 1
 			else 
 				echo "installed" > ${APPDIR}/${1}/.plugin_status
 				svc=`grep "^$1" plugin.list`
 				[ "`echo $svc|awk -F'|' '{print $4}'`" = "A" ] &&  activate_plugin ${1}
 				printf "\nPlugin successfully installed and activated!\n\n"
-				
 			fi
 		else
 			printf "Error downloading the plugin - please try it again!\n\n"
+			cleanup
 			exit 1
 		fi
 	fi
@@ -168,6 +173,7 @@ deinstall_plugin()
 	${APPDIR}/${1}/scripts/main.sh deinstall
 	if [ $? != 0 ]; then
 		printf "Warning plugin deinstallation failed - please try it again!\n\n"
+		cleanup
 		exit 1
 	else 
 		changeconfig
@@ -185,18 +191,22 @@ cd $WORKDIR
 case $1 in
 	list)
 		list_plugins
+		cleanup
 	;;
 	install)
 		if [ $# != 2 ]; then
 			print_syntax
 		fi
 		install_plugin $2
+		cleanup
 	;;
 	update)
 		update_plugin $2
+		cleanup
 	;;
 	deinstall)
 		deinstall_plugin $2
+		cleanup
 	;;
 	*)
 		print_syntax
