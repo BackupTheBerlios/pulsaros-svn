@@ -42,6 +42,14 @@
 	<create_default_instance enabled='true' />
 
 	<single_instance/>
+	
+	<dependency
+                name='root'
+                grouping='require_all'
+                restart_on='none'
+                type='service'>
+                <service_fmri value='svc:/system/filesystem/root' />
+    </dependency>
 
 	<!--
 	  Start method timeout is infinite to handle potentially unbounded

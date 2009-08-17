@@ -30,9 +30,8 @@ export SVCCFG_DTD SVCCFG_REPOSITORY SVCCFG
 ${SVCCFG} import ${MINIROOTDIR}/var/svc/manifest/milestone/sysconfig.xml
 
 #
-# turnoff boot-archive, manifest-import
+# turnon manifest-import
 #
-#${SVCCFG} -s system/boot-archive setprop start/exec=:false
 ${SVCCFG} -s system/manifest-import setprop start/exec=:true
 
 #
@@ -42,6 +41,7 @@ cp ${SMFDIR}/fs-minimal ./lib/svc/method/
 cp ${SMFDIR}/fs-root ./lib/svc/method/
 cp ${SMFDIR}/svc-hostid ./lib/svc/method/
 cp ${SMFDIR}/usr-fs.xml ./var/svc/manifest/system/filesystem/
+cp ${SMFDIR}/nfs-server ./lib/svc/method/
 chown root:sys ./var/svc/manifest/system/filesystem/usr-fs.xml
 chmod 444 ./var/svc/manifest/system/filesystem/usr-fs.xml
 chown root:bin ./lib/svc/method/fs-minimal
@@ -50,8 +50,9 @@ chown root:bin ./lib/svc/method/fs-root
 chmod 555 ./lib/svc/method/fs-root
 chown root:bin ./lib/svc/method/svc-hostid
 chmod 555 ./lib/svc/method/svc-hostid
+chown root:bin ./lib/svc/method/nfs-server
+chmod 555 ./lib/svc/method/nfs-server
 ${SVCCFG} import ${MINIROOTDIR}/var/svc/manifest/system/boot-config.xml
-${SVCCFG} import ${MINIROOTDIR}/var/svc/manifest/system/filesystem/minimal-fs.xml
 ${SVCCFG} import ${MINIROOTDIR}/var/svc/manifest/system/filesystem/minimal-fs.xml
 ${SVCCFG} import ${MINIROOTDIR}/var/svc/manifest/system/filesystem/root-fs.xml
 ${SVCCFG} import ${MINIROOTDIR}/var/svc/manifest/system/filesystem/usr-fs.xml
@@ -62,10 +63,14 @@ ${SVCCFG} import ${MINIROOTDIR}/var/svc/manifest/network/rpc/bind.xml
 ${SVCCFG} import ${MINIROOTDIR}/var/svc/manifest/system/sysidtool.xml
 ${SVCCFG} import ${MINIROOTDIR}/var/svc/manifest/milestone/network.xml
 ${SVCCFG} import ${MINIROOTDIR}/var/svc/manifest/system/system-log.xml
-#${SVCCFG} import ${MINIROOTDIR}/var/svc/manifest/system/iscsi_target.xml
 ${SVCCFG} import ${MINIROOTDIR}/var/svc/manifest/system/hostid.xml
 ${SVCCFG} import ${MINIROOTDIR}/var/svc/manifest/network/shares/group.xml
 ${SVCCFG} import ${MINIROOTDIR}/var/svc/manifest/system/cryptosvc.xml
+${SVCCFG} import ${MINIROOTDIR}/var/svc/manifest/system/stmf.xml
+${SVCCFG} import ${MINIROOTDIR}/var/svc/manifest/network/nfs/mapid.xml
+${SVCCFG} import ${MINIROOTDIR}/var/svc/manifest/network/nfs/nlockmgr.xml
+${SVCCFG} import ${MINIROOTDIR}/var/svc/manifest/network/nfs/status.xml
+${SVCCFG} import ${MINIROOTDIR}/var/svc/manifest/network/nfs/server.xml
 ${SVCCFG} -s system/boot-config:default setprop general/enabled=true
 ${SVCCFG} -s system/idmap:default setprop general/enabled=true
 ${SVCCFG} -s network/rpc/bind:default setprop general/enabled=true
@@ -78,12 +83,18 @@ ${SVCCFG} -s system/hostid:default setprop general/enabled=true
 ${SVCCFG} -s network/physical:nwam setprop general/enabled=true
 ${SVCCFG} -s system/cryptosvc:default setprop general/enabled=true
 
+# boot archive problem
+#${SVCCFG} import ${MINIROOTDIR}/var/svc/manifest/system/boot-archive.xml
+#${SVCCFG} -s system/boot-archive setprop start/exec=:true
+${SVCCFG} delete system/boot-archive
+rm ${MINIROOTDIR}/var/svc/manifest/system/boot-archive.xml
+rm ${MINIROOTDIR}/lib/svc/method/boot-archive
+
 msg_to_stderr "delete unecessary services"
 # since snv_107 don't know why....
 ${SVCCFG} delete system/metainit
 ${SVCCFG} delete network/inetd-upgrade
 ${SVCCFG} delete system/svc/global
-${SVCCFG} delete system/boot-archive
 rm ${MINIROOTDIR}/etc/init.d/autoinstall
 rm ${MINIROOTDIR}/etc/init.d/sysetup
 rm ${MINIROOTDIR}/etc/rc2.d/S20sysetup
@@ -111,7 +122,6 @@ rm ${MINIROOTDIR}/var/svc/manifest/system/keymap.xml
 rm ${MINIROOTDIR}/var/svc/manifest/system/scheduler.xml
 rm ${MINIROOTDIR}/var/svc/manifest/system/name-service-cache.xml
 rm ${MINIROOTDIR}/var/svc/manifest/system/boot-archive-update.xml
-rm ${MINIROOTDIR}/var/svc/manifest/system/boot-archive.xml
 rm ${MINIROOTDIR}/var/svc/manifest/system/cron.xml
 rm ${MINIROOTDIR}/var/svc/manifest/system/dumpadm.xml
 rm ${MINIROOTDIR}/var/svc/manifest/network/network-routing-setup.xml
@@ -123,6 +133,19 @@ rm ${MINIROOTDIR}/var/svc/manifest/system/coreadm.xml
 rm ${MINIROOTDIR}/var/svc/manifest/network/rpc/gss.xml
 rm ${MINIROOTDIR}/var/svc/manifest/network/rpc/keyserv.xml
 rm ${MINIROOTDIR}/var/svc/manifest/system/wusb.xml
+rm -r ${MINIROOTDIR}/var/svc/manifest/network/ipsec
+rm -r ${MINIROOTDIR}/var/svc/manifest/network/ldap
+rm -r ${MINIROOTDIR}/var/svc/manifest/network/iscsi
+rm -r ${MINIROOTDIR}/var/svc/manifest/network/ssl
+rm -r ${MINIROOTDIR}/var/svc/manifest/network/routing
+rm -r ${MINIROOTDIR}/var/svc/manifest/application/management
+rm -r ${MINIROOTDIR}/var/svc/manifest/application/security
+rm -r ${MINIROOTDIR}/var/svc/manifest/device
+rm -r ${MINIROOTDIR}/var/svc/manifest/platform
+rm -r ${MINIROOTDIR}/var/svc/manifest/site
+rm ${MINIROOTDIR}/var/svc/manifest/network/nfs/cbd.xml
+rm ${MINIROOTDIR}/var/svc/manifest/network/nfs/client.xml
+rm ${MINIROOTDIR}/var/svc/manifest/network/nfs/rquota.xml
 rm ${MINIROOTDIR}/lib/svc/method/inetd-upgrade
 rm ${MINIROOTDIR}/lib/svc/method/ldap-client
 rm ${MINIROOTDIR}/lib/svc/method/mpxio-upgrade
@@ -130,9 +153,14 @@ rm ${MINIROOTDIR}/lib/svc/method/svc-auditd
 rm ${MINIROOTDIR}/lib/svc/method/svc-consadm
 rm ${MINIROOTDIR}/lib/svc/method/yp
 rm ${MINIROOTDIR}/lib/svc/method/svc-wusb
-rm ${MINIROOTDIR}/lib/svc/method/boot-archive
 rm ${MINIROOTDIR}/lib/svc/bin/svc.ipfd
 rm ${MINIROOTDIR}/lib/svc/share/ipf_include.sh
+rm ${MINIROOTDIR}/lib/svc/method/boot-archive-update
+rm ${MINIROOTDIR}/lib/svc/method/iscsi-target
+rm ${MINIROOTDIR}/lib/svc/method/svc-nscd
+rm ${MINIROOTDIR}/lib/svc/method/svc-forwarding
+rm ${MINIROOTDIR}/lib/svc/method/devices-audio
+rm ${MINIROOTDIR}/lib/svc/method/nfs-client
 
 # Add dropbear service
 msg_to_stderr "adding dropbear manifest needed for ssh"

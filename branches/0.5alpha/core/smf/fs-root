@@ -131,4 +131,9 @@ fi
 
 libc_mount
 
+# Feature ID #33: Remove unnessesary svc-repository backups
+if [ -f /etc/svc/repository-boot* ]; then
+	rm /etc/svc/repository-boot*
+fi
+
 exit $SMF_EXIT_OK

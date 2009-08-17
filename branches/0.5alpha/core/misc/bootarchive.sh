@@ -36,17 +36,15 @@ fi
 lofiadm -a ${BASEDIR}/boot/boot/${IMAGE} > /dev/null 2>&1
 yes | newfs -m 0 /dev/rlofi/1 >/dev/null 2>&1
 mount /dev/lofi/1 /pulsar_boot
-cd ${MINIROOTDIR}
-tar -cf /installer/tmp.tar .
-cd /pulsar_boot
-tar -xf /installer/tmp.tar
-rm /installer/tmp.tar
+mkdir /pulsar_boot/pulsarroot
 cp -r ${BASEDIR}/platform/pulsarroot/bin /pulsar_boot/pulsarroot/
 cp -r ${BASEDIR}/platform/pulsarroot/plugins /pulsar_boot/pulsarroot/
 cp -r ${BASEDIR}/platform/pulsarroot/frontend /pulsar_boot/pulsarroot/
+
 # delete svn directories
 cd /pulsar_boot/pulsarroot
 find . -name .svn -exec rm -rf {} \;
+
 # create initial .version
 if [ $ARCH = "x86" ]; then
 	echo "0.4alpha_x86\t003" > /pulsar_boot/pulsarroot/bin/.version
@@ -64,7 +62,19 @@ else
 	cat /pulsar_boot/pulsarroot/bin/setup/setup.sh | sed "s,/usr/bin/ksh93,/bin/amd64/ksh93,g" > /pulsar_boot/pulsarroot/bin/setup/setup.sh_tmp
 	mv /pulsar_boot/pulsarroot/bin/setup/setup.sh_tmp /pulsar_boot/pulsarroot/bin/setup/setup.sh
 	chmod -R 755 /pulsar_boot/pulsarroot/bin/*
+	
+	# Fix the nasty sysidpm bug
+	cat ${MINIROOTDIR}/usr/sbin/sysidpm | sed "s,prtconf,/usr/sbin/amd64/prtconf,g" > ${MINIROOTDIR}/usr/sbin/sysidpm_tmp
+	mv ${MINIROOTDIR}/usr/sbin/sysidpm_tmp ${MINIROOTDIR}/usr/sbin/sysidpm
 fi
+
+#cp whole miniroot to image
+cd ${MINIROOTDIR}
+tar -cf /installer/tmp.tar .
+cd /pulsar_boot
+tar -xf /installer/tmp.tar
+rm /installer/tmp.tar
+
 cd /
 umount /pulsar_boot
 lofiadm -d /dev/lofi/1

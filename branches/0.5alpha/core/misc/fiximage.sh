@@ -42,7 +42,7 @@ tar cf ./var.tar ./var
 mkdir ${MINIROOTDIR}/pulsarroot
 
 # copy and modify grub dir
-[ -f ${BASEDIR}/boot/boot/grub ] && rm -r ${BASEDIR}/boot/boot/grub
+[ -d ${BASEDIR}/boot/boot/grub ] && rm -r ${BASEDIR}/boot/boot/grub
 cd ${MINIROOTDIR} && cp -r boot/grub ${BASEDIR}/boot/boot/
 
 # Set PATH

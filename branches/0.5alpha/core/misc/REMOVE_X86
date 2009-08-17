@@ -368,6 +368,7 @@ usr/lib/ld/map.below4G
 usr/lib/ld/map.default
 usr/lib/lwp/libthread_db.so.1
 usr/lib/lwp/libhtead.so.1
+usr/lib/fs/nfs/amd64/libshare_nfs.so.1
 usr/bin/pcre-config
 usr/bin/gdlib-config
 usr/bin/amt
@@ -473,6 +474,9 @@ kernel/misc/idm
 kernel/misc/nfs_dlboot
 kernel/misc/klmops
 kernel/misc/klmmod
+kernel/misc/amd64/nfs_dlboot
+kernel/misc/amd64/klmops
+kernel/misc/nfssrv
 kernel/misc/dadk
 kernel/misc/strategy
 kernel/misc/gda

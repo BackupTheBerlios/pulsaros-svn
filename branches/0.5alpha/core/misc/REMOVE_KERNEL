@@ -48,5 +48,7 @@
 ./kernel/misc/kmdbmod
 ./kernel/misc/hwa1480_fw
 ./kernel/dacf/usb_ac_dacf
+./kernel/misc/klmops
+./kernel/misc/nfs_dlboot
 ./usr/kernel/kmdb/smbfs
 ./usr/kernel/kmdb/nsmb

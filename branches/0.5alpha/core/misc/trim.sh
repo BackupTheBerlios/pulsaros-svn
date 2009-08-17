@@ -53,6 +53,7 @@ done
 msg_to_stderr "removing unnecessary libaries"
 # Workaround to save UTF-8%646.so (cifs)
 cp ${MINIROOTDIR}/usr/lib/iconv/UTF-8%646.so ${MINIROOTDIR}/
+cp ${MINIROOTDIR}/usr/lib/iconv/646%UTF-8.so ${MINIROOTDIR}/
 REMOVE_LIB=`cat ../misc/REMOVE_LIB`
 for lib in $REMOVE_LIB
 do
@@ -61,6 +62,7 @@ done
 # End Workaround to save UTF-8%646.so (cifs
 mkdir  ${MINIROOTDIR}/usr/lib/iconv
 mv ${MINIROOTDIR}/UTF-8%646.so  ${MINIROOTDIR}/usr/lib/iconv/
+mv ${MINIROOTDIR}/646%UTF-8.so  ${MINIROOTDIR}/usr/lib/iconv/
 
 # Remove unnecessary other files
 msg_to_stderr "removing unnecessary other files"
