@@ -6,4 +6,5 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta http-equiv="Content-Language" content="en-us" />
 <meta name="author" content="Thomas Brandstetter" />
+<script src="http://192.168.56.109/js/mootools.js" type="text/javascript"></script>
 </head>

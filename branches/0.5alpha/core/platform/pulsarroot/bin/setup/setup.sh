@@ -1,8 +1,8 @@
-#!/usr/bin/ksh93
+#!/bin/amd64/ksh93
 # Copyright 2009 Thomas Brandstetter. All rights reserved.
 # Description:	setup.sh - Setup script to install pulsaros to
 #               disk/usbstick/cfcard....
-# Version:      0.4
+# Version:      0.5
 #=============================================================
 
 # Variables
@@ -81,10 +81,27 @@ get_disks()
 	done
 }
 
+get_net()
+{
+	# Variables for this function
+	number=0
+	# ===========================
+	for i in `dladm show-phys | grep -v LINK | awk '{print $1}'`; do
+		printf "$i\n"
+	done
+}
+
 install_os()
 {
 	# Variables for this function
 	disk=$1
+	nwcard=$2
+	dhcp=$3
+	hostname=$4
+	ipaddr=$5
+	netmask=$6
+	gateway=$7
+	nameserver=$8
 	# ===========================
 	# prepare choosen disk
 	rdisk=/dev/rdsk/${disk}
@@ -94,11 +111,13 @@ install_os()
 	echo "y" | newfs ${rdisk}s0 >/dev/null 2>&1
 	echo "y" | newfs ${rdisk}s1 >/dev/null 2>&1
 	check_dir "/coreboot"
+	#======================================================================================
 	# install os to disk
     mount ${disk}s0 /coreboot
     cp -rp /pulsarroot/bin /pulsarroot/plugins /pulsarroot/frontend /coreboot/
     mkdir /coreboot/boot
     cp -rp /mnt/boot/grub /mnt/boot/platform /coreboot/boot/
+    #======================================================================================
     # create os image
     check_dir "/pulsarimage"
     if [ `isainfo -b` = 64 ]; then
@@ -115,47 +134,23 @@ install_os()
     check_dir "/pulsar_usr"
     mount ${disk}s1 /pulsar_usr
     cd /usr; tar cf - . | ( cd /pulsar_usr; tar xpf - )
+    #======================================================================================
     # install grub on disk
     echo "y" | installgrub -m /coreboot/boot/grub/stage1 /coreboot/boot/grub/stage2 ${rdisk}s0 >/dev/null 2>&1
     umount /pulsar_usr && umount /pulsarimage && umount /mnt
     lofiadm -d /dev/lofi/1
     touch /coreboot/.installed
+    #======================================================================================
     # create customized filesystem entries
 	cp $HOME/vfstab $HOME/vfstab.work
 	echo "${disk}s1 ${disk}s1 /usr ufs - no nologging" >> $HOME/vfstab.work
 	echo "${disk}s0 ${disk}s0 /pulsarroot ufs - yes nologging" >> $HOME/vfstab.work
 	printf "os installed"
-}
-
-get_net()
-{
-	# Variables for this function
-	number=0
-	# ===========================
-	for i in `dladm show-phys | grep -v LINK | awk '{print $1}'`; do
-		printf "$i\n"
-	done
-}
-
-configure_os()
-{
-	# Variables for this function
-	nwcard=$1
-	dhcp=$2
-	hostname=$3
-	ipaddr=$4
-	netmask=$5
-	gateway=$6
-	nameserver=$7
-	# ===========================
-	if [ ! -f /coreboot/.installed ]; then
-		printf "pulsarnotinstalled"
-		post_cleanup
-		exit 1
-	fi
+	#======================================================================================
 	# mount the boot image for changes
 	lofiadm -a /coreboot/boot/os > /dev/null 2>&1
 	mount /dev/lofi/1 /mnt
+	#======================================================================================
 	# configure base system
 	cp $HOME/vfstab.work /mnt/etc/vfstab
 	rm $HOME/vfstab.work
@@ -163,6 +158,7 @@ configure_os()
 	cp $HOME/profile /mnt/etc/
 	cp $HOME/pam.conf /mnt/etc/
 	cp $HOME/routes.php /coreboot/frontend/www/system/application/config/
+	#======================================================================================
 	# configure network
 	if [ "$dhcp" = "n" ]; then
 		echo "$ipaddr $hostname" >> /mnt/etc/hosts
@@ -193,6 +189,7 @@ configure_os()
 	gzip -9 /coreboot/boot/os
 	umount /coreboot
 	printf "os configured"
+	#======================================================================================
 }
 
 # Main program starts here
@@ -203,18 +200,14 @@ case $1 in
 		get_disks
 		exit 0
 		;;
-	install_os)
-		install_os $2
-		exit 0
-		;;	
 	get_net)
 		get_net
 		exit 0
 		;;
-	configure_os)
-		configure_os $2 $3 $4 $5 $6 $7 $8 $9
+	install_os)
+		install_os $2 $3 $4 $5 $6 $7 $8 $9 $10
 		exit 0
-		;;
+		;;	
 	*)
 		printf "Not an api function!"
 		;;

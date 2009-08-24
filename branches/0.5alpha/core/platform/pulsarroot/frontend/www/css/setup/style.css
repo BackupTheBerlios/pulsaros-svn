@@ -1,8 +1,51 @@
-/* Default settings */
+/* Default settings 
+====================================================== */
+body { 
+	font-family: "Lucida Grande", verdana, arial, helvetica, sans-serif; 
+	font-size: 12px; 
+	color:#484848; 
+	margin: 0; 
+	padding: 0; 
+	min-width: 1026px; 
+	background-color:#eaecee;
+}
 
-html, body, p, ul, ol, dl, li, h1, h2, h3, h4, img	{
-	margin: 0;
-	padding: 0;
+/* Fonts
+====================================================== */
+
+h1, h2, h3, h4 {
+	font-family: "Lucida Grande",arial,sans-serif;
+}
+
+h1 {
+	font-size: 24px;
+	font-weight: normal; 
+	margin:0pt 0pt 0pt 0.25em; 
+	padding:0pt 0pt 10px; 
+	text-align:left;
+}
+
+h2 {
+	padding: 2px 10px 1px 0px;
+	background-color: #edf3fe;
+	margin: -6px -10px 10px; 
+	padding: 10px 20px; 
+	font-size: 14px; 
+	color: #000;
+}
+
+h3 {
+	font-size: 16px;
+	padding: 2px 10px 1px 0px;
+	margin: 0 0 10px 0; 
+	color: #444;
+}
+
+h4,{
+	font-size: 13px;
+	padding: 2px 10px 1px 0px;
+	margin-bottom: 5px; 
+	color: #444;
 }
 
 ul {
@@ -19,7 +62,87 @@ a {
 
 /* Layout settings
 ====================================================== */
+#wrapper {
+	background: white;
+	margin: auto;
+	width: 1026px;
+}
 
-body	{
-	background-color: #eaecee;
+#top-header { 
+	margin-top: 15px;
+}
+
+#header {
+	background-image: url('/images/menu.png');
+	height: 23px;
+	padding: 0;
+	margin-top: -3px;
+}
+
+#main, #main.nosidebar {
+	 background-image: url('/images/main.png');
+	 background-repeat:repeat-y;
+	 background-color:#EEEEEE; 
+}
+
+#content_index {
+	 background: #fff;
+	 width: 1024px;
+	 border-right: 0px;
+	 margin-left: 1px;
+	 padding: 0;
+}
+
+#footer { 
+	background-color:#eaecee; 
+	border-top: 1px solid #cccccc;
+	clear: left;
+	color:#666666; 
+	font-size:9px; 
+	padding-bottom:15px; 
+	text-align:left; 
+}
+
+#left {
+	float: left;
+	width: 181px;
+	margin-left: 15px;
+}
+
+#right {
+	float: right;
+	width: 770px;
+	margin-right: 30px;
+	margin-top: 20px;
+}
+
+.clear {
+	clear: both;
+}
+
+/* Java Script style's
+====================================================== */
+
+#static {
+	display: none;
+}
+
+#log {
+	float: left;
+	padding: 0.5em;
+	margin-left: 10px;
+	width: 290px;
+	border: 1px solid #d6d6d6;
+	border-left-color: #e4e4e4;
+	border-top-color: #e4e4e4;
+	margin-top: 10px;
+}
+ 
+#log_res {
+	overflow: auto;
+}
+ 
+#log_res.ajax-loading {
+	padding: 20px 0;
+	background: url(images/spinner.gif) no-repeat center;
 }
