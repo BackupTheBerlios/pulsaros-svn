@@ -2,8 +2,12 @@
 
 class Setup extends Controller
 {
-	
+	// Initialize needed libraries
+	$this->load_library('core');	
+
+	// Global variables for this class
 	var $header_data = array('title' => 'PulsarOS Setup');
+	var $osversion = $this->core->osversion;
 	
 	function index()
 	{
@@ -34,15 +38,15 @@ class Setup extends Controller
 		
 	function _step1()
 	{
-		exec('/pulsarroot/bin/setup/setup.sh get_disks', $output['disks']);
-		exec('/pulsarroot/bin/setup/setup.sh get_net', $output['nwcard']);
+		exec('/pulsarroot/frontend/bin/$osversion/setup/setup.sh get_disks', $output['disks']);
+		exec('/pulsarroot/frontend/bin/$osversion/setup/setup.sh get_net', $output['nwcard']);
 		return $output; 
 	}
 	
 	function _step2($data)
 	{
 		if (isset($data['dhcp'])) {
-			exec("/pulsarroot/bin/setup/setup.sh install_os $data[disk] $data[nwcard] y $data[hostname]", $output);
+			exec("/pulsarroot/frontend/$osversion/setup/setup.sh install_os $data[disk] $data[nwcard] y $data[hostname]", $output);
 		}
 		else {
 			exec("/pulsarroot/bin/setup/setup.sh install_os $data[disk] $data[nwcard] n $data[hostname] $data[ipaddr] $data[netmask] $data[gateway] $data[nameserver]", $output);

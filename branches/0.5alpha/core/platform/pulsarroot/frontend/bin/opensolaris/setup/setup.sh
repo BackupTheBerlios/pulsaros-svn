@@ -10,7 +10,7 @@
 # ============================================================
 
 trap "" 2 3
-HOME=/pulsarroot/bin/setup
+HOME=/pulsarroot/frontend/bin/opensolaris/setup
 
 # Private functions
 #
