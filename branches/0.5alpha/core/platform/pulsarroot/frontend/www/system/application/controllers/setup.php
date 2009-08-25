@@ -2,28 +2,25 @@
 
 class Setup extends Controller
 {
-	// Initialize needed libraries
-	$this->load_library('core');	
 
-	// Global variables for this class
-	var $header_data = array('title' => 'PulsarOS Setup');
-	var $osversion = $this->core->osversion;
+	function __construct()
+	{
+		parent::Controller();
+		// Initialize needed libraries
+		$this->load->library('core');
+		$this->load->library('disk');
+		$this->load->library('network');
+
+		// Global variables for this class
+		$this->header_data = array('title' => 'PulsarOS Setup');
+		$this->osversion = $this->core->osversion();
+	}
 	
 	function index()
 	{
-		$data = $this->_step1();
-		$i=0;
-		foreach($data['disks'] as $disk):
-			$data['disk'][$i] = preg_split("/[\s,]+/", $disk);
-			$i++;
-		endforeach;
-		$i=0;
-		foreach($data['nwcard'] as $nwcard):
-			$data['nwcard'][$i] = $nwcard;
-			$i++;
-		endforeach;
+		$html = $this->_step1();
 		$this->load->view('setup/header', $this->header_data);
-		$this->load->view("setup/index", $data);
+		$this->load->view("setup/index", $html);
 	}
 	
 	function install()
@@ -38,20 +35,20 @@ class Setup extends Controller
 		
 	function _step1()
 	{
-		exec('/pulsarroot/frontend/bin/$osversion/setup/setup.sh get_disks', $output['disks']);
-		exec('/pulsarroot/frontend/bin/$osversion/setup/setup.sh get_net', $output['nwcard']);
-		return $output; 
+		$html['disks'] = $this->disk->get_disks($this->osversion);
+		$html['nwcards'] = $this->network->get_nwcards($this->osversion);
+		return $html;
 	}
 	
 	function _step2($data)
 	{
 		if (isset($data['dhcp'])) {
-			exec("/pulsarroot/frontend/$osversion/setup/setup.sh install_os $data[disk] $data[nwcard] y $data[hostname]", $output);
+			exec("/pulsarroot/frontend/bin/$this->osversion/setup/setup.sh install_os $data[disk] $data[nwcard] y $data[hostname]", $output);
+			return $output;
 		}
 		else {
-			exec("/pulsarroot/bin/setup/setup.sh install_os $data[disk] $data[nwcard] n $data[hostname] $data[ipaddr] $data[netmask] $data[gateway] $data[nameserver]", $output);
+		return	exec("/pulsarroot/frontend/bin/$this->osversion/setup/setup.sh install_os $data[disk] $data[nwcard] n $data[hostname] $data[ipaddr] $data[netmask] $data[gateway] $data[nameserver]");
 		}
-		return $output; 
 	}
 }
 ?>

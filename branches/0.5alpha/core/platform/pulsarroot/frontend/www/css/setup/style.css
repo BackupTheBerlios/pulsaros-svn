@@ -144,5 +144,5 @@ a {
  
 #log_res.ajax-loading {
 	padding: 20px 0;
-	background: url(images/spinner.gif) no-repeat center;
+	background: url(/images/spinner.gif) no-repeat center;
 }

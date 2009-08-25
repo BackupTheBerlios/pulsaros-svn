@@ -24,29 +24,28 @@
 		<p>Please choose the right disk to install PulsarOS on your system.</p>
 		<br />
 		<form id="setupForm" method="post" action="index.php?setup/install">
-			<?php foreach($disk as $diskname):?>
-			<input type="radio" name="disk" value=<?php echo $diskname[0];?> /> <?php echo "Disk: $diskname[0] Size: $diskname[1]";?><br />
+			<?php foreach($disks as $disk):?>
+				<?php print $disk; ?>
 			<?php endforeach;?>
 			<p>All data on disk will be destroyed!</p>
 			<br />
 			<h1>SYSTEM CONFIGURATION</h1>
 			<br />
-			Hostname:<input type="text" name="hostname" value="" /><br />
-			<?php foreach($nwcard as $nwname):?>
-			<input type="radio" name="nwcard" value=<?php echo $nwname;?> /> <?php echo "Interface: $nwname";?><br />
+			Hostname:<input class="validate['required','alphanum']" type="text" name="hostname" value="" /><br />
+			<?php foreach($nwcards as $nwcard):?>
+				<?php echo $nwcard; ?>
 			<?php endforeach;?>
 			<p>Choose your network card for configuration</p><br />
 			<p>Configure your network manually? <input type="checkbox" name="dhcp" value="y" onclick="showText( this )" onchange="showText( this )"/></p>
 			<div id="static">
-				IP Address:<input id="ipaddr" type="text" name="ipaddr" value="" /><br />
+				IP Address:<input type="text" name="ipaddr" value="" /><br />
 				Netmask:<input type="text" name="netmask" value="" /><br />
 				Gateway:<input type="text" name="gateway" value="" /><br />
 				Nameserver:<input type="text" name="nameserver" value="" /><br />
 			</div>
-			<input type="submit" id="submit" value="submit" />
+			<input class="validate['submit']" type="submit" id="submit" value="submit" />
 		</form>
 		<div id="log">
-			<h3>Ajax Response</h3>
 			<div id="log_res"><!-- spanner --></div>
 		</div>
 	</div>
@@ -58,6 +57,10 @@
 </div>
 </div>
 		<script type="text/javascript"> 
+			window.addEvent('domready', function() {
+        			new FormCheck('setupForm');
+    			});
+
 			function showText( b ) {
 				// {b} is a reference to the button
 				// get a reference to the button's parent form
@@ -86,9 +89,9 @@
 					e.stop();
 					//Empty the log and show the spinning indicator.
 					var log = $('log_res').empty().addClass('ajax-loading');
-					//Set the options of the form's Request handler. 
+					//Set the options of the form's Request handler.
 					//("this" refers to the $('setupForm') element).
-					this.set('send', {onComplete: function(response) { 
+					this.set('send', {onComplete: function(response) {
 						log.removeClass('ajax-loading');
 						log.set('html', response);
 					}});
