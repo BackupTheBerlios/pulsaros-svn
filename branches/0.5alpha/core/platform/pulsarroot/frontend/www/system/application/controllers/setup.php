@@ -10,10 +10,11 @@ class Setup extends Controller
 		$this->load->library('core');
 		$this->load->library('disk');
 		$this->load->library('network');
+		$this->load->library('install');
 
 		// Global variables for this class
 		$this->header_data = array('title' => 'PulsarOS Setup');
-		$this->osversion = $this->core->osversion();
+		$this->osversion = $this->core->osVersion();
 	}
 	
 	function index()
@@ -29,26 +30,20 @@ class Setup extends Controller
 			print $this->_step2($_POST);
 		}
 		else {
-			echo "Empty POST array";
+			$this->core->apiError();
 		}
 	}
 		
 	function _step1()
 	{
-		$html['disks'] = $this->disk->get_disks($this->osversion);
-		$html['nwcards'] = $this->network->get_nwcards($this->osversion);
+		$html['disks'] = $this->disk->getDisks($this->osversion);
+		$html['nwcards'] = $this->network->getNwcards($this->osversion);
 		return $html;
 	}
 	
 	function _step2($data)
 	{
-		if (isset($data['dhcp'])) {
-			exec("/pulsarroot/frontend/bin/$this->osversion/setup/setup.sh install_os $data[disk] $data[nwcard] y $data[hostname]", $output);
-			return $output;
-		}
-		else {
-		return	exec("/pulsarroot/frontend/bin/$this->osversion/setup/setup.sh install_os $data[disk] $data[nwcard] n $data[hostname] $data[ipaddr] $data[netmask] $data[gateway] $data[nameserver]");
-		}
+		$this->install->installOs($this->osversion, $data);
 	}
 }
 ?>

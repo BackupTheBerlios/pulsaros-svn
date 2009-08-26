@@ -60,6 +60,10 @@ a {
 	outline: none;
 }
 
+#right p {
+	margin-left: 20px;
+}
+
 /* Layout settings
 ====================================================== */
 #wrapper {
@@ -120,29 +124,59 @@ a {
 	clear: both;
 }
 
+/* List style's
+====================================================== */
+#disk_container {
+	margin-bottom: 20px;
+}
+
+.disk {
+	width: 200px;
+	float: left;
+	margin-left: 20px;
+}
+
+.disk input {
+	float: left;
+	margin-top: 15px;
+}
+
+.disk img {
+	float: left;
+}
+
+.disk .desc {
+	float: right;
+}
+
+.disk p {
+	margin: 0;
+	margin-left: 0;
+	padding: 2px;
+}
+
+
 /* Java Script style's
 ====================================================== */
 
 #static {
 	display: none;
 }
-
-#log {
-	float: left;
-	padding: 0.5em;
-	margin-left: 10px;
-	width: 290px;
-	border: 1px solid #d6d6d6;
-	border-left-color: #e4e4e4;
-	border-top-color: #e4e4e4;
-	margin-top: 10px;
-}
  
-#log_res {
+#result {
 	overflow: auto;
 }
- 
-#log_res.ajax-loading {
+
+#result.ajax-loading {
 	padding: 20px 0;
 	background: url(/images/spinner.gif) no-repeat center;
+}
+
+#result.ajax-loading input {
+	display:none;
+}
+
+#popup {
+	display: none;
+	background-color: #FFFFFF;
 }

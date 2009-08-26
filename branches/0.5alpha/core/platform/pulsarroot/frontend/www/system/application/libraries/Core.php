@@ -2,13 +2,18 @@
 
 class Core {
 
-	function osversion() 
+	function osVersion() 
 	{
 		$output = exec('uname -s');
 		if ($output == "SunOS") 
 		{
 			return "opensolaris";
 		}
+	}
+	
+	function apiError() 
+	{
+		print "API Error! Please send the problem to a PulsarOS developer!";
 	}
 }
 

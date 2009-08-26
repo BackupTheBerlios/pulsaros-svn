@@ -11,6 +11,7 @@
 
 trap "" 2 3
 HOME=/pulsarroot/frontend/bin/opensolaris/setup
+LOG=/pulsarroot/frontend/www/install_log.txt
 
 # Private functions
 #
@@ -23,7 +24,19 @@ post_cleanup()
 	[ `lofiadm |wc -l` -gt 1 ] && lofiadm -d /dev/lofi/1
 	[ -f /tmp/os ] && rm /tmp/os
 	[ -f /tmp/os.gz ] && rm /tmp/os.gz
+	[ -f $LOG ] && rm $LOG
 }
+
+get_debug()
+{
+	# function to get information about your system - in case of problems!
+	printf "Starting debug information logging\n" >> $LOG
+	printf "==================================\n" >> $LOG
+	prtconf >> $LOG
+	iostat -Enx >> $LOG
+	# end of debug
+}
+	
 
 get_installer()
 {
@@ -31,6 +44,7 @@ get_installer()
 		if [ `iostat -Enx $i | egrep -ci "DVD|CD|DVD-ROM" ` = 1 ]; then
 			mount -F hsfs /dev/dsk/${i}s0 /mnt
 			if [ -f /mnt/.pulsarinstall ]; then
+				printf "Installer Device: $i\n" >> $LOG
 				mount=$i
 			else
 				umount /mnt
@@ -39,6 +53,7 @@ get_installer()
 			if [ `fstyp /dev/rdsk/${i}s0 2>/dev/null| grep -c ufs` = 1 ]; then
 				mount /dev/dsk/${i}s0 /mnt
 				if [ -f /mnt/.pulsarinstall ]; then
+					printf "Installer Device: $i\n" >> $LOG
 					mount=$i
 				else
 					umount /mnt
@@ -76,6 +91,7 @@ get_disks()
 		fi
 		# do not print out the pulsar installer
 		if [ $mount != $i ]; then
+			printf "Disk : $i $size\n" >> $LOG
 			printf "$i $size\n"
 		fi
 	done
@@ -87,6 +103,7 @@ get_net()
 	number=0
 	# ===========================
 	for i in `dladm show-phys | grep -v LINK | awk '{print $1}'`; do
+		printf "Network Card: $i\n" >> $LOG
 		printf "$i\n"
 	done
 }
@@ -102,6 +119,7 @@ install_os()
 	netmask=$6
 	gateway=$7
 	nameserver=$8
+	print "Variables for installation: Disk: $1, Network Card: $2, DHCP: $3, Hostname: $4, IP Address: $5, Netmask: $6, Gateway: $7, Nameserver: $8\n" >> $LOG
 	# ===========================
 	# prepare choosen disk
 	rdisk=/dev/rdsk/${disk}
@@ -121,8 +139,10 @@ install_os()
     # create os image
     check_dir "/pulsarimage"
     if [ `isainfo -b` = 64 ]; then
+    	print "Installation in 64-bit mode\n" >> $LOG
     	mkfile 80m /coreboot/boot/os
     else
+    	print "Installation in 32-bit mode" >> $LOG
     	mkfile 55m /coreboot/boot/os
     fi
     lofiadm -a /coreboot/boot/os > /dev/null 2>&1
@@ -145,7 +165,6 @@ install_os()
 	cp $HOME/vfstab $HOME/vfstab.work
 	echo "${disk}s1 ${disk}s1 /usr ufs - no nologging" >> $HOME/vfstab.work
 	echo "${disk}s0 ${disk}s0 /pulsarroot ufs - yes nologging" >> $HOME/vfstab.work
-	printf "os installed"
 	#======================================================================================
 	# mount the boot image for changes
 	lofiadm -a /coreboot/boot/os > /dev/null 2>&1
@@ -188,7 +207,7 @@ install_os()
 	lofiadm -d /coreboot/boot/os
 	gzip -9 /coreboot/boot/os
 	umount /coreboot
-	printf "os configured"
+	printf "PulsarOS successfully installed" >> $LOG
 	#======================================================================================
 }
 
@@ -205,6 +224,7 @@ case $1 in
 		exit 0
 		;;
 	install_os)
+		get_debug
 		install_os $2 $3 $4 $5 $6 $7 $8 $9 $10
 		exit 0
 		;;	

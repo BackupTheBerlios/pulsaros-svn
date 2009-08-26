@@ -10,4 +10,6 @@
 <script src="/js/mootools.js" type="text/javascript"></script>
 <script src="/js/formcheck/lang/en.js" type="text/javascript"></script>
 <script src="/js/formcheck/formcheck.js" type="text/javascript"></script>
+<script src="/js/pulsaros.js" type="text/javascript"></script>
+<script src="/js/modalizer.js" type="text/javascript"></script>
 </head>
