@@ -1,0 +1,25 @@
+#!/bin/sh
+#
+# Startup frontend....
+#
+
+case "$1" in
+  start)
+        echo "Starting frontend..."
+	httpd -c /pulsarroot/configs/httpd.conf
+	ps -ef|grep httpd|awk '{print $1}' > /var/run/httpd.pid
+        ;;
+  stop)
+        echo -n "Stopping frontend..."
+	pkill httpd
+        ;;
+  restart|reload)
+        "$0" stop
+        "$0" start
+        ;;
+  *)
+        echo $"Usage: $0 {start|stop|restart}"
+        exit 1
+esac
+
+exit $?

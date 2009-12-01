@@ -1,0 +1,6 @@
+config BR2_PACKAGE_BTRFSPROGS
+	bool "btrsfsprogs"
+	help
+	  BTRFS progrs to maintain the btrfs filesystem
+
+	  http://www.kernel.org/pub/linux/kernel/people/mason/btrfs
