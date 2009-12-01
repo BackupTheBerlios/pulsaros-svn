@@ -10,7 +10,7 @@ ARCH=$1
 BOOT_HOME=$HOME/boot_$ARCH/boot/isolinux
 MOUNT_CD=$HOME/mount/cdrom
 MOUNT_PULSAR=$HOME/mount/pulsar
-SETUP_HOME=$HOME/setup
+SETUP_HOME=$HOME/0.5alpha
 
 # Syntax check
 [ $# != 1 ] && printf "Argument expected: setup.sh 'arch' \n" && exit 1

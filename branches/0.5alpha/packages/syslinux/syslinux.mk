@@ -19,7 +19,7 @@ $(SYLINUX_DIR)/.source: $(DL_DIR)/$(SYLINUX_SOURCE)
 
 $(SYLINUX_DIR)/.configured: $(SYLINUX_DIR)/.source
 	cd $(SYLINUX_DIR); rm -rf config.cache; 
-	cp /buildroot/setup/packages/syslinux/Makefile $(SYLINUX_DIR)
+	cp /buildroot/0.5alpha/packages/syslinux/Makefile $(SYLINUX_DIR)
 	touch $@
 
 $(SYLINUX_DIR)/$(SYLINUX_BINARY): $(SYLINUX_DIR)/.configured

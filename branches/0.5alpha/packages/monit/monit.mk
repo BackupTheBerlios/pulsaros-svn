@@ -30,7 +30,7 @@ $(MONIT_DIR)/.configured: $(MONIT_DIR)/.source
 	touch $@
 
 $(MONIT_DIR)/$(MONIT_BINARY): $(MONIT_DIR)/.configured
-	cp /buildroot/setup/packages/monit/file.c $(MONIT_DIR)
+	cp /buildroot/0.5alpha/packages/monit/file.c $(MONIT_DIR)
 	$(MAKE) CC="$(TARGET_CC)" CFLAGS="$(TARGET_CFLAGS) -I$(MONIT_DIR) -I$(MONIT_DIR)/protocols -I$(MONIT_DIR)/http -I$(MONIT_DIR)/process -I$(MONIT_DIR)/device" LDFLAGS="$(TARGET_LDFLAGS)" -C $(MONIT_DIR)
 
 $(TARGET_DIR)/$(MONIT_TARGET_BINARY): $(MONIT_DIR)/$(MONIT_BINARY)

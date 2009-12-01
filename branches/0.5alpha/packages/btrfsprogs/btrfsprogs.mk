@@ -19,7 +19,7 @@ $(BTRFSPROGS_DIR)/.source: $(DL_DIR)/$(BTRFSPROGS_SOURCE)
 
 $(BTRFSPROGS_DIR)/.configured: $(BTRFSPROGS_DIR)/.source
 	cd $(BTRFSPROGS_DIR); rm -rf config.cache; 
-	cp /buildroot/setup/packages/btrfsprogs/Makefile $(BTRFSPROGS_DIR)
+	cp /buildroot/0.5alpha/packages/btrfsprogs/Makefile $(BTRFSPROGS_DIR)
 	touch $@
 
 $(BTRFSPROGS_DIR)/$(BTRFSPROGS_BINARY): $(BTRFSPROGS_DIR)/.configured
