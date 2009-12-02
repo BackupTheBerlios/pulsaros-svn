@@ -5,6 +5,7 @@
 #==========================================================
 
 # Variables
+
 HOME=/buildroot
 ARCH=$1
 BOOT_HOME=$HOME/boot_$ARCH/boot/isolinux
