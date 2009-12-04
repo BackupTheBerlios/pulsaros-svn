@@ -1,11 +1,24 @@
 #!/bin/sh
-# Copyright 2009 Thomas Brandstetter. All rights reserved.
-# Description: 	setup.sh - finalize the pulsaros image
-# Version:	0.5
-#==========================================================
-
+#
+# 
+#
+# 
+# Description
+# 
+# @license		GNU General Public License
+# @author		Thomas Brandstetter
+# @link			http://www.digitalplayground.at
+# @email		thomas.brandstetter@gmail.com
+# 
+# @file			setup.sh
+# @version		1.0
+# @date			12/02/2009
+# 
+# Copyright (c) 2009
+#
+# ##############################################
+ 
 # Variables
-
 HOME=/buildroot
 ARCH=$1
 BOOT_HOME=$HOME/boot_$ARCH/boot/isolinux
@@ -32,6 +45,7 @@ make_pulsar ()
 	fi
 	cd $SETUP_HOME
 	cp configs/buildroot_$ARCH.config $HOME/build_$ARCH/.config
+	# cp -r packages/* $HOME/build_$ARCH/packages
 	cd $HOME/build_$ARCH && make
 }	
 
