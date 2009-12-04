@@ -40,8 +40,6 @@ window.addEvent('domready', function() {
 
 	function CloseRemovePopup() {
 	}
-	
-	new MooSwitch('switch');
 });
 
 function showText( b ) {

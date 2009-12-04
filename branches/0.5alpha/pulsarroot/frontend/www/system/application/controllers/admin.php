@@ -1,5 +1,23 @@
 <?php
 
+/**
+ * 
+
+ * 
+ * Description
+ * 
+ * @license		GNU General Public License
+ * @author		Thomas Brandstetter
+ * @link		http://www.digitalplayground.at
+ * @email		thomas.brandstetter@gmail.com
+ * 
+ * @file		admin.php
+ * @version		1.0
+ * @date		12/02/2009
+ * 
+ * Copyright (c) 2009
+ */
+ 
 class Admin extends Controller
 {
 
